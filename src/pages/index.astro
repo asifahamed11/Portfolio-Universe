@@ -5,15 +5,6 @@ import SubmitModal from '../components/SubmitModal.astro';
 import portfoliosData from '../data/portfolios.json';
 import '../styles/global.css';
 
-// Ensure data is structured properly
-const getHash = (str: string) => {
-  let hash = 0;
-  for (let i = 0; i < str.length; i++) {
-    hash = str.charCodeAt(i) + ((hash << 5) - hash);
-  }
-  return Math.abs(hash);
-};
-
 // Map portfolios to include baseLikes (real likes start at 0)
 const portfolios = portfoliosData.map(p => ({
   ...p,
@@ -39,10 +30,6 @@ const portfolios = portfoliosData.map(p => ({
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-blue-500/20">
-              P
-            </div>
-            <span class="font-bold text-xl tracking-tight text-white hidden sm:block">Universe</span>
           </div>
           
           <div class="flex items-center gap-3 md:gap-4">
@@ -130,7 +117,7 @@ const portfolios = portfoliosData.map(p => ({
             data-name={portfolio.name.toLowerCase()}
             data-url={portfolio.url}
             data-role={portfolio.role?.toLowerCase() || ''}
-            data-tech={portfolio.tech_stack?.join(',').toLowerCase() || ''}
+            data-tech={Array.isArray(portfolio.tech_stack) ? portfolio.tech_stack.join(',').toLowerCase() : ''}
             data-hire={portfolio.available_for_hire ? 'true' : 'false'}
           >
             <PortfolioCard 
@@ -338,12 +325,16 @@ const portfolios = portfoliosData.map(p => ({
     };
 
     const renderGrid = () => {
-      // Hide all first
-      wrappers.forEach(w => w.classList.add('hidden'));
-
       // Show paginated filtered items
-      const itemsToShow = filteredItems.slice(0, visibleCount);
-      itemsToShow.forEach(w => w.classList.remove('hidden'));
+      const itemsToShow = new Set(filteredItems.slice(0, visibleCount));
+      
+      wrappers.forEach(w => {
+        if (itemsToShow.has(w)) {
+          w.classList.remove('hidden');
+        } else {
+          w.classList.add('hidden');
+        }
+      });
 
       // Empty state
       if (filteredItems.length === 0) {
@@ -360,14 +351,26 @@ const portfolios = portfoliosData.map(p => ({
       }
     };
 
+    function debounce(func, wait) {
+      let timeout;
+      return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+      };
+    }
+
+    const debouncedApplyFilters = debounce(() => {
+      visibleCount = ITEMS_PER_PAGE; // reset pagination
+      applyFilters();
+    }, 250);
+
     const handleSearch = (e) => {
       searchQuery = e.target.value.toLowerCase().trim();
       // Sync both inputs
       if (e.target === searchInputDesk && searchInputMob) searchInputMob.value = e.target.value;
       if (e.target === searchInputMob && searchInputDesk) searchInputDesk.value = e.target.value;
       
-      visibleCount = ITEMS_PER_PAGE; // reset pagination
-      applyFilters();
+      debouncedApplyFilters();
     };
 
     searchInputDesk?.addEventListener('input', handleSearch);

@@ -41,7 +41,7 @@ const screenshotUrl = screenshot || `https://api.microlink.io/?url=${encodeURICo
           Hire Me
         </span>
       )}
-      {role && role !== "Unknown" && (
+      {typeof role === 'string' && role !== "Unknown" && (
         <span class="inline-block px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md border border-white/10 text-gray-200 text-[10px] font-medium tracking-wide">
           {role.split(' ')[0]}
         </span>
@@ -107,6 +107,7 @@ const screenshotUrl = screenshot || `https://api.microlink.io/?url=${encodeURICo
 <script is:inline>
   // Tooltip Text Overflow Check
   if (!window.checkTextOverflow) {
+    let resizeTimeout;
     window.checkTextOverflow = function() {
       const wrappers = document.querySelectorAll('.summary-wrapper');
       wrappers.forEach(wrapper => {
@@ -123,9 +124,14 @@ const screenshotUrl = screenshot || `https://api.microlink.io/?url=${encodeURICo
       });
     }
 
+    window.debouncedCheckTextOverflow = function() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(window.checkTextOverflow, 200);
+    }
+
     // Check on load and when window resizes
     window.addEventListener('load', window.checkTextOverflow);
-    window.addEventListener('resize', window.checkTextOverflow);
+    window.addEventListener('resize', window.debouncedCheckTextOverflow);
     setTimeout(window.checkTextOverflow, 100);
   }
 

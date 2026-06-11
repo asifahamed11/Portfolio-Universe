@@ -69,10 +69,28 @@ async function run() {
         screenshot: `https://s0.wp.com/mshots/v1/${encodeURIComponent(item.url)}?w=600`
       }));
 
-    // deduplicate by URL
     const uniqueMap = new Map();
     cleanedData.forEach(item => uniqueMap.set(item.url, item));
-    const finalData = Array.from(uniqueMap.values());
+
+    // Preserve existing data fields
+    let existingData = [];
+    try {
+      const existingFileContent = await fs.readFile(OUTPUT_FILE, 'utf-8');
+      existingData = JSON.parse(existingFileContent);
+    } catch (e) {
+      // Ignore if file doesn't exist
+    }
+
+    const existingMap = new Map();
+    existingData.forEach(item => existingMap.set(item.url, item));
+
+    const finalData = Array.from(uniqueMap.values()).map(newItem => {
+      const oldItem = existingMap.get(newItem.url);
+      if (oldItem) {
+        return { ...oldItem, ...newItem };
+      }
+      return newItem;
+    });
 
     console.log(`Filtered down to ${finalData.length} valid portfolios.`);
 

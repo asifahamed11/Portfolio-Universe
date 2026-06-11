@@ -43,6 +43,9 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Fetch and Update Portfolios Data
+        run: node scripts/update-data.js
+
       - name: Run AI Summary Generator
         env:
           # This pulls your API key from GitHub repository secrets
