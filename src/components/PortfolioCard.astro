@@ -1,0 +1,112 @@
+---
+interface Props {
+  name: string;
+  url: string;
+  screenshot: string;
+  summary?: string;
+}
+
+const { name, url, screenshot, summary } = Astro.props;
+---
+
+<a href={url} target="_blank" rel="noopener noreferrer" class="group relative flex flex-col bg-slate-900 border border-slate-800 rounded-2xl hover:border-blue-500/50 hover:shadow-[0_8px_30px_-10px_rgba(59,130,246,0.3)] transition-[transform,box-shadow,border-color] duration-300 ease-out transform-gpu will-change-transform hover:-translate-y-1 hover:z-50 [backface-visibility:hidden]">
+  
+  <!-- Image Section -->
+  <div class="relative aspect-[16/10] w-full overflow-hidden bg-slate-950 rounded-t-2xl [transform:translateZ(0)]">
+    <img 
+      src={screenshot} 
+      alt={`Screenshot of ${name}'s portfolio`}
+      loading="lazy"
+      class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-[opacity,transform] duration-300 ease-out transform-gpu will-change-transform [backface-visibility:hidden]"
+    />
+    
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0 z-10 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+  </div>
+  
+  <!-- Content Section -->
+  <div class="relative z-10 p-5 flex flex-col flex-grow bg-slate-900 rounded-b-2xl">
+    <h3 class="text-xl font-bold text-slate-100 mb-2 line-clamp-1 group-hover:text-blue-400 transition-colors duration-300">
+      {name}
+    </h3>
+    
+    <!-- Animated Divider -->
+    <div class="w-8 h-1 bg-slate-700 rounded-full mb-4 group-hover:w-16 group-hover:bg-blue-500 transition-all duration-300 ease-out"></div>
+    
+    {summary && (
+      <div class="summary-wrapper relative mb-4 cursor-default">
+        <!-- Text container without line-clamp to avoid "..." -->
+        <div class="summary-text-container relative max-h-[2.75rem] overflow-hidden">
+          <p class="summary-text text-sm text-slate-400 leading-relaxed m-0 p-0">
+            {summary}
+          </p>
+          <!-- Fade out gradient for overflown text -->
+          <div class="truncate-mask absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent hidden pointer-events-none"></div>
+        </div>
+        <!-- Ultra-Premium Pop-up Tooltip -->
+        <div class="tooltip-window absolute z-[100] left-[calc(100%-0.5rem)] top-1/2 w-72 opacity-0 invisible transition-opacity duration-200 ease-out origin-left pointer-events-none" style="transform: translateY(-50%);">
+          
+          <!-- Outer glowing aura -->
+          <div class="absolute -inset-1 bg-gradient-to-r from-blue-600/40 via-indigo-600/40 to-purple-600/40 rounded-2xl blur-xl opacity-80"></div>
+          
+          <!-- Tooltip Body -->
+          <div class="relative bg-gradient-to-br from-slate-800/50 to-slate-900/70 backdrop-blur-lg border border-white/10 p-5 rounded-2xl shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_30px_60px_-15px_rgba(0,0,0,0.9)]">
+            <!-- Inner top highlight line -->
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/40 to-transparent"></div>
+            
+            <div class="relative z-10 flex items-start gap-3">
+              <!-- Decorative icon wrapped in circle -->
+              <div class="flex-shrink-0 mt-0.5 w-7 h-7 flex items-center justify-center rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 shadow-[inset_0_0_10px_rgba(59,130,246,0.2)]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"></path>
+                  <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"></path>
+                </svg>
+              </div>
+              <span class="block text-[0.85rem] text-slate-200 leading-relaxed font-medium tracking-wide">{summary}</span>
+            </div>
+          </div>
+          
+          <!-- Triangle Pointer -->
+          <div class="absolute top-1/2 -translate-y-1/2 -left-1.5 w-3.5 h-3.5 bg-slate-800/60 backdrop-blur-lg border-t border-l border-white/10 transform -rotate-45 rounded-tl-[2px] shadow-[-5px_-5px_15px_-5px_rgba(0,0,0,0.5)]"></div>
+        </div>
+      </div>
+    )}
+
+  </div>
+</a>
+
+<style>
+  /* Only show tooltip and mask if the text overflows */
+  .group:hover .summary-wrapper.has-tooltip .tooltip-window {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  .summary-wrapper.has-tooltip .truncate-mask {
+    display: block !important;
+  }
+</style>
+
+<script>
+  function checkTextOverflow() {
+    const wrappers = document.querySelectorAll('.summary-wrapper');
+    wrappers.forEach(wrapper => {
+      const container = wrapper.querySelector('.summary-text-container');
+      const text = wrapper.querySelector('.summary-text');
+      if (container && text) {
+        // If the text actually takes up more vertical space than its container (2 lines)
+        if (text.scrollHeight > container.clientHeight + 2) {
+          wrapper.classList.add('has-tooltip');
+        } else {
+          wrapper.classList.remove('has-tooltip');
+        }
+      }
+    });
+  }
+
+  // Check on load and when window resizes
+  window.addEventListener('load', checkTextOverflow);
+  window.addEventListener('resize', checkTextOverflow);
+  
+  // Also run immediately just in case
+  setTimeout(checkTextOverflow, 100);
+</script>
