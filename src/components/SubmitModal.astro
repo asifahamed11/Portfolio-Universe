@@ -1,0 +1,73 @@
+---
+// SubmitModal.astro
+---
+
+<div id="submitModal" class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+  <div id="submitBackdrop" class="absolute inset-0 bg-gray-950/60 backdrop-blur-md"></div>
+  
+  <div class="relative w-full max-w-lg bg-gray-900/80 backdrop-blur-xl border border-gray-700/50 rounded-3xl shadow-2xl p-8 transform scale-95 transition-transform duration-300" id="submitCard">
+    <button id="closeSubmitBtn" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-gray-800/50">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+    
+    <div class="mb-6">
+      <h2 class="text-2xl font-bold text-white mb-2">Submit a Portfolio</h2>
+      <p class="text-gray-400 text-sm">Know a great developer portfolio? Add it to the universe! Our AI will automatically generate the summary and tags.</p>
+    </div>
+
+    <form id="submitForm" class="space-y-5">
+      <div>
+        <label for="portfolioName" class="block text-sm font-medium text-gray-300 mb-1">Developer Name</label>
+        <input type="text" id="portfolioName" required placeholder="e.g. Asif Ahamed" class="w-full bg-gray-800/50 border border-gray-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors" />
+      </div>
+      <div>
+        <label for="portfolioUrl" class="block text-sm font-medium text-gray-300 mb-1">Website URL</label>
+        <input type="url" id="portfolioUrl" required placeholder="https://..." class="w-full bg-gray-800/50 border border-gray-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors" />
+      </div>
+      
+      <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold py-3 px-4 rounded-xl shadow-lg shadow-blue-500/25 transition-all active:scale-[0.98]">
+        Submit for AI Review
+      </button>
+    </form>
+    
+    <div id="submitSuccess" class="hidden mt-4 p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-400 text-center text-sm">
+      Thanks! This portfolio has been sent to our AI queue for review.
+    </div>
+  </div>
+</div>
+
+<script>
+  const submitModal = document.getElementById('submitModal');
+  const submitBackdrop = document.getElementById('submitBackdrop');
+  const submitCard = document.getElementById('submitCard');
+  const closeSubmitBtn = document.getElementById('closeSubmitBtn');
+  const submitForm = document.getElementById('submitForm');
+  const submitSuccess = document.getElementById('submitSuccess');
+
+  window.openSubmitModal = () => {
+    submitModal.classList.remove('opacity-0', 'pointer-events-none');
+    submitCard.classList.remove('scale-95');
+    submitCard.classList.add('scale-100');
+    submitSuccess.classList.add('hidden');
+    submitForm.reset();
+  };
+
+  const closeModal = () => {
+    submitModal.classList.add('opacity-0', 'pointer-events-none');
+    submitCard.classList.remove('scale-100');
+    submitCard.classList.add('scale-95');
+  };
+
+  closeSubmitBtn?.addEventListener('click', closeModal);
+  submitBackdrop?.addEventListener('click', closeModal);
+
+  submitForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // In a real app, this would send an API request or trigger a GitHub Action.
+    // For now, we mock the success state.
+    submitSuccess.classList.remove('hidden');
+    setTimeout(() => {
+      closeModal();
+    }, 2000);
+  });
+</script>
