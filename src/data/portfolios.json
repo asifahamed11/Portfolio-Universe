@@ -105,7 +105,17 @@
     "name": "Aakash Sharma",
     "url": "https://aakash-sharma.netlify.app",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faakash-sharma.netlify.app?w=600",
-    "primary_language": "English"
+    "primary_language": "English",
+    "summary": "Front-End Developer at CloudStok Technologies, designs features from ideation to production for high-performance applications.",
+    "role": "Front-End Developer",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "TypeScript",
+      "Express",
+      "Flutter"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Aakhand Tajmirul",
@@ -152,7 +162,11 @@
   {
     "name": "Aarav Gupta",
     "url": "https://aarus2709.me",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faarus2709.me?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faarus2709.me?w=600",
+    "summary": "",
+    "role": "",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Aaron Dunphy",
@@ -188,7 +202,11 @@
     "name": "Aashay Wase",
     "url": "https://aashay-dev-ed.develop.my.site.com/AashayWase/s",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faashay-dev-ed.develop.my.site.com%2FAashayWase%2Fs?w=600",
-    "primary_language": "English"
+    "primary_language": "English",
+    "summary": "",
+    "role": "",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Aashir Khan",
@@ -211,7 +229,11 @@
     "name": "Aashish Jaini",
     "url": "https://aashishjaini.me",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faashishjaini.me?w=600",
-    "primary_language": "English"
+    "primary_language": "English",
+    "summary": "AI, Web, and Cloud Engineer, specializing in artificial intelligence and scalable web solutions.",
+    "role": "AI, Web, and Cloud Engineer",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Aashutosh Rathi",
@@ -231,7 +253,11 @@
     "name": "Aathif Zahir",
     "url": "https://az-dev.vercel.app",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faz-dev.vercel.app?w=600",
-    "primary_language": "English"
+    "primary_language": "English",
+    "summary": "",
+    "role": "",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Aaweł Szostak",
@@ -310,77 +336,197 @@
   {
     "name": "Aayush Sood",
     "url": "https://www.aayushsood.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.aayushsood.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.aayushsood.com?w=600",
+    "summary": "Software Engineer building scalable, high-quality software with clean architecture and strong problem-solving skills.",
+    "role": "Software Engineer",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "Python",
+      "JavaScript",
+      "Firebase"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Abbas Raza",
     "url": "https://abbasraza.dev",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabbasraza.dev?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabbasraza.dev?w=600",
+    "summary": "Full Stack Developer at SmartB Solutions, transforming complex requirements into elegant, future-proof web applications.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "React.js",
+      "Node.js",
+      "Python",
+      "Solidity",
+      "Next.js"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Abdalwahed Aldaghir",
     "url": "https://awrs.me/en",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fawrs.me%2Fen?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fawrs.me%2Fen?w=600",
+    "summary": "Software Engineer with expertise in full-stack mobile development and robust software solutions.",
+    "role": "Software Engineer",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Abdelaziz El Arassi",
     "url": "http://aelarassi.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Faelarassi.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Faelarassi.com?w=600",
+    "summary": "",
+    "role": "",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Abdenassar Amimi",
     "url": "https://abdenassar-portfolio-4smfcqph6-abdenassaramimi99-gmailcom.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdenassar-portfolio-4smfcqph6-abdenassaramimi99-gmailcom.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdenassar-portfolio-4smfcqph6-abdenassaramimi99-gmailcom.vercel.app?w=600",
+    "summary": "Developer with a professional portfolio, showcasing expertise in various web technologies.",
+    "role": "Developer",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Abdul Basit",
     "url": "https://abdulbasit-005.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdulbasit-005.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdulbasit-005.vercel.app?w=600",
+    "summary": "Full-Stack Developer at Forthlogic AI, crafting AI-native web products with clarity and precision.",
+    "role": "Full-Stack Developer",
+    "tech_stack": [
+      "Next.js",
+      "Node.js",
+      "TypeScript",
+      "MongoDB",
+      "OpenAI"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Abdul Jaber",
     "url": "https://aj7.is-a.dev",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faj7.is-a.dev?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faj7.is-a.dev?w=600",
+    "summary": "Full Stack Developer specializing in scalable systems and AI-driven solutions, crafting high-performance digital products.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "Next.js",
+      "React",
+      "Node.js",
+      "TypeScript",
+      "MongoDB"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Abdul Mannan",
     "url": "https://mannan.io",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmannan.io?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmannan.io?w=600",
+    "summary": "Lead Product Engineer at Kitme, coordinating teams, researching, and building POCs to achieve product goals.",
+    "role": "Lead Product Engineer",
+    "tech_stack": [
+      "Flutter",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Astro"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Abdul Momin",
     "url": "https://abdulmomin.dev",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdulmomin.dev?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdulmomin.dev?w=600",
+    "summary": "Full Stack Software Engineer at EboSoft Solutions, architecting scalable, production-grade solutions for diverse platforms.",
+    "role": "Full Stack Software Engineer",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "TypeScript",
+      "AWS",
+      "Docker"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Abdul Quddus",
     "url": "https://quddus.is-a.dev",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fquddus.is-a.dev?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fquddus.is-a.dev?w=600",
+    "summary": "Full Stack Developer, architects scalable web applications, optimizing REST APIs and building real-time solutions.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "Node.js",
+      "Express",
+      "React",
+      "PostgreSQL",
+      "WebSockets"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Abdul Rahman",
     "url": "https://abdulrahman.id",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdulrahman.id?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdulrahman.id?w=600",
+    "summary": "Software Engineer at VideoClaw, specializing in Next.js, React, and AI tools for web applications.",
+    "role": "Software Engineer",
+    "tech_stack": [
+      "Next.js",
+      "React",
+      "Python",
+      "JavaScript",
+      "Flask"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Abdul Rauf",
     "url": "https://armujahid.me",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Farmujahid.me?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Farmujahid.me?w=600",
+    "summary": "Web Developer focusing on optimizing web performance, technology migration, and architectural decisions for platforms.",
+    "role": "Web Developer",
+    "tech_stack": [
+      "Next.js",
+      "React",
+      "Astro",
+      "Svelte",
+      "Cloudflare Workers"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Abdul Rehman Waseem",
     "url": "https://abdulrehmanwaseem.me",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdulrehmanwaseem.me?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdulrehmanwaseem.me?w=600",
+    "summary": "Senior Fullstack Developer at Forrof.io, known for clean architecture, attention to detail, and scalable applications.",
+    "role": "Senior Fullstack Developer",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "Next.js",
+      "NestJS",
+      "PostgreSQL"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Abdul Samad",
     "url": "https://samadd.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsamadd.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsamadd.vercel.app?w=600",
+    "summary": "Architecting scalable systems for the next generation of web, committed to reductive design and clarity.",
+    "role": "Software Architect",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Abdul Wahab Khan",
     "url": "https://wahab-khan.github.io/Abdul-Wahab-Khan",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwahab-khan.github.io%2FAbdul-Wahab-Khan?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwahab-khan.github.io%2FAbdul-Wahab-Khan?w=600",
+    "summary": "",
+    "role": "",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Abdullah Ahmed",
