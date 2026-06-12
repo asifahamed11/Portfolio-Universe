@@ -26,7 +26,7 @@ const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 async function fetchWebsiteContent(url) {
   try {
-    const response = await fetch(`https://r.jina.ai/${encodeURIComponent(url)}`, {
+    const response = await fetch(`https://r.jina.ai/${url}`, {
       headers: { 'Accept': 'text/plain' }
     });
     if (!response.ok) {
@@ -142,22 +142,30 @@ async function main() {
       for (const portfolio of batch) {
         if (resultsMap[portfolio.url]) {
           const data = resultsMap[portfolio.url];
-          portfolio.summary = data.summary || "Creative professional portfolio showcasing latest projects.";
-          portfolio.role = data.role || "Unknown";
+          portfolio.summary = data.summary || "";
+          portfolio.role = data.role || "";
           portfolio.tech_stack = data.tech_stack || [];
-          portfolio.experience_level = data.experience_level || "Unknown";
-          portfolio.location = data.location || "Unknown";
+          portfolio.experience_level = data.experience_level || "";
+          portfolio.location = data.location || "";
           
           // New advanced filter fields
           portfolio.has_blog = data.has_blog || false;
           portfolio.available_for_hire = data.available_for_hire || false;
-          portfolio.specialization = data.specialization || "General";
-          portfolio.primary_language = data.primary_language || "Unknown";
+          portfolio.specialization = data.specialization || "";
+          portfolio.primary_language = data.primary_language || "";
           
           successCount++;
         } else {
           // Fallback if model missed it
-          portfolio.summary = "Creative professional portfolio showcasing latest projects.";
+          portfolio.summary = "";
+          portfolio.role = "";
+          portfolio.tech_stack = [];
+          portfolio.experience_level = "";
+          portfolio.location = "";
+          portfolio.has_blog = false;
+          portfolio.available_for_hire = false;
+          portfolio.specialization = "";
+          portfolio.primary_language = "";
         }
       }
       

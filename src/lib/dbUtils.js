@@ -50,7 +50,7 @@ export const fetchUserBookmarks = async (uid) => {
 
 // Toggle a bookmark (Like / Unlike)
 // Returns true if liked, false if unliked
-export const toggleLikeInFirestore = async (uid, url, isLiking) => {
+export const toggleLikeInFirestore = async (uid, url, isLiking, currentBookmarks) => {
   try {
     const userRef = doc(db, 'users', uid);
     const key = urlToKey(url);
@@ -58,8 +58,7 @@ export const toggleLikeInFirestore = async (uid, url, isLiking) => {
     // 1. Update User's bookmarks array
     // Since we don't use arrayUnion due to keeping order, we'll fetch and set
     // But since localStorage is source of truth for the client, we can just pass the whole array
-    const bookmarks = JSON.parse(localStorage.getItem(`pu_bookmarks_${uid}`) || '[]');
-    await setDoc(userRef, { bookmarks }, { merge: true });
+    await setDoc(userRef, { bookmarks: currentBookmarks }, { merge: true });
 
     // 2. Increment/Decrement global like count
     // Use increment for atomic operation

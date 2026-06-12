@@ -4,7 +4,7 @@ import { getAuth, GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDDmXzn9Qht_04DuQk5tWXLjcyVA4wS7mM",
+  apiKey: import.meta.env.PUBLIC_FIREBASE_API_KEY,
   authDomain: "portfolio-universe.firebaseapp.com",
   projectId: "portfolio-universe",
   storageBucket: "portfolio-universe.firebasestorage.app",

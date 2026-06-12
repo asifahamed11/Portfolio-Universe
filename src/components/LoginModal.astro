@@ -82,16 +82,7 @@
       
       // The signed-in user info.
       const user = result.user;
-      
-      // Store minimal user info in local storage for legacy compatibility
-      const safeUser = {
-        name: user.displayName || "User",
-        avatar: user.photoURL || `https://api.dicebear.com/7.x/avataaars/svg?seed=${user.uid}`,
-        uid: user.uid,
-        provider: providerName
-      };
-      
-      localStorage.setItem('pu_user', JSON.stringify(safeUser));
+
       
       // Firebase's onAuthStateChanged in index.astro will handle the UI update globally!
       closeModal();
