@@ -20,47 +20,162 @@
   {
     "name": "Aabraham James",
     "url": "https://seera.framer.website",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fseera.framer.website?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fseera.framer.website?w=600",
+    "summary": "Software Engineer at Templyo, building scalable and conversion-driven web experiences and SaaS products.",
+    "role": "Software Engineer",
+    "tech_stack": [
+      "Framer",
+      "Web Development"
+    ],
+    "experience_level": "Mid",
+    "location": "Syria",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Framer, SaaS Development",
+    "primary_language": "English"
   },
   {
     "name": "Aabu Sayed",
     "url": "https://aabu-sayed-portfolio.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faabu-sayed-portfolio.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faabu-sayed-portfolio.vercel.app?w=600",
+    "summary": "AI Engineer and Full-Stack Developer creating intelligent systems, chatbots, and modern web applications.",
+    "role": "AI Engineer, Full-Stack Developer",
+    "tech_stack": [
+      "Python",
+      "TensorFlow",
+      "PyTorch",
+      "React",
+      "Next.js"
+    ],
+    "experience_level": "Mid-Senior",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "AI/Machine Learning, Full-Stack Web Development",
+    "primary_language": "English"
   },
   {
     "name": "Aaditya Domle",
     "url": "https://aadi.is-a.dev",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faadi.is-a.dev?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faadi.is-a.dev?w=600",
+    "summary": "Software Engineer specializing in full-stack web development, building responsive solutions with modern technologies.",
+    "role": "Full-Stack Software Engineer",
+    "tech_stack": [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "Node.js",
+      "MongoDB"
+    ],
+    "experience_level": "Mid",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Full-Stack Web Development, DevOps",
+    "primary_language": "English"
   },
   {
     "name": "Aahana Bobade",
     "url": "https://aahanabobade.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faahanabobade.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faahanabobade.com?w=600",
+    "summary": "Backend Engineer at EduVanceAI, specializing in intelligent, scalable AI/ML and data science systems.",
+    "role": "Backend Engineer, AI/ML Developer, Data Scientist",
+    "tech_stack": [
+      "Python",
+      "SQL",
+      "Machine Learning"
+    ],
+    "experience_level": "Mid",
+    "location": "Unknown",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "AI/Machine Learning, Data Science, Backend Development",
+    "primary_language": "English"
   },
   {
     "name": "Aakash Rajbanshi",
     "url": "https://aakashrajbanshi.com.np",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faakashrajbanshi.com.np?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faakashrajbanshi.com.np?w=600",
+    "summary": "Mid-Level Flutter Developer at Adzen Tech, building cross-platform mobile apps and backend services.",
+    "role": "Flutter Developer, Mobile Developer",
+    "tech_stack": [
+      "Flutter",
+      "Dart",
+      "REST APIs"
+    ],
+    "experience_level": "Mid",
+    "location": "Kathmandu, Nepal",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Cross-Platform Mobile Development, UI/UX, Backend Services",
+    "primary_language": "English"
   },
   {
     "name": "Aakash Sharma",
     "url": "https://aakash-sharma.netlify.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faakash-sharma.netlify.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faakash-sharma.netlify.app?w=600",
+    "summary": "Unknown role, this portfolio provides insufficient information for a summary.",
+    "role": "Unknown",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Unknown",
+    "primary_language": "English"
   },
   {
     "name": "Aakhand Tajmirul",
     "url": "https://www.tajmirul.site",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.tajmirul.site?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.tajmirul.site?w=600",
+    "summary": "Frontend Software Engineer at Strativ AB, creating seamless user experiences with modern web technologies.",
+    "role": "Frontend Software Engineer",
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "experience_level": "Mid-Senior",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Frontend Web Development, User Experience",
+    "primary_language": "English"
   },
   {
     "name": "Aanand Madhav",
     "url": "https://aanandmadhav.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faanandmadhav.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faanandmadhav.com?w=600",
+    "summary": "Product Manager at YAMU Media, scaling brands with high-conversion UX and AI automation.",
+    "role": "Product Manager, UX Expert",
+    "tech_stack": [
+      "UX",
+      "AI",
+      "CRM",
+      "Automation"
+    ],
+    "experience_level": "Senior",
+    "location": "Unknown",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Product Management, UX, CRM, AI Automation, D2C Growth",
+    "primary_language": "English"
   },
   {
     "name": "Aarab Nishchal",
     "url": "https://aarab.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faarab.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faarab.vercel.app?w=600",
+    "summary": "Full Stack Developer and AI Engineer, with skills across both domains.",
+    "role": "Full Stack Developer, AI Engineer",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Full Stack Development, AI Engineering",
+    "primary_language": "English"
   },
   {
     "name": "Aarav Gupta",
@@ -71,57 +186,195 @@
   {
     "name": "Aaron Dunphy",
     "url": "https://aarondunphy.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faarondunphy.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faarondunphy.com?w=600",
+    "summary": "Front End Developer in Leigh-on-Sea, UK, specializing in web interface creation.",
+    "role": "Front End Developer",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Leigh-on-Sea, UK",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Frontend Development",
+    "primary_language": "English"
   },
   {
     "name": "Aaryanna Simonelli",
     "url": "https://ashleighsimonelli.co.uk",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fashleighsimonelli.co.uk?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fashleighsimonelli.co.uk?w=600",
+    "summary": "Senior Staff Software Engineer at Reapit Ltd, building scalable web and mobile applications.",
+    "role": "Senior Staff Software Engineer",
+    "tech_stack": [
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Node.js",
+      "AWS"
+    ],
+    "experience_level": "Lead",
+    "location": "London, UK",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Full-Stack Development, Cloud Architecture, Mobile Development, API Design, Serverless",
+    "primary_language": "English"
   },
   {
     "name": "Aashay Wase",
     "url": "https://aashay-dev-ed.develop.my.site.com/AashayWase/s",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faashay-dev-ed.develop.my.site.com%2FAashayWase%2Fs?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faashay-dev-ed.develop.my.site.com%2FAashayWase%2Fs?w=600",
+    "summary": "Unknown role, this portfolio provides insufficient information for a summary.",
+    "role": "Unknown",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Unknown",
+    "primary_language": "English"
   },
   {
     "name": "Aashir Khan",
     "url": "https://portfolio-n4sn.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolio-n4sn.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolio-n4sn.vercel.app?w=600",
+    "summary": "Consultant Software Engineer at Systems Limited, experienced in full-stack and mobile application development.",
+    "role": "Consultant Software Engineer, Full-Stack Developer",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "TypeScript",
+      "GraphQL",
+      "MongoDB"
+    ],
+    "experience_level": "Mid-Senior",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Full-Stack Development, Mobile Development, System Engineering, Computer Networking",
+    "primary_language": "English"
   },
   {
     "name": "Aashish Jaini",
     "url": "https://aashishjaini.me",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faashishjaini.me?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faashishjaini.me?w=600",
+    "summary": "Unknown role, this portfolio provides insufficient information for a summary.",
+    "role": "Unknown",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Unknown",
+    "primary_language": "English"
   },
   {
     "name": "Aashutosh Rathi",
     "url": "https://aashutosh.dev",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faashutosh.dev?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faashutosh.dev?w=600",
+    "summary": "Software Engineer at Regie.ai, specializing in AI-driven sales optimization and automation tools.",
+    "role": "Software Engineer",
+    "tech_stack": [
+      "AI",
+      "Automation"
+    ],
+    "experience_level": "Mid",
+    "location": "Unknown",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "AI, Sales Optimization, Automation",
+    "primary_language": "English"
   },
   {
     "name": "Aathif Zahir",
     "url": "https://az-dev.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faz-dev.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faz-dev.vercel.app?w=600",
+    "summary": "Unknown role, this portfolio provides insufficient information for a summary.",
+    "role": "Unknown",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Unknown",
+    "primary_language": "English"
   },
   {
     "name": "Aaweł Szostak",
     "url": "https://pawelszostak.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fpawelszostak.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fpawelszostak.vercel.app?w=600",
+    "summary": "Full Stack Developer in Cracow, building scalable applications with AI, web, and mobile technologies.",
+    "role": "Full Stack Developer, AI Engineer",
+    "tech_stack": [
+      "Next.js",
+      "React",
+      "Python",
+      "Flutter",
+      "Node.js"
+    ],
+    "experience_level": "Junior",
+    "location": "Cracow, Poland",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Full Stack Development, AI (Computer Vision, Autonomous Systems), Mobile Development",
+    "primary_language": "English"
   },
   {
     "name": "Aayush Bharti",
     "url": "https://aaabaa-aayush.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faaabaa-aayush.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faaabaa-aayush.vercel.app?w=600",
+    "summary": "Full Stack Developer, crafting well-designed, shippable solutions with modern web technologies.",
+    "role": "Full Stack Developer, Design Engineer",
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "Tailwind CSS"
+    ],
+    "experience_level": "Mid",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Full-Stack Development, Design Engineering",
+    "primary_language": "English"
   },
   {
     "name": "Aayush Mishra",
     "url": "https://aayush-mishra.xyz",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faayush-mishra.xyz?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faayush-mishra.xyz?w=600",
+    "summary": "Engineer and Developer in Mumbai, building AI-powered and full-stack web solutions with diverse technologies.",
+    "role": "Engineer, Developer",
+    "tech_stack": [
+      "Next.js",
+      "React Native",
+      "Python",
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "experience_level": "Mid",
+    "location": "Mumbai, India",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "AI, Full-Stack Web Development, Mobile Development",
+    "primary_language": "English"
   },
   {
     "name": "Aayush Raj",
     "url": "https://ayushcmd.me",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fayushcmd.me?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fayushcmd.me?w=600",
+    "summary": "Full-Stack and ML Developer at IIT Patna, building intelligent systems for finance and data analytics.",
+    "role": "Full-Stack Developer, ML Developer",
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "Python",
+      "FastAPI",
+      "LangChain"
+    ],
+    "experience_level": "Junior",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Full-Stack Development, Machine Learning, Financial Technology, Data Analytics",
+    "primary_language": "English"
   },
   {
     "name": "Aayush Sood",
@@ -1844,152 +2097,525 @@
   {
     "name": "Balkrishna",
     "url": "https://balkrishnabk.com.np",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbalkrishnabk.com.np?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbalkrishnabk.com.np?w=600",
+    "summary": "Creative professional portfolio showcasing latest projects."
   },
   {
     "name": "Bana Tawalbeh",
     "url": "https://rknastenka.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Frknastenka.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Frknastenka.com?w=600",
+    "summary": "Writer sharing unscripted perceptions and random topics on a personal blog, exploring self-identity.",
+    "role": "Writer",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Writing",
+    "primary_language": "English"
   },
   {
     "name": "Bandi Revanth",
     "url": "https://bandirevanth.github.io",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbandirevanth.github.io?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbandirevanth.github.io?w=600",
+    "summary": "Student and self-taught developer building AI/ML and web projects, actively seeking internships.",
+    "role": "Student Developer",
+    "tech_stack": [
+      "Python",
+      "ReactJS",
+      "Node.js",
+      "Next.js",
+      "Tensorflow"
+    ],
+    "experience_level": "Junior",
+    "location": "Hyderabad, India",
+    "has_blog": true,
+    "available_for_hire": true,
+    "specialization": "AI/ML & Web Development",
+    "primary_language": "English"
   },
   {
     "name": "Baptiste Miramont",
     "url": "https://baptistemiramont.fr",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbaptistemiramont.fr?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbaptistemiramont.fr?w=600",
+    "summary": "Full-stack developer specializing in front-end, leading development team at Adonis, open to collaborations.",
+    "role": "Full-Stack Developer",
+    "tech_stack": [
+      "React",
+      "Vue",
+      "TypeScript"
+    ],
+    "experience_level": "Lead",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Front-end Development",
+    "primary_language": "English"
   },
   {
     "name": "Barnabas Varga",
     "url": "https://barnabasvarga.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbarnabasvarga.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbarnabasvarga.com?w=600",
+    "summary": "Senior Software Engineer at QuantumBlack, AI by McKinsey, specializing in Generative AI.",
+    "role": "Senior Software Engineer",
+    "tech_stack": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Python",
+      "Generative AI"
+    ],
+    "experience_level": "Senior",
+    "location": "Budapest, Hungary",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Generative AI",
+    "primary_language": "English"
   },
   {
     "name": "Barnav Mitra Jos",
     "url": "https://jos.gg",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fjos.gg?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fjos.gg?w=600",
+    "summary": "Game developer and DevOps engineer, founder of Starnova Studios, experienced in scaling projects.",
+    "role": "Game Developer & DevOps Engineer",
+    "tech_stack": [
+      "Java",
+      "Kotlin",
+      "TypeScript",
+      "Docker",
+      "Kubernetes"
+    ],
+    "experience_level": "Lead",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Game Development",
+    "primary_language": "English"
   },
   {
     "name": "Barthélémy Pousset",
     "url": "https://barthelemypousset.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbarthelemypousset.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbarthelemypousset.com?w=600",
+    "summary": "Developer showcasing personal projects and work through associated LinkedIn and GitHub profiles.",
+    "role": "Developer",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "General",
+    "primary_language": "English"
   },
   {
     "name": "Basil Suhail",
     "url": "https://basilsuhail.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbasilsuhail.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbasilsuhail.com?w=600",
+    "summary": "AI-driven developer building full-stack apps and ML pipelines for data and finance.",
+    "role": "AI-Driven Developer",
+    "tech_stack": [
+      "TypeScript",
+      "Python",
+      "React",
+      "FastAPI",
+      "Machine Learning"
+    ],
+    "experience_level": "Senior",
+    "location": "Unknown",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "AI/ML & Finance",
+    "primary_language": "English"
   },
   {
     "name": "Bassam Alaraby",
     "url": "https://bassamalaraby.me",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbassamalaraby.me?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbassamalaraby.me?w=600",
+    "summary": "First-year CS student and developer focused on web development and cybersecurity, open for internships.",
+    "role": "Student Developer",
+    "tech_stack": [
+      "Python",
+      "Flask",
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "experience_level": "Junior",
+    "location": "Menoufia, Egypt",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Web Development & Cybersecurity",
+    "primary_language": "English"
   },
   {
     "name": "Bastian Asmussen",
     "url": "https://asmussen.tech",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fasmussen.tech?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fasmussen.tech?w=600",
+    "summary": "Systems programmer specializing in Rust and Nix, sharing insights on a personal blog.",
+    "role": "Systems Programmer",
+    "tech_stack": [
+      "Rust",
+      "Nix"
+    ],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Systems Programming",
+    "primary_language": "English"
   },
   {
     "name": "Batuhan Eroğlu",
     "url": "https://batuhan.tech",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbatuhan.tech?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbatuhan.tech?w=600",
+    "summary": "Software Engineer and full-stack developer building reliable digital products with modern web technologies.",
+    "role": "Software Engineer",
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "TypeScript",
+      "PostgreSQL"
+    ],
+    "experience_level": "Mid",
+    "location": "Istanbul, Turkey",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Full-Stack Web Development",
+    "primary_language": "English"
   },
   {
     "name": "Baymax",
     "url": "https://www.sitaramoli.com.np",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.sitaramoli.com.np?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.sitaramoli.com.np?w=600",
+    "summary": "Software Engineer and full-stack developer crafting digital experiences with modern web technologies.",
+    "role": "Software Engineer",
+    "tech_stack": [
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Node.js"
+    ],
+    "experience_level": "Mid",
+    "location": "Lalitpur, Nepal",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Full-Stack Web Development",
+    "primary_language": "English"
   },
   {
     "name": "Beatriz Neaime",
     "url": "https://beatrizneaime.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbeatrizneaime.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbeatrizneaime.com?w=600",
+    "summary": "Developer creating diverse web and mobile applications for various domains like health and finance.",
+    "role": "Developer",
+    "tech_stack": [],
+    "experience_level": "Junior",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "General Development",
+    "primary_language": "English"
   },
   {
     "name": "Becca Bailey",
     "url": "http://Becca.is",
-    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2FBecca.is?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2FBecca.is?w=600",
+    "summary": "Creative professional portfolio showcasing latest projects."
   },
   {
     "name": "Bechir Lahoueg",
     "url": "https://www.bechirlahoueg.tech",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.bechirlahoueg.tech?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.bechirlahoueg.tech?w=600",
+    "summary": "Software Engineering Student developing full-stack web applications with microservices and AI integration.",
+    "role": "Software Engineering Student",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "Spring Boot",
+      "Java",
+      "JavaScript"
+    ],
+    "experience_level": "Junior",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Full-Stack & SaaS Development",
+    "primary_language": "English"
   },
   {
     "name": "Befikir Shimelis",
     "url": "https://squidwardcodes.web.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsquidwardcodes.web.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsquidwardcodes.web.app?w=600",
+    "summary": "Software Engineering Student building digital experiences, specializing in web and security projects.",
+    "role": "Software Engineering Student",
+    "tech_stack": [
+      "JavaScript",
+      "Python",
+      "React",
+      "Node.js",
+      "Firebase"
+    ],
+    "experience_level": "Junior",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Web Development & Cybersecurity",
+    "primary_language": "English"
   },
   {
     "name": "Bejagam Nithilesh",
     "url": "https://nithilesh.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fnithilesh.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fnithilesh.vercel.app?w=600",
+    "summary": "Passionate web and app developer specializing in React and React Native, open for freelance opportunities.",
+    "role": "Web & App Developer",
+    "tech_stack": [
+      "React.js",
+      "React Native",
+      "Node.js",
+      "MongoDB",
+      "Firebase"
+    ],
+    "experience_level": "Junior",
+    "location": "Hyderabad, India",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Full-Stack Web & Mobile Development",
+    "primary_language": "English"
   },
   {
     "name": "Bekah Hawrot Weigel",
     "url": "http://bekahhw.github.io",
-    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fbekahhw.github.io?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fbekahhw.github.io?w=600",
+    "summary": "Specialist helping teams enhance developer experience, content strategy, and community engagement.",
+    "role": "Developer Experience Specialist",
+    "tech_stack": [],
+    "experience_level": "Lead",
+    "location": "Unknown",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Developer Experience & Content Strategy",
+    "primary_language": "English"
   },
   {
     "name": "Ben Oldham",
     "url": "https://www.benoldham.dev",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.benoldham.dev?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.benoldham.dev?w=600",
+    "summary": "Web developer and tech consultant in the UK, co-founder, specializing in web and AI solutions.",
+    "role": "Web Developer & Tech Consultant",
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "Python",
+      "Django",
+      "SQL"
+    ],
+    "experience_level": "Lead",
+    "location": "UK",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Web Development & AI Consulting",
+    "primary_language": "English"
   },
   {
     "name": "Ben Rogers",
     "url": "https://benrogers.dev",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbenrogers.dev?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbenrogers.dev?w=600",
+    "summary": "Full Stack Software Engineer at Humanforce, specializing in scalable web applications with 5 years experience.",
+    "role": "Full Stack Software Engineer",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "TypeScript",
+      "PostgreSQL",
+      "AWS"
+    ],
+    "experience_level": "Senior",
+    "location": "Australia",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Scalable Web Applications",
+    "primary_language": "English"
   },
   {
     "name": "Ben Zimmermann",
     "url": "https://benzimmermann.dev",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbenzimmermann.dev?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbenzimmermann.dev?w=600",
+    "summary": "Security Researcher from California, awarded over $27,000 in bug bounties for critical infrastructure.",
+    "role": "Security Researcher",
+    "tech_stack": [
+      "Automation",
+      "Scripting",
+      "Network Analysis",
+      "Reverse Engineering",
+      "Security Operations"
+    ],
+    "experience_level": "Junior",
+    "location": "California, USA",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Cybersecurity, Bug Bounty, Security Research",
+    "primary_language": "English"
   },
   {
     "name": "Benjamin Cyubahiro",
     "url": "https://beno-portofolio-v2.onrender.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbeno-portofolio-v2.onrender.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbeno-portofolio-v2.onrender.com?w=600",
+    "summary": "Unknown role at Unknown company, portfolio inaccessible due to service unavailability.",
+    "role": "Unknown",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Unknown",
+    "primary_language": "English"
   },
   {
     "name": "Benjamin Dallard",
     "url": "https://github.com/bdallard/ai-resume-portfolio",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fgithub.com%2Fbdallard%2Fai-resume-portfolio?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fgithub.com%2Fbdallard%2Fai-resume-portfolio?w=600",
+    "summary": "Template developer building a Nuxt resume with an AI cover letter generator.",
+    "role": "Template Developer",
+    "tech_stack": [
+      "Nuxt.js",
+      "Groq LLM",
+      "Minio",
+      "Typebot",
+      "Lottiefiles"
+    ],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "AI/ML, Web Development, Resume Tools",
+    "primary_language": "English"
   },
   {
     "name": "Benjamin Lannon",
     "url": "https://lannonbr.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Flannonbr.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Flannonbr.com?w=600",
+    "summary": "Software Developer in Upstate New York, focusing on intentional technology use and writing.",
+    "role": "Software Developer",
+    "tech_stack": [],
+    "experience_level": "Mid",
+    "location": "Upstate New York, USA",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "General Software Development, Digital Garden",
+    "primary_language": "English"
   },
   {
     "name": "Benny Carlsson",
     "url": "https://bennycarlsson.github.io/MyPortfolio-Hacktoberfest2019",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbennycarlsson.github.io%2FMyPortfolio-Hacktoberfest2019?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbennycarlsson.github.io%2FMyPortfolio-Hacktoberfest2019?w=600",
+    "summary": "Software Developer in Gothenburg, Sweden, with strong object-oriented and web technology skills.",
+    "role": "Software Developer",
+    "tech_stack": [
+      "Java",
+      "C#",
+      "ReactJS",
+      "PHP",
+      "SQL"
+    ],
+    "experience_level": "Mid",
+    "location": "Gothenburg, Sweden",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Object-Oriented Programming, Web Development",
+    "primary_language": "English"
   },
   {
     "name": "Berat Bozkurt",
     "url": "https://beratbozkurt.net",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fberatbozkurt.net?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fberatbozkurt.net?w=600",
+    "summary": "Lead Frontend Developer in Türkiye, creating mobile applications and sharing technical writings.",
+    "role": "Lead Frontend Developer",
+    "tech_stack": [
+      "Next.js",
+      "JavaScript",
+      "Mobile Development",
+      "Frontend Development"
+    ],
+    "experience_level": "Lead",
+    "location": "Türkiye",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Frontend Development, Mobile Applications, Indie Hacking",
+    "primary_language": "English"
   },
   {
     "name": "Beteab Tefera",
     "url": "https://beteabtefera.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbeteabtefera.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbeteabtefera.com?w=600",
+    "summary": "Cloud Infrastructure and Data Engineer at Ameriprise Financial, designing cloud platforms.",
+    "role": "Cloud Infrastructure and Data Engineer",
+    "tech_stack": [
+      "AWS",
+      "Data Engineering",
+      "Backend Development",
+      "Cloud Platforms"
+    ],
+    "experience_level": "Junior",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Cloud Infrastructure, Data Engineering, Backend",
+    "primary_language": "English"
   },
   {
     "name": "Bhagawat Adhikari",
     "url": "https://github.com/bhagawatadhikari",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fgithub.com%2Fbhagawatadhikari?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fgithub.com%2Fbhagawatadhikari?w=600",
+    "summary": "Experienced Software Engineer and Backend Lead, skilled in Ruby on Rails and microservices.",
+    "role": "Software Engineer (Backend Lead)",
+    "tech_stack": [
+      "Ruby on Rails",
+      "Ruby",
+      "Postgres",
+      "MongoDB",
+      "GraphQL"
+    ],
+    "experience_level": "Lead",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Backend Development, Microservices, API Integration",
+    "primary_language": "English"
   },
   {
     "name": "Bharat Bhandari",
     "url": "https://bharatdev.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbharatdev.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbharatdev.vercel.app?w=600",
+    "summary": "Unknown role at Unknown company, portfolio website content is empty.",
+    "role": "Unknown",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Unknown",
+    "primary_language": "English"
   },
   {
     "name": "Bhavani Ravi",
     "url": "http://bhavaniravi.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fbhavaniravi.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fbhavaniravi.com?w=600",
+    "summary": "Intelligent Data Systems consultant, speaker, and engineer, specializing in data platforms and AI.",
+    "role": "Data Engineer / Consultant",
+    "tech_stack": [
+      "Apache Airflow",
+      "Python",
+      "Google Cloud",
+      "AI Integration",
+      "Django"
+    ],
+    "experience_level": "Senior",
+    "location": "Unknown",
+    "has_blog": true,
+    "available_for_hire": true,
+    "specialization": "Data Engineering, Data Platform Architecture, AI Integration",
+    "primary_language": "English"
   },
   {
     "name": "Bhavesh Gudlani",
@@ -2594,52 +3220,187 @@
   {
     "name": "Daljeet Singh",
     "url": "https://www.daljeetsingh.me",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.daljeetsingh.me?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.daljeetsingh.me?w=600",
+    "summary": "Software Developer and CS graduate building scalable, high-performance systems in Mumbai, MH.",
+    "role": "Software Developer",
+    "tech_stack": [
+      "Go",
+      "Next.js",
+      "JavaScript",
+      "Machine Learning",
+      "Data Visualization"
+    ],
+    "experience_level": "Junior",
+    "location": "Mumbai, India",
+    "has_blog": true,
+    "available_for_hire": true,
+    "specialization": "Scalable Systems, API Security, Data Visualization, Machine Learning",
+    "primary_language": "English"
   },
   {
     "name": "Damian Markowski",
     "url": "https://damianmarkowski.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdamianmarkowski.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdamianmarkowski.com?w=600",
+    "summary": "Results-driven Senior iOS Developer and Technical Leader, experienced in building digital products.",
+    "role": "Senior iOS Developer / Technical Leader",
+    "tech_stack": [
+      "iOS",
+      "Mobile Development"
+    ],
+    "experience_level": "Lead",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "iOS Development, Mobile Development, Technical Leadership",
+    "primary_language": "English"
   },
   {
     "name": "Damodar Kamani",
     "url": "https://damkam.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdamkam.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdamkam.vercel.app?w=600",
+    "summary": "Engineer and Applied AI/ML Researcher, building intelligent agents and crafting robust products.",
+    "role": "Engineer / Applied AI/ML Researcher",
+    "tech_stack": [
+      "AI/ML",
+      "LLM",
+      "Python",
+      "Agent Orchestration",
+      "Software Engineering"
+    ],
+    "experience_level": "Mid",
+    "location": "Unknown",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "AI/ML, Intelligent Agents, Software Engineering",
+    "primary_language": "English"
   },
   {
     "name": "Dania Al-Hakim",
     "url": "https://pixeldania.netlify.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fpixeldania.netlify.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fpixeldania.netlify.app?w=600",
+    "summary": "Programmer and Designer combining technical skills with creative aesthetic for projects.",
+    "role": "Programmer / Designer",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "General Programming, Design",
+    "primary_language": "English"
   },
   {
     "name": "Danial Khilji",
     "url": "https://danialkhilji.github.io/portfolio/",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdanialkhilji.github.io%2Fportfolio%2F?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdanialkhilji.github.io%2Fportfolio%2F?w=600",
+    "summary": "Data Scientist and Machine Learning Engineer, specializing in data-driven solutions and research.",
+    "role": "Data Scientist / Machine Learning Engineer",
+    "tech_stack": [],
+    "experience_level": "Mid",
+    "location": "Unknown",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Data Science, Machine Learning, Research",
+    "primary_language": "English"
   },
   {
     "name": "Daniel Grazziotti",
     "url": "https://grazziotti-portfolio.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fgrazziotti-portfolio.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fgrazziotti-portfolio.vercel.app?w=600",
+    "summary": "Full-stack Developer passionate about web technology, currently seeking new opportunities.",
+    "role": "Full-stack Developer",
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "Express",
+      "PostgreSQL"
+    ],
+    "experience_level": "Junior",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Web Development, Full Stack",
+    "primary_language": "Portuguese"
   },
   {
     "name": "Daniel Mark",
     "url": "https://thedanielmark.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fthedanielmark.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fthedanielmark.com?w=600",
+    "summary": "Frontend Engineer passionate about Web3, building enterprise-ready products and blockchain integrations.",
+    "role": "Frontend Engineer",
+    "tech_stack": [
+      "Web3",
+      "Blockchain",
+      "NFT platforms",
+      "DeFi apps",
+      "Machine Learning"
+    ],
+    "experience_level": "Senior",
+    "location": "Unknown",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Web3, Frontend Engineering, Blockchain, DeFi, NFT",
+    "primary_language": "English"
   },
   {
     "name": "Daniel Michael",
     "url": "https://www.daniel-michael.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.daniel-michael.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.daniel-michael.com?w=600",
+    "summary": "Knowledgeable Full-Stack Software Engineer, delivering superior front-end and back-end web solutions.",
+    "role": "Full-stack Software Engineer",
+    "tech_stack": [
+      "React.js",
+      "Next.js",
+      "Node.js",
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "experience_level": "Mid",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Full Stack Web Development",
+    "primary_language": "English"
   },
   {
     "name": "Daniel Ortiz",
     "url": "https://danielortiz.web.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdanielortiz.web.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdanielortiz.web.app?w=600",
+    "summary": "Web Developer with 4 years experience, specializing in high-performance, scalable web solutions.",
+    "role": "Full-stack Developer",
+    "tech_stack": [
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Node.js",
+      "Python"
+    ],
+    "experience_level": "Mid",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Full Stack Web Development, Scalable Applications",
+    "primary_language": "English"
   },
   {
     "name": "Daniel Peace",
     "url": "https://concrete.codes",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fconcrete.codes?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fconcrete.codes?w=600",
+    "summary": "Web Developer from Perth, Australia, building minimalist web applications using modern stack.",
+    "role": "Web Developer",
+    "tech_stack": [
+      "Next.js",
+      "React",
+      "TailwindCSS",
+      "ConvexDB",
+      "ClerkAuth"
+    ],
+    "experience_level": "Junior",
+    "location": "Perth, Australia",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Web Development, Frontend",
+    "primary_language": "English"
   },
   {
     "name": "Daniel Steele",
@@ -2844,102 +3605,363 @@
   {
     "name": "Dhanush Nehru",
     "url": "https://chat-portfolio-dhanushnehru.netlify.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fchat-portfolio-dhanushnehru.netlify.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fchat-portfolio-dhanushnehru.netlify.app?w=600",
+    "summary": "Full Stack Developer, building robust applications with a passion for technology and innovation.",
+    "role": "Full Stack Developer",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "General",
+    "primary_language": "English"
   },
   {
     "name": "Dhaval Patel",
     "url": "https://dhavalcode.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhavalcode.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhavalcode.com?w=600",
+    "summary": "Senior Full-Stack Engineer, crafting scalable solutions and leading teams for business growth.",
+    "role": "Senior Full-Stack Engineer",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "Next.js",
+      "Python",
+      "AWS"
+    ],
+    "experience_level": "Senior",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "E-commerce, AI/Analytics",
+    "primary_language": "English"
   },
   {
     "name": "Dheeraj Gupta",
     "url": "https://dheerajgupta.netlify.app/#",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdheerajgupta.netlify.app%2F%23?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdheerajgupta.netlify.app%2F%23?w=600",
+    "summary": "Developer, showcasing professional skills and projects for potential collaborations and opportunities.",
+    "role": "Developer",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "General",
+    "primary_language": "English"
   },
   {
     "name": "Dhilip",
     "url": "https://dhilipmpms.github.io/pf/",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhilipmpms.github.io%2Fpf%2F?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhilipmpms.github.io%2Fpf%2F?w=600",
+    "summary": "Student and Django Developer, passionate about building backend systems using Python.",
+    "role": "Django Developer",
+    "tech_stack": [
+      "Python",
+      "Django",
+      "HTML",
+      "CSS",
+      "Bootstrap"
+    ],
+    "experience_level": "Junior",
+    "location": "Unknown",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Backend, FOSS",
+    "primary_language": "English"
   },
   {
     "name": "Dhiraj Basavaraju",
     "url": "https://portfolio-dhirajb7.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolio-dhirajb7.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolio-dhirajb7.vercel.app?w=600",
+    "summary": "Professional Full Stack Developer with 9 years of experience, specializing in React and Java.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "React JS",
+      "Java",
+      "Spring Boot"
+    ],
+    "experience_level": "Senior",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "General Web Development",
+    "primary_language": "English"
   },
   {
     "name": "Dhiraj Bhawsar Dhirajtsx Portfolioo 2.O",
     "url": "https://dhirajbhawsar.in",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhirajbhawsar.in?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhirajbhawsar.in?w=600",
+    "summary": "Full Stack Developer building responsive digital experiences with modern web technologies and robust architecture.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "React.js",
+      "Node.js",
+      "Next.js",
+      "Express.js",
+      "MongoDB"
+    ],
+    "experience_level": "Mid/Senior",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "General Web Development",
+    "primary_language": "English"
   },
   {
     "name": "Dhiraj Bhawsar(Dhirajjsx",
     "url": "https://dhirajbhawsar-portfolio.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhirajbhawsar-portfolio.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhirajbhawsar-portfolio.vercel.app?w=600",
+    "summary": "Developer, presenting projects and skills through a modern, interactive online portfolio.",
+    "role": "Developer",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "General",
+    "primary_language": "English"
   },
   {
     "name": "Dhruv Mali",
     "url": "https://dhruvmali.netlify.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhruvmali.netlify.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhruvmali.netlify.app?w=600",
+    "summary": "Generative AI Intern, building MERN and Python stack applications with a focus on ML/DL.",
+    "role": "MERN Stack Developer, AI/ML Engineer",
+    "tech_stack": [
+      "React.js",
+      "Node.js",
+      "Python",
+      "Next.js",
+      "MongoDB"
+    ],
+    "experience_level": "Junior",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "AI/ML, Generative AI",
+    "primary_language": "English"
   },
   {
     "name": "Dhruv Patel",
     "url": "https://dhruvpatelofficial.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhruvpatelofficial.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhruvpatelofficial.vercel.app?w=600",
+    "summary": "Entry-Level Data Scientist and AI/ML Engineer, available for work, internships, and freelance projects.",
+    "role": "Data Scientist, AI/ML Engineer",
+    "tech_stack": [
+      "Python",
+      "Machine Learning",
+      "Data Science",
+      "React.js",
+      "Next.js"
+    ],
+    "experience_level": "Junior",
+    "location": "Gujarat, India",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Data Science, AI/ML",
+    "primary_language": "English"
   },
   {
     "name": "Dhruv Sathe",
     "url": "https://dhruv-alpha.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhruv-alpha.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhruv-alpha.vercel.app?w=600",
+    "summary": "Developer, showcasing professional experience and skills through a modern online presence.",
+    "role": "Developer",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "General",
+    "primary_language": "English"
   },
   {
     "name": "Dhruva Bhat",
     "url": "https://dhruvabhat.netlify.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhruvabhat.netlify.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhruvabhat.netlify.app?w=600",
+    "summary": "Web Developer, pursuing engineering, skilled in React, JavaScript, Java, and Python.",
+    "role": "Web Developer",
+    "tech_stack": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Java"
+    ],
+    "experience_level": "Junior",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "General Web Development",
+    "primary_language": "English"
   },
   {
     "name": "Dhvanit Monpara",
     "url": "https://dhvanitmonpara.in",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhvanitmonpara.in?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhvanitmonpara.in?w=600",
+    "summary": "Backend Engineer, building fast, reliable, and scalable systems with PERN, Go, and GenAI.",
+    "role": "Backend Engineer",
+    "tech_stack": [
+      "PostgreSQL",
+      "Express",
+      "React",
+      "Node.js",
+      "Go"
+    ],
+    "experience_level": "Mid",
+    "location": "Ahmedabad, India",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Backend, System Design, GenAI",
+    "primary_language": "English"
   },
   {
     "name": "Dhyey Bhandari",
     "url": "https://dhyeybhandari.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhyeybhandari.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhyeybhandari.vercel.app?w=600",
+    "summary": "Full Stack Developer, passionate about crafting innovative solutions utilizing comprehensive development skills.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "JavaScript",
+      "ReactJS",
+      "Node.js",
+      "MongoDB",
+      "AWS"
+    ],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Full Stack, Mobile, UI/UX",
+    "primary_language": "English"
   },
   {
     "name": "Diana Kit",
     "url": "https://winehoused.github.io/my-portfolio",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwinehoused.github.io%2Fmy-portfolio?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwinehoused.github.io%2Fmy-portfolio?w=600",
+    "summary": "Front-End React Developer, crafting pixel-perfect interfaces with cutting-edge technologies and UI/UX focus.",
+    "role": "Frontend Developer",
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Redux"
+    ],
+    "experience_level": "Junior/Mid",
+    "location": "Lviv, Ukraine",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Frontend, UI/UX",
+    "primary_language": "English"
   },
   {
     "name": "Diana Pontes",
     "url": "https://martineoficial-portfolio.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmartineoficial-portfolio.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmartineoficial-portfolio.vercel.app?w=600",
+    "summary": "Analista de Engenharia de Software & Full Stack Developer, specializing in Frontend and system architecture.",
+    "role": "Full Stack Developer, Software Engineer",
+    "tech_stack": [
+      "JavaScript",
+      "React.js",
+      "Next.js",
+      "Java",
+      "Spring Boot"
+    ],
+    "experience_level": "Senior",
+    "location": "Recife, PE, Brazil",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Frontend, Design Systems, Software Architecture",
+    "primary_language": "Portuguese"
   },
   {
     "name": "Dick Wyn Yong",
     "url": "https://dickwyn.xyz",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdickwyn.xyz?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdickwyn.xyz?w=600",
+    "summary": "Software Engineer at Microsoft, focused on secure web experiences and fraud protection solutions.",
+    "role": "Software Engineer",
+    "tech_stack": [],
+    "experience_level": "Mid/Senior",
+    "location": "Unknown",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Web Security, Fraud Protection",
+    "primary_language": "English"
   },
   {
     "name": "Digbijaya Lenka",
     "url": "https://digbijayalenka.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdigbijayalenka.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdigbijayalenka.vercel.app?w=600",
+    "summary": "MERN Stack Developer, specializing in building responsive and scalable web applications efficiently.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "MongoDB",
+      "Express.js",
+      "React",
+      "Node.js"
+    ],
+    "experience_level": "Mid",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "MERN Stack, Scalable Web Applications",
+    "primary_language": "English"
   },
   {
     "name": "Digin Dominic",
     "url": "https://digindominic.me",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdigindominic.me?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdigindominic.me?w=600",
+    "summary": "Software Engineer & Research Toolsmith, building scientific platforms and 3D visualizations with 8+ years experience.",
+    "role": "Software Engineer, Research Toolsmith",
+    "tech_stack": [
+      "Python",
+      "Flask",
+      "React",
+      "Next.js",
+      "Three.js"
+    ],
+    "experience_level": "Senior",
+    "location": "Edinburgh, UK",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Scientific Research Software, 3D Visualization, Neuroscience",
+    "primary_language": "English"
   },
   {
     "name": "Dilip Kumar Maurya",
     "url": "https://www.dilipmaurya.in",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.dilipmaurya.in?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.dilipmaurya.in?w=600",
+    "summary": "Freelance Web Developer in Delhi, specializing in responsive, SEO-optimized solutions with React and PHP.",
+    "role": "Web Developer",
+    "tech_stack": [
+      "Next.js",
+      "React",
+      "PHP",
+      "WordPress",
+      "JavaScript"
+    ],
+    "experience_level": "Mid/Senior",
+    "location": "Delhi, India",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Freelance Web Development, SEO, WordPress",
+    "primary_language": "English"
   },
   {
     "name": "Dillion Megida",
     "url": "http://dillionmegida.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fdillionmegida.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fdillionmegida.com?w=600",
+    "summary": "Software Engineer and Developer Educator, simplifying technical concepts through videos and articles.",
+    "role": "Software Engineer, Developer Educator",
+    "tech_stack": [],
+    "experience_level": "Mid/Senior",
+    "location": "The Netherlands",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Developer Education, Web Development",
+    "primary_language": "English"
   },
   {
     "name": "Dimitri Pashutskii",
@@ -4744,102 +5766,370 @@
   {
     "name": "Kuei Poch Kuei",
     "url": "http://kueiyiee-portfolio.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fkueiyiee-portfolio.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fkueiyiee-portfolio.vercel.app?w=600",
+    "summary": "Full-Stack Developer & Security Engineer, building secure and robust web applications.",
+    "role": "Full-Stack Developer, Security Engineer",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Security",
+    "primary_language": "English"
   },
   {
     "name": "Kuldeepsinh Jadeja",
     "url": "https://kuldeepjadeja.dev",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkuldeepjadeja.dev?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkuldeepjadeja.dev?w=600",
+    "summary": "Full-Stack MERN Developer at Redlio Designs, passionate about building things and helping people.",
+    "role": "Full-Stack Developer",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Express.js",
+      "Magento2"
+    ],
+    "experience_level": "Mid",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "E-commerce, Web Development",
+    "primary_language": "English"
   },
   {
     "name": "Kumar Nishant",
     "url": "https://www.kumar-nishant.me",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.kumar-nishant.me?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.kumar-nishant.me?w=600",
+    "summary": "Backend and DevOps Engineer, building high-performance ecosystems using Java and Spring Boot.",
+    "role": "Backend Developer, DevOps Engineer",
+    "tech_stack": [
+      "Java",
+      "Spring Boot",
+      "Docker",
+      "AWS",
+      "Kubernetes"
+    ],
+    "experience_level": "Mid",
+    "location": "Bhagalpur, India",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Cloud Infrastructure, Backend",
+    "primary_language": "English"
   },
   {
     "name": "Kunal Passan",
     "url": "https://kunalpassan.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkunalpassan.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkunalpassan.vercel.app?w=600",
+    "summary": "Full stack web developer crafting high-performance, interactive solutions using Next.js and React.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "Next.js",
+      "React",
+      "Node.js",
+      "Express",
+      "PostgreSQL"
+    ],
+    "experience_level": "Mid",
+    "location": "Gurugram, Haryana",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "General Web Development",
+    "primary_language": "English"
   },
   {
     "name": "Kunal Patil",
     "url": "https://kunalpatil.me",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkunalpatil.me?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkunalpatil.me?w=600",
+    "summary": "AI/ML Engineer specializing in agentic AI systems, scalable backends, and cloud automation.",
+    "role": "AI/ML Engineer",
+    "tech_stack": [
+      "LLMs",
+      "Java",
+      "Spring Boot",
+      "AWS",
+      "Python"
+    ],
+    "experience_level": "Senior",
+    "location": "Unknown",
+    "has_blog": true,
+    "available_for_hire": true,
+    "specialization": "AI/ML, Agentic AI, Cloud & DevOps",
+    "primary_language": "English"
   },
   {
     "name": "Kuppili Nikhilesh Raju",
     "url": "https://nikhileshraju.me",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fnikhileshraju.me?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fnikhileshraju.me?w=600",
+    "summary": "AI/ML Engineer passionate about building real-world solutions and contributing to AI innovation.",
+    "role": "AI/ML Engineer",
+    "tech_stack": [
+      "Python",
+      "AI/ML",
+      "Computer Vision",
+      "NLP"
+    ],
+    "experience_level": "Mid",
+    "location": "Hyderabad, India",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "AI/ML, Healthcare AI, Financial AI",
+    "primary_language": "English"
   },
   {
     "name": "Kushan Devarajegowda",
     "url": "https://ikushdev.github.io",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fikushdev.github.io?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fikushdev.github.io?w=600",
+    "summary": "R&D Software Engineer at Broadcom, building scalable infrastructure and internal developer tools.",
+    "role": "R&D Software Engineer",
+    "tech_stack": [
+      "C++",
+      "React",
+      "TypeScript",
+      "AWS",
+      ".NET"
+    ],
+    "experience_level": "Senior",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Distributed Systems, Cloud Infrastructure",
+    "primary_language": "English"
   },
   {
     "name": "Kushwinth Kumar",
     "url": "https://iamkushwidev.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fiamkushwidev.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fiamkushwidev.vercel.app?w=600",
+    "summary": "Web Developer crafting blazing-fast digital experiences with MERN stack and UI precision.",
+    "role": "Web Developer",
+    "tech_stack": [
+      "MongoDB",
+      "Express",
+      "React",
+      "Node.js",
+      "TypeScript"
+    ],
+    "experience_level": "Mid",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "MERN Stack, Frontend, UI/UX",
+    "primary_language": "English"
   },
   {
     "name": "Kwameh Dhegbo",
     "url": "https://kwamehdhegbo.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkwamehdhegbo.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkwamehdhegbo.com?w=600",
+    "summary": "Web & App Development Student designing clear interfaces and building useful applications.",
+    "role": "Web & Application Developer",
+    "tech_stack": [
+      "Vue.js",
+      "Node.js",
+      "Supabase",
+      "Tailwind",
+      "JavaScript"
+    ],
+    "experience_level": "Junior",
+    "location": "Paris, France",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Web & App Development, Sports Data",
+    "primary_language": "French"
   },
   {
     "name": "Kyle Smith",
     "url": "https://yskkyle.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fyskkyle.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fyskkyle.com?w=600",
+    "summary": "Full-time Full Stack Developer at Sparrow Design, building mobile and web applications.",
+    "role": "Full Stack Developer",
+    "tech_stack": [],
+    "experience_level": "Mid",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Mobile/Web Development",
+    "primary_language": "English"
   },
   {
     "name": "Kyson",
     "url": "https://kyson.dev",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkyson.dev?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkyson.dev?w=600",
+    "summary": "Full-Stack Developer building web applications and experimenting with new technologies.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "TypeScript",
+      "Next.js",
+      "React",
+      "Java",
+      "Python"
+    ],
+    "experience_level": "Junior",
+    "location": "New York, USA",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "General Web Development",
+    "primary_language": "English"
   },
   {
     "name": "kenTom",
     "url": "https://kentom.co.ke",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkentom.co.ke?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkentom.co.ke?w=600",
+    "summary": "Full-Stack Developer in Kenya, building applications and exploring new ideas since 2019.",
+    "role": "Full-Stack Developer",
+    "tech_stack": [],
+    "experience_level": "Mid",
+    "location": "Kenya",
+    "has_blog": true,
+    "available_for_hire": true,
+    "specialization": "General Web Development",
+    "primary_language": "English"
   },
   {
     "name": "Laercio Rios",
     "url": "https://laerciorios.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Flaerciorios.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Flaerciorios.com?w=600",
+    "summary": "Full-Stack Developer building robust APIs and responsive interfaces with JavaScript/TypeScript.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "JavaScript",
+      "TypeScript",
+      "Node.js",
+      "React.js",
+      "PostgreSQL"
+    ],
+    "experience_level": "Mid",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Data Intelligence, Geoinformation Systems",
+    "primary_language": "English"
   },
   {
     "name": "Lai Huishan",
     "url": "https://shan-verse.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fshan-verse.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fshan-verse.com?w=600",
+    "summary": "New Employee at Alps Alpine, focused on embedded software development and web applications.",
+    "role": "Embedded Software Developer",
+    "tech_stack": [
+      "C#",
+      "Unity",
+      "JavaScript",
+      "Embedded C/C++"
+    ],
+    "experience_level": "Junior",
+    "location": "Iwaki, Japan",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Embedded Systems, Game Development",
+    "primary_language": "English"
   },
   {
     "name": "Lakshan Rukantha",
     "url": "https://lakshanrukantha.github.io",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Flakshanrukantha.github.io?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Flakshanrukantha.github.io?w=600",
+    "summary": "Experienced Full Stack Developer crafting visually stunning and intuitive web experiences.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Python",
+      "Next.js"
+    ],
+    "experience_level": "Mid",
+    "location": "Sri Lanka",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "UI/UX, Web Development",
+    "primary_language": "English"
   },
   {
     "name": "Lakshya Jain",
     "url": "https://port-folio-nine-lemon-27.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fport-folio-nine-lemon-27.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fport-folio-nine-lemon-27.vercel.app?w=600",
+    "summary": "Fullstack Developer building robust backend infrastructure and mobile applications.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Flutter",
+      "Go"
+    ],
+    "experience_level": "Mid",
+    "location": "Jodhpur, India",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Backend, Mobile (Android), Distributed Systems",
+    "primary_language": "English"
   },
   {
     "name": "Lamine Neggazi",
     "url": "https://lamine.cc",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Flamine.cc?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Flamine.cc?w=600",
+    "summary": "Web Developer crafting digital solutions with a focus on core web technologies.",
+    "role": "Web Developer",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "General",
+    "primary_language": "English"
   },
   {
     "name": "Lampard Kipyegon",
     "url": "https://lampard.netlify.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Flampard.netlify.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Flampard.netlify.app?w=600",
+    "summary": "Full Stack Developer and Data Scientist building accessible web apps and AI-powered solutions.",
+    "role": "Full Stack Developer, Data Scientist",
+    "tech_stack": [
+      "Next.js",
+      "TypeScript",
+      "React",
+      "Python",
+      "Supabase"
+    ],
+    "experience_level": "Junior",
+    "location": "Nairobi, Kenya",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Web Development, AI/ML, Data Science",
+    "primary_language": "English"
   },
   {
     "name": "Larry Xue",
     "url": "https://larryxue.dev",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Flarryxue.dev?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Flarryxue.dev?w=600",
+    "summary": "AI Product Engineer building agent products, enterprise interfaces, and cloud control panels.",
+    "role": "AI Product Engineer, Full Stack Developer",
+    "tech_stack": [
+      "Next.js",
+      "Supabase",
+      "AI SDK",
+      "Vue",
+      "LLMs"
+    ],
+    "experience_level": "Senior",
+    "location": "Unknown",
+    "has_blog": true,
+    "available_for_hire": true,
+    "specialization": "AI Products, Cloud Infrastructure, Enterprise AI",
+    "primary_language": "English"
   },
   {
     "name": "Laurie Barth",
     "url": "http://laurieontech.dev",
-    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Flaurieontech.dev?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Flaurieontech.dev?w=600",
+    "summary": "Senior Software Engineer at Netflix, a technical educator and frequent conference speaker.",
+    "role": "Senior Software Engineer",
+    "tech_stack": [],
+    "experience_level": "Senior",
+    "location": "Unknown",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Content Creation, Technical Education, General Software Engineering",
+    "primary_language": "English"
   },
   {
     "name": "Le Duong Hung Thinh",
@@ -8244,102 +9534,365 @@
   {
     "name": "Talha Kılıç",
     "url": "https://talhakilic.com.tr",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftalhakilic.com.tr?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftalhakilic.com.tr?w=600",
+    "summary": "Unknown role at Unknown company, website content currently inaccessible due to technical error.",
+    "role": "Unknown",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Unknown",
+    "primary_language": "Unknown"
   },
   {
     "name": "Tanay Shah",
     "url": "https://tanayshah.dev",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftanayshah.dev?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftanayshah.dev?w=600",
+    "summary": "AI Engineer at Structured AI, building production agent infrastructure, backends, sandboxes, and iOS clients.",
+    "role": "AI Engineer",
+    "tech_stack": [
+      "LangGraph",
+      "Claude",
+      "Python",
+      "Postgres",
+      "iOS"
+    ],
+    "experience_level": "Senior",
+    "location": "New York, USA",
+    "has_blog": true,
+    "available_for_hire": true,
+    "specialization": "AI/Agent Systems",
+    "primary_language": "English"
   },
   {
     "name": "Tanish Rai",
     "url": "https://tanishrai.dev",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftanishrai.dev?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftanishrai.dev?w=600",
+    "summary": "Full-Stack Developer at Rooman Technologies, passionate about building responsive web applications.",
+    "role": "Full-Stack Developer",
+    "tech_stack": [
+      "Next.js",
+      "React",
+      "Node.js",
+      "Java",
+      "Docker"
+    ],
+    "experience_level": "Junior",
+    "location": "Mumbai, India",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Web Development",
+    "primary_language": "English"
   },
   {
     "name": "Tanisha Gupta",
     "url": "https://tanishagupta1.github.io/Tanisha-Gupta-portfolio",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftanishagupta1.github.io%2FTanisha-Gupta-portfolio?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftanishagupta1.github.io%2FTanisha-Gupta-portfolio?w=600",
+    "summary": "Front-End Developer at General, focusing on user interface development for web platforms.",
+    "role": "Front-End Developer",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Web Development",
+    "primary_language": "English"
   },
   {
     "name": "Tariqul Islam",
     "url": "https://tariqulislamrc.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftariqulislamrc.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftariqulislamrc.vercel.app?w=600",
+    "summary": "Technical Project Manager & Tech Lead at General, delivering SaaS solutions end-to-end efficiently.",
+    "role": "Technical Project Manager & Tech Lead",
+    "tech_stack": [
+      "Laravel",
+      "React",
+      "Vue.js",
+      "Python",
+      "AWS"
+    ],
+    "experience_level": "Lead",
+    "location": "Rajshahi, Bangladesh",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "SaaS/ERP",
+    "primary_language": "English"
   },
   {
     "name": "Tarun",
     "url": "https://tarunms.netlify.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftarunms.netlify.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftarunms.netlify.app?w=600",
+    "summary": "MERN Stack Developer at Rooman Technologies, passionate about building responsive web applications.",
+    "role": "MERN Stack Developer",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Java",
+      "Python"
+    ],
+    "experience_level": "Junior",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Web Development",
+    "primary_language": "English"
   },
   {
     "name": "Techfolios",
     "url": "https://techfolios.github.io",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftechfolios.github.io?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftechfolios.github.io?w=600",
+    "summary": "Technical Portfolio Builder at TechFolios, enabling fast creation of modern, responsive portfolio sites.",
+    "role": "Software Tool",
+    "tech_stack": [
+      "JSON Resume"
+    ],
+    "experience_level": "N/A",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Portfolio Tools/Web Development",
+    "primary_language": "English"
   },
   {
     "name": "Tejas Gupta",
     "url": "https://www.tejas-gupta.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.tejas-gupta.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.tejas-gupta.com?w=600",
+    "summary": "Software Engineer at General, researching mmWave sensing and building full-stack platforms.",
+    "role": "Software Engineer",
+    "tech_stack": [
+      "Python",
+      "React",
+      "Java",
+      "MySQL",
+      "Docker"
+    ],
+    "experience_level": "Junior/Mid",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Machine Learning/Full-Stack",
+    "primary_language": "English"
   },
   {
     "name": "Tejas Jadhav",
     "url": "https://teeejaey.github.io",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fteeejaey.github.io?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fteeejaey.github.io?w=600",
+    "summary": "Software Developer at General, demonstrating experience across various applications and projects.",
+    "role": "Software Developer",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "General Software Development",
+    "primary_language": "English"
   },
   {
     "name": "Tek Kshetri",
     "url": "http://tekkshetri.com.np",
-    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Ftekkshetri.com.np?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Ftekkshetri.com.np?w=600",
+    "summary": "Research Associate at Geoinformatics Center, specializing in Web-GIS development and spatial data analysis.",
+    "role": "Research Associate",
+    "tech_stack": [
+      "GIS",
+      "Remote Sensing",
+      "Python",
+      "GeoServer",
+      "Leaflet"
+    ],
+    "experience_level": "Mid/Senior",
+    "location": "Phatum Thani, Thailand",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Geospatial Development",
+    "primary_language": "English"
   },
   {
     "name": "Thanh Tran",
     "url": "https://thanhtran-portfolio.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fthanhtran-portfolio.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fthanhtran-portfolio.vercel.app?w=600",
+    "summary": "Software Engineer at IKEA Secondhand, building large-scale systems and client features for live markets.",
+    "role": "Software Engineer",
+    "tech_stack": [
+      "LLM",
+      "Groq",
+      "Frontend",
+      "Backend",
+      "Cloud"
+    ],
+    "experience_level": "Mid",
+    "location": "Netherlands",
+    "has_blog": true,
+    "available_for_hire": true,
+    "specialization": "Enterprise Software/AI",
+    "primary_language": "English"
   },
   {
     "name": "Thea Choem",
     "url": "https://thea.juniorise.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fthea.juniorise.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fthea.juniorise.com?w=600",
+    "summary": "Senior Software Developer at BookMeBus, specializing in cross-platform mobile applications for 5+ years.",
+    "role": "Senior Software Developer",
+    "tech_stack": [
+      "Flutter",
+      "Ruby on Rails",
+      "Mobile",
+      "Full-stack",
+      "API"
+    ],
+    "experience_level": "Senior",
+    "location": "Phnom Penh, Cambodia",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Mobile/Full-Stack",
+    "primary_language": "English"
   },
   {
     "name": "Thea Mushambadze",
     "url": "https://highflyer910.github.io",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fhighflyer910.github.io?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fhighflyer910.github.io?w=600",
+    "summary": "Front End Developer at General, building web software and designing user interfaces efficiently.",
+    "role": "Front End Developer",
+    "tech_stack": [
+      "React.js",
+      "Next.js",
+      "Vue.js",
+      "Tailwind",
+      "AI APIs"
+    ],
+    "experience_level": "Mid",
+    "location": "Unknown",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Frontend/AI",
+    "primary_language": "English"
   },
   {
     "name": "Thekaushikgoswami",
     "url": "https://thekaushikgoswami.github.io",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fthekaushikgoswami.github.io?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fthekaushikgoswami.github.io?w=600",
+    "summary": "Passionate Professional at General, specializing in web design, Python programming, and graphic design.",
+    "role": "Web Designer / Python Programmer",
+    "tech_stack": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Python",
+      "MySQL"
+    ],
+    "experience_level": "Junior",
+    "location": "India",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Web/Python/Design",
+    "primary_language": "English"
   },
   {
     "name": "Thiago Sousa",
     "url": "https://github.com/ThiagoSousa81",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fgithub.com%2FThiagoSousa81?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fgithub.com%2FThiagoSousa81?w=600",
+    "summary": "Full-Stack Developer at Recode Jr., dedicated to cryptography and embedded systems development.",
+    "role": "Full-Stack Developer",
+    "tech_stack": [],
+    "experience_level": "Junior",
+    "location": "Brazil",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Cybersecurity/Embedded Systems",
+    "primary_language": "Portuguese"
   },
   {
     "name": "Thibaud Dervily",
     "url": "https://www.thibaud-dervily.fr",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.thibaud-dervily.fr?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.thibaud-dervily.fr?w=600",
+    "summary": "Developer at General, building diverse mobile applications and web projects effectively.",
+    "role": "Developer",
+    "tech_stack": [
+      "Astro JS",
+      "React",
+      "Vue",
+      "Node.js",
+      "Mobile"
+    ],
+    "experience_level": "Mid",
+    "location": "Unknown",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "Mobile/Web Development",
+    "primary_language": "French"
   },
   {
     "name": "Thibault Mathian",
     "url": "https://thibault.sh",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fthibault.sh?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fthibault.sh?w=600",
+    "summary": "Freelance Fullstack Developer at General, building AI-powered Shopify apps and creating tutorials.",
+    "role": "Fullstack Developer",
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "Shopify",
+      "AI"
+    ],
+    "experience_level": "Mid/Senior",
+    "location": "Unknown",
+    "has_blog": true,
+    "available_for_hire": true,
+    "specialization": "Fullstack/AI/E-commerce",
+    "primary_language": "English"
   },
   {
     "name": "Thierry Bungaroo",
     "url": "https://crackedontiti.github.io",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fcrackedontiti.github.io?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fcrackedontiti.github.io?w=600",
+    "summary": "Computer Science Student at General, building open-source tools for cybersecurity and AI applications.",
+    "role": "Computer Science Student",
+    "tech_stack": [
+      "Flutter",
+      "Python",
+      "AWS",
+      "ML",
+      "Cybersecurity Tools"
+    ],
+    "experience_level": "Junior/Mid",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": false,
+    "specialization": "Cybersecurity/AI",
+    "primary_language": "English"
   },
   {
     "name": "Thinh Ngo",
     "url": "https://thinhcorner.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fthinhcorner.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fthinhcorner.com?w=600",
+    "summary": "Curious Explorer at General, collecting interests and building small personal projects in Vietnam.",
+    "role": "Curious Explorer",
+    "tech_stack": [],
+    "experience_level": "Unknown",
+    "location": "Ho Chi Minh City, Vietnam",
+    "has_blog": true,
+    "available_for_hire": false,
+    "specialization": "General Curiosity/Personal Projects",
+    "primary_language": "English"
   },
   {
     "name": "Thomas David",
     "url": "https://thomas-david-portfolio.netlify.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fthomas-david-portfolio.netlify.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fthomas-david-portfolio.netlify.app?w=600",
+    "summary": "Freelance Front End Web Developer at General, building user interfaces with React JS and Angular.",
+    "role": "Front End Web Developer",
+    "tech_stack": [
+      "React JS",
+      "Angular"
+    ],
+    "experience_level": "Mid",
+    "location": "Unknown",
+    "has_blog": false,
+    "available_for_hire": true,
+    "specialization": "Frontend Development/UI-UX",
+    "primary_language": "English"
   },
   {
     "name": "Thomas Havlik",
