@@ -1,5 +1,5 @@
 import { db } from './firebase.js';
-import { doc, getDoc, setDoc, updateDoc, increment } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, increment, collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 // References
 const globalLikesRef = doc(db, 'global_stats', 'likes');
@@ -68,5 +68,23 @@ export const toggleLikeInFirestore = async (uid, url, isLiking, currentBookmarks
 
   } catch (error) {
     console.error("Failed to update Firestore:", error);
+  }
+};
+
+// Submit a new portfolio for review
+export const submitPortfolio = async (uid, name, url) => {
+  try {
+    const submissionsRef = collection(db, 'submissions');
+    await addDoc(submissionsRef, {
+      uid,
+      name,
+      url,
+      status: 'pending',
+      createdAt: serverTimestamp()
+    });
+    return true;
+  } catch (error) {
+    console.error("Failed to submit portfolio:", error);
+    throw error;
   }
 };
