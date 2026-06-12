@@ -52,7 +52,7 @@ const portfolios = portfoliosData.map(p => ({
               </button>
               
               <!-- Logged In User View (Hidden by default) -->
-              <div id="userProfile" class="hidden flex items-center gap-2 cursor-pointer group">
+              <div id="userProfile" class="hidden items-center gap-2 cursor-pointer group">
                 <img id="userAvatar" src="" alt="Avatar" class="w-8 h-8 rounded-full border border-gray-700 group-hover:border-blue-500 transition-colors" />
                 <span id="userName" class="text-sm font-medium text-gray-200 hidden md:block"></span>
                 <button id="logoutBtn" class="text-xs text-gray-500 hover:text-red-400 ml-2 transition-colors">Logout</button>
@@ -179,9 +179,9 @@ const portfolios = portfoliosData.map(p => ({
   
   /* Active filter button styles */
   .filter-btn.active {
-    background-color: rgba(37, 99, 235, 0.2); /* bg-blue-600/20 */
-    border-color: rgba(59, 130, 246, 0.5); /* border-blue-500/50 */
-    color: rgb(96, 165, 250); /* text-blue-400 */
+    background-color: rgba(37, 99, 235, 0.2) !important; /* bg-blue-600/20 */
+    border-color: rgba(59, 130, 246, 0.5) !important; /* border-blue-500/50 */
+    color: rgb(96, 165, 250) !important; /* text-blue-400 */
   }
 </style>
 
@@ -194,6 +194,66 @@ const portfolios = portfoliosData.map(p => ({
   document.addEventListener('DOMContentLoaded', async () => {
     // Expose for inline scripts
     window.toggleLikeInFirestore = toggleLikeInFirestore;
+
+    window.toggleBookmark = function(button, url) {
+      const userJSON = localStorage.getItem('pu_user');
+      if (!userJSON) {
+        if (window.openLoginModal) window.openLoginModal();
+        return;
+      }
+      const user = JSON.parse(userJSON);
+      const storageKey = `pu_bookmarks_${user.uid}`;
+      const icon = button.querySelector('.heart-icon');
+      const countEl = button.querySelector('.like-count');
+      let currentLikes = parseInt(countEl.textContent) || 0;
+      let bookmarks = JSON.parse(localStorage.getItem(storageKey) || '[]');
+      const index = bookmarks.indexOf(url);
+      const isLiking = index === -1;
+
+      if (isLiking) {
+        bookmarks.push(url);
+        icon.setAttribute('fill', 'currentColor');
+        icon.classList.add('text-red-500');
+        button.classList.add('border-red-500/30', 'bg-red-500/10', 'text-red-400');
+        countEl.textContent = currentLikes + 1;
+      } else {
+        bookmarks.splice(index, 1);
+        icon.setAttribute('fill', 'none');
+        icon.classList.remove('text-red-500');
+        button.classList.remove('border-red-500/30', 'bg-red-500/10', 'text-red-400');
+        countEl.textContent = Math.max(0, currentLikes - 1);
+      }
+      localStorage.setItem(storageKey, JSON.stringify(bookmarks));
+      if (window.toggleLikeInFirestore) window.toggleLikeInFirestore(user.uid, url, isLiking);
+    };
+
+    const initBookmarks = () => {
+      const userJSON = localStorage.getItem('pu_user');
+      const user = userJSON ? JSON.parse(userJSON) : null;
+      const storageKey = user ? `pu_bookmarks_${user.uid}` : 'pu_bookmarks_guest';
+      const bookmarks = JSON.parse(localStorage.getItem(storageKey) || '[]');
+      document.querySelectorAll('.bookmark-btn').forEach(btn => {
+        const url = btn.dataset.url;
+        const icon = btn.querySelector('.heart-icon');
+        if (bookmarks.includes(url)) {
+          icon.setAttribute('fill', 'currentColor');
+          icon.classList.add('text-red-500');
+          btn.classList.add('border-red-500/30', 'bg-red-500/10', 'text-red-400');
+        } else {
+          icon.setAttribute('fill', 'none');
+          icon.classList.remove('text-red-500');
+          btn.classList.remove('border-red-500/30', 'bg-red-500/10', 'text-red-400');
+        }
+      });
+    };
+    initBookmarks();
+
+    window.addEventListener('auth-changed', () => {
+      initBookmarks();
+      if (currentFilter === 'likes') {
+        applyFilters();
+      }
+    });
 
     // ---- SMOOTH SCROLL (LENIS) ----
     const lenis = new Lenis({
@@ -219,6 +279,7 @@ const portfolios = portfoliosData.map(p => ({
         // User is signed in.
         loginBtn.classList.add('hidden');
         userProfile.classList.remove('hidden');
+        userProfile.classList.add('flex');
         userAvatar.src = user.photoURL || `https://api.dicebear.com/7.x/avataaars/svg?seed=${user.uid}`;
         userName.textContent = user.displayName || "User";
         
@@ -239,6 +300,7 @@ const portfolios = portfoliosData.map(p => ({
         // User is signed out.
         loginBtn.classList.remove('hidden');
         userProfile.classList.add('hidden');
+        userProfile.classList.remove('flex');
         localStorage.removeItem('pu_user');
         window.dispatchEvent(new Event('auth-changed'));
       }
@@ -304,9 +366,15 @@ const portfolios = portfoliosData.map(p => ({
           } else if (currentFilter === 'likes') {
             // Check localStorage for the specific logged-in user
             const userJSON = localStorage.getItem('pu_user');
-            const user = userJSON ? JSON.parse(userJSON) : null;
-            const uid = user ? user.uid : 'guest';
-            const bookmarks = JSON.parse(localStorage.getItem(`pu_bookmarks_${uid}`) || '[]');
+            if (!userJSON) {
+              if (window.openLoginModal) window.openLoginModal();
+              // Revert to all
+              const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+              if (allBtn) allBtn.click();
+              return false;
+            }
+            const user = JSON.parse(userJSON);
+            const bookmarks = JSON.parse(localStorage.getItem(`pu_bookmarks_${user.uid}`) || '[]');
             matchesFilter = bookmarks.includes(wrapper.dataset.url);
           } else {
             // Check if role contains the keyword (frontend, backend, designer, fullstack)
@@ -324,17 +392,25 @@ const portfolios = portfoliosData.map(p => ({
       renderGrid();
     };
 
+    let currentlyVisible = new Set();
     const renderGrid = () => {
       // Show paginated filtered items
       const itemsToShow = new Set(filteredItems.slice(0, visibleCount));
       
-      wrappers.forEach(w => {
-        if (itemsToShow.has(w)) {
-          w.classList.remove('hidden');
-        } else {
+      // Delta updates: only change what needs to change
+      for (const w of currentlyVisible) {
+        if (!itemsToShow.has(w)) {
           w.classList.add('hidden');
         }
-      });
+      }
+      
+      for (const w of itemsToShow) {
+        if (!currentlyVisible.has(w)) {
+          w.classList.remove('hidden');
+        }
+      }
+      
+      currentlyVisible = itemsToShow;
 
       // Empty state
       if (filteredItems.length === 0) {
@@ -379,13 +455,8 @@ const portfolios = portfoliosData.map(p => ({
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         // Update active class
-        filterBtns.forEach(b => {
-          b.classList.remove('active', 'bg-blue-600/20', 'border-blue-500/50', 'text-blue-400');
-          b.classList.add('bg-gray-800/50', 'border-gray-700', 'text-gray-300');
-        });
-        
-        btn.classList.remove('bg-gray-800/50', 'border-gray-700', 'text-gray-300');
-        btn.classList.add('active', 'bg-blue-600/20', 'border-blue-500/50', 'text-blue-400');
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
 
         currentFilter = btn.dataset.filter;
         visibleCount = ITEMS_PER_PAGE; // reset pagination
