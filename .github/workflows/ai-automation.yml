@@ -58,12 +58,14 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add src/data/portfolios.json
           # Only commit if there are changes (prevents errors if no new summaries were generated)
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: auto-update AI summaries [skip ci]" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: auto-update AI summaries [skip ci]" && git pull --rebase && git push || echo "Push failed")
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
 
       - name: Build Astro Project
+        env:
+          PUBLIC_FIREBASE_API_KEY: ${{ secrets.PUBLIC_FIREBASE_API_KEY }}
         run: npm run build
 
       - name: Upload Build Artifact

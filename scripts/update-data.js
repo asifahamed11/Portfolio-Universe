@@ -16,7 +16,7 @@ function parseMarkdownList(markdown) {
   const lines = markdown.split('\n');
   const portfolios = [];
 
-  const linkRegex = /-\s+\[([^\]]+)\]\((https?:\/\/[^)]+)\)/;
+  const linkRegex = /^\s*-\s+\[([^\]]+)\]\((https?:\/\/[^)]+)\)/;
 
   for (const line of lines) {
     const match = line.match(linkRegex);
@@ -91,6 +91,16 @@ async function run() {
       }
       return newItem;
     });
+
+    if (finalData.length === 0) {
+      console.error('ERROR: Extracted data is empty. Aborting to prevent wiping out portfolios.json.');
+      process.exit(1);
+    }
+    
+    if (existingData.length > 0 && finalData.length < existingData.length * 0.5) {
+      console.error(`ERROR: Extracted data (${finalData.length}) is less than 50% of existing data (${existingData.length}). Aborting to prevent accidental data loss.`);
+      process.exit(1);
+    }
 
     console.log(`Filtered down to ${finalData.length} valid portfolios.`);
 

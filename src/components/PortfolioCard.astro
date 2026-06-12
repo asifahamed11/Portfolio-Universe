@@ -15,14 +15,6 @@ const { name, url, screenshot, summary, role, tech_stack, available_for_hire, ba
 
 // Fallback to a microlink generated screenshot if missing
 const screenshotUrl = screenshot || `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`;
-const getHostname = (urlStr) => {
-  try {
-    return new URL(urlStr).hostname.replace('www.', '');
-  } catch(e) {
-    return 'Website';
-  }
-};
-const hostname = getHostname(url);
 ---
 
 <div class="group relative flex flex-col h-full transform-gpu will-change-transform">
@@ -63,9 +55,9 @@ const hostname = getHostname(url);
             Hire Me
           </span>
         )}
-        {typeof role === 'string' && role !== "Unknown" && (
+        {role && role !== "Unknown" && (
           <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-xl border border-white/[0.1] text-white/90 text-[10px] font-semibold tracking-wide shadow-xl">
-            {role.split(' ')[0]}
+            {role}
           </span>
         )}
       </div>
@@ -74,7 +66,6 @@ const hostname = getHostname(url);
       <button 
         class="bookmark-btn absolute top-4 right-4 z-30 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/50 backdrop-blur-xl border border-white/[0.1] text-white/70 hover:text-rose-400 hover:bg-rose-500/15 hover:border-rose-500/40 hover:shadow-[0_0_20px_rgba(244,63,94,0.3)] transition-all duration-300 group/btn"
         data-url={url}
-        data-base-likes={base_likes}
         aria-label="Bookmark and Like"
         onclick="event.preventDefault(); window.toggleBookmark(this, this.dataset.url)"
       >

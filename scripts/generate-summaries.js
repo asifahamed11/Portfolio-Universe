@@ -14,8 +14,8 @@ const DATA_FILE = path.join(__dirname, '../src/data/portfolios.json');
 // Initialize Gemini API
 const apiKey = process.env.GEMINI_API_KEY;
 if (!apiKey) {
-  console.error('ERROR: Please set GEMINI_API_KEY in your .env file');
-  process.exit(1);
+  console.warn('WARNING: Please set GEMINI_API_KEY in your .env file. Skipping summaries generation.');
+  process.exit(0);
 }
 
 const genAI = new GoogleGenerativeAI(apiKey);
@@ -85,12 +85,7 @@ Return your answer strictly as a RAW JSON Object where the keys are the "url" st
     "summary": "10-15 word summary",
     "role": "General role category (e.g. Frontend Developer, Backend Developer, Full Stack, UI/UX Designer, Data Scientist, etc.)",
     "tech_stack": ["React", "Node.js", "Python"], // Array of up to 5 main technologies
-    "experience_level": "Junior/Mid/Senior/Lead", // Guess based on content, or "Unknown"
-    "location": "City, Country", // Or "Unknown"
-    "has_blog": true, // true if they have a blog or articles, false otherwise
-    "available_for_hire": true, // true if they mention being available for freelance or hire
-    "specialization": "Web3/E-commerce/SaaS/3D/Mobile etc.", // Specific niche, or "General"
-    "primary_language": "English" // Guess the language the portfolio is written in
+    "available_for_hire": true // true if they mention being available for freelance or hire
   }
 }
 Do NOT wrap the JSON in markdown code blocks (\`\`\`json). Just return the raw JSON object.
@@ -158,14 +153,7 @@ async function main() {
           portfolio.summary = data.summary || "";
           portfolio.role = data.role || "";
           portfolio.tech_stack = data.tech_stack || [];
-          portfolio.experience_level = data.experience_level || "";
-          portfolio.location = data.location || "";
-          
-          // New advanced filter fields
-          portfolio.has_blog = data.has_blog || false;
           portfolio.available_for_hire = data.available_for_hire || false;
-          portfolio.specialization = data.specialization || "";
-          portfolio.primary_language = data.primary_language || "";
           
           successCount++;
         } else {
@@ -173,12 +161,7 @@ async function main() {
           portfolio.summary = "";
           portfolio.role = "";
           portfolio.tech_stack = [];
-          portfolio.experience_level = "";
-          portfolio.location = "";
-          portfolio.has_blog = false;
           portfolio.available_for_hire = false;
-          portfolio.specialization = "";
-          portfolio.primary_language = "";
         }
       }
       
