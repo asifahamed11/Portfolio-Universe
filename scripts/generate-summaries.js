@@ -26,9 +26,16 @@ const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 async function fetchWebsiteContent(url) {
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+    
     const response = await fetch(`https://r.jina.ai/${url}`, {
-      headers: { 'Accept': 'text/plain' }
+      headers: { 'Accept': 'text/plain' },
+      signal: controller.signal
     });
+    
+    clearTimeout(timeoutId);
+    
     if (!response.ok) {
       throw new Error(`Jina Reader returned status ${response.status}`);
     }
@@ -120,12 +127,18 @@ async function main() {
     process.exit(1);
   }
 
-  const itemsToProcess = portfolios.filter(p => !p.summary);
+  let itemsToProcess = portfolios.filter(p => !p.summary);
   console.log(`Found ${itemsToProcess.length} portfolios that need summaries.`);
   
   if (itemsToProcess.length === 0) {
     console.log("All portfolios already have summaries!");
     return;
+  }
+
+  // Limit to 40 items per run to avoid GitHub Actions timeout and Gemini rate limits
+  if (itemsToProcess.length > 40) {
+    console.log(`Limiting to 40 items for this run. The rest will be processed in future runs.`);
+    itemsToProcess = itemsToProcess.slice(0, 40);
   }
 
   const BATCH_SIZE = 20; // Process 20 at a time to keep Gemini context fast and Jina safe
