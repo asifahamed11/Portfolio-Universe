@@ -254,7 +254,7 @@
     "url": "https://az-dev.vercel.app",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faz-dev.vercel.app?w=600",
     "primary_language": "English",
-    "summary": "",
+    "summary": "Content unavailable due to technical issues, unable to extract professional information.",
     "role": "",
     "tech_stack": [],
     "available_for_hire": false
@@ -376,7 +376,7 @@
     "name": "Abdelaziz El Arassi",
     "url": "http://aelarassi.com",
     "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Faelarassi.com?w=600",
-    "summary": "",
+    "summary": "Content too minimal, unable to extract professional information from this portfolio.",
     "role": "",
     "tech_stack": [],
     "available_for_hire": false
@@ -531,177 +531,457 @@
   {
     "name": "Abdullah Ahmed",
     "url": "https://abdallaahmed.icu",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdallaahmed.icu?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdallaahmed.icu?w=600",
+    "summary": "Full Stack Developer at Galaxy, crafting exceptional web experiences and leading innovative software companies.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "Next.js",
+      "React Native",
+      "Node.js",
+      "MongoDB",
+      "TypeScript"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Abdullah Al Monir",
     "url": "https://abdullah-al-monir.web.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdullah-al-monir.web.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdullah-al-monir.web.app?w=600",
+    "summary": "Full Stack Developer at Everything Green Limited, crafting web apps with Next.js and PostgreSQL.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "Next.js",
+      "PostgreSQL",
+      "Prisma",
+      "Express.js",
+      "MongoDB"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Abdullah Ayoola",
     "url": "https://ayooladev.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fayooladev.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fayooladev.vercel.app?w=600",
+    "summary": "Content too minimal, unable to extract professional information from this portfolio.",
+    "role": "",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Abdullah Bozdağ",
     "url": "https://abdullahbozdag.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdullahbozdag.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdullahbozdag.com?w=600",
+    "summary": "Full Stack Developer at Independent Projects, creating web applications and solving complex problems.",
+    "role": "Full Stack Developer",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Abdullah Iqbal",
     "url": "https://abdullah-portfolio-dev.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdullah-portfolio-dev.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdullah-portfolio-dev.vercel.app?w=600",
+    "summary": "Full Stack Developer at Wimetrix, building fast, scalable, and user-friendly web applications.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "Next.js",
+      "TypeScript",
+      "MongoDB"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Abdullah James",
     "url": "https://portfolio-website-abdullah-jamess.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolio-website-abdullah-jamess.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolio-website-abdullah-jamess.vercel.app?w=600",
+    "summary": "",
+    "role": "",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Abdullah Waheed",
     "url": "https://abdullahw-portfolio.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdullahw-portfolio.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdullahw-portfolio.vercel.app?w=600",
+    "summary": "Frontend Developer at Fast Technology, building responsive web applications with React.js and Next.js.",
+    "role": "Frontend Developer",
+    "tech_stack": [
+      "React.js",
+      "Next.js",
+      "Tailwind CSS"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Abdullah Warraich",
     "url": "https://abdullah-warraich-ch.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdullah-warraich-ch.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdullah-warraich-ch.vercel.app?w=600",
+    "summary": "Frontend Developer at a software house, creating intuitive user experiences with React and Next.js.",
+    "role": "Frontend Developer",
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "JavaScript",
+      "Bootstrap"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Abdur Rahman",
     "url": "https://itsmeabdur.in",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fitsmeabdur.in?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fitsmeabdur.in?w=600",
+    "summary": "",
+    "role": "",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Abdusamad Malikov",
     "url": "https://www.abdusamad.uz",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.abdusamad.uz?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.abdusamad.uz?w=600",
+    "summary": "Software Engineer at Independent Projects, experienced programmer with several successful projects.",
+    "role": "Software Engineer",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Abhay Rana",
     "url": "https://abhayrana.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhayrana.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhayrana.com?w=600",
+    "summary": "Full Stack Developer at Independent Projects, crafting digital experiences and building scalable web applications.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "TypeScript",
+      "PostgreSQL"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Abhijeet Bhale",
     "url": "https://abhijeetbhale.github.io/Portfolio",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhijeetbhale.github.io%2FPortfolio?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhijeetbhale.github.io%2FPortfolio?w=600",
+    "summary": "Full Stack Developer at Independent Projects, building creative and scalable web applications efficiently.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Next.js",
+      "Tailwind CSS"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Abhijeet Singh Parihar",
     "url": "https://abhijeet-singh-parihar-portfolio.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhijeet-singh-parihar-portfolio.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhijeet-singh-parihar-portfolio.vercel.app?w=600",
+    "summary": "Full Stack Developer at Independent Projects, crafting user-focused web applications with MERN stack expertise.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Tailwind CSS"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Abhijit Mondal",
     "url": "https://abhijitmondal.info",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhijitmondal.info?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhijitmondal.info?w=600",
+    "summary": "Full Stack Developer at Independent Projects, building modern, scalable, and user-friendly applications from Kolkata.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "React.js",
+      "Next.js",
+      "Python",
+      "MongoDB",
+      "SQL"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Abhinandhan Devadiga",
     "url": "https://abhicodestudio.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhicodestudio.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhicodestudio.com?w=600",
+    "summary": "Full Stack Developer at Independent Projects, building scalable, maintainable solutions with a product-oriented mindset.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "Nuxt.js",
+      "Vue.js",
+      "Express.js",
+      "TypeScript",
+      "MongoDB"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Abhinav Galodha",
     "url": "https://www.galodha.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.galodha.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.galodha.com?w=600",
+    "summary": "Senior Developer at Experis, reimagining the future by building performance-focused .NET applications.",
+    "role": "Software Engineer",
+    "tech_stack": [
+      ".NET",
+      "C#"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Abhinav Jaiswal",
     "url": "https://iabhinav.me",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fiabhinav.me?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fiabhinav.me?w=600",
+    "summary": "",
+    "role": "",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Abhinav Jaiswal",
     "url": "https://terminal.iabhinav.me",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fterminal.iabhinav.me?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fterminal.iabhinav.me?w=600",
+    "summary": "Developer at Independent Projects, showcasing a unique terminal-themed digital portfolio.",
+    "role": "Developer",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Abhinav Kumar",
     "url": "https://my-portfolio-flax-kappa.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmy-portfolio-flax-kappa.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmy-portfolio-flax-kappa.vercel.app?w=600",
+    "summary": "Full Stack Developer at JP Morgan Chase, solving complex problems and exploring new technologies.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "Node.js",
+      "SpringBoot",
+      "React",
+      "TypeScript",
+      "AWS"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Abhinay Thakur",
     "url": "https://abhinaythakur.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhinaythakur.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhinaythakur.com?w=600",
+    "summary": "Senior Frontend Engineer at Independent Projects, building scalable systems for complex UIs.",
+    "role": "Frontend Engineer",
+    "tech_stack": [
+      "React",
+      "Tailwind CSS"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Abhisek Panda",
     "url": "https://abhisekpanda072.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhisekpanda072.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhisekpanda072.vercel.app?w=600",
+    "summary": "MERN Stack Developer at Independent Projects, transforming ideas into powerful web applications.",
+    "role": "MERN Stack Developer",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Abhishek Agrawal",
     "url": "https://abhish0.github.io/My-Portfolio/",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhish0.github.io%2FMy-Portfolio%2F?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhish0.github.io%2FMy-Portfolio%2F?w=600",
+    "summary": "Full-Stack Software Engineer at Deloitte, developing cohesive, responsive client, portal, and admin websites.",
+    "role": "Full Stack Software Engineer",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "Supabase",
+      "AWS",
+      "PostgreSQL"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Abhishek Anand",
     "url": "https://abhishekdev-portfolio.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhishekdev-portfolio.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhishekdev-portfolio.vercel.app?w=600",
+    "summary": "Full Stack Developer at Independent Projects, developing high-performance, scalable web applications.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Next.js"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Abhishek Bhardwaj",
     "url": "https://www.imabhishek.site",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.imabhishek.site?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.imabhishek.site?w=600",
+    "summary": "Full Stack Developer at TribeCrafter, building fast, scalable web apps and custom Shopify applications.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "Next.js",
+      "Remix",
+      "NestJS",
+      "React",
+      "Shopify"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Abhishek Ganvir",
     "url": "https://abhishekganvir.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhishekganvir.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhishekganvir.vercel.app?w=600",
+    "summary": "Full Stack Developer at Independent Projects, enhancing smooth, scalable, impressive digital experiences.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "PostgreSQL",
+      "JavaScript"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Abhishek Ghimire",
     "url": "https://www.abhishekg.com.np",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.abhishekg.com.np?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.abhishekg.com.np?w=600",
+    "summary": "Software Engineer at Independent Projects, crafting responsive web and mobile solutions for users.",
+    "role": "Software Engineer",
+    "tech_stack": [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "React Native",
+      "Expo"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Abhishek Kandel",
     "url": "https://abhishekkandel.com.np",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhishekkandel.com.np?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhishekkandel.com.np?w=600",
+    "summary": "",
+    "role": "",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Abhishek Panchal",
     "url": "https://skillstackpanchal.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fskillstackpanchal.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fskillstackpanchal.vercel.app?w=600",
+    "summary": "Web Developer at Stegpearl Pvt. Ltd., delivering pixel-perfect UI with smooth functionality.",
+    "role": "Web Developer",
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "JavaScript",
+      "Redux"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Abhishek Panthee",
     "url": "https://abhishekpanthee.com.np",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhishekpanthee.com.np?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhishekpanthee.com.np?w=600",
+    "summary": "Cybersecurity Analyst at NexiNode Enterprises, contributing to development as a Cyber Defender.",
+    "role": "Cybersecurity Analyst",
+    "tech_stack": [],
+    "available_for_hire": true
   },
   {
     "name": "Abhishek Sah",
     "url": "https://www.abhisheksah.dev",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.abhisheksah.dev?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.abhisheksah.dev?w=600",
+    "summary": "Software Engineer at Taggle Innovations LLC, developing cohesive, responsive client, portal, and admin websites.",
+    "role": "Software Engineer",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Flutter",
+      "TypeScript"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Abhishek Singh",
     "url": "https://www.abhishekworks.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.abhishekworks.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.abhishekworks.com?w=600",
+    "summary": "Software Developer at Independent Projects, skilled in MERN stack and 3D technologies.",
+    "role": "Software Developer",
+    "tech_stack": [
+      "MongoDB",
+      "Express.js",
+      "React",
+      "Node.js"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Abinash Sharma",
     "url": "https://abinash-sharma.pages.dev",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabinash-sharma.pages.dev?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabinash-sharma.pages.dev?w=600",
+    "summary": "",
+    "role": "",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Abraham Bankole",
     "url": "https://abrahambankole.dev",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabrahambankole.dev?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabrahambankole.dev?w=600",
+    "summary": "Software Engineer at Independent Projects, designing scalable backend infrastructure with a focus on optimization.",
+    "role": "Software Engineer",
+    "tech_stack": [
+      "Spring Boot",
+      "Java",
+      "Python",
+      "React",
+      "PostgreSQL"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Abu Bakar Butt",
     "url": "https://abu-bakar-portfolio-mauve.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabu-bakar-portfolio-mauve.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabu-bakar-portfolio-mauve.vercel.app?w=600",
+    "summary": "Frontend Developer at Independent Projects, building impactful digital experiences using modern technologies.",
+    "role": "Frontend Developer",
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "TypeScript",
+      "GSAP"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Abu Suhaib",
     "url": "https://ceo.pronexus.in",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fceo.pronexus.in?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fceo.pronexus.in?w=600",
+    "summary": "Full Stack Developer at Pronexus, building production-ready SaaS applications and leading AI product development.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "GPT-4",
+      "Azure",
+      "React Native"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Abubakr Mufutau-Oseni",
@@ -4816,8 +5096,8 @@
   },
   {
     "name": "Jayanth Donavalli",
-    "url": "https://jayanth.site",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fjayanth.site?w=600"
+    "url": "https://djayanth.site/",
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdjayanth.site%2F?w=600"
   },
   {
     "name": "Jayed Rafi",
@@ -6351,6 +6631,11 @@
     "name": "Miguel Rodriguez",
     "url": "https://migu.es",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmigu.es?w=600"
+  },
+  {
+    "name": "Mihir Chauhan",
+    "url": "https://chauhan-mihir.vercel.app",
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fchauhan-mihir.vercel.app?w=600"
   },
   {
     "name": "Mihir Das",
