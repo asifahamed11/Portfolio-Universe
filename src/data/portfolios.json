@@ -203,8 +203,8 @@
     "url": "https://aashay-dev-ed.develop.my.site.com/AashayWase/s",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faashay-dev-ed.develop.my.site.com%2FAashayWase%2Fs?w=600",
     "primary_language": "English",
-    "summary": "",
-    "role": "",
+    "summary": "Portfolio content unavailable; unable to extract detailed professional summary due to loading errors.",
+    "role": "Unknown",
     "tech_stack": [],
     "available_for_hire": false
   },
@@ -595,10 +595,16 @@
     "name": "Abdullah James",
     "url": "https://portfolio-website-abdullah-jamess.vercel.app",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolio-website-abdullah-jamess.vercel.app?w=600",
-    "summary": "",
-    "role": "",
-    "tech_stack": [],
-    "available_for_hire": false
+    "summary": "AI / Full-Stack Developer, engineers innovative solutions by tackling complex problems and expanding toolkit.",
+    "role": "AI / Full-Stack Developer",
+    "tech_stack": [
+      "Python",
+      "React",
+      "Node.js",
+      "TensorFlow",
+      "PyTorch"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Abdullah Waheed",
@@ -737,8 +743,8 @@
     "name": "Abhinav Jaiswal",
     "url": "https://iabhinav.me",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fiabhinav.me?w=600",
-    "summary": "",
-    "role": "",
+    "summary": "Software Development Engineer at Amazon, passionate about programming, web development, and building scalable solutions.",
+    "role": "Software Development Engineer",
     "tech_stack": [],
     "available_for_hire": false
   },
@@ -871,10 +877,16 @@
     "name": "Abhishek Kandel",
     "url": "https://abhishekkandel.com.np",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhishekkandel.com.np?w=600",
-    "summary": "",
-    "role": "",
-    "tech_stack": [],
-    "available_for_hire": false
+    "summary": "Backend Engineer (Machine Learning) building backend systems, ML products, and cares deeply about craft.",
+    "role": "Backend Engineer (Machine Learning)",
+    "tech_stack": [
+      "Python",
+      "FastAPI",
+      "TensorFlow",
+      "PyTorch",
+      "React Native"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Abhishek Panchal",
@@ -933,9 +945,15 @@
     "name": "Abinash Sharma",
     "url": "https://abinash-sharma.pages.dev",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabinash-sharma.pages.dev?w=600",
-    "summary": "",
-    "role": "",
-    "tech_stack": [],
+    "summary": "Software Developer passionate about improving coding skills, developing applications, and creating impactful tech solutions.",
+    "role": "Software Developer (Python)",
+    "tech_stack": [
+      "Python",
+      "JavaScript",
+      "MongoDB",
+      "PyTorch",
+      "Unity"
+    ],
     "available_for_hire": false
   },
   {
@@ -986,162 +1004,401 @@
   {
     "name": "Abubakr Mufutau-Oseni",
     "url": "https://abubakrmo.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabubakrmo.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabubakrmo.com?w=600",
+    "summary": "Software Engineer and Digital Creator, leveraging code to make a positive difference in people's lives.",
+    "role": "Software Engineer",
+    "tech_stack": [
+      "Java",
+      "Spring",
+      "React",
+      "Node.js",
+      "AWS"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Achyut Katiyar",
     "url": "https://www.achyutkatiyar.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.achyutkatiyar.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.achyutkatiyar.com?w=600",
+    "summary": "Software Engineer with expertise across various technologies, passionate about technical journey and impactful innovation.",
+    "role": "Software Engineer",
+    "tech_stack": [
+      "Python",
+      "JavaScript",
+      "TypeScript",
+      "Next.js",
+      "OpenAI"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Adam Alston",
     "url": "https://www.adamalston.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.adamalston.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.adamalston.com?w=600",
+    "summary": "Software Engineer with a focus on problem-solving and developing robust digital products efficiently.",
+    "role": "Software Engineer",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Adam Williams",
     "url": "https://adjwilli.github.io",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadjwilli.github.io?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadjwilli.github.io?w=600",
+    "summary": "Principal Software Engineer, crafting exceptional digital experiences for over 20 years with full stack expertise.",
+    "role": "Principal Software Engineer",
+    "tech_stack": [
+      "JavaScript",
+      "Node.js",
+      "React",
+      "Next.js",
+      "Python"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Adarsh Kumar",
     "url": "https://portfolio-e7gt.onrender.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolio-e7gt.onrender.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolio-e7gt.onrender.com?w=600",
+    "summary": "Software Engineer, turning ideas into clean, scalable web experiences with creativity and engineering discipline.",
+    "role": "Software Engineer",
+    "tech_stack": [],
+    "available_for_hire": true
   },
   {
     "name": "Adarsh Singh",
     "url": "https://adarshsinghh.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadarshsinghh.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadarshsinghh.vercel.app?w=600",
+    "summary": "Full Stack Developer, crafting modern web applications and scalable solutions for impactful digital experiences.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "React.js",
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "MongoDB"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Adebanjo Stephen",
     "url": "https://myportfoliome.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmyportfoliome.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmyportfoliome.vercel.app?w=600",
+    "summary": "Software Engineer (AI/ML focus) at Extern, self-taught, crafting Next.js solutions, and growing in tech.",
+    "role": "Software Engineer (AI/ML focus)",
+    "tech_stack": [
+      "Next.js",
+      "TypeScript",
+      "AI",
+      "Machine Learning",
+      "React"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Adham Dannaway",
     "url": "https://www.adhamdannaway.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.adhamdannaway.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.adhamdannaway.com?w=600",
+    "summary": "Product Designer & Frontend Developer specializing in UI design, design systems, and efficient code.",
+    "role": "Product Designer & Frontend Developer",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Adina Hawaldar",
     "url": "https://www.adinaa.me",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.adinaa.me?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.adinaa.me?w=600",
+    "summary": "UI/UX Designer, Developer, Cloud Engineer, crafting high-performance digital interfaces with UX-first cloud engineering.",
+    "role": "UI/UX Designer, Developer, Cloud Engineer",
+    "tech_stack": [
+      "React",
+      "AWS",
+      "Firebase",
+      "Python",
+      "MongoDB"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Adithya Krishnan",
     "url": "https://www.adithyakrishnan.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.adithyakrishnan.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.adithyakrishnan.com?w=600",
+    "summary": "",
+    "role": "",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Aditi Arya",
     "url": "https://aditiarya.netlify.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faditiarya.netlify.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faditiarya.netlify.app?w=600",
+    "summary": "",
+    "role": "",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Aditya Chaudhary",
     "url": "https://aditya-portfolio-dusky.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faditya-portfolio-dusky.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faditya-portfolio-dusky.vercel.app?w=600",
+    "summary": "Full Stack Python Developer at Upforce Tech, building innovative, high-quality Python solutions for complex problems.",
+    "role": "Full Stack Python Developer",
+    "tech_stack": [
+      "Python",
+      "FastAPI",
+      "React",
+      "PostgreSQL",
+      "Docker"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Aditya Domle",
     "url": "https://adittya.site",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadittya.site?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadittya.site?w=600",
+    "summary": "Full-Stack Developer specializing in modern web technologies and contributing to open-source projects.",
+    "role": "Full-Stack Developer",
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "MongoDB",
+      "TypeScript"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Aditya Dubey",
     "url": "https://adityacodes.in",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadityacodes.in?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadityacodes.in?w=600",
+    "summary": "Cloud & Software Engineer crafting elegant, high-performance digital experiences and solving real-world problems with code.",
+    "role": "Cloud & Software Engineer",
+    "tech_stack": [
+      "Python",
+      "React",
+      "Next.js",
+      "Node.js",
+      "AWS"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Aditya Dutt Pandey",
     "url": "https://www.adpandey.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.adpandey.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.adpandey.com?w=600",
+    "summary": "CTO at tunyt, building agentic AI systems and leading engineering from zero to production.",
+    "role": "CTO",
+    "tech_stack": [
+      "TypeScript",
+      "Next.js",
+      "React",
+      "Agentic AI",
+      "Distributed Systems"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Aditya Kumar Gupta",
     "url": "https://aditya30051993.github.io/my-portfolio",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faditya30051993.github.io%2Fmy-portfolio?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faditya30051993.github.io%2Fmy-portfolio?w=600",
+    "summary": "",
+    "role": "",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Aditya Kumar Srivastava",
     "url": "https://adityasri.in",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadityasri.in?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadityasri.in?w=600",
+    "summary": "Java Full Stack Developer delivering enterprise-grade applications with microservices architecture and AWS cloud services.",
+    "role": "Java Full Stack Developer",
+    "tech_stack": [
+      "Java",
+      "Spring Boot",
+      "React",
+      "PostgreSQL",
+      "AWS"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Aditya Kumar",
     "url": "https://www.adityakr.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.adityakr.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.adityakr.com?w=600",
+    "summary": "Software Engineer crafting and managing web applications, ensuring product success with clean and scalable code.",
+    "role": "Software Engineer",
+    "tech_stack": [
+      "React.js",
+      "Next.js",
+      "Node.js",
+      "TypeScript",
+      "MongoDB"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Aditya Medhe",
     "url": "https://aditya.medhe.in",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faditya.medhe.in?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faditya.medhe.in?w=600",
+    "summary": "Senior Software Engineer at Lenze, building intelligent Open Automation Platforms and maintaining entire application stacks.",
+    "role": "Senior Software Engineer",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Aditya Pillai",
     "url": "https://aditya-pillai.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faditya-pillai.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faditya-pillai.vercel.app?w=600",
+    "summary": "Full Stack Developer and VIT Chennai Student, actively pursuing knowledge and building projects.",
+    "role": "Full Stack Developer",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Aditya Poojary",
     "url": "https://adityapoojary.dev",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadityapoojary.dev?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadityapoojary.dev?w=600",
+    "summary": "Full Stack Developer building clean, functional solutions, reducing friction and improving user experience.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "TypeScript",
+      "Firebase"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Aditya Punmiya",
     "url": "https://adityapunmiya.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadityapunmiya.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadityapunmiya.com?w=600",
+    "summary": "Backend-focused Software Engineer at NAV India, building production systems for financial services and business workflows.",
+    "role": "Backend-focused Software Engineer",
+    "tech_stack": [
+      "Go",
+      "Python",
+      "Node.js",
+      "PostgreSQL",
+      "AWS"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Aditya Rahmad",
     "url": "https://adxxya30.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadxxya30.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadxxya30.vercel.app?w=600",
+    "summary": "Software Developer thinking about code, culture, and how people connect in the digital world.",
+    "role": "Software Developer",
+    "tech_stack": [
+      "Next.js",
+      "React.js",
+      "TypeScript",
+      "JavaScript",
+      "Bun"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Aditya Raj Srivastava",
     "url": "https://portfolio-lilac-eight-33.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolio-lilac-eight-33.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolio-lilac-eight-33.vercel.app?w=600",
+    "summary": "Developer with minimal public portfolio content, likely a placeholder or work in progress.",
+    "role": "Developer",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Aditya Seth",
     "url": "https://adityaseth.in",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadityaseth.in?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadityaseth.in?w=600",
+    "summary": "",
+    "role": "",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Aditya Vikram Singh",
     "url": "https://www.adityavsingh.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.adityavsingh.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.adityavsingh.com?w=600",
+    "summary": "Software Engineer experienced in full-stack web and Android development, showcasing diverse project work.",
+    "role": "Software Engineer",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Aditya",
     "url": "https://aditya-a-portfolio.vercel.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faditya-a-portfolio.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faditya-a-portfolio.vercel.app?w=600",
+    "summary": "Full Stack Developer intern building web apps, experimenting with 3D visuals, and pushing technical boundaries.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "MongoDB",
+      "TypeScript"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Adityakumar Sinha",
     "url": "https://aditya113141.github.io",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faditya113141.github.io?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faditya113141.github.io?w=600",
+    "summary": "This portfolio content has been removed, signaling a farewell or indefinite hiatus from public sharing.",
+    "role": "Developer",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Adrian Hansen",
     "url": "https://adrian-hansen-dev.github.io/portfolio/",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadrian-hansen-dev.github.io%2Fportfolio%2F?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadrian-hansen-dev.github.io%2Fportfolio%2F?w=600",
+    "summary": "Software Engineer building projects and growing through continuous learning and development practices.",
+    "role": "Software Engineer",
+    "tech_stack": [
+      "React",
+      "Spring"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Advait Nair",
     "url": "https://advaitnair.org",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadvaitnair.org?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadvaitnair.org?w=600",
+    "summary": "Computer Science Student and Web Developer building digital projects for clients, expanding tech stack.",
+    "role": "Computer Science Student & Web Developer",
+    "tech_stack": [
+      "SvelteKit",
+      "TailwindCSS",
+      "TypeScript",
+      "Firebase",
+      "Python"
+    ],
+    "available_for_hire": false
   },
   {
     "name": "Adwitya",
     "url": "https://adwityac.netlify.app",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadwityac.netlify.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadwityac.netlify.app?w=600",
+    "summary": "Full Stack Developer crafting pixel-perfect sites and scalable backends, exploring AI and new technologies.",
+    "role": "Full Stack Developer",
+    "tech_stack": [
+      "React.js",
+      "Node.js",
+      "Go",
+      "MongoDB",
+      "Docker"
+    ],
+    "available_for_hire": true
   },
   {
     "name": "Afam Olie",
     "url": "https://afamolie.com",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fafamolie.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fafamolie.com?w=600",
+    "summary": "",
+    "role": "",
+    "tech_stack": [],
+    "available_for_hire": false
   },
   {
     "name": "Afaq Awan",
@@ -4930,6 +5187,11 @@
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fistiuqeahmed.vercel.app?w=600"
   },
   {
+    "name": "Ivin Titus",
+    "url": "https://ivin.site/",
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fivin.site%2F?w=600"
+  },
+  {
     "name": "Jack Parsons",
     "url": "https://jackparsonss.me",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fjackparsonss.me?w=600"
@@ -5096,8 +5358,8 @@
   },
   {
     "name": "Jayanth Donavalli",
-    "url": "https://djayanth.site/",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdjayanth.site%2F?w=600"
+    "url": "https://djayanth.site",
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdjayanth.site?w=600"
   },
   {
     "name": "Jayed Rafi",
@@ -6131,6 +6393,11 @@
     "name": "Lukasz Kups",
     "url": "https://lukaszkups.net",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Flukaszkups.net?w=600"
+  },
+  {
+    "name": "Luke Liukonen",
+    "url": "https://liukonen.dev",
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fliukonen.dev?w=600"
   },
   {
     "name": "Luís Oliveira",
