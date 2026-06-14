@@ -72,16 +72,20 @@ I will give you a JSON array containing website contents for multiple portfolios
 For EACH portfolio, extract the following information.
 
 CRITICAL RULES FOR SUMMARY:
-1. STRICT FORMAT MUST BE: "[Role] at [Company], [brief highlight]."
-2. Keep it exactly between 10-15 words. Just output the text.
-3. NEVER use the person's name or prefixes like "Currently works as".
+1. Provide a comprehensive 30-50 word professional summary detailing their background, core expertise, and experience.
 
 Return your answer strictly as a RAW JSON Object where the keys are the "url" strings provided, and the values are objects containing the extracted data:
 {
   "https://example.com": {
-    "summary": "10-15 word summary",
+    "name": "Extracted owner name",
+    "location": "Extracted location (or empty string if not found)",
+    "summary": "30-50 word professional summary",
     "role": "General role category (e.g. Frontend Developer, Backend Developer, Full Stack, UI/UX Designer, Data Scientist, etc.)",
-    "tech_stack": ["React", "Node.js", "Python"], // Array of up to 5 main technologies
+    "tech_stack": ["React", "Node.js", "Python"], // Array of main technologies
+    "projects": ["Brief description of project 1", "Brief description of project 2"], // Array of key projects
+    "social_links": ["github.com/...", "linkedin.com/..."], // Array of contact or social links
+    "seo_evaluation": "Good/Average/Needs Improvement", // Evaluate based on title and keywords
+    "portfolio_score": 8, // Rate the overall presentation from 1-10
     "available_for_hire": true, // true if they mention being available for freelance or hire
     "is_portfolio": true // Set to true ONLY if the website is clearly a personal portfolio, resume, or developer showcase. Set to false if it's a company website, blog post, generic tool, generic product landing page, or anything else.
   }
@@ -142,7 +146,7 @@ async function main() {
   }
 
 
-  const BATCH_SIZE = 1; // Process one by one sequentially as requested
+  const BATCH_SIZE = 3; // Process 3 websites at once in a single prompt for faster generation
   let successCount = 0;
 
   for (let i = 0; i < itemsToProcess.length; i += BATCH_SIZE) {
@@ -159,9 +163,15 @@ async function main() {
 
         if (resultsMap[portfolio.url]) {
           const data = resultsMap[portfolio.url];
+          portfolios[index].name = data.name || portfolios[index].name || "";
+          portfolios[index].location = data.location || "";
           portfolios[index].summary = data.summary || "";
           portfolios[index].role = data.role || "";
-          portfolios[index].tech_stack = Array.isArray(data.tech_stack) ? data.tech_stack.slice(0, 5) : [];
+          portfolios[index].tech_stack = Array.isArray(data.tech_stack) ? data.tech_stack.slice(0, 8) : [];
+          portfolios[index].projects = Array.isArray(data.projects) ? data.projects : [];
+          portfolios[index].social_links = Array.isArray(data.social_links) ? data.social_links : [];
+          portfolios[index].seo_evaluation = data.seo_evaluation || "";
+          portfolios[index].portfolio_score = data.portfolio_score || 0;
           portfolios[index].available_for_hire = !!data.available_for_hire;
           portfolios[index].is_portfolio = data.is_portfolio !== false;
           portfolios[index].ai_processed = true;
