@@ -104,15 +104,15 @@ ${JSON.stringify(validData)}
 `;
 
   try {
-    const result = await fetch(OLLAMA_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: "qwen2.5:3b",
-        prompt: prompt,
-        stream: false
-      })
-    });
+      const result = await fetch('http://127.0.0.1:11434/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: "qwen2.5:7b",
+          prompt: prompt,
+          stream: false
+        })
+      });
 
     if (!result.ok) {
       throw new Error(`Ollama API error! status: ${result.status}`);
