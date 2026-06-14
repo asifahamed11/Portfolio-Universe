@@ -131,6 +131,10 @@ const portfolios = portfoliosData.map(p => ({
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
           My Likes
         </button>
+        <button class="filter-btn group relative flex items-center gap-2 px-5 py-2.5 rounded-2xl text-sm font-semibold text-purple-400 hover:text-purple-300 hover:bg-purple-500/10 transition-all duration-300" data-filter="most_viewed">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+          Trending
+        </button>
       </div>
     </header>
 
@@ -155,6 +159,7 @@ const portfolios = portfoliosData.map(p => ({
               tech_stack={portfolio.tech_stack}
               available_for_hire={portfolio.available_for_hire}
               base_likes={portfolio.baseLikes}
+              views={portfolio.views || 0}
             />
           </div>
         ))}
@@ -402,6 +407,7 @@ const portfolios = portfoliosData.map(p => ({
       const tech_stack = portfolio.tech_stack || [];
       const available_for_hire = portfolio.available_for_hire || false;
       const base_likes = portfolio.baseLikes || 0;
+      const views = portfolio.views || 0;
 
       let hireHTML = '';
       if (available_for_hire) {
@@ -481,10 +487,17 @@ const portfolios = portfoliosData.map(p => ({
                 <div class="absolute top-4 left-4 z-20 flex flex-wrap gap-2 pointer-events-none">
                   ${hireHTML}
                 </div>
-                <button class="bookmark-btn absolute top-4 right-4 z-30 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/50 backdrop-blur-xl border border-white/[0.1] text-white/70 hover:text-rose-400 hover:bg-rose-500/15 hover:border-rose-500/40 hover:shadow-[0_0_20px_rgba(244,63,94,0.3)] transition-all duration-300 group/btn" data-url="${url}" aria-label="Bookmark and Like" onclick="event.preventDefault(); window.toggleBookmark(this, this.dataset.url)">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="heart-icon transition-transform duration-300 group-hover/btn:scale-110 active:scale-90"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                  <span class="text-xs font-bold tracking-wide like-count">${base_likes}</span>
-                </button>
+                
+                <div class="absolute top-4 right-4 z-30 flex items-center gap-2">
+                  <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-xl border border-white/[0.1] text-white/70">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <span class="text-xs font-bold tracking-wide">${views}</span>
+                  </div>
+                  <button class="bookmark-btn flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/50 backdrop-blur-xl border border-white/[0.1] text-white/70 hover:text-rose-400 hover:bg-rose-500/15 hover:border-rose-500/40 hover:shadow-[0_0_20px_rgba(244,63,94,0.3)] transition-all duration-300 group/btn" data-url="${url}" aria-label="Bookmark and Like" onclick="event.preventDefault(); window.toggleBookmark(this, this.dataset.url)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="heart-icon transition-transform duration-300 group-hover/btn:scale-110 active:scale-90"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                    <span class="text-xs font-bold tracking-wide like-count">${base_likes}</span>
+                  </button>
+                </div>
               </div>
               <div class="relative z-10 p-6 flex flex-col flex-grow rounded-b-2xl bg-gradient-to-b from-[#0B0F19] to-[#06080D]">
                 <div class="flex items-center justify-between mb-2">
@@ -600,6 +613,12 @@ const portfolios = portfoliosData.map(p => ({
 
         return matchesSearch && matchesFilter;
       });
+
+      if (currentFilter === 'most_viewed') {
+        filteredItems.sort((a, b) => (b.views || 0) - (a.views || 0));
+      } else {
+        filteredItems.sort((a, b) => b.baseLikes - a.baseLikes);
+      }
 
       renderGrid();
     };
