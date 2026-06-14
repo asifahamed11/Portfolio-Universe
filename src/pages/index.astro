@@ -134,6 +134,7 @@ const portfolios = portfoliosData.map(p => ({
             data-role={portfolio.role?.toLowerCase() || ''}
             data-tech={Array.isArray(portfolio.tech_stack) ? portfolio.tech_stack.join(',').toLowerCase() : ''}
             data-hire={portfolio.available_for_hire ? 'true' : 'false'}
+            style="content-visibility: auto; contain-intrinsic-size: auto 350px;"
           >
             <PortfolioCard 
               name={portfolio.name} 
@@ -455,7 +456,7 @@ const portfolios = portfoliosData.map(p => ({
       }
 
       return `
-        <div class="portfolio-wrapper hidden" data-index="${index}" data-name="${name.toLowerCase()}" data-url="${url}" data-role="${role?.toLowerCase() || ''}" data-tech="${tech_stack.join(',').toLowerCase()}" data-hire="${available_for_hire ? 'true' : 'false'}">
+        <div class="portfolio-wrapper hidden" data-index="${index}" data-name="${name.toLowerCase()}" data-url="${url}" data-role="${role?.toLowerCase() || ''}" data-tech="${tech_stack.join(',').toLowerCase()}" data-hire="${available_for_hire ? 'true' : 'false'}" style="content-visibility: auto; contain-intrinsic-size: auto 350px;">
           <div class="group relative flex flex-col h-full transform-gpu will-change-transform">
             <div class="absolute -inset-[1px] bg-gradient-to-r from-blue-500/0 via-blue-500/30 to-purple-500/0 rounded-[18px] opacity-0 group-hover:opacity-100 blur-md transition-all duration-700 ease-in-out group-hover:duration-300 pointer-events-none"></div>
             <div class="absolute -inset-[1px] bg-gradient-to-b from-blue-500/40 to-transparent rounded-[18px] opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:duration-300 pointer-events-none"></div>
