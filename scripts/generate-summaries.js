@@ -1,4 +1,3 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import dotenv from 'dotenv';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore';
@@ -6,11 +5,8 @@ import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firesto
 // Load environment variables
 dotenv.config();
 
-const apiKey = process.env.GEMINI_API_KEY;
-if (!apiKey) {
-  console.warn('WARNING: Please set GEMINI_API_KEY in your .env file. Skipping summaries generation.');
-  process.exit(0);
-}
+// The custom Kaggle Qwen 2.5 Server URL provided by the user
+const OLLAMA_URL = "https://theaters-vegetable-jesus-gba.trycloudflare.com/api/generate";
 
 const firebaseConfig = {
   apiKey: process.env.PUBLIC_FIREBASE_API_KEY,
@@ -23,9 +19,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
-const genAI = new GoogleGenerativeAI(apiKey);
-const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -82,7 +75,7 @@ async function processBatch(batch) {
     return {};
   }
 
-  console.log(`Sending 1 single request to Gemini for ${validData.length} websites...`);
+  console.log(`Sending 1 single request to Qwen 2.5 for ${validData.length} websites...`);
 
   const prompt = `
 You are an expert at extracting specific professional information.
@@ -110,17 +103,30 @@ ${JSON.stringify(validData)}
 `;
 
   try {
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    let jsonStr = response.text().trim();
+    const result = await fetch(OLLAMA_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: "qwen2.5:7b",
+        prompt: prompt,
+        stream: false
+      })
+    });
+
+    if (!result.ok) {
+      throw new Error(`Ollama API error! status: ${result.status}`);
+    }
+
+    const response = await result.json();
+    let jsonStr = response.response.trim();
     
-    if (jsonStr.startsWith('\`\`\`json')) jsonStr = jsonStr.substring(7);
-    if (jsonStr.startsWith('\`\`\`')) jsonStr = jsonStr.substring(3);
-    if (jsonStr.endsWith('\`\`\`')) jsonStr = jsonStr.substring(0, jsonStr.length - 3);
+    if (jsonStr.startsWith('```json')) jsonStr = jsonStr.substring(7);
+    if (jsonStr.startsWith('```')) jsonStr = jsonStr.substring(3);
+    if (jsonStr.endsWith('```')) jsonStr = jsonStr.substring(0, jsonStr.length - 3);
     
     return JSON.parse(jsonStr.trim());
   } catch (error) {
-    console.error('Gemini API Error during batch generation:', error.message);
+    console.error('Qwen 2.5 API Error during batch generation:', error.message);
     return null;
   }
 }
@@ -143,7 +149,7 @@ async function main() {
     itemsToProcess = itemsToProcess.slice(0, 40);
   }
 
-  const BATCH_SIZE = 20;
+  const BATCH_SIZE = 5; // Reduced from 20 to avoid OOM on Kaggle's T4 GPUs
   let successCount = 0;
 
   for (let i = 0; i < itemsToProcess.length; i += BATCH_SIZE) {
