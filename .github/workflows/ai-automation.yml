@@ -46,19 +46,13 @@ jobs:
       - name: Fetch and Update Portfolios Data
         run: node scripts/update-data.js
 
-      - name: Run AI Summary Generator
-        env:
-          # This pulls your API key from GitHub repository secrets
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: npm run generate-summaries
-
       - name: Commit and Push Updated Portfolios
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add src/data/portfolios.json
-          # Only commit if there are changes (prevents errors if no new summaries were generated)
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: auto-update AI summaries [skip ci]" && git pull --rebase && git push || echo "Push failed")
+          # Only commit if there are changes (prevents errors if no new portfolios were fetched)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: auto-update portfolio list [skip ci]" && git pull --rebase && git push || echo "Push failed")
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
