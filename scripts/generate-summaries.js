@@ -176,7 +176,14 @@ async function main() {
           portfolios[index].is_portfolio = data.is_portfolio !== false;
           portfolios[index].ai_processed = true;
           successCount++;
-          console.log(`[✓] Updated: ${portfolio.url}`);
+          
+          console.log(`\n[✓] Extracted data for: ${portfolio.url}`);
+          console.log(`    Name: ${portfolios[index].name}`);
+          console.log(`    Role: ${portfolios[index].role}`);
+          console.log(`    Location: ${portfolios[index].location}`);
+          console.log(`    Tech Stack: ${portfolios[index].tech_stack.join(', ')}`);
+          console.log(`    Score: ${portfolios[index].portfolio_score}/10 | SEO: ${portfolios[index].seo_evaluation}`);
+          console.log(`    Summary: ${portfolios[index].summary}`);
         }
       }
       
