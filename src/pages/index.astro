@@ -487,21 +487,20 @@ const portfolios = portfoliosData.map(p => ({
                 <div class="absolute top-4 left-4 z-20 flex flex-wrap gap-2 pointer-events-none">
                   ${hireHTML}
                 </div>
-                
-                <div class="absolute top-4 right-4 z-30 flex items-center gap-2">
-                  <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-xl border border-white/[0.1] text-white/70">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                    <span class="text-xs font-bold tracking-wide">${views}</span>
-                  </div>
-                  <button class="bookmark-btn flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/50 backdrop-blur-xl border border-white/[0.1] text-white/70 hover:text-rose-400 hover:bg-rose-500/15 hover:border-rose-500/40 hover:shadow-[0_0_20px_rgba(244,63,94,0.3)] transition-all duration-300 group/btn" data-url="${url}" aria-label="Bookmark and Like" onclick="event.preventDefault(); window.toggleBookmark(this, this.dataset.url)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="heart-icon transition-transform duration-300 group-hover/btn:scale-110 active:scale-90"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                    <span class="text-xs font-bold tracking-wide like-count">${base_likes}</span>
-                  </button>
-                </div>
+                <button class="bookmark-btn absolute top-4 right-4 z-30 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/50 backdrop-blur-xl border border-white/[0.1] text-white/70 hover:text-rose-400 hover:bg-rose-500/15 hover:border-rose-500/40 hover:shadow-[0_0_20px_rgba(244,63,94,0.3)] transition-all duration-300 group/btn" data-url="${url}" aria-label="Bookmark and Like" onclick="event.preventDefault(); window.toggleBookmark(this, this.dataset.url)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="heart-icon transition-transform duration-300 group-hover/btn:scale-110 active:scale-90"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                  <span class="text-xs font-bold tracking-wide like-count">${base_likes}</span>
+                </button>
               </div>
               <div class="relative z-10 p-6 flex flex-col flex-grow rounded-b-2xl bg-gradient-to-b from-[#0B0F19] to-[#06080D]">
                 <div class="flex items-center justify-between mb-2">
-                  <h3 class="text-[1.1rem] font-extrabold text-white/95 tracking-tight line-clamp-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-300 transition-all duration-300 pr-2">${name}</h3>
+                  <div class="flex items-center gap-2 overflow-hidden pr-2">
+                    <h3 class="text-[1.1rem] font-extrabold text-white/95 tracking-tight line-clamp-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-300 transition-all duration-300">${name}</h3>
+                    <div class="flex items-center gap-1 px-1.5 py-0.5 rounded bg-blue-500/10 border border-blue-500/20 text-blue-400 shrink-0" title="${views} views">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                      <span class="text-[10px] font-bold tracking-wider">${views}</span>
+                    </div>
+                  </div>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-white/0 group-hover:text-cyan-400 transition-all transform -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 duration-300 shrink-0"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                 </div>
                 ${summaryHTML}
