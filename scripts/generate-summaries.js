@@ -136,7 +136,8 @@ async function main() {
   const snapshot = await getDocs(collection(db, 'portfolios'));
   const portfolios = snapshot.docs.map(doc => doc.data());
 
-  let itemsToProcess = portfolios; // Process ALL websites, overriding existing ones if any
+  // Filter out portfolios that already have a summary so we can resume if stopped
+  let itemsToProcess = portfolios.filter(p => !p.summary || p.summary.trim() === ""); 
   console.log(`Found ${itemsToProcess.length} portfolios to process.`);
   
   if (itemsToProcess.length === 0) {
