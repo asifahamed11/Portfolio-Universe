@@ -447,9 +447,8 @@ const portfolios = portfoliosData.map(p => ({
       let roleHTML = '';
       if (role) {
         roleHTML = `
-          <div class="inline-flex items-center gap-1.5 px-2.5 py-1 mt-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 w-fit">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-400"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            <span class="text-[12px] font-medium text-indigo-200/90">
+          <div class="inline-flex items-center mt-1.5 px-3 py-1 rounded-lg bg-white/[0.02] border border-white/[0.05] shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] backdrop-blur-md transition-all duration-500 group-hover:bg-white/[0.04] group-hover:border-white/[0.1] w-fit">
+            <span class="text-[12px] font-medium text-gray-400/90 tracking-wide group-hover:text-gray-200 transition-colors duration-300">
               ${role}
             </span>
           </div>
