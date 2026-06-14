@@ -23,7 +23,7 @@ const screenshotUrl = screenshot || `https://api.microlink.io/?url=${encodeURICo
   <div class="absolute -inset-[1px] bg-gradient-to-r from-blue-500/0 via-blue-500/30 to-purple-500/0 rounded-[18px] opacity-0 group-hover:opacity-100 blur-md transition-all duration-700 ease-in-out group-hover:duration-300 pointer-events-none"></div>
   <div class="absolute -inset-[1px] bg-gradient-to-b from-blue-500/40 to-transparent rounded-[18px] opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:duration-300 pointer-events-none"></div>
 
-  <a href={url} target="_blank" rel="noopener noreferrer" class="relative flex flex-col bg-[#0B0F19] border border-white/[0.06] rounded-2xl h-full z-10 transition-transform duration-500 ease-out group-hover:-translate-y-1.5 [backface-visibility:hidden]">
+  <a href={url} target="_blank" rel="noopener noreferrer" class="relative flex flex-col bg-[#0B0F19] border border-white/[0.06] rounded-2xl h-full z-10 transition-transform duration-500 ease-out group-hover:-translate-y-1.5 [backface-visibility:hidden]" onclick={`if(window.incrementPortfolioView) window.incrementPortfolioView('${url}')`}>
     
     <!-- Image Section -->
     <div class="relative aspect-[16/10] w-full overflow-hidden rounded-t-2xl bg-black [transform:translateZ(0)]">

@@ -1,25 +1,30 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import dotenv from 'dotenv';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore';
 
 // Load environment variables
 dotenv.config();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const DATA_FILE = path.join(__dirname, '../src/data/portfolios.json');
-
-// Initialize Gemini API
 const apiKey = process.env.GEMINI_API_KEY;
 if (!apiKey) {
   console.warn('WARNING: Please set GEMINI_API_KEY in your .env file. Skipping summaries generation.');
   process.exit(0);
 }
 
+const firebaseConfig = {
+  apiKey: process.env.PUBLIC_FIREBASE_API_KEY,
+  authDomain: "portfolio-universe.firebaseapp.com",
+  projectId: "portfolio-universe",
+  storageBucket: "portfolio-universe.firebasestorage.app",
+  messagingSenderId: "893366203418",
+  appId: "1:893366203418:web:13b69c585c49a443268da3"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 const genAI = new GoogleGenerativeAI(apiKey);
-// Using gemini-2.5-flash as it has 1M token context, perfect for batching
 const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -40,13 +45,25 @@ async function fetchWebsiteContent(url) {
       throw new Error(`Jina Reader returned status ${response.status}`);
     }
     const text = await response.text();
-    // Trim to 5,000 chars per website to save tokens when batching
     return text.substring(0, 5000);
   } catch (error) {
     console.error(`Failed to fetch content for ${url}:`, error.message);
     return null;
   }
 }
+
+const urlToKey = (url) => {
+  try {
+    return btoa(encodeURIComponent(url)).replace(/\//g, '_').replace(/\+/g, '-').replace(/=/g, '');
+  } catch (e) {
+    let hash = 0;
+    for (let i = 0; i < url.length; i++) {
+      hash = ((hash << 5) - hash) + url.charCodeAt(i);
+      hash |= 0;
+    }
+    return `hash_${Math.abs(hash)}`;
+  }
+};
 
 async function processBatch(batch) {
   console.log(`\nFetching text content for ${batch.length} websites sequentially (to avoid Jina rate limits)...`);
@@ -55,11 +72,9 @@ async function processBatch(batch) {
   for (let i = 0; i < batch.length; i++) {
     const text = await fetchWebsiteContent(batch[i].url);
     websitesData.push({ url: batch[i].url, text: text || "" });
-    // Add a 1.5s delay between fetches to respect Jina AI free rate limits
     if (i < batch.length - 1) await delay(1500);
   }
   
-  // Filter out empty ones to save tokens
   const validData = websitesData.filter(d => d.text.trim().length > 50);
   
   if (validData.length === 0) {
@@ -99,7 +114,6 @@ ${JSON.stringify(validData)}
     const response = await result.response;
     let jsonStr = response.text().trim();
     
-    // Clean up if the model accidentally wrapped in markdown
     if (jsonStr.startsWith('\`\`\`json')) jsonStr = jsonStr.substring(7);
     if (jsonStr.startsWith('\`\`\`')) jsonStr = jsonStr.substring(3);
     if (jsonStr.endsWith('\`\`\`')) jsonStr = jsonStr.substring(0, jsonStr.length - 3);
@@ -112,31 +126,24 @@ ${JSON.stringify(validData)}
 }
 
 async function main() {
-  console.log('Loading portfolio data...');
-  let portfolios = [];
-  try {
-    const data = fs.readFileSync(DATA_FILE, 'utf-8');
-    portfolios = JSON.parse(data);
-  } catch (err) {
-    console.error('Error reading portfolios.json:', err);
-    process.exit(1);
-  }
+  console.log('Fetching portfolio data from Firestore...');
+  const snapshot = await getDocs(collection(db, 'portfolios'));
+  const portfolios = snapshot.docs.map(doc => doc.data());
 
   let itemsToProcess = portfolios.filter(p => !p.summary);
   console.log(`Found ${itemsToProcess.length} portfolios that need summaries.`);
   
   if (itemsToProcess.length === 0) {
     console.log("All portfolios already have summaries!");
-    return;
+    process.exit(0);
   }
 
-  // Limit to 40 items per run to avoid GitHub Actions timeout and Gemini rate limits
   if (itemsToProcess.length > 40) {
     console.log(`Limiting to 40 items for this run. The rest will be processed in future runs.`);
     itemsToProcess = itemsToProcess.slice(0, 40);
   }
 
-  const BATCH_SIZE = 20; // Process 20 at a time to keep Gemini context fast and Jina safe
+  const BATCH_SIZE = 20;
   let successCount = 0;
 
   for (let i = 0; i < itemsToProcess.length; i += BATCH_SIZE) {
@@ -146,28 +153,32 @@ async function main() {
     const resultsMap = await processBatch(batch);
     
     if (resultsMap) {
-      // Apply results to portfolios
       for (const portfolio of batch) {
+        const key = urlToKey(portfolio.url);
+        let updateData = {
+          summary: "",
+          role: "",
+          tech_stack: [],
+          available_for_hire: false
+        };
+
         if (resultsMap[portfolio.url]) {
           const data = resultsMap[portfolio.url];
-          portfolio.summary = data.summary || "";
-          portfolio.role = data.role || "";
-          portfolio.tech_stack = data.tech_stack || [];
-          portfolio.available_for_hire = data.available_for_hire || false;
-          
+          updateData.summary = data.summary || "";
+          updateData.role = data.role || "";
+          updateData.tech_stack = data.tech_stack || [];
+          updateData.available_for_hire = data.available_for_hire || false;
           successCount++;
-        } else {
-          // Fallback if model missed it
-          portfolio.summary = "";
-          portfolio.role = "";
-          portfolio.tech_stack = [];
-          portfolio.available_for_hire = false;
+        }
+        
+        try {
+          await setDoc(doc(db, 'portfolios', key), updateData, { merge: true });
+        } catch (e) {
+          console.error(`Failed to save summary for ${portfolio.url}: ${e.message}`);
         }
       }
       
-      // Save after each batch
-      fs.writeFileSync(DATA_FILE, JSON.stringify(portfolios, null, 2));
-      console.log(`Saved batch results. Total success: ${successCount}`);
+      console.log(`Saved batch results to Firestore. Total success: ${successCount}`);
     } else {
       console.log("Batch failed. Moving to next after delay.");
     }
@@ -178,7 +189,8 @@ async function main() {
     }
   }
 
-  console.log(`\nFinished! Successfully generated summaries for ${successCount} items using batching.`);
+  console.log(`\nFinished! Successfully generated and saved summaries for ${successCount} items.`);
+  process.exit(0);
 }
 
 main();

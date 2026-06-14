@@ -71,6 +71,19 @@ export const toggleLikeInFirestore = async (uid, url, isLiking, currentBookmarks
   }
 };
 
+// Increment the view count for a specific portfolio
+export const incrementPortfolioView = async (url) => {
+  try {
+    const key = urlToKey(url);
+    const portfolioRef = doc(db, 'portfolios', key);
+    await updateDoc(portfolioRef, {
+      views: increment(1)
+    });
+  } catch (error) {
+    console.error("Failed to increment views:", error);
+  }
+};
+
 // Submit a new portfolio for review
 export const submitPortfolio = async (uid, name, url) => {
   try {

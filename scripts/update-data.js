@@ -1,8 +1,37 @@
 import fs from 'fs/promises';
 import path from 'path';
+import dotenv from 'dotenv';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, doc, setDoc } from 'firebase/firestore';
+
+dotenv.config();
 
 const README_URL = 'https://raw.githubusercontent.com/emmabostian/developer-portfolios/master/README.md';
-const OUTPUT_FILE = path.join(process.cwd(), 'src', 'data', 'portfolios.json');
+
+const firebaseConfig = {
+  apiKey: process.env.PUBLIC_FIREBASE_API_KEY,
+  authDomain: "portfolio-universe.firebaseapp.com",
+  projectId: "portfolio-universe",
+  storageBucket: "portfolio-universe.firebasestorage.app",
+  messagingSenderId: "893366203418",
+  appId: "1:893366203418:web:13b69c585c49a443268da3"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const urlToKey = (url) => {
+  try {
+    return btoa(encodeURIComponent(url)).replace(/\//g, '_').replace(/\+/g, '-').replace(/=/g, '');
+  } catch (e) {
+    let hash = 0;
+    for (let i = 0; i < url.length; i++) {
+      hash = ((hash << 5) - hash) + url.charCodeAt(i);
+      hash |= 0;
+    }
+    return `hash_${Math.abs(hash)}`;
+  }
+};
 
 async function fetchReadme() {
   const response = await fetch(README_URL);
@@ -15,7 +44,6 @@ async function fetchReadme() {
 function parseMarkdownList(markdown) {
   const lines = markdown.split('\n');
   const portfolios = [];
-
   const linkRegex = /^\s*-\s+\[([^\]]+)\]\((https?:\/\/[^)]+)\)/;
 
   for (const line of lines) {
@@ -23,14 +51,10 @@ function parseMarkdownList(markdown) {
     if (match) {
       const nameRaw = match[1].trim();
       const url = match[2].trim();
-      
-      // Clean markdown characters from name if any
       const name = nameRaw.replace(/[*_~`]/g, '');
-      
       portfolios.push({ name, url });
     }
   }
-
   return portfolios;
 }
 
@@ -51,16 +75,6 @@ async function run() {
     console.log('Parsing markdown...');
     const extractedData = parseMarkdownList(markdown);
     
-    console.log(`Found ${extractedData.length} potential portfolios.`);
-
-    // To prevent the build taking forever with thousands of microlink requests,
-    // we'll slice it to a reasonable number for the demo or just build them all.
-    // The user requested a "complete, production-ready" site.
-    // Microlink API might rate limit if we send 1700+ concurrent requests.
-    // However, the screenshot URL is just a string we construct. The browser fetches it later!
-    // "generate a screenshot URL for each portfolio using the Microlink API. Format: https://api.microlink.io/?url={URL}&screenshot=true&meta=false"
-    // So we don't need to actually fetch from microlink during build! We just construct the URL.
-
     const cleanedData = extractedData
       .filter(item => isValidUrl(item.url))
       .map(item => ({
@@ -72,42 +86,29 @@ async function run() {
     const uniqueMap = new Map();
     cleanedData.forEach(item => uniqueMap.set(item.url, item));
 
-    // Preserve existing data fields
-    let existingData = [];
-    try {
-      const existingFileContent = await fs.readFile(OUTPUT_FILE, 'utf-8');
-      existingData = JSON.parse(existingFileContent);
-    } catch (e) {
-      // Ignore if file doesn't exist
-    }
+    const finalData = Array.from(uniqueMap.values());
+    console.log(`Found ${finalData.length} valid portfolios from GitHub.`);
 
-    const existingMap = new Map();
-    existingData.forEach(item => existingMap.set(item.url, item));
+    const portfoliosRef = collection(db, 'portfolios');
+    let successCount = 0;
 
-    const finalData = Array.from(uniqueMap.values()).map(newItem => {
-      const oldItem = existingMap.get(newItem.url);
-      if (oldItem) {
-        return { ...oldItem, ...newItem };
+    for (const p of finalData) {
+      const key = urlToKey(p.url);
+      try {
+        await setDoc(doc(portfoliosRef, key), {
+          name: p.name,
+          url: p.url,
+          screenshot: p.screenshot
+        }, { merge: true });
+        successCount++;
+        process.stdout.write(`\rUpserted ${successCount}/${finalData.length}...`);
+      } catch (e) {
+        console.error(`\nFailed to sync ${p.url}:`, e.message);
       }
-      return newItem;
-    });
-
-    if (finalData.length === 0) {
-      console.error('ERROR: Extracted data is empty. Aborting to prevent wiping out portfolios.json.');
-      process.exit(1);
     }
     
-    if (existingData.length > 0 && finalData.length < existingData.length * 0.5) {
-      console.error(`ERROR: Extracted data (${finalData.length}) is less than 50% of existing data (${existingData.length}). Aborting to prevent accidental data loss.`);
-      process.exit(1);
-    }
-
-    console.log(`Filtered down to ${finalData.length} valid portfolios.`);
-
-    await fs.mkdir(path.dirname(OUTPUT_FILE), { recursive: true });
-    await fs.writeFile(OUTPUT_FILE, JSON.stringify(finalData, null, 2), 'utf-8');
-    
-    console.log(`Successfully saved data to ${OUTPUT_FILE}`);
+    console.log(`\nSuccessfully synced ${successCount} portfolios to Firestore.`);
+    process.exit(0);
   } catch (error) {
     console.error('Error during data update:', error);
     process.exit(1);
