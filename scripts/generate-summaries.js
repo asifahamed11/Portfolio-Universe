@@ -93,7 +93,8 @@ Return your answer strictly as a RAW JSON Object where the keys are the "url" st
     "summary": "10-15 word summary",
     "role": "General role category (e.g. Frontend Developer, Backend Developer, Full Stack, UI/UX Designer, Data Scientist, etc.)",
     "tech_stack": ["React", "Node.js", "Python"], // Array of up to 5 main technologies
-    "available_for_hire": true // true if they mention being available for freelance or hire
+    "available_for_hire": true, // true if they mention being available for freelance or hire
+    "is_portfolio": true // Set to true ONLY if the website is clearly a personal portfolio, resume, or developer showcase. Set to false if it's a company website, blog post, generic tool, generic product landing page, or anything else.
   }
 }
 Do NOT wrap the JSON in markdown code blocks (\`\`\`json). Just return the raw JSON object.
@@ -162,16 +163,21 @@ async function main() {
           summary: "",
           role: "",
           tech_stack: [],
-          available_for_hire: false
+          available_for_hire: false,
+          is_portfolio: true,
+          ai_processed: true,
+          updatedAt: Date.now()
         };
 
         if (resultsMap[portfolio.url]) {
           const data = resultsMap[portfolio.url];
           updateData.summary = data.summary || "";
           updateData.role = data.role || "";
-          updateData.tech_stack = data.tech_stack || [];
-          updateData.available_for_hire = data.available_for_hire || false;
+          updateData.tech_stack = Array.isArray(data.tech_stack) ? data.tech_stack.slice(0, 5) : [];
+          updateData.available_for_hire = !!data.available_for_hire;
+          updateData.is_portfolio = data.is_portfolio !== false;
           successCount++;
+          console.log(`[✓] Updated: ${portfolio.url}`);
         }
         
         try {

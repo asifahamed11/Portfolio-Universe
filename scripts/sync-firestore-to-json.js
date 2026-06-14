@@ -37,13 +37,17 @@ async function sync() {
 
     console.log(`Successfully fetched ${portfolios.length} portfolios from database.`);
 
+    // Filter out websites that the AI determined are not portfolios
+    const validPortfolios = portfolios.filter(p => p.is_portfolio !== false);
+    console.log(`Filtered out ${portfolios.length - validPortfolios.length} non-portfolio websites.`);
+
     // Sort by views if available
-    portfolios.sort((a, b) => (b.views || 0) - (a.views || 0));
+    validPortfolios.sort((a, b) => (b.views || 0) - (a.views || 0));
 
     // Save to local JSON file
-    fs.writeFileSync(DATA_FILE, JSON.stringify(portfolios, null, 2), 'utf-8');
+    fs.writeFileSync(DATA_FILE, JSON.stringify(validPortfolios, null, 2), 'utf-8');
     
-    console.log(`Successfully saved ${portfolios.length} portfolios to src/data/portfolios.json.`);
+    console.log(`Successfully saved ${validPortfolios.length} portfolios to src/data/portfolios.json.`);
     process.exit(0);
   } catch (error) {
     console.error('Failed to sync Firestore data to JSON:', error);
