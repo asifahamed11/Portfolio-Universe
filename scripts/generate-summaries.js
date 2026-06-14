@@ -158,7 +158,7 @@ async function main() {
   }
 
 
-  const BATCH_SIZE = 3; // Process 3 websites at once in a single prompt for faster generation
+  const BATCH_SIZE = 1; // Process one by one sequentially to prevent Ollama Out of Memory crashes
   let successCount = 0;
 
   for (let i = 0; i < itemsToProcess.length; i += BATCH_SIZE) {
