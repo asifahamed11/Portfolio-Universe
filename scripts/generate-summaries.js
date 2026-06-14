@@ -136,18 +136,14 @@ async function main() {
   const snapshot = await getDocs(collection(db, 'portfolios'));
   const portfolios = snapshot.docs.map(doc => doc.data());
 
-  let itemsToProcess = portfolios.filter(p => !p.summary);
-  console.log(`Found ${itemsToProcess.length} portfolios that need summaries.`);
+  let itemsToProcess = portfolios; // Process ALL websites, overriding existing ones if any
+  console.log(`Found ${itemsToProcess.length} portfolios to process.`);
   
   if (itemsToProcess.length === 0) {
-    console.log("All portfolios already have summaries!");
+    console.log("No portfolios found!");
     process.exit(0);
   }
 
-  if (itemsToProcess.length > 40) {
-    console.log(`Limiting to 40 items for this run. The rest will be processed in future runs.`);
-    itemsToProcess = itemsToProcess.slice(0, 40);
-  }
 
   const BATCH_SIZE = 1; // Process one by one sequentially as requested
   let successCount = 0;
