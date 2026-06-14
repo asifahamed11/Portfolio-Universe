@@ -149,7 +149,7 @@ async function main() {
     itemsToProcess = itemsToProcess.slice(0, 40);
   }
 
-  const BATCH_SIZE = 5; // Reduced from 20 to avoid OOM on Kaggle's T4 GPUs
+  const BATCH_SIZE = 1; // Process one by one sequentially as requested
   let successCount = 0;
 
   for (let i = 0; i < itemsToProcess.length; i += BATCH_SIZE) {
