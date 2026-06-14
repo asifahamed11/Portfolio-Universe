@@ -2,17 +2,8 @@
 import PortfolioCard from '../components/PortfolioCard.astro';
 import LoginModal from '../components/LoginModal.astro';
 import SubmitModal from '../components/SubmitModal.astro';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../lib/firebase.js';
+import portfoliosData from '../data/portfolios.json';
 import '../styles/global.css';
-
-// Fetch portfolios from Firestore
-const snapshot = await getDocs(collection(db, 'portfolios'));
-let portfoliosData = snapshot.docs.map(doc => doc.data());
-
-// Sort initially by views (if available) or randomly to avoid staticness, 
-// then client-side JS will sort by likes.
-portfoliosData.sort((a, b) => (b.views || 0) - (a.views || 0));
 
 // Map portfolios to include baseLikes (real likes start at 0)
 const portfolios = portfoliosData.map(p => ({
@@ -189,9 +180,6 @@ const portfolios = portfoliosData.map(p => ({
     <LoginModal />
     <SubmitModal />
 
-    <script type="application/json" id="portfolioDataScript">
-      {JSON.stringify(portfolios)}
-    </script>
   </body>
 </html>
 
@@ -217,10 +205,11 @@ const portfolios = portfoliosData.map(p => ({
   import { auth } from '../lib/firebase.js';
   import { onAuthStateChanged, signOut } from 'firebase/auth';
   import { fetchGlobalLikes, fetchUserBookmarks, urlToKey, toggleLikeInFirestore, incrementPortfolioView } from '../lib/dbUtils.js';
+  import portfoliosData from '../data/portfolios.json';
 
   document.addEventListener('DOMContentLoaded', async () => {
-    // Pass portfoliosData from server to client safely
-    const portfoliosData = JSON.parse(document.getElementById('portfolioDataScript').textContent);
+    // Pass portfoliosData to client seamlessly from Astro build
+    // (Already imported natively above, no script tag needed)
 
     // Expose for inline scripts
     window.toggleLikeInFirestore = toggleLikeInFirestore;
