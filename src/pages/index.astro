@@ -478,7 +478,20 @@ const portfolios = portfoliosData.map(p => ({
             <div class="absolute -inset-[1px] bg-gradient-to-b from-blue-500/40 to-transparent rounded-[18px] opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:duration-300 pointer-events-none"></div>
             
             <a href="${url}" target="_blank" rel="noopener noreferrer" class="relative flex flex-col bg-[#0B0F19] border border-white/[0.06] rounded-2xl h-full z-10 transition-transform duration-500 ease-out group-hover:-translate-y-1.5 [backface-visibility:hidden]" onclick="if(window.incrementPortfolioView) window.incrementPortfolioView('${url}')">
-              <div class="relative aspect-[16/10] w-full overflow-hidden rounded-t-2xl bg-black [transform:translateZ(0)]">
+              
+              <!-- Top Stats Bar (Above Preview) -->
+              <div class="flex items-center justify-between px-4 py-2.5 border-b border-white/[0.04] bg-white/[0.02] rounded-t-2xl">
+                <div class="flex items-center gap-1.5 text-gray-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <span class="text-xs font-bold tracking-wide">${views}</span>
+                </div>
+                <button class="bookmark-btn flex items-center gap-1.5 text-gray-500 hover:text-rose-400 transition-colors duration-300 group/btn" data-url="${url}" aria-label="Bookmark and Like" onclick="event.preventDefault(); window.toggleBookmark(this, this.dataset.url)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="heart-icon transition-transform duration-300 group-hover/btn:scale-110 active:scale-90"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                  <span class="text-xs font-bold tracking-wide like-count">${base_likes}</span>
+                </button>
+              </div>
+
+              <div class="relative aspect-[16/10] w-full overflow-hidden bg-black [transform:translateZ(0)]">
                 <img src="${screenshot}" alt="Screenshot of ${name}'s portfolio" loading="lazy" class="w-full h-full object-cover object-top opacity-75 grayscale-[30%] group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-[1.04] transition-all duration-700 ease-out transform-gpu will-change-transform [backface-visibility:hidden]" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600&auto=format&fit=crop';" />
                 <div class="absolute inset-0 z-20 w-[150%] -translate-x-[150%] skew-x-[-25deg] bg-gradient-to-r from-transparent via-white/[0.12] to-transparent group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out pointer-events-none"></div>
                 <div class="absolute inset-0 z-10 pointer-events-none ring-1 ring-inset ring-white/[0.08] rounded-t-2xl"></div>
@@ -486,17 +499,6 @@ const portfolios = portfoliosData.map(p => ({
                 <div class="absolute inset-0 z-10 bg-gradient-to-t from-[#0B0F19] via-[#0B0F19]/40 to-transparent opacity-95 pointer-events-none"></div>
                 <div class="absolute top-4 left-4 z-20 flex flex-wrap gap-2 pointer-events-none">
                   ${hireHTML}
-                </div>
-                
-                <div class="absolute top-4 right-4 z-30 flex items-center gap-2">
-                  <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-xl border border-white/[0.1] text-white/70">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                    <span class="text-xs font-bold tracking-wide">${views}</span>
-                  </div>
-                  <button class="bookmark-btn flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/50 backdrop-blur-xl border border-white/[0.1] text-white/70 hover:text-rose-400 hover:bg-rose-500/15 hover:border-rose-500/40 hover:shadow-[0_0_20px_rgba(244,63,94,0.3)] transition-all duration-300 group/btn" data-url="${url}" aria-label="Bookmark and Like" onclick="event.preventDefault(); window.toggleBookmark(this, this.dataset.url)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="heart-icon transition-transform duration-300 group-hover/btn:scale-110 active:scale-90"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                    <span class="text-xs font-bold tracking-wide like-count">${base_likes}</span>
-                  </button>
                 </div>
               </div>
               <div class="relative z-10 p-6 flex flex-col flex-grow rounded-b-2xl bg-gradient-to-b from-[#0B0F19] to-[#06080D]">
