@@ -94,8 +94,9 @@ const screenshotUrl = screenshot || `https://api.microlink.io/?url=${encodeURICo
       </div>
 
       {role && (
-        <div class="relative mt-0.5">
-          <p class="text-[13px] font-semibold text-blue-400/90 tracking-wide uppercase transition-colors duration-300">
+        <div class="flex items-center gap-2 mt-0.5 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+          <div class="w-1 h-1 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]"></div>
+          <p class="text-[11px] font-bold text-cyan-100/60 tracking-widest uppercase">
             {role}
           </p>
         </div>
