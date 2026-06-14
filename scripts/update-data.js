@@ -1,37 +1,8 @@
 import fs from 'fs/promises';
 import path from 'path';
-import dotenv from 'dotenv';
-import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, doc, setDoc } from 'firebase/firestore';
-
-dotenv.config();
 
 const README_URL = 'https://raw.githubusercontent.com/emmabostian/developer-portfolios/master/README.md';
-
-const firebaseConfig = {
-  apiKey: process.env.PUBLIC_FIREBASE_API_KEY,
-  authDomain: "portfolio-universe.firebaseapp.com",
-  projectId: "portfolio-universe",
-  storageBucket: "portfolio-universe.firebasestorage.app",
-  messagingSenderId: "893366203418",
-  appId: "1:893366203418:web:13b69c585c49a443268da3"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-const urlToKey = (url) => {
-  try {
-    return btoa(encodeURIComponent(url)).replace(/\//g, '_').replace(/\+/g, '-').replace(/=/g, '');
-  } catch (e) {
-    let hash = 0;
-    for (let i = 0; i < url.length; i++) {
-      hash = ((hash << 5) - hash) + url.charCodeAt(i);
-      hash |= 0;
-    }
-    return `hash_${Math.abs(hash)}`;
-  }
-};
+const DATA_FILE = path.join(process.cwd(), 'src', 'data', 'portfolios.json');
 
 async function fetchReadme() {
   const response = await fetch(README_URL);
@@ -83,31 +54,46 @@ async function run() {
         screenshot: `https://s0.wp.com/mshots/v1/${encodeURIComponent(item.url)}?w=600`
       }));
 
-    const uniqueMap = new Map();
-    cleanedData.forEach(item => uniqueMap.set(item.url, item));
+    // Read existing portfolios.json
+    let existingPortfolios = [];
+    try {
+      const fileData = await fs.readFile(DATA_FILE, 'utf-8');
+      existingPortfolios = JSON.parse(fileData);
+    } catch (e) {
+      console.log('No existing portfolios.json found, creating new one.');
+    }
 
-    const finalData = Array.from(uniqueMap.values());
-    console.log(`Found ${finalData.length} valid portfolios from GitHub.`);
+    // Create a map of existing URLs for fast lookup
+    const existingMap = new Map();
+    existingPortfolios.forEach(p => existingMap.set(p.url, p));
 
-    const portfoliosRef = collection(db, 'portfolios');
-    let successCount = 0;
+    let newCount = 0;
 
-    for (const p of finalData) {
-      const key = urlToKey(p.url);
-      try {
-        await setDoc(doc(portfoliosRef, key), {
-          name: p.name,
-          url: p.url,
-          screenshot: p.screenshot
-        }, { merge: true });
-        successCount++;
-        process.stdout.write(`\rUpserted ${successCount}/${finalData.length}...`);
-      } catch (e) {
-        console.error(`\nFailed to sync ${p.url}:`, e.message);
+    // Merge new portfolios
+    for (const item of cleanedData) {
+      if (!existingMap.has(item.url)) {
+        // Add completely new portfolio
+        existingPortfolios.push({
+          url: item.url,
+          name: item.name,
+          role: "",
+          specialization: "",
+          summary: "",
+          tech_stack: [],
+          available_for_hire: false,
+          primary_language: "",
+          views: 0,
+          has_blog: false,
+          screenshot: item.screenshot
+        });
+        newCount++;
       }
     }
+
+    // Save back to JSON
+    await fs.writeFile(DATA_FILE, JSON.stringify(existingPortfolios, null, 2), 'utf-8');
     
-    console.log(`\nSuccessfully synced ${successCount} portfolios to Firestore.`);
+    console.log(`\nSuccessfully synced data. Found ${newCount} new portfolios. Total is now ${existingPortfolios.length}.`);
     process.exit(0);
   } catch (error) {
     console.error('Error during data update:', error);
