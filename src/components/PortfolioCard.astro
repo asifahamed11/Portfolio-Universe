@@ -87,9 +87,12 @@ const screenshotUrl = screenshot || `https://api.microlink.io/?url=${encodeURICo
       </div>
 
       {role && (
-        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 mt-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 w-fit">
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-400"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          <span class="text-[12px] font-medium text-indigo-200/90">
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 mt-1 rounded-md bg-white/[0.03] border border-white/[0.05] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm w-fit group-hover:bg-white/[0.06] group-hover:border-white/[0.1] transition-all duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400 drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span class="text-[12px] font-medium text-gray-300 group-hover:text-white transition-colors duration-300">
             {role}
           </span>
         </div>
