@@ -66,35 +66,47 @@ async function processBatch(batch) {
 
   console.log(`Sending 1 single request to Qwen 2.5 for ${validData.length} websites...`);
 
-  const prompt = `
-You are an expert at extracting specific professional information.
-I will give you a JSON array containing website contents for multiple portfolios.
-For EACH portfolio, extract the following information.
+  const prompt = `You are a data-extraction engine for a developer-portfolio aggregator.
+Input: JSON array of {url, content} objects — content is scraped text/HTML per site.
+For EACH entry, extract fields per schema below. Return ONE raw JSON object.
 
-CRITICAL RULES FOR SUMMARY:
-1. Provide a comprehensive 30-50 word professional summary detailing their background, core expertise, and experience.
+OUTPUT RULES — follow exactly:
+- Keys = exact "url" strings from input, same order, one entry per url. No url skipped, none added.
+- Raw JSON only. No markdown fences, no preamble, no closing remarks. Response starts with { and ends with }.
+- Every field present on every entry. Never null, never omit a key.
+- Never invent facts not present in content.
+- If site content is non-English, write summary/role/projects in English; keep proper nouns (name, location, tech names) as-is.
 
-Return your answer strictly as a RAW JSON Object where the keys are the "url" strings provided, and the values are objects containing the extracted data:
+SCHEMA (per url):
 {
-  "https://example.com": {
-    "name": "Extracted owner name",
-    "location": "Extracted location (or empty string if not found)",
-    "summary": "30-50 word professional summary",
-    "role": "General role category (e.g. Frontend Developer, Backend Developer, Full Stack, UI/UX Designer, Data Scientist, etc.)",
-    "tech_stack": ["React", "Node.js", "Python"], // Array of main technologies
-    "projects": ["Brief description of project 1", "Brief description of project 2"], // Array of key projects
-    "social_links": ["github.com/...", "linkedin.com/..."], // Array of contact or social links
-    "seo_evaluation": "Good/Average/Needs Improvement", // Evaluate based on title and keywords
-    "portfolio_score": 8, // Rate the overall presentation from 1-10
-    "available_for_hire": true, // true if they mention being available for freelance or hire
-    "is_portfolio": true // Set to true ONLY if the website is clearly a personal portfolio, resume, or developer showcase. Set to false if it's a company website, blog post, generic tool, generic product landing page, or anything else.
-  }
+  "is_portfolio": boolean,
+  "name": string,
+  "location": string,
+  "summary": string,
+  "role": string,
+  "tech_stack": string[],
+  "projects": string[],
+  "social_links": string[],
+  "seo_evaluation": "Good" | "Average" | "Needs Improvement",
+  "portfolio_score": integer 1-10,
+  "available_for_hire": boolean
 }
-Do NOT wrap the JSON in markdown code blocks (\`\`\`json). Just return the raw JSON object.
+
+FIELD RULES:
+- is_portfolio: true ONLY for an individual's personal portfolio, resume, or dev/design showcase. false for: company sites, blogs, SaaS landing pages, docs, generic tools, agency/team pages listing multiple people, or unedited template boilerplate. If false -> output empty values for strings, empty arrays, etc.
+- name: full name as displayed. "" if none.
+- location: "City, Country" if both known. "Remote" only if explicitly stated. else "".
+- summary: 30-50 words, third person. Cover domain + years of experience, core stack, one standout strength/achievement.
+- role: pick exactly ONE — Frontend Developer | Backend Developer | Full Stack Developer | Mobile Developer | ML/AI Engineer | Data Scientist | DevOps/Cloud Engineer | UI/UX Designer | Game Developer | Other.
+- tech_stack: canonical names only. Dedupe. Order by prominence in content. Max 8.
+- projects: max 5, most significant/recent first. Each: "<what it does> — <key tech>", <=20 words, no marketing language.
+- social_links: full https:// URLs (add scheme if missing). Dedupe.
+- seo_evaluation: "Good" = descriptive title incl. name+role. "Average" = title present but generic. "Needs Improvement" = default/template title.
+- portfolio_score (1-10 integer): content completeness/clarity only. 1-3 = empty. 4-6 = basic. 7-8 = solid. 9-10 = exceptional.
+- available_for_hire: true ONLY on explicit signal — "available for hire/freelance", "open to opportunities", a hire-me CTA.
 
 Data:
-${JSON.stringify(validData)}
-`;
+${JSON.stringify(validData)}`;
 
   try {
       const result = await fetch('http://127.0.0.1:11434/api/generate', {
