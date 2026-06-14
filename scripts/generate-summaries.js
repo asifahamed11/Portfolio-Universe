@@ -5,8 +5,8 @@ import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firesto
 // Load environment variables
 dotenv.config();
 
-// The custom Kaggle Qwen 2.5 Server URL provided by the user
-const OLLAMA_URL = "https://theaters-vegetable-jesus-gba.trycloudflare.com/api/generate";
+// The custom Kaggle Qwen 2.5 Server URL (localhost since we run Node in Kaggle now)
+const OLLAMA_URL = "http://localhost:11434/api/generate";
 
 const firebaseConfig = {
   apiKey: process.env.PUBLIC_FIREBASE_API_KEY,
