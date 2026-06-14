@@ -1,24 +1,13 @@
-import dotenv from 'dotenv';
-import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-// Load environment variables
-dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const DATA_FILE = path.join(__dirname, '../src/data/portfolios.json');
 
 // The custom Kaggle Qwen 2.5 Server URL (localhost since we run Node in Kaggle now)
 const OLLAMA_URL = "http://localhost:11434/api/generate";
-
-const firebaseConfig = {
-  apiKey: process.env.PUBLIC_FIREBASE_API_KEY,
-  authDomain: "portfolio-universe.firebaseapp.com",
-  projectId: "portfolio-universe",
-  storageBucket: "portfolio-universe.firebasestorage.app",
-  messagingSenderId: "893366203418",
-  appId: "1:893366203418:web:13b69c585c49a443268da3"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -133,9 +122,15 @@ ${JSON.stringify(validData)}
 }
 
 async function main() {
-  console.log('Fetching portfolio data from Firestore...');
-  const snapshot = await getDocs(collection(db, 'portfolios'));
-  const portfolios = snapshot.docs.map(doc => doc.data());
+  console.log('Loading portfolios from local JSON file...');
+  
+  if (!fs.existsSync(DATA_FILE)) {
+    console.error(`ERROR: Data file not found at ${DATA_FILE}`);
+    process.exit(1);
+  }
+  
+  const fileData = fs.readFileSync(DATA_FILE, 'utf-8');
+  const portfolios = JSON.parse(fileData);
 
   // Filter out portfolios that already have a summary so we can resume if stopped
   let itemsToProcess = portfolios.filter(p => !p.summary || p.summary.trim() === ""); 
@@ -158,36 +153,30 @@ async function main() {
     
     if (resultsMap) {
       for (const portfolio of batch) {
-        const key = urlToKey(portfolio.url);
-        let updateData = {
-          summary: "",
-          role: "",
-          tech_stack: [],
-          available_for_hire: false,
-          is_portfolio: true,
-          ai_processed: true,
-          updatedAt: Date.now()
-        };
+        // Find the index of this portfolio in the main array
+        const index = portfolios.findIndex(p => p.url === portfolio.url);
+        if (index === -1) continue;
 
         if (resultsMap[portfolio.url]) {
           const data = resultsMap[portfolio.url];
-          updateData.summary = data.summary || "";
-          updateData.role = data.role || "";
-          updateData.tech_stack = Array.isArray(data.tech_stack) ? data.tech_stack.slice(0, 5) : [];
-          updateData.available_for_hire = !!data.available_for_hire;
-          updateData.is_portfolio = data.is_portfolio !== false;
+          portfolios[index].summary = data.summary || "";
+          portfolios[index].role = data.role || "";
+          portfolios[index].tech_stack = Array.isArray(data.tech_stack) ? data.tech_stack.slice(0, 5) : [];
+          portfolios[index].available_for_hire = !!data.available_for_hire;
+          portfolios[index].is_portfolio = data.is_portfolio !== false;
+          portfolios[index].ai_processed = true;
           successCount++;
           console.log(`[✓] Updated: ${portfolio.url}`);
         }
-        
-        try {
-          await setDoc(doc(db, 'portfolios', key), updateData, { merge: true });
-        } catch (e) {
-          console.error(`Failed to save summary for ${portfolio.url}: ${e.message}`);
-        }
       }
       
-      console.log(`Saved batch results to Firestore. Total success: ${successCount}`);
+      // Save the updated array back to portfolios.json after every batch
+      try {
+        fs.writeFileSync(DATA_FILE, JSON.stringify(portfolios, null, 2), 'utf-8');
+        console.log(`Saved batch results to ${DATA_FILE}. Total success: ${successCount}`);
+      } catch (e) {
+        console.error(`Failed to save to JSON file: ${e.message}`);
+      }
     } else {
       console.log("Batch failed. Moving to next after delay.");
     }
