@@ -46,6 +46,9 @@ jobs:
       - name: Fetch and Update Portfolios Data
         run: node scripts/update-data.js
 
+      - name: Generate AI Summaries
+        run: node scripts/generate-summaries.js
+
       - name: Migrate New Portfolios to Firestore
         env:
           PUBLIC_FIREBASE_API_KEY: ${{ secrets.PUBLIC_FIREBASE_API_KEY }}

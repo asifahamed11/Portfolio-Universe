@@ -40,10 +40,9 @@ const urlToKey = (url) => {
   } catch (e) {
     let hash = 0;
     for (let i = 0; i < url.length; i++) {
-      hash = ((hash << 5) - hash) + url.charCodeAt(i);
-      hash |= 0;
+      hash = Math.imul(31, hash) + url.charCodeAt(i) | 0;
     }
-    return `hash_${Math.abs(hash)}`;
+    return `hash_${hash >>> 0}`;
   }
 };
 

@@ -404,7 +404,7 @@ const portfolios = portfoliosData.map(p => ({
       const screenshot = portfolio.screenshot || `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`;
       const summary = portfolio.summary || '';
       const role = portfolio.role || '';
-      const tech_stack = portfolio.tech_stack || [];
+      const tech_stack = Array.isArray(portfolio.tech_stack) ? portfolio.tech_stack : [];
       const available_for_hire = portfolio.available_for_hire || false;
       const base_likes = portfolio.baseLikes || 0;
       const views = portfolio.views || 0;
@@ -545,12 +545,11 @@ const portfolios = portfoliosData.map(p => ({
           newElements.push(w);
         }
         
-        if (gridContainer.children[i] !== w) {
-          if (gridContainer.children[i]) {
-            gridContainer.insertBefore(w, gridContainer.children[i]);
-          } else {
-            gridContainer.appendChild(w);
-          }
+        if (w.style.order !== String(i)) {
+          w.style.order = i;
+        }
+        if (!w.parentElement) {
+          gridContainer.appendChild(w);
         }
         
         w.classList.remove('hidden');

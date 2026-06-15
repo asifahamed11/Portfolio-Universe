@@ -73,7 +73,9 @@ async function migrate() {
         has_blog: p.has_blog || false,
         specialization: p.specialization || "",
         primary_language: p.primary_language || "",
-        views: 0 // Initialize views
+        is_portfolio: p.is_portfolio !== false,
+        portfolio_score: p.portfolio_score || 0,
+        seo_evaluation: p.seo_evaluation || ""
       }, { merge: true });
       successCount++;
       process.stdout.write(`\rMigrated ${successCount}/${portfolios.length}...`);

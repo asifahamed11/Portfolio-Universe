@@ -46,13 +46,17 @@ async function run() {
     console.log('Parsing markdown...');
     const extractedData = parseMarkdownList(markdown);
     
-    const cleanedData = extractedData
-      .filter(item => isValidUrl(item.url))
-      .map(item => ({
-        name: item.name,
-        url: item.url,
-        screenshot: `https://s0.wp.com/mshots/v1/${encodeURIComponent(item.url)}?w=600`
-      }));
+    const cleanedData = Array.from(
+      new Map(
+        extractedData
+          .filter(item => isValidUrl(item.url))
+          .map(item => [item.url, {
+            name: item.name,
+            url: item.url,
+            screenshot: `https://s0.wp.com/mshots/v1/${encodeURIComponent(item.url)}?w=600`
+          }])
+      ).values()
+    );
 
     // Read existing portfolios.json
     let existingPortfolios = [];
