@@ -12,10 +12,9 @@ export const urlToKey = (url) => {
     // Fallback simple hash if btoa fails
     let hash = 0;
     for (let i = 0; i < url.length; i++) {
-      hash = ((hash << 5) - hash) + url.charCodeAt(i);
-      hash |= 0;
+      hash = Math.imul(31, hash) + url.charCodeAt(i) | 0;
     }
-    return `hash_${Math.abs(hash)}`;
+    return `hash_${hash >>> 0}`;
   }
 };
 
@@ -76,9 +75,9 @@ export const incrementPortfolioView = async (url) => {
   try {
     const key = urlToKey(url);
     const portfolioRef = doc(db, 'portfolios', key);
-    await updateDoc(portfolioRef, {
+    await setDoc(portfolioRef, {
       views: increment(1)
-    });
+    }, { merge: true });
   } catch (error) {
     console.error("Failed to increment views:", error);
   }

@@ -142,7 +142,7 @@ const portfolios = portfoliosData.map(p => ({
       <div id="portfolioGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 items-start">
         {portfolios.slice(0, 40).map((portfolio, index) => (
           <div 
-            class="portfolio-wrapper hidden" 
+            class="portfolio-wrapper" 
             data-index={index}
             data-name={portfolio.name.toLowerCase()}
             data-url={portfolio.url}
@@ -221,11 +221,11 @@ const portfolios = portfoliosData.map(p => ({
   import { auth } from '../lib/firebase.js';
   import { onAuthStateChanged, signOut } from 'firebase/auth';
   import { fetchGlobalLikes, fetchUserBookmarks, urlToKey, toggleLikeInFirestore, incrementPortfolioView } from '../lib/dbUtils.js';
-  import portfoliosData from '../data/portfolios.json';
 
   document.addEventListener('DOMContentLoaded', async () => {
-    // Pass portfoliosData to client seamlessly from Astro build
-    // (Already imported natively above, no script tag needed)
+    // Dynamically load the massive JSON in the background to avoid blocking main thread
+    const portfoliosModule = await import('../data/portfolios.json');
+    const portfoliosData = portfoliosModule.default || portfoliosModule;
 
     // Expose for inline scripts
     window.toggleLikeInFirestore = toggleLikeInFirestore;
@@ -628,18 +628,14 @@ const portfolios = portfoliosData.map(p => ({
       renderGrid();
     };
 
-    function debounce(func, wait) {
-      let timeout;
-      return function(...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), wait);
-      };
-    }
-
-    const debouncedApplyFilters = debounce(() => {
-      visibleCount = ITEMS_PER_PAGE;
-      applyFilters();
-    }, 250);
+    let filterTimeout;
+    const debouncedApplyFilters = () => {
+      clearTimeout(filterTimeout);
+      filterTimeout = setTimeout(() => {
+        visibleCount = ITEMS_PER_PAGE;
+        applyFilters();
+      }, 250);
+    };
 
     const handleSearch = (e) => {
       searchQuery = e.target.value.toLowerCase().trim();
