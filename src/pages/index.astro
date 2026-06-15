@@ -95,8 +95,8 @@ const portfolios = portfoliosData.map(p => ({
       <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)] opacity-40"></div>
     </div>
 
-    <header class="pt-20 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center relative z-10">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-blue-300 text-xs font-bold uppercase tracking-widest mb-8 shadow-xl backdrop-blur-md">
+    <header class="pt-10 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center relative z-10">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-blue-300 text-xs font-bold uppercase tracking-widest mb-5 shadow-xl backdrop-blur-md">
         <span class="relative flex h-2 w-2">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
@@ -104,41 +104,44 @@ const portfolios = portfoliosData.map(p => ({
         Regularly Updated Showcase
       </div>
       
-      <h1 class="text-5xl md:text-[5rem] font-black text-white tracking-tighter mb-6 leading-tight drop-shadow-2xl">
+      <h1 class="text-5xl md:text-[4rem] font-black text-white tracking-tighter mb-3 leading-tight drop-shadow-2xl">
         Developer <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400">Portfolios</span>
       </h1>
       
-      <p class="mt-6 text-lg md:text-xl text-gray-400/80 max-w-2xl mx-auto leading-relaxed font-medium">
+      <p class="mt-3 text-lg md:text-xl text-gray-400/80 max-w-2xl mx-auto leading-relaxed font-medium">
         Discover over <span class="text-white font-bold">{portfolios.length}</span> curated portfolios. Find inspiration, explore tech stacks, and hire top talent.
       </p>
 
       <!-- Glassmorphic Filters Container -->
-      <div class="mt-12 flex flex-wrap justify-center gap-1.5 max-w-4xl mx-auto p-1.5 bg-white/[0.02] border border-white/[0.05] rounded-3xl backdrop-blur-xl shadow-2xl" id="filterContainer">
-        <!-- Active class styling handled by JS, but we define default vs active classes in JS. Let's just set initial classes here. -->
-        <button class="filter-btn active relative px-5 py-2.5 rounded-2xl text-sm font-bold text-white bg-white/[0.1] shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] ring-1 ring-white/10 transition-all duration-300" data-filter="all">All</button>
-        <button class="filter-btn group relative flex items-center gap-2 px-5 py-2.5 rounded-2xl text-sm font-semibold text-purple-400 hover:text-purple-300 hover:bg-purple-500/10 transition-all duration-300" data-filter="most_viewed">
+      <div class="mt-8 relative flex items-center overflow-x-auto hide-scrollbar gap-1.5 w-max max-w-[calc(100vw-2rem)] mx-auto p-1.5 bg-white/[0.02] border border-white/[0.05] rounded-3xl backdrop-blur-xl shadow-2xl" id="filterContainer">
+        
+        <!-- Smooth Fluid Indicator -->
+        <div id="activeIndicator" class="absolute top-0 left-0 rounded-2xl bg-blue-600/20 border border-blue-500/50 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-0 pointer-events-none" style="width: 0px; height: 0px; transform: translate(0px, 0px);"></div>
+
+        <button class="filter-btn active relative z-10 px-5 py-2.5 rounded-2xl text-sm font-bold transition-all duration-300" data-filter="all">All</button>
+        <button class="filter-btn group relative z-10 flex items-center gap-2 px-5 py-2.5 rounded-2xl text-sm font-semibold text-purple-400 hover:text-purple-300 hover:bg-purple-500/10 transition-all duration-300" data-filter="most_viewed">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
           Trending
         </button>
-        <button class="filter-btn relative px-5 py-2.5 rounded-2xl text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/[0.05] transition-all duration-300" data-filter="frontend">Frontend</button>
-        <button class="filter-btn relative px-5 py-2.5 rounded-2xl text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/[0.05] transition-all duration-300" data-filter="backend">Backend</button>
-        <button class="filter-btn relative px-5 py-2.5 rounded-2xl text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/[0.05] transition-all duration-300" data-filter="fullstack">Full Stack</button>
-        <button class="filter-btn relative px-5 py-2.5 rounded-2xl text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/[0.05] transition-all duration-300" data-filter="designer">UI/UX & Design</button>
+        <button class="filter-btn relative z-10 px-5 py-2.5 rounded-2xl text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/[0.05] transition-all duration-300" data-filter="frontend">Frontend</button>
+        <button class="filter-btn relative z-10 px-5 py-2.5 rounded-2xl text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/[0.05] transition-all duration-300" data-filter="backend">Backend</button>
+        <button class="filter-btn relative z-10 px-5 py-2.5 rounded-2xl text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/[0.05] transition-all duration-300" data-filter="fullstack">Full Stack</button>
+        <button class="filter-btn relative z-10 px-5 py-2.5 rounded-2xl text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/[0.05] transition-all duration-300" data-filter="designer">UI/UX & Design</button>
         
-        <div class="w-px h-8 bg-white/10 self-center mx-1 hidden sm:block"></div>
+        <div class="w-px h-8 bg-white/10 self-center mx-1 hidden sm:block relative z-10"></div>
 
-        <button class="filter-btn group relative flex items-center gap-2 px-5 py-2.5 rounded-2xl text-sm font-semibold text-emerald-400 hover:text-emerald-300 hover:bg-emerald-500/10 transition-all duration-300" data-filter="hire">
+        <button class="filter-btn group relative z-10 flex items-center gap-2 px-5 py-2.5 rounded-2xl text-sm font-semibold text-emerald-400 hover:text-emerald-300 hover:bg-emerald-500/10 transition-all duration-300" data-filter="hire">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] group-hover:animate-pulse"></span>
           Hire Me
         </button>
-        <button class="filter-btn group relative flex items-center gap-2 px-5 py-2.5 rounded-2xl text-sm font-semibold text-rose-400 hover:text-rose-300 hover:bg-rose-500/10 transition-all duration-300" data-filter="likes">
+        <button class="filter-btn group relative z-10 flex items-center gap-2 px-5 py-2.5 rounded-2xl text-sm font-semibold text-rose-400 hover:text-rose-300 hover:bg-rose-500/10 transition-all duration-300" data-filter="likes">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
           My Likes
         </button>
       </div>
     </header>
 
-    <main class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24 z-10">
+    <main class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-24 z-10">
       <div id="portfolioGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 items-start">
         {portfolios.slice(0, 40).map((portfolio, index) => (
           <div 
@@ -210,9 +213,16 @@ const portfolios = portfoliosData.map(p => ({
   
   /* Active filter button styles */
   .filter-btn.active {
-    background-color: rgba(37, 99, 235, 0.2) !important; /* bg-blue-600/20 */
-    border-color: rgba(59, 130, 246, 0.5) !important; /* border-blue-500/50 */
     color: rgb(96, 165, 250) !important; /* text-blue-400 */
+  }
+
+  /* Hide scrollbar for smooth horizontal scrolling */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 </style>
 
@@ -384,6 +394,64 @@ const portfolios = portfoliosData.map(p => ({
     const filterBtns = document.querySelectorAll('.filter-btn');
     const clearFiltersBtn = document.getElementById('clearFiltersBtn');
     const gridContainer = document.getElementById('portfolioGrid');
+    const activeIndicator = document.getElementById('activeIndicator');
+    let indicatorTimeout;
+
+    const moveIndicator = (btn) => {
+      if (!activeIndicator || !btn) return;
+      clearTimeout(indicatorTimeout);
+      
+      const targetX = btn.offsetLeft;
+      const targetY = btn.offsetTop;
+      const targetWidth = btn.offsetWidth;
+      
+      const currentX = activeIndicator.dataset.x ? parseFloat(activeIndicator.dataset.x) : targetX;
+      const currentWidth = activeIndicator.dataset.w ? parseFloat(activeIndicator.dataset.w) : targetWidth;
+      const distance = targetX - currentX;
+      
+      activeIndicator.style.height = `${btn.offsetHeight}px`;
+      
+      if (Math.abs(distance) > 5 && activeIndicator.dataset.x) {
+        // Stretch width first to create a water drop / gooey effect
+        activeIndicator.style.transition = 'all 0.2s cubic-bezier(0.25, 1, 0.5, 1)';
+        
+        if (distance > 0) {
+          activeIndicator.style.width = `${distance + targetWidth}px`;
+          indicatorTimeout = setTimeout(() => {
+            activeIndicator.style.transition = 'all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            activeIndicator.style.width = `${targetWidth}px`;
+            activeIndicator.style.transform = `translate(${targetX}px, ${targetY}px)`;
+            activeIndicator.dataset.x = targetX;
+            activeIndicator.dataset.w = targetWidth;
+          }, 120);
+        } else {
+          activeIndicator.style.width = `${Math.abs(distance) + currentWidth}px`;
+          activeIndicator.style.transform = `translate(${targetX}px, ${targetY}px)`;
+          indicatorTimeout = setTimeout(() => {
+            activeIndicator.style.transition = 'all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            activeIndicator.style.width = `${targetWidth}px`;
+            activeIndicator.dataset.x = targetX;
+            activeIndicator.dataset.w = targetWidth;
+          }, 120);
+        }
+      } else {
+        activeIndicator.style.transition = 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        activeIndicator.style.width = `${targetWidth}px`;
+        activeIndicator.style.transform = `translate(${targetX}px, ${targetY}px)`;
+        activeIndicator.dataset.x = targetX;
+        activeIndicator.dataset.w = targetWidth;
+      }
+    };
+
+    window.addEventListener('resize', () => {
+      const activeBtn = document.querySelector('.filter-btn.active');
+      if (activeBtn) moveIndicator(activeBtn);
+    });
+
+    setTimeout(() => {
+      const activeBtn = document.querySelector('.filter-btn.active');
+      if (activeBtn) moveIndicator(activeBtn);
+    }, 100);
 
     const allPortfolios = portfoliosData.map((p, i) => ({ ...p, baseLikes: 0, index: i }));
     let filteredItems = [...allPortfolios];
@@ -653,11 +721,8 @@ const portfolios = portfoliosData.map(p => ({
           return;
         }
 
-        const activeClasses = ['active', 'text-white', 'bg-white/[0.1]', 'shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]', 'ring-1', 'ring-white/10'];
-        const inactiveClasses = ['text-gray-400'];
-
         filterBtns.forEach(b => {
-          b.classList.remove(...activeClasses);
+          b.classList.remove('active');
           const f = b.dataset.filter;
           if (f !== 'hire' && f !== 'likes') {
             b.classList.add('text-gray-400');
@@ -667,7 +732,9 @@ const portfolios = portfoliosData.map(p => ({
         if (btn.dataset.filter !== 'hire' && btn.dataset.filter !== 'likes') {
           btn.classList.remove('text-gray-400');
         }
-        btn.classList.add(...activeClasses);
+        btn.classList.add('active');
+        
+        moveIndicator(btn);
 
         currentFilter = btn.dataset.filter;
         visibleCount = ITEMS_PER_PAGE;
