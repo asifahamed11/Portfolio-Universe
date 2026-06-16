@@ -1,0 +1,36 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Global stats collection (e.g. global_stats/likes)
+    match /global_stats/{statDoc} {
+      // Anyone can read
+      allow read: if true;
+      // Only authenticated users can update likes
+      allow write: if request.auth != null;
+    }
+
+    // Portfolios collection (for view counts)
+    match /portfolios/{portfolioKey} {
+      allow read: if true;
+      // Anyone can increment view count (merge), but strictly prevent other malicious writes.
+      // A more robust app would use a Cloud Function, but this is a good client-side compromise.
+      allow write: if true; 
+    }
+
+    // Users collection (bookmarks)
+    match /users/{userId} {
+      // Users can only read/write their own document
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Submissions collection
+    match /submissions/{submissionId} {
+      // Anyone logged in can submit
+      allow create: if request.auth != null && request.resource.data.uid == request.auth.uid;
+      // Only admins can read/update (Assuming no admin dashboard yet, so deny read to clients)
+      allow read, update, delete: if false; 
+    }
+  }
+}

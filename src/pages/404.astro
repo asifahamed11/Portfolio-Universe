@@ -1,0 +1,58 @@
+---
+import '../styles/global.css';
+import CustomCursor from '../components/CustomCursor.astro';
+---
+
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&family=Space+Grotesk:wght@400;700;900&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={`\${import.meta.env.BASE_URL}favicon.svg`} />
+    <meta name="viewport" content="width=device-width" />
+    <title>404 - Page Not Found</title>
+  </head>
+  <body class="bg-[#0a0a0c] text-gray-200 min-h-screen font-sans antialiased flex flex-col items-center justify-center relative overflow-hidden">
+    
+    <!-- Ambient Background Effects -->
+    <div class="absolute top-0 left-0 right-0 h-[400px] z-[-1] overflow-hidden pointer-events-none">
+      <div class="absolute inset-0 glass-bg [mask-image:linear-gradient(to_bottom,black_50%,transparent_100%)]" style="-webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);"></div>
+    </div>
+    <div class="fixed inset-0 z-[-2] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1a1820] via-[#0a0a0c] to-[#040405]"></div>
+    
+    <div class="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+      <div class="absolute top-[20%] left-[20%] w-[30%] h-[30%] rounded-full bg-blue-600/20 blur-[120px] mix-blend-screen"></div>
+      <div class="absolute bottom-[20%] right-[20%] w-[30%] h-[30%] rounded-full bg-purple-600/20 blur-[120px] mix-blend-screen"></div>
+    </div>
+
+    <div class="text-center relative z-10 p-8 max-w-2xl mx-auto backdrop-blur-md bg-gray-900/40 rounded-3xl border border-white/10 shadow-2xl">
+      <h1 class="text-8xl md:text-[10rem] font-black mb-4 leading-tight drop-shadow-2xl text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-purple-500" style="font-family: 'Space Grotesk', sans-serif;">
+        404
+      </h1>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white tracking-tight">Lost in the Universe</h2>
+      <p class="text-lg text-gray-400 mb-10 max-w-md mx-auto">
+        The portfolio or page you are looking for has drifted off into the cosmos or never existed.
+      </p>
+      <a href={import.meta.env.BASE_URL} class="inline-flex items-center gap-2 bg-white hover:bg-gray-200 text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg shadow-white/10 transition-all hover:scale-105 active:scale-95">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        Return to Home
+      </a>
+    </div>
+
+    <CustomCursor />
+
+    <style>
+      .glass-bg {
+        background: url(https://raw.githubusercontent.com/lucasromerodb/liquid-glass-effect-macos/refs/heads/main/assets/flowers.jpg) center center;
+        background-size: 400px;
+        opacity: 0.2;
+        animation: moveBackground 800s linear infinite;
+      }
+      @keyframes moveBackground {
+        from { background-position: 0% 0%; }
+        to { background-position: 0% -1000%; }
+      }
+    </style>
+  </body>
+</html>
