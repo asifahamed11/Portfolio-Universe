@@ -20,7 +20,7 @@ const portfolios = portfoliosData.map(p => ({
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&family=Space+Grotesk:wght@400;700;900&display=swap" rel="stylesheet">
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href={`\${import.meta.env.BASE_URL}favicon.svg`} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <title>Developer Portfolios Showcase</title>
     <meta name="description" content="A curated directory of developer portfolios inspired by Emma Bostian's repository." />
@@ -60,55 +60,29 @@ const portfolios = portfoliosData.map(p => ({
     </style>
   </head>
   <body class="bg-[#0a0a0c] text-gray-200 min-h-screen font-sans antialiased selection:bg-rose-500/30">
-    
     <style>
-      .animated-cinematic-text {
-        background: linear-gradient(135deg, #ffffff 0%, #a1c4fd 50%, #c2e9fb 100%);
-        background-size: 200% auto;
-        color: transparent;
-        -webkit-background-clip: text;
-        background-clip: text;
+      .animate-hero-text {
         opacity: 0;
-        display: inline-block;
-        animation: textReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards, floatText 6s ease-in-out 1.6s infinite alternate, shine 4s linear infinite;
-        transform-origin: center bottom;
+        animation: heroReveal 0.8s cubic-bezier(0.2, 0, 0, 1) forwards;
       }
 
-      .animated-sub-text {
-        opacity: 0;
-        animation: textReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-      }
-
-      @keyframes textReveal {
+      @keyframes heroReveal {
         0% {
           opacity: 0;
-          filter: blur(20px);
-          transform: scale(0.85) translateY(40px);
-          letter-spacing: -6px;
-        }
-        60% {
-          opacity: 0.9;
-          filter: blur(2px);
+          transform: translateY(24px);
         }
         100% {
           opacity: 1;
-          filter: blur(0px);
-          transform: scale(1) translateY(0);
-          letter-spacing: -2px;
+          transform: translateY(0);
         }
       }
 
-      @keyframes floatText {
-        0% { transform: translateY(0px) rotate(0deg); }
-        50% { transform: translateY(-6px) rotate(0.5deg); }
-        100% { transform: translateY(0px) rotate(-0.5deg); }
+      .text-metallic {
+        background: linear-gradient(to bottom right, #ffffff 30%, #737373 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
       }
-
-      @keyframes shine {
-        to { background-position: 200% center; }
-      }
-
-      /* Like Button Animation */
       @keyframes heartBurst {
         0% { transform: scale(1); }
         25% { transform: scale(1.5) rotate(-10deg); filter: brightness(1.5) drop-shadow(0 0 8px rgba(244,63,94,0.6)); }
@@ -205,7 +179,8 @@ const portfolios = portfoliosData.map(p => ({
         </div>
       </div>
     </nav>
-
+    <div class="fixed inset-0 z-[-2] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1a1820] via-[#0a0a0c] to-[#040405]"></div>
+    
     <!-- Ambient Background Effects -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none -z-10">
       <!-- Glowing Orbs -->
@@ -213,29 +188,32 @@ const portfolios = portfoliosData.map(p => ({
       <div class="absolute top-[10%] right-[10%] w-[30%] h-[30%] rounded-full bg-purple-600/20 blur-[120px] mix-blend-screen"></div>
       <div class="absolute bottom-[40%] left-[20%] w-[30%] h-[30%] rounded-full bg-cyan-600/10 blur-[120px] mix-blend-screen"></div>
       
-      <!-- Subtle dot grid texture -->
-      <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)] opacity-40"></div>
+      <!-- Subtle dot grid texture (Dynamic Background Pattern) -->
+      <div id="dynamic-bg-pattern" class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)] opacity-40 transition-all duration-1000"></div>
     </div>
 
-    <header class="pt-10 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center relative z-10">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-blue-300 text-xs font-bold uppercase tracking-widest mb-5 shadow-xl backdrop-blur-md">
-        <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-        </span>
+
+    <header class="pt-10 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center relative z-10 flex flex-col items-center justify-center">
+      
+      <!-- Linear/Vercel Style Sharp Badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-transparent text-[11px] font-semibold text-white/70 uppercase tracking-widest mb-6 animate-hero-text" style="animation-delay: 0.1s; box-shadow: 0 0 20px rgba(255,255,255,0.02);">
+        <span class="w-1.5 h-1.5 rounded-full bg-sky-400 shadow-[0_0_10px_rgba(56,189,248,0.8)] animate-pulse"></span>
         Regularly Updated Showcase
       </div>
       
-      <h1 class="text-5xl md:text-[4.5rem] font-black mb-4 leading-tight drop-shadow-2xl" style="font-family: 'Space Grotesk', sans-serif; perspective: 1000px;">
-        <span class="animated-cinematic-text tracking-tighter">The Universe of Creators</span>
+      <!-- Monochrome High-Tracking Brutalist Title -->
+      <h1 class="text-5xl sm:text-6xl md:text-[5.5rem] font-bold mb-4 leading-[0.95] tracking-tighter flex flex-col items-center justify-center relative z-10 w-full uppercase" style="font-family: 'Space Grotesk', sans-serif;">
+        <span class="text-white animate-hero-text drop-shadow-xl" style="animation-delay: 0.2s; letter-spacing: -0.04em;">The Universe</span>
+        <span class="text-metallic animate-hero-text" style="animation-delay: 0.3s; letter-spacing: -0.04em;">of Creators</span>
       </h1>
       
-      <p class="animated-sub-text mt-3 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed font-medium" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.5px;">
-        Explore a curated gallery of <span class="text-white font-bold">{portfolios.length}</span> stunning portfolios. Get inspired, discover tech stacks, and find your next top-tier hire.
+      <!-- Minimalist Subtitle -->
+      <p class="mt-5 text-[1rem] md:text-[1.1rem] text-gray-500 max-w-2xl mx-auto leading-relaxed font-normal animate-hero-text" style="font-family: 'Outfit', sans-serif; animation-delay: 0.4s;">
+        Explore a curated gallery of <span class="text-white font-medium">{portfolios.length}</span> stunning portfolios. Get inspired, discover tech stacks, and find your next <span class="text-white font-medium">top-tier hire</span>.
       </p>
 
       <!-- Glassmorphic Filters Container -->
-      <div class="mt-8 relative flex items-center overflow-x-auto hide-scrollbar gap-2 w-max max-w-[calc(100vw-2rem)] mx-auto p-1.5 rounded-3xl" id="filterContainer">
+      <div class="mt-8 relative flex items-center justify-start md:justify-center overflow-x-auto overflow-y-hidden hide-scrollbar gap-2 w-full md:w-max max-w-full mx-auto p-1.5 rounded-3xl" style="-webkit-overflow-scrolling: touch;" id="filterContainer">
         
         <!-- Smooth Fluid Indicator -->
         <div id="activeIndicator" class="absolute top-0 left-0 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-0 pointer-events-none" style="width: 0px; height: 0px; transform: translate(0px, 0px);"></div>
@@ -466,6 +444,10 @@ const portfolios = portfoliosData.map(p => ({
   }
   
   /* Active filter button styles */
+  .filter-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
   .filter-btn.active {
     color: rgb(96, 165, 250) !important; /* text-blue-400 */
   }
@@ -618,7 +600,7 @@ const portfolios = portfoliosData.map(p => ({
         icon.classList.add('heart-animated');
         
         // Play sound and show toast
-        if (window.playDropSound) window.playDropSound();
+        if (window.playPopSound) window.playPopSound(1.0);
         if (window.showToast) window.showToast('Added to your likes!', 'heart');
         
         // Haptic feedback for mobile devices
@@ -633,7 +615,7 @@ const portfolios = portfoliosData.map(p => ({
         countEl.textContent = Math.max(0, currentLikes - 1);
         
         // Play sound and show toast
-        if (window.playDropSound) window.playDropSound();
+        if (window.playPopSound) window.playPopSound(1.0);
         if (window.showToast) window.showToast('Removed from your likes.', 'check');
       }
       localStorage.setItem(storageKey, JSON.stringify(bookmarks));
@@ -1135,7 +1117,6 @@ const portfolios = portfoliosData.map(p => ({
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        if (window.playPopSound) window.playPopSound();
         if (btn.dataset.filter === 'likes' && !localStorage.getItem('pu_user')) {
           if (window.openLoginModal) window.openLoginModal();
           return;
@@ -1195,3 +1176,66 @@ const portfolios = portfoliosData.map(p => ({
     applyFilters();
   });
 </script>
+
+<script>
+  // UI Sound Engine using Web Audio API
+  let audioCtx;
+  const initAudio = () => {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+  };
+
+  // Dynamic Deep Bubble Sound
+  window.playPopSound = (volumeScale = 1.0) => {
+    initAudio();
+    if(!audioCtx) return;
+    const t = audioCtx.currentTime;
+    
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(150, t);
+    osc.frequency.exponentialRampToValueAtTime(300, t + 0.1);
+    
+    const peakVol = 0.3 * volumeScale;
+    const endVol = 0.01 * volumeScale;
+    
+    gain.gain.setValueAtTime(0, t);
+    gain.gain.linearRampToValueAtTime(peakVol, t + 0.02);
+    gain.gain.exponentialRampToValueAtTime(endVol, t + 0.15);
+    
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    
+    osc.start(t);
+    osc.stop(t + 0.15);
+  };
+
+  // Global click listener for UI sounds
+  document.addEventListener('click', (e) => {
+    initAudio();
+    
+    const target = e.target;
+    
+    // Play sound for interactable elements (all at the same volume: 1.0)
+    if (
+      target.closest('.filter-btn') || 
+      target.closest('button svg path[d*="M19"]') || 
+      target.closest('button[class*="heart"]') ||
+      target.closest('nav button') || 
+      target.closest('nav a') || 
+      target.closest('#clearFiltersBtn') ||
+      target.closest('a') || 
+      target.closest('.portfolio-wrapper')
+    ) {
+      if (window.playPopSound) window.playPopSound(1.0);
+    }
+  });
+</script>
+</body>
+</html>
