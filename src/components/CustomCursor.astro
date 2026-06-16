@@ -3,22 +3,48 @@
 ---
 
 <div id="custom-cursor" class="pointer-events-none fixed inset-0 z-[10000] hidden">
-  <!-- Clean Frosted Glass Cursor -->
-  <div id="cursor-main" class="absolute top-0 left-0 rounded-full flex items-center justify-center will-change-transform transition-[width,height,background-color,border-color,backdrop-filter] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden" 
-       style="
-         width: 24px; 
-         height: 24px; 
-         transform: translate(-50%, -50%); 
-         background: rgba(255,255,255,0.05); 
-         backdrop-filter: blur(8px);
-         -webkit-backdrop-filter: blur(8px);
-         border: 1px solid rgba(255,255,255,0.15);
-         box-shadow: 0 4px 15px rgba(0,0,0,0.1), inset 0 0 10px rgba(255,255,255,0.05);
-       ">
+  
+  <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <filter id="cursor-glass-filter" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
+      <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="1" seed="5" result="turbulence" />
+      <feComponentTransfer in="turbulence" result="mapped">
+        <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+        <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+        <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+      </feComponentTransfer>
+      <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+      <feSpecularLighting in="softMap" surfaceScale="3" specularConstant="0.4" specularExponent="100" lighting-color="white" result="specLight">
+        <fePointLight x="-200" y="-200" z="300" />
+      </feSpecularLighting>
+      <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
+      <feDisplacementMap in="SourceGraphic" in2="softMap" scale="40" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </svg>
+
+  <!-- Main Container -->
+  <div id="cursor-main" class="absolute top-0 left-0 rounded-full flex items-center justify-center will-change-transform transition-[width,height] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] z-[10000]" style="width: 24px; height: 24px; transform: translate(-50%, -50%);">
+    
+    <!-- Dynamic Background Glass Distortion Layer -->
+    <div id="cursor-glass-layer" class="absolute inset-0 rounded-full pointer-events-none overflow-hidden transition-[backdrop-filter] duration-300" 
+         style="
+           -webkit-backdrop-filter: blur(0px);
+           backdrop-filter: blur(0px);
+           -webkit-filter: url(#cursor-glass-filter);
+           filter: url(#cursor-glass-filter);
+         ">
+    </div>
+
+    <!-- Edge Lighting Layer -->
+    <div id="cursor-border-layer" class="absolute inset-0 rounded-full pointer-events-none transition-all duration-300"
+         style="
+           box-shadow: inset 2px 2px 0px -2px rgba(255, 255, 255, 0.3), inset 0 0 3px 1px rgba(255, 255, 255, 0.2);
+           border: 1px solid rgba(255,255,255,0.05);
+         ">
+    </div>
   </div>
   
   <!-- Clear text wrapper -->
-  <div id="cursor-text-wrapper" class="absolute top-0 left-0 flex items-center justify-center will-change-transform pointer-events-none transition-[width,height] duration-300" style="transform: translate(-50%, -50%); width: 24px; height: 24px;">
+  <div id="cursor-text-wrapper" class="absolute top-0 left-0 flex items-center justify-center will-change-transform pointer-events-none transition-[width,height] duration-300 z-[10001]" style="transform: translate(-50%, -50%); width: 24px; height: 24px;">
     <span id="cursor-text" class="text-white text-[11px] uppercase tracking-[0.2em] font-extrabold opacity-0 transition-opacity duration-300 ml-[2px]" style="text-shadow: 0 2px 10px rgba(0,0,0,1);"></span>
   </div>
 </div>
@@ -42,6 +68,8 @@
     const cursorMain = document.getElementById('cursor-main');
     const cursorTextWrapper = document.getElementById('cursor-text-wrapper');
     const cursorText = document.getElementById('cursor-text');
+    const borderLayer = document.getElementById('cursor-border-layer');
+    const glassLayer = document.getElementById('cursor-glass-layer');
     
     if (cursorContainer) cursorContainer.classList.remove('hidden');
 
@@ -78,66 +106,116 @@
 
         el.addEventListener('mouseenter', () => {
           isHoveringCard = true;
-          if (cursorMain && cursorTextWrapper && cursorText) {
-            // Large clean frosted glass
+          if (cursorMain && cursorTextWrapper && cursorText && borderLayer) {
             cursorMain.style.width = '80px';
             cursorMain.style.height = '80px';
-            cursorMain.style.background = 'rgba(255,255,255,0.08)';
-            cursorMain.style.backdropFilter = 'blur(16px)';
-            cursorMain.style.border = '1px solid rgba(255,255,255,0.2)';
             
             cursorTextWrapper.style.width = '80px';
             cursorTextWrapper.style.height = '80px';
             cursorText.textContent = 'OPEN';
             cursorText.style.opacity = '1';
+            
+            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(255, 255, 255, 0.4), inset 0 0 5px 2px rgba(255, 255, 255, 0.2)';
+            borderLayer.style.background = 'transparent';
+            if(glassLayer) {
+                glassLayer.style.backdropFilter = 'blur(0px)';
+                glassLayer.style.webkitBackdropFilter = 'blur(0px)';
+            }
           }
         });
         el.addEventListener('mouseleave', () => {
           isHoveringCard = false;
-          if (cursorMain && cursorTextWrapper && cursorText) {
-            // Reset to small glass
+          if (cursorMain && cursorTextWrapper && cursorText && borderLayer) {
             cursorMain.style.width = '24px';
             cursorMain.style.height = '24px';
-            cursorMain.style.background = 'rgba(255,255,255,0.05)';
-            cursorMain.style.backdropFilter = 'blur(8px)';
-            cursorMain.style.border = '1px solid rgba(255,255,255,0.15)';
             
             cursorTextWrapper.style.width = '24px';
             cursorTextWrapper.style.height = '24px';
             cursorText.style.opacity = '0';
+            
+            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(255, 255, 255, 0.3), inset 0 0 3px 1px rgba(255, 255, 255, 0.2)';
+            borderLayer.style.background = 'transparent';
+            if(glassLayer) {
+                glassLayer.style.backdropFilter = 'blur(0px)';
+                glassLayer.style.webkitBackdropFilter = 'blur(0px)';
+            }
           }
         });
       });
 
       // 2. Normal Buttons & Links
-      const clickables = document.querySelectorAll('button, .filter-btn, .cursor-pointer, a:not([target="_blank"])');
+      const clickables = document.querySelectorAll('button:not(.bookmark-btn), .filter-btn, .cursor-pointer, a:not([target="_blank"])');
       clickables.forEach((el) => {
         if (el.dataset.cursorBoundBtn) return;
         el.dataset.cursorBoundBtn = 'true';
 
         el.addEventListener('mouseenter', () => {
-          if (cursorMain && cursorTextWrapper && !isHoveringCard) {
-            // Medium glass for buttons
+          if (cursorMain && cursorTextWrapper && !isHoveringCard && borderLayer) {
             cursorMain.style.width = '48px';
             cursorMain.style.height = '48px';
-            cursorMain.style.background = 'rgba(244,63,94,0.05)'; // subtle rose tint
-            cursorMain.style.border = '1px solid rgba(244,63,94,0.3)';
-            
             cursorTextWrapper.style.width = '48px';
             cursorTextWrapper.style.height = '48px';
             if (cursorText) cursorText.style.opacity = '0'; 
+            
+            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(244, 63, 94, 0.4), inset 0 0 5px 1px rgba(244, 63, 94, 0.2)';
+            borderLayer.style.background = 'rgba(244,63,94,0.02)';
           }
         });
         el.addEventListener('mouseleave', () => {
-          if (cursorMain && cursorTextWrapper && !isHoveringCard) {
-            // Reset to small glass
+          if (cursorMain && cursorTextWrapper && !isHoveringCard && borderLayer) {
             cursorMain.style.width = '24px';
             cursorMain.style.height = '24px';
-            cursorMain.style.background = 'rgba(255,255,255,0.05)';
-            cursorMain.style.border = '1px solid rgba(255,255,255,0.15)';
-            
             cursorTextWrapper.style.width = '24px';
             cursorTextWrapper.style.height = '24px';
+            
+            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(255, 255, 255, 0.3), inset 0 0 3px 1px rgba(255, 255, 255, 0.2)';
+            borderLayer.style.background = 'transparent';
+          }
+        });
+      });
+
+      // 3. Like Buttons
+      const likeBtns = document.querySelectorAll('.bookmark-btn');
+      likeBtns.forEach((el) => {
+        if (el.dataset.cursorBoundLike) return;
+        el.dataset.cursorBoundLike = 'true';
+
+        el.addEventListener('mouseenter', () => {
+          if (cursorMain && cursorTextWrapper && borderLayer) {
+            cursorMain.style.width = '12px';
+            cursorMain.style.height = '12px';
+            cursorTextWrapper.style.width = '12px';
+            cursorTextWrapper.style.height = '12px';
+            if (cursorText) cursorText.style.opacity = '0'; 
+            
+            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(244, 63, 94, 0.6), inset 0 0 3px 1px rgba(244, 63, 94, 0.4)';
+            borderLayer.style.background = 'transparent';
+          }
+        });
+        el.addEventListener('mouseleave', () => {
+          if (!cursorMain || !cursorTextWrapper || !borderLayer) return;
+          
+          if (isHoveringCard) {
+            // Revert back to OPEN state
+            cursorMain.style.width = '80px';
+            cursorMain.style.height = '80px';
+            cursorTextWrapper.style.width = '80px';
+            cursorTextWrapper.style.height = '80px';
+            if (cursorText) {
+                cursorText.textContent = 'OPEN';
+                cursorText.style.opacity = '1';
+            }
+            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(255, 255, 255, 0.4), inset 0 0 5px 2px rgba(255, 255, 255, 0.2)';
+            borderLayer.style.background = 'transparent';
+          } else {
+            // Revert to normal state
+            cursorMain.style.width = '24px';
+            cursorMain.style.height = '24px';
+            cursorTextWrapper.style.width = '24px';
+            cursorTextWrapper.style.height = '24px';
+            
+            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(255, 255, 255, 0.3), inset 0 0 3px 1px rgba(255, 255, 255, 0.2)';
+            borderLayer.style.background = 'transparent';
           }
         });
       });
