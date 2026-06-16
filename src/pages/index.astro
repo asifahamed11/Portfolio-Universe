@@ -159,7 +159,7 @@ const portfolios = portfoliosData.map(p => ({
     </svg>
 
     <!-- Navigation Bar -->
-    <nav id="topNavBar" class="sticky top-4 z-40 max-w-7xl mx-4 xl:mx-auto rounded-[24px] border border-white/[0.05]" style="transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1); transform-origin: top center;">
+    <nav id="topNavBar" class="sticky top-4 z-40 max-w-7xl mx-4 xl:mx-auto rounded-[24px] border border-white/[0.05]" style="transition: top 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
@@ -337,6 +337,8 @@ const portfolios = portfoliosData.map(p => ({
       </div>
     </footer>
 
+    <div id="toast-container" class="fixed bottom-6 right-6 z-[1000] flex flex-col gap-3 pointer-events-none"></div>
+
     <CustomCursor />
     <LoginModal />
     <SubmitModal />
@@ -476,6 +478,10 @@ const portfolios = portfoliosData.map(p => ({
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  
+  @keyframes shimmer {
+    100% { transform: translateX(100%); }
+  }
 </style>
 
 <script>
@@ -483,6 +489,98 @@ const portfolios = portfoliosData.map(p => ({
   import { auth } from '../lib/firebase.js';
   import { onAuthStateChanged, signOut } from 'firebase/auth';
   import { fetchGlobalLikes, fetchUserBookmarks, urlToKey, toggleLikeInFirestore, incrementPortfolioView } from '../lib/dbUtils.js';
+
+  // --- PREMIUM UI SOUNDS (Web Audio API) ---
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  let audioCtx = null;
+  
+  function initAudio() {
+    if (!audioCtx) {
+      audioCtx = new AudioContext();
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+  }
+
+  window.playPopSound = () => {
+    initAudio();
+    if(!audioCtx) return;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    const now = audioCtx.currentTime;
+    
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    
+    // Deep Bubble implementation
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(150, now);
+    osc.frequency.linearRampToValueAtTime(300, now + 0.1);
+    
+    gain.gain.setValueAtTime(0, now);
+    gain.gain.linearRampToValueAtTime(0.4, now + 0.05);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+    
+    osc.start(now);
+    osc.stop(now + 0.2);
+  };
+
+  window.playDropSound = () => {
+    initAudio();
+    if(!audioCtx) return;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.1);
+    
+    gain.gain.setValueAtTime(0, audioCtx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.3, audioCtx.currentTime + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.2);
+    
+    osc.start(audioCtx.currentTime);
+    osc.stop(audioCtx.currentTime + 0.2);
+  };
+
+  // --- PREMIUM GLASS TOAST ---
+  window.showToast = (message, icon = 'check') => {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+    
+    const toast = document.createElement('div');
+    toast.className = 'flex items-center gap-3 px-4 py-3 rounded-2xl bg-white/[0.08] backdrop-blur-xl border border-white/20 text-white shadow-[0_8px_30px_rgba(0,0,0,0.4)] transform translate-y-10 opacity-0 transition-all duration-500 ease-out pointer-events-auto';
+    
+    const icons = {
+      check: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`,
+      heart: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#f43f5e" stroke="#f43f5e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`
+    };
+
+    toast.innerHTML = `
+      <div class="shrink-0 bg-white/5 p-1.5 rounded-full border border-white/10 shadow-inner">
+        ${icons[icon] || icons.check}
+      </div>
+      <p class="text-sm font-semibold tracking-wide drop-shadow-md pr-2">${message}</p>
+    `;
+    
+    container.appendChild(toast);
+    
+    // Animate in
+    requestAnimationFrame(() => {
+      toast.classList.remove('translate-y-10', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+    });
+    
+    // Animate out and remove
+    setTimeout(() => {
+      toast.classList.remove('translate-y-0', 'opacity-100');
+      toast.classList.add('translate-y-10', 'opacity-0');
+      setTimeout(() => toast.remove(), 500);
+    }, 3000);
+  };
 
   document.addEventListener('DOMContentLoaded', async () => {
     // Dynamically load the massive JSON in the background to avoid blocking main thread
@@ -519,6 +617,10 @@ const portfolios = portfoliosData.map(p => ({
         void icon.offsetWidth; // Trigger reflow
         icon.classList.add('heart-animated');
         
+        // Play sound and show toast
+        if (window.playDropSound) window.playDropSound();
+        if (window.showToast) window.showToast('Added to your likes!', 'heart');
+        
         // Haptic feedback for mobile devices
         if (navigator.vibrate) navigator.vibrate(50);
         
@@ -529,6 +631,10 @@ const portfolios = portfoliosData.map(p => ({
         icon.classList.remove('text-red-500', 'heart-animated');
         button.classList.remove('border-red-500/30', 'bg-red-500/10', 'text-red-400');
         countEl.textContent = Math.max(0, currentLikes - 1);
+        
+        // Play sound and show toast
+        if (window.playDropSound) window.playDropSound();
+        if (window.showToast) window.showToast('Removed from your likes.', 'check');
       }
       localStorage.setItem(storageKey, JSON.stringify(bookmarks));
       if (window.toggleLikeInFirestore) window.toggleLikeInFirestore(user.uid, url, isLiking, bookmarks);
@@ -579,15 +685,11 @@ const portfolios = portfoliosData.map(p => ({
       if (!topNavBar) return;
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       if (scrollTop > lastScrollTop && scrollTop > 50) {
-        // Scrolling down: Move up, shrink slightly, fade out
-        topNavBar.style.transform = 'translateY(-120px) scale(0.92)';
-        topNavBar.style.opacity = '0';
-        topNavBar.style.pointerEvents = 'none';
+        // Scrolling down: Move up
+        topNavBar.style.top = '-100px';
       } else {
         // Scrolling up: Bounce back to normal
-        topNavBar.style.transform = 'translateY(0) scale(1)';
-        topNavBar.style.opacity = '1';
-        topNavBar.style.pointerEvents = 'auto';
+        topNavBar.style.top = '16px'; // top-4 in Tailwind is 16px
       }
       lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     }, { passive: true });
@@ -948,7 +1050,68 @@ const portfolios = portfoliosData.map(p => ({
         filteredItems.sort((a, b) => b.baseLikes - a.baseLikes);
       }
 
-      renderGrid();
+      renderSkeletonsThenGrid();
+    };
+
+    const createSkeletonHTML = (index) => {
+      return `
+        <div class="portfolio-wrapper skeleton-card" style="order: ${index}">
+          <div class="relative flex flex-col bg-[#0B0F19] border border-white/[0.06] rounded-2xl h-full z-10 overflow-hidden">
+            <div class="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/[0.05] to-transparent z-20"></div>
+            <div class="relative aspect-[16/10] w-full bg-white/[0.03]"></div>
+            <div class="p-6 flex flex-col flex-grow rounded-b-2xl bg-gradient-to-b from-[#0B0F19] to-[#06080D]">
+              <div class="h-6 bg-white/[0.05] rounded-md w-3/4 mb-3"></div>
+              <div class="h-5 bg-white/[0.03] rounded-md w-1/3 mb-6"></div>
+              <div class="flex-grow"></div>
+              <div class="flex gap-2">
+                <div class="h-6 bg-white/[0.04] rounded-full w-16"></div>
+                <div class="h-6 bg-white/[0.04] rounded-full w-20"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    };
+
+    let skeletonTimeout;
+    const renderSkeletonsThenGrid = () => {
+      clearTimeout(skeletonTimeout);
+      
+      // Hide all current items
+      for (const url of currentlyVisible) {
+        const w = itemElements.get(url);
+        if (w) w.classList.add('hidden');
+      }
+      currentlyVisible.clear();
+      
+      // Remove old skeletons if any
+      document.querySelectorAll('.skeleton-card').forEach(el => el.remove());
+      
+      // If no items, skip skeletons and just renderGrid (which shows empty state)
+      if (filteredItems.length === 0) {
+        renderGrid();
+        return;
+      }
+
+      // Add new skeletons
+      const skeletonCount = Math.min(filteredItems.length, visibleCount) || 6;
+      let skeletonHTML = '';
+      for(let i=0; i<skeletonCount; i++){
+         skeletonHTML += createSkeletonHTML(i);
+      }
+      
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = skeletonHTML;
+      const skeletons = Array.from(tempDiv.children);
+      skeletons.forEach(s => gridContainer.appendChild(s));
+      
+      emptyState.classList.add('hidden');
+      loadMoreContainer.classList.add('hidden');
+
+      skeletonTimeout = setTimeout(() => {
+        skeletons.forEach(s => s.remove());
+        renderGrid();
+      }, 400);
     };
 
     let filterTimeout;
@@ -972,6 +1135,7 @@ const portfolios = portfoliosData.map(p => ({
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
+        if (window.playPopSound) window.playPopSound();
         if (btn.dataset.filter === 'likes' && !localStorage.getItem('pu_user')) {
           if (window.openLoginModal) window.openLoginModal();
           return;

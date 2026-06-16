@@ -25,12 +25,14 @@
   <div id="cursor-main" class="absolute top-0 left-0 rounded-full flex items-center justify-center will-change-transform transition-[width,height] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] z-[10000]" style="width: 24px; height: 24px; transform: translate(-50%, -50%);">
     
     <!-- Dynamic Background Glass Distortion Layer -->
-    <div id="cursor-glass-layer" class="absolute inset-0 rounded-full pointer-events-none overflow-hidden transition-[backdrop-filter] duration-300" 
+    <div id="cursor-glass-layer" class="absolute inset-0 rounded-full pointer-events-none overflow-hidden transition-[backdrop-filter] duration-300 transform-gpu" 
          style="
            -webkit-backdrop-filter: blur(0px);
            backdrop-filter: blur(0px);
            -webkit-filter: url(#cursor-glass-filter);
            filter: url(#cursor-glass-filter);
+           will-change: transform, backdrop-filter;
+           transform: translateZ(0);
          ">
     </div>
 
