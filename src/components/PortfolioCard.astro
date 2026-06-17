@@ -1,5 +1,8 @@
 ---
 // PortfolioCard.astro
+import ClickSpark from './ClickSpark.jsx';
+import BorderGlow from './BorderGlow.jsx';
+
 interface Props {
   name: string;
   url: string;
@@ -18,16 +21,24 @@ const { name, url, screenshot, summary, role, tech_stack, available_for_hire, ba
 const screenshotUrl = screenshot || `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`;
 ---
 
-<div class="group relative flex flex-col h-full transform-gpu will-change-transform">
-  
-  <!-- Subtle glowing backdrop that appears on hover -->
-  <div class="absolute -inset-[1px] bg-gradient-to-r from-blue-500/0 via-blue-500/30 to-purple-500/0 rounded-[18px] opacity-0 group-hover:opacity-100 blur-md transition-all duration-700 ease-in-out group-hover:duration-300 pointer-events-none"></div>
-  <div class="absolute -inset-[1px] bg-gradient-to-b from-blue-500/40 to-transparent rounded-[18px] opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:duration-300 pointer-events-none"></div>
-
-  <a href={url} target="_blank" rel="noopener noreferrer" class="relative flex flex-col bg-[#0B0F19] border border-white/[0.06] rounded-2xl h-full z-10 transition-transform duration-500 ease-out group-hover:-translate-y-1.5 active:scale-[0.98] active:translate-y-0 [backface-visibility:hidden]" onclick={`if(window.incrementPortfolioView) window.incrementPortfolioView('${url}')`}>
+<div class="group relative flex flex-col h-full transform-gpu will-change-transform z-10 transition-transform duration-500 ease-out hover:-translate-y-1.5 active:scale-[0.98] active:translate-y-0 [backface-visibility:hidden]">
+  <BorderGlow
+    client:load
+    className="h-full w-full"
+    edgeSensitivity={30}
+    glowColor="40 80 80"
+    backgroundColor="#120F17"
+    borderRadius={28}
+    glowRadius={40}
+    glowIntensity={1.0}
+    coneSpread={25}
+    animated={false}
+    colors={['#c084fc', '#f472b6', '#38bdf8']}
+  >
+    <a href={url} target="_blank" rel="noopener noreferrer" class="relative flex flex-col rounded-[28px] h-full outline-none" onclick={`if(window.incrementPortfolioView) window.incrementPortfolioView('${url}')`}>
     
     <!-- Image Section -->
-    <div class="relative aspect-[16/10] w-full overflow-hidden rounded-t-2xl bg-black [transform:translateZ(0)]">
+    <div class="relative aspect-[16/10] w-full overflow-hidden rounded-t-[28px] bg-black [transform:translateZ(0)]">
       
       <!-- Image with Grayscale to Color transition -->
       <img 
@@ -60,15 +71,19 @@ const screenshotUrl = screenshot || `https://api.microlink.io/?url=${encodeURICo
       </div>
 
       <!-- Bookmark (Top Right) -->
-      <button 
-        class="bookmark-btn absolute top-4 right-4 z-30 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/50 backdrop-blur-xl border border-white/[0.1] text-white/70 hover:text-rose-400 hover:bg-rose-500/15 hover:border-rose-500/40 hover:shadow-[0_0_20px_rgba(244,63,94,0.3)] active:scale-90 transition-all duration-300 group/btn"
-        data-url={url}
-        aria-label="Bookmark and Like"
-        onclick="event.preventDefault(); window.toggleBookmark(this, this.dataset.url)"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="heart-icon transition-transform duration-300 group-hover/btn:scale-110 active:scale-90"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-        <span class="text-xs font-bold tracking-wide like-count">{base_likes}</span>
-      </button>
+      <div class="absolute top-4 right-4 z-30">
+        <ClickSpark client:load sparkColor="#f43f5e" sparkSize={6} sparkRadius={25} sparkCount={12} duration={500}>
+          <button 
+            class="bookmark-btn flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/50 backdrop-blur-xl border border-white/[0.1] text-white/70 hover:text-rose-400 hover:bg-rose-500/15 hover:border-rose-500/40 hover:shadow-[0_0_20px_rgba(244,63,94,0.3)] active:scale-90 transition-all duration-300 group/btn"
+            data-url={url}
+            aria-label="Bookmark and Like"
+            onclick="event.preventDefault(); window.toggleBookmark(this, this.dataset.url)"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="heart-icon transition-transform duration-300 group-hover/btn:scale-110 active:scale-90"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            <span class="text-xs font-bold tracking-wide like-count">{base_likes}</span>
+          </button>
+        </ClickSpark>
+      </div>
     </div>
     
     <!-- Content Section -->
@@ -124,7 +139,8 @@ const screenshotUrl = screenshot || `https://api.microlink.io/?url=${encodeURICo
         </div>
       )}
     </div>
-  </a>
+    </a>
+  </BorderGlow>
 
   <!-- Ultra-Premium Custom Tooltip (Outside the card, Above top right) -->
   {summary && (
