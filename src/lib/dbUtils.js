@@ -1,22 +1,12 @@
 import { db } from './firebase.js';
 import { doc, getDoc, setDoc, updateDoc, increment, collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { urlToKey } from './utils.js';
+
+// Re-export for consumers
+export { urlToKey };
 
 // References
 const globalLikesRef = doc(db, 'global_stats', 'likes');
-
-// Helper to encode URLs to safe document keys (Firestore fields cannot contain /, +, ~ etc.)
-export const urlToKey = (url) => {
-  try {
-    return btoa(encodeURIComponent(url)).replace(/\//g, '_').replace(/\+/g, '-').replace(/=/g, '');
-  } catch (e) {
-    // Fallback simple hash if btoa fails
-    let hash = 0;
-    for (let i = 0; i < url.length; i++) {
-      hash = Math.imul(31, hash) + url.charCodeAt(i) | 0;
-    }
-    return `hash_${hash >>> 0}`;
-  }
-};
 
 // Fetch global likes map
 export const fetchGlobalLikes = async () => {

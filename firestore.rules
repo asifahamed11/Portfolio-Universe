@@ -14,9 +14,11 @@ service cloud.firestore {
     // Portfolios collection (for view counts)
     match /portfolios/{portfolioKey} {
       allow read: if true;
-      // Anyone can increment view count (merge), but strictly prevent other malicious writes.
-      // A more robust app would use a Cloud Function, but this is a good client-side compromise.
-      allow write: if true; 
+      // SEC-1 fix: Only allow updates that exclusively modify the 'views' field
+      // Prevents arbitrary data overwrites while still allowing view tracking
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['views']);
+      allow create: if false;
+      allow delete: if false;
     }
 
     // Users collection (bookmarks)

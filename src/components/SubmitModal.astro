@@ -53,10 +53,12 @@
       return;
     }
     
-    submitModal.classList.remove('opacity-0', 'pointer-events-none');
-    submitCard.classList.remove('scale-95');
-    submitCard.classList.add('scale-100');
-    submitSuccess.classList.add('hidden');
+    if (submitModal && submitCard) {
+      submitModal.classList.remove('opacity-0', 'pointer-events-none');
+      submitCard.classList.remove('scale-95');
+      submitCard.classList.add('scale-100');
+    }
+    if (submitSuccess) submitSuccess.classList.add('hidden');
     if (submitForm) submitForm.reset();
   };
 

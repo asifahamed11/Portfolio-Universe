@@ -4,22 +4,7 @@
 
 <div id="custom-cursor" class="pointer-events-none fixed inset-0 z-[10000] hidden">
   
-  <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <filter id="cursor-glass-filter" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
-      <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="1" seed="5" result="turbulence" />
-      <feComponentTransfer in="turbulence" result="mapped">
-        <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
-        <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
-        <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
-      </feComponentTransfer>
-      <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
-      <feSpecularLighting in="softMap" surfaceScale="3" specularConstant="0.4" specularExponent="100" lighting-color="white" result="specLight">
-        <fePointLight x="-200" y="-200" z="300" />
-      </feSpecularLighting>
-      <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
-      <feDisplacementMap in="SourceGraphic" in2="softMap" scale="40" xChannelSelector="R" yChannelSelector="G" />
-    </filter>
-  </svg>
+  <!-- SVG filter removed for performance (PERF-2). Glass effect achieved with CSS backdrop-filter only. -->
 
   <!-- Main Container -->
   <div id="cursor-main" class="absolute top-0 left-0 rounded-full flex items-center justify-center will-change-transform transition-[width,height] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] z-[10000]" style="width: 24px; height: 24px; transform: translate(-50%, -50%);">
@@ -27,10 +12,8 @@
     <!-- Dynamic Background Glass Distortion Layer -->
     <div id="cursor-glass-layer" class="absolute inset-0 rounded-full pointer-events-none overflow-hidden transition-[backdrop-filter] duration-300 transform-gpu" 
          style="
-           -webkit-backdrop-filter: blur(0px);
-           backdrop-filter: blur(0px);
-           -webkit-filter: url(#cursor-glass-filter);
-           filter: url(#cursor-glass-filter);
+           -webkit-backdrop-filter: blur(0px) saturate(140%) brightness(1.05);
+           backdrop-filter: blur(0px) saturate(140%) brightness(1.05);
            will-change: transform, backdrop-filter;
            transform: translateZ(0);
          ">
@@ -90,7 +73,10 @@
       cursorX += (mouseX - cursorX) * 0.25; 
       cursorY += (mouseY - cursorY) * 0.25;
       
-      const transformStr = `translate3d(calc(${cursorX}px - 50%), calc(${cursorY}px - 50%), 0) scale(${cursorMain?.dataset.scale || 1})`;
+      // PERF-6: Pre-compute offset instead of using calc() in translate3d
+      const halfW = (cursorMain ? cursorMain.offsetWidth : 24) / 2;
+      const halfH = (cursorMain ? cursorMain.offsetHeight : 24) / 2;
+      const transformStr = `translate3d(${cursorX - halfW}px, ${cursorY - halfH}px, 0) scale(${cursorMain?.dataset.scale || 1})`;
       
       if (cursorMain) cursorMain.style.transform = transformStr;
       if (cursorTextWrapper) cursorTextWrapper.style.transform = transformStr;
@@ -224,7 +210,12 @@
     };
 
     attachHoverEffects();
-    const observer = new MutationObserver(() => attachHoverEffects());
+    // PERF-3: Debounce MutationObserver to avoid excessive DOM queries during infinite scroll
+    let cursorMutationTimeout;
+    const observer = new MutationObserver(() => {
+      clearTimeout(cursorMutationTimeout);
+      cursorMutationTimeout = setTimeout(attachHoverEffects, 200);
+    });
     observer.observe(document.body, { childList: true, subtree: true });
     
     // Click effects
