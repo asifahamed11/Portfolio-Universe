@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import CustomCursor from '../components/CustomCursor.astro';
+import WaterCursor from '../components/WaterCursor.jsx';
 ---
 
 <html lang="en">
@@ -67,7 +67,7 @@ import CustomCursor from '../components/CustomCursor.astro';
       <p>&copy; {new Date().getFullYear()} Portfolio Universe. All rights reserved.</p>
     </footer>
 
-    <CustomCursor />
+    <WaterCursor client:load />
 
     <style>
       .glass-bg {

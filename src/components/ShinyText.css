@@ -1,0 +1,44 @@
+/* React Bits inspired Shiny Text */
+.shiny-text {
+  display: inline-block;
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.55) 40%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0.55) 60%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shiny-text-sweep linear infinite;
+}
+
+/* Metallic variant keeps the silver base of the original hero text */
+.shiny-text--metallic {
+  background: linear-gradient(
+    110deg,
+    #8c8c8c 38%,
+    #ffffff 50%,
+    #8c8c8c 62%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.shiny-text--disabled {
+  animation: none;
+}
+
+@keyframes shiny-text-sweep {
+  0% { background-position: 220% 0; }
+  100% { background-position: -220% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shiny-text { animation: none; background-position: 50% 0; }
+}
