@@ -6,8 +6,6 @@ import WaterCursor from '../components/WaterCursor.jsx';
 import portfoliosData from '../data/portfolios.json';
 import VariableProximityWrapper from '../components/VariableProximityWrapper.jsx';
 import GlassSurface from '../components/GlassSurface.jsx';
-import ShinyText from '../components/ShinyText.jsx';
-import ShuffleText from '../components/ShuffleText.jsx';
 import '../styles/global.css';
 
 // Map portfolios to include baseLikes (real likes start at 0)
@@ -118,7 +116,7 @@ const portfolios = portfoliosData.map(p => ({
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-            <ShuffleText client:load text="PortfolioUniverse" blueFrom={9} className="text-white font-extrabold tracking-tight text-lg" style={{ fontFamily: "'Space Grotesk', sans-serif" }} />
+            <span class="text-white font-extrabold tracking-tight text-lg" style="font-family: 'Space Grotesk', sans-serif;">Portfolio<span class="text-blue-400">Universe</span></span>
           </div>
           
           <div class="flex items-center gap-3 md:gap-4">
@@ -189,8 +187,8 @@ const portfolios = portfoliosData.map(p => ({
       
       <!-- Monochrome High-Tracking Brutalist Title -->
       <h1 class="text-5xl sm:text-6xl md:text-[5.5rem] font-bold mb-4 leading-[0.95] tracking-tighter flex flex-col items-center justify-center relative z-10 w-full uppercase" style="font-family: 'Space Grotesk', sans-serif;">
-        <span class="animate-hero-text drop-shadow-xl" style="animation-delay: 0.2s; letter-spacing: -0.04em;"><ShinyText client:load text="The Universe" speed={5} /></span>
-        <span class="animate-hero-text" style="animation-delay: 0.3s; letter-spacing: -0.04em;"><ShinyText client:load text="of Creators" speed={5} className="shiny-text--metallic" /></span>
+        <span class="text-white animate-hero-text drop-shadow-xl" style="animation-delay: 0.2s; letter-spacing: -0.04em;">The Universe</span>
+        <span class="text-metallic animate-hero-text" style="animation-delay: 0.3s; letter-spacing: -0.04em;">of Creators</span>
       </h1>
       
       <!-- Minimalist Subtitle -->
@@ -310,7 +308,7 @@ const portfolios = portfoliosData.map(p => ({
 
     <div id="toast-container" class="fixed bottom-6 right-6 z-[1000] flex flex-col gap-3 pointer-events-none"></div>
 
-    <WaterCursor client:load />
+    <WaterCursor client:only="react" />
     <LoginModal />
     <SubmitModal />
 
