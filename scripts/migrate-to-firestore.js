@@ -116,4 +116,4 @@ async function migrate() {
 }
 
 // Disabled automatic execution to prevent accidental quota exhaustion during build/load
-// migrate();
+migrate();

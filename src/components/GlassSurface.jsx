@@ -4,9 +4,9 @@ import './GlassSurface.css';
 
 const GlassSurface = ({
   children,
-  width = '100%',
-  height = 'auto',
-  borderRadius = 24,
+  width = 200,
+  height = 80,
+  borderRadius = 20,
   borderWidth = 0.07,
   brightness = 50,
   opacity = 0.93,
@@ -102,6 +102,20 @@ const GlassSurface = ({
     yChannel,
     mixBlendMode
   ]);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const resizeObserver = new ResizeObserver(() => {
+      setTimeout(updateDisplacementMap, 0);
+    });
+
+    resizeObserver.observe(containerRef.current);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, []);
 
   useEffect(() => {
     if (!containerRef.current) return;
