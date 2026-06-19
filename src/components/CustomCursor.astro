@@ -4,18 +4,34 @@
 
 <div id="custom-cursor" class="pointer-events-none fixed inset-0 z-[10000] hidden">
   
-
+  <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <filter id="cursor-glass-filter" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
+      <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="1" seed="5" result="turbulence" />
+      <feComponentTransfer in="turbulence" result="mapped">
+        <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+        <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+        <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+      </feComponentTransfer>
+      <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+      <feSpecularLighting in="softMap" surfaceScale="3" specularConstant="0.4" specularExponent="100" lighting-color="white" result="specLight">
+        <fePointLight x="-200" y="-200" z="300" />
+      </feSpecularLighting>
+      <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
+      <feDisplacementMap in="SourceGraphic" in2="softMap" scale="40" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </svg>
 
   <!-- Main Container -->
-  <div id="cursor-main" class="absolute top-0 left-0 rounded-full flex items-center justify-center will-change-transform transition-[width,height] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] z-[10000]" style="width: 48px; height: 48px; transform: translate(-50%, -50%);">
+  <div id="cursor-main" class="absolute top-0 left-0 rounded-full flex items-center justify-center will-change-transform transition-[width,height] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] z-[10000]" style="width: 24px; height: 24px; transform: translate(-50%, -50%);">
     
     <!-- Dynamic Background Glass Distortion Layer -->
-    <div id="cursor-glass-layer" class="absolute inset-0 rounded-full pointer-events-none overflow-hidden transition-all duration-300 transform-gpu" 
+    <div id="cursor-glass-layer" class="absolute inset-0 rounded-full pointer-events-none overflow-hidden transition-[backdrop-filter] duration-300 transform-gpu" 
          style="
-           background: rgba(255,255,255,0.02); backdrop-filter: blur(4px) saturate(150%) brightness(1.1); -webkit-backdrop-filter: blur(4px) saturate(150%) brightness(1.1);
-
-
-
+           -webkit-backdrop-filter: blur(0px);
+           backdrop-filter: blur(0px);
+           -webkit-filter: url(#cursor-glass-filter);
+           filter: url(#cursor-glass-filter);
+           will-change: transform, backdrop-filter;
            transform: translateZ(0);
          ">
     </div>
@@ -23,14 +39,14 @@
     <!-- Edge Lighting Layer -->
     <div id="cursor-border-layer" class="absolute inset-0 rounded-full pointer-events-none transition-all duration-300"
          style="
-           box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2), inset 2px 2px 5px rgba(255, 255, 255, 0.4), inset -2px -2px 5px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.2);
-           border: 1px solid rgba(255,255,255,0.1);
+           box-shadow: inset 2px 2px 0px -2px rgba(255, 255, 255, 0.3), inset 0 0 3px 1px rgba(255, 255, 255, 0.2);
+           border: 1px solid rgba(255,255,255,0.05);
          ">
     </div>
   </div>
   
   <!-- Clear text wrapper -->
-  <div id="cursor-text-wrapper" class="absolute top-0 left-0 flex items-center justify-center will-change-transform pointer-events-none transition-[width,height] duration-300 z-[10001]" style="transform: translate(-50%, -50%); width: 48px; height: 48px;">
+  <div id="cursor-text-wrapper" class="absolute top-0 left-0 flex items-center justify-center will-change-transform pointer-events-none transition-[width,height] duration-300 z-[10001]" style="transform: translate(-50%, -50%); width: 24px; height: 24px;">
     <span id="cursor-text" class="text-white text-[11px] uppercase tracking-[0.2em] font-extrabold opacity-0 transition-opacity duration-300 ml-[2px]" style="text-shadow: 0 2px 10px rgba(0,0,0,1);"></span>
   </div>
 </div>
@@ -48,6 +64,8 @@
   document.addEventListener('DOMContentLoaded', () => {
     if (!window.matchMedia('(pointer: fine)').matches) return;
 
+    document.documentElement.classList.add('custom-cursor-active');
+    
     const cursorContainer = document.getElementById('custom-cursor');
     const cursorMain = document.getElementById('cursor-main');
     const cursorTextWrapper = document.getElementById('cursor-text-wrapper');
@@ -55,12 +73,7 @@
     const borderLayer = document.getElementById('cursor-border-layer');
     const glassLayer = document.getElementById('cursor-glass-layer');
     
-    // Hide native cursor only after the custom cursor mounts, so a missing
-    // element never leaves the user with no visible cursor.
-    if (cursorContainer) {
-      cursorContainer.classList.remove('hidden');
-      document.documentElement.classList.add('custom-cursor-active');
-    }
+    if (cursorContainer) cursorContainer.classList.remove('hidden');
 
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
@@ -73,25 +86,11 @@
       mouseY = e.clientY;
     });
 
-    // PERF-5 fix: don't read offsetWidth/offsetHeight every animation frame (forces a
-    // layout reflow at 60fps). Cache the half-size and update it only when the cursor
-    // actually resizes, via ResizeObserver.
-    let halfW = 24;
-    let halfH = 24;
-    if (cursorMain && 'ResizeObserver' in window) {
-      const sizeObserver = new ResizeObserver((entries) => {
-        const r = entries[0].contentRect;
-        halfW = r.width / 2;
-        halfH = r.height / 2;
-      });
-      sizeObserver.observe(cursorMain);
-    }
-
     const render = () => {
       cursorX += (mouseX - cursorX) * 0.25; 
       cursorY += (mouseY - cursorY) * 0.25;
       
-      const transformStr = `translate3d(${cursorX - halfW}px, ${cursorY - halfH}px, 0) scale(${cursorMain?.dataset.scale || 1})`;
+      const transformStr = `translate3d(calc(${cursorX}px - 50%), calc(${cursorY}px - 50%), 0) scale(${cursorMain?.dataset.scale || 1})`;
       
       if (cursorMain) cursorMain.style.transform = transformStr;
       if (cursorTextWrapper) cursorTextWrapper.style.transform = transformStr;
@@ -118,33 +117,29 @@
             cursorText.textContent = 'OPEN';
             cursorText.style.opacity = '1';
             
-            borderLayer.style.boxShadow = 'inset 0 0 15px rgba(255, 255, 255, 0.1), inset 2px 2px 8px rgba(255, 255, 255, 0.5), inset -2px -2px 8px rgba(0, 0, 0, 0.15), 0 8px 20px rgba(0, 0, 0, 0.3)';
-            borderLayer.style.border = '1px solid rgba(255,255,255,0.15)';
+            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(255, 255, 255, 0.4), inset 0 0 5px 2px rgba(255, 255, 255, 0.2)';
             borderLayer.style.background = 'transparent';
             if(glassLayer) {
-                glassLayer.style.background = 'transparent';
-
-
+                glassLayer.style.backdropFilter = 'blur(0px)';
+                glassLayer.style.webkitBackdropFilter = 'blur(0px)';
             }
           }
         });
         el.addEventListener('mouseleave', () => {
           isHoveringCard = false;
           if (cursorMain && cursorTextWrapper && cursorText && borderLayer) {
-            cursorMain.style.width = '48px';
-            cursorMain.style.height = '48px';
+            cursorMain.style.width = '24px';
+            cursorMain.style.height = '24px';
             
-            cursorTextWrapper.style.width = '48px';
-            cursorTextWrapper.style.height = '48px';
+            cursorTextWrapper.style.width = '24px';
+            cursorTextWrapper.style.height = '24px';
             cursorText.style.opacity = '0';
             
-            borderLayer.style.boxShadow = 'inset 0 0 10px rgba(255, 255, 255, 0.2), inset 2px 2px 5px rgba(255, 255, 255, 0.4), inset -2px -2px 5px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.2)';
-            borderLayer.style.border = '1px solid rgba(255,255,255,0.1)';
+            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(255, 255, 255, 0.3), inset 0 0 3px 1px rgba(255, 255, 255, 0.2)';
             borderLayer.style.background = 'transparent';
             if(glassLayer) {
-                glassLayer.style.background = 'transparent';
-
-
+                glassLayer.style.backdropFilter = 'blur(0px)';
+                glassLayer.style.webkitBackdropFilter = 'blur(0px)';
             }
           }
         });
@@ -158,29 +153,24 @@
 
         el.addEventListener('mouseenter', () => {
           if (cursorMain && cursorTextWrapper && !isHoveringCard && borderLayer) {
-            cursorMain.style.width = '60px';
-            cursorMain.style.height = '60px';
-            cursorTextWrapper.style.width = '60px';
-            cursorTextWrapper.style.height = '60px';
-            if (cursorText) cursorText.style.opacity = '0'; 
-            
-            borderLayer.style.boxShadow = 'inset 0 0 12px rgba(244, 63, 94, 0.2), inset 2px 2px 6px rgba(244, 63, 94, 0.5), inset -2px -2px 6px rgba(0, 0, 0, 0.1), 0 6px 16px rgba(0, 0, 0, 0.2)';
-            borderLayer.style.border = '1px solid rgba(244, 63, 94, 0.3)';
-            borderLayer.style.background = 'rgba(244,63,94,0.05)';
-            if(glassLayer) {
-
-
-            }
-          }
-        });
-        el.addEventListener('mouseleave', () => {
-          if (cursorMain && cursorTextWrapper && !isHoveringCard && borderLayer) {
             cursorMain.style.width = '48px';
             cursorMain.style.height = '48px';
             cursorTextWrapper.style.width = '48px';
             cursorTextWrapper.style.height = '48px';
+            if (cursorText) cursorText.style.opacity = '0'; 
             
-            borderLayer.style.boxShadow = 'inset 2px 2px 8px rgba(255, 255, 255, 0.6), inset -4px -4px 12px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3)';
+            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(244, 63, 94, 0.4), inset 0 0 5px 1px rgba(244, 63, 94, 0.2)';
+            borderLayer.style.background = 'rgba(244,63,94,0.02)';
+          }
+        });
+        el.addEventListener('mouseleave', () => {
+          if (cursorMain && cursorTextWrapper && !isHoveringCard && borderLayer) {
+            cursorMain.style.width = '24px';
+            cursorMain.style.height = '24px';
+            cursorTextWrapper.style.width = '24px';
+            cursorTextWrapper.style.height = '24px';
+            
+            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(255, 255, 255, 0.3), inset 0 0 3px 1px rgba(255, 255, 255, 0.2)';
             borderLayer.style.background = 'transparent';
           }
         });
@@ -200,13 +190,8 @@
             cursorTextWrapper.style.height = '12px';
             if (cursorText) cursorText.style.opacity = '0'; 
             
-            borderLayer.style.boxShadow = 'inset 0 0 8px rgba(244, 63, 94, 0.4), inset 2px 2px 4px rgba(244, 63, 94, 0.6), inset -2px -2px 4px rgba(0, 0, 0, 0.2), 0 4px 10px rgba(0, 0, 0, 0.2)';
-            borderLayer.style.border = '1px solid rgba(244, 63, 94, 0.5)';
+            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(244, 63, 94, 0.6), inset 0 0 3px 1px rgba(244, 63, 94, 0.4)';
             borderLayer.style.background = 'transparent';
-            if(glassLayer) {
-
-
-            }
           }
         });
         el.addEventListener('mouseleave', () => {
@@ -222,17 +207,16 @@
                 cursorText.textContent = 'OPEN';
                 cursorText.style.opacity = '1';
             }
-            borderLayer.style.boxShadow = 'inset 0 0 15px rgba(255, 255, 255, 0.1), inset 2px 2px 8px rgba(255, 255, 255, 0.5), inset -2px -2px 8px rgba(0, 0, 0, 0.15), 0 8px 20px rgba(0, 0, 0, 0.3)';
-            borderLayer.style.border = '1px solid rgba(255,255,255,0.15)';
+            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(255, 255, 255, 0.4), inset 0 0 5px 2px rgba(255, 255, 255, 0.2)';
             borderLayer.style.background = 'transparent';
           } else {
             // Revert to normal state
-            cursorMain.style.width = '48px';
-            cursorMain.style.height = '48px';
-            cursorTextWrapper.style.width = '48px';
-            cursorTextWrapper.style.height = '48px';
+            cursorMain.style.width = '24px';
+            cursorMain.style.height = '24px';
+            cursorTextWrapper.style.width = '24px';
+            cursorTextWrapper.style.height = '24px';
             
-            borderLayer.style.boxShadow = 'inset 2px 2px 8px rgba(255, 255, 255, 0.6), inset -4px -4px 12px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3)';
+            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(255, 255, 255, 0.3), inset 0 0 3px 1px rgba(255, 255, 255, 0.2)';
             borderLayer.style.background = 'transparent';
           }
         });
@@ -240,12 +224,7 @@
     };
 
     attachHoverEffects();
-    // PERF-3: Debounce MutationObserver to avoid excessive DOM queries during infinite scroll
-    let cursorMutationTimeout;
-    const observer = new MutationObserver(() => {
-      clearTimeout(cursorMutationTimeout);
-      cursorMutationTimeout = setTimeout(attachHoverEffects, 200);
-    });
+    const observer = new MutationObserver(() => attachHoverEffects());
     observer.observe(document.body, { childList: true, subtree: true });
     
     // Click effects
