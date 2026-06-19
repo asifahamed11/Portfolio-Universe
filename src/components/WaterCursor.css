@@ -1,44 +1,45 @@
-/* WaterCursor — pure crystal-clear water droplet */
+/* WaterCursor — pure water droplet (FluidGlass visuals + BlobCursor physics) */
 
 .water-cursor-root {
   position: fixed;
   inset: 0;
   z-index: 10000;
   pointer-events: none;
+  transition: opacity 0.25s ease;
 }
 
 .water-cursor-anchor {
   position: fixed;
   top: 0;
   left: 0;
-  will-change: transform;
   pointer-events: none;
+  will-change: transform;
 }
 
-/* ---- Main droplet ---- */
+/* ---- Lead lens drop ---- */
 .water-cursor {
   position: absolute;
   top: 0;
   left: 0;
-  width: 46px;
-  height: 46px;
+  width: 40px;
+  height: 40px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  will-change: width, height;
+  pointer-events: none;
+  will-change: width, height, transform;
 
-  /* Fluid glass: clean blur + brightness, NO chromatic aberration */
+  /* FluidGlass refraction: clean blur + brightness + saturate (NO chromatic aberration) */
   -webkit-backdrop-filter: blur(2px) brightness(1.12) saturate(1.18);
           backdrop-filter: blur(2px) brightness(1.12) saturate(1.18);
 
-  /* Subtle refraction body so it reads as a glossy 3D bubble */
   background:
     radial-gradient(circle at 32% 28%,
-      rgba(255, 255, 255, 0.28) 0%,
-      rgba(255, 255, 255, 0.07) 45%,
+      rgba(255, 255, 255, 0.30) 0%,
+      rgba(255, 255, 255, 0.08) 46%,
       rgba(255, 255, 255, 0.02) 72%);
   border: 1px solid rgba(255, 255, 255, 0.35);
   box-shadow:
@@ -48,7 +49,7 @@
     0 6px 18px rgba(0, 0, 0, 0.18);
 }
 
-/* Soft diagonal sheen across the bubble */
+/* Soft diagonal sheen */
 .water-cursor__sheen {
   position: absolute;
   inset: 0;
@@ -97,11 +98,12 @@
   font-family: 'Space Grotesk', sans-serif;
 }
 
-/* ---- Tight liquid trail ---- */
+/* ---- Trailing droplets ---- */
 .water-cursor-trail {
   position: absolute;
   top: 0;
   left: 0;
+  display: block;
   width: 16px;
   height: 16px;
   transform: translate(-50%, -50%);
@@ -110,10 +112,15 @@
   -webkit-backdrop-filter: blur(1px) brightness(1.08);
           backdrop-filter: blur(1px) brightness(1.08);
   background: radial-gradient(circle at 40% 35%,
-    rgba(255, 255, 255, 0.24) 0%,
+    rgba(255, 255, 255, 0.26) 0%,
     rgba(255, 255, 255, 0.06) 58%,
-    rgba(255, 255, 255, 0) 76%);
+    rgba(255, 255, 255, 0) 78%);
   border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.water-cursor-trail--sm {
+  width: 10px;
+  height: 10px;
 }
 
 @media (prefers-reduced-motion: reduce) {
