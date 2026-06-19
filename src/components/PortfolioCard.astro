@@ -53,7 +53,7 @@ const screenshotUrl = screenshot || `https://api.microlink.io/?url=${encodeURICo
       <div class="absolute inset-0 z-20 w-[150%] -translate-x-[150%] skew-x-[-25deg] bg-gradient-to-r from-transparent via-white/[0.12] to-transparent group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out pointer-events-none"></div>
       
       <!-- Inner subtle ring -->
-      <div class="absolute inset-0 z-10 pointer-events-none ring-1 ring-inset ring-white/[0.08] rounded-t-2xl"></div>
+      <div class="absolute inset-0 z-10 pointer-events-none ring-1 ring-inset ring-white/[0.08] rounded-t-[28px]"></div>
       
       <!-- Vignette / Overlays -->
       <div class="absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-transparent to-black/70 opacity-90 pointer-events-none transition-opacity duration-500 group-hover:opacity-60"></div>
@@ -87,7 +87,7 @@ const screenshotUrl = screenshot || `https://api.microlink.io/?url=${encodeURICo
     </div>
     
     <!-- Content Section -->
-    <div class="relative z-10 p-6 flex flex-col flex-grow rounded-b-2xl bg-gradient-to-b from-[#0B0F19] to-[#06080D]">
+    <div class="relative z-10 p-6 flex flex-col flex-grow rounded-b-[28px] bg-gradient-to-b from-[#0B0F19] to-[#06080D]">
       <div class="flex items-center justify-between mb-2">
         <div class="flex items-center gap-2 overflow-hidden pr-2">
           <h3 class="text-[1.1rem] font-extrabold text-white/95 tracking-tight line-clamp-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-300 transition-all duration-300">
@@ -127,12 +127,12 @@ const screenshotUrl = screenshot || `https://api.microlink.io/?url=${encodeURICo
       {tech_stack && tech_stack.length > 0 && (
         <div class="flex flex-wrap gap-2 mt-6">
           {tech_stack.slice(0, 3).map(tech => (
-            <span class="px-3 py-1.5 rounded-full bg-blue-500/[0.03] text-blue-200/50 text-[10px] font-bold tracking-widest uppercase border border-blue-500/10 shadow-sm transition-colors duration-300 group-hover:border-blue-500/20 group-hover:bg-blue-500/[0.08] group-hover:text-blue-200/80">
+            <span class="px-3 py-1.5 rounded-full bg-blue-500/[0.06] text-blue-200/80 text-[10px] font-bold tracking-widest uppercase border border-blue-500/20 shadow-sm transition-colors duration-300 group-hover:border-blue-500/40 group-hover:bg-blue-500/[0.12] group-hover:text-blue-100">
               {tech}
             </span>
           ))}
           {tech_stack.length > 3 && (
-            <span class="px-3 py-1.5 rounded-full bg-white/[0.02] text-white/30 text-[10px] font-bold tracking-widest uppercase border border-white/[0.04] shadow-sm">
+            <span class="px-3 py-1.5 rounded-full bg-white/[0.04] text-white/60 text-[10px] font-bold tracking-widest uppercase border border-white/[0.08] shadow-sm">
               +{tech_stack.length - 3}
             </span>
           )}
