@@ -70,13 +70,24 @@
       mouseY = e.clientY;
     });
 
+    // PERF-5 fix: don't read offsetWidth/offsetHeight every animation frame (forces a
+    // layout reflow at 60fps). Cache the half-size and update it only when the cursor
+    // actually resizes, via ResizeObserver.
+    let halfW = 24;
+    let halfH = 24;
+    if (cursorMain && 'ResizeObserver' in window) {
+      const sizeObserver = new ResizeObserver((entries) => {
+        const r = entries[0].contentRect;
+        halfW = r.width / 2;
+        halfH = r.height / 2;
+      });
+      sizeObserver.observe(cursorMain);
+    }
+
     const render = () => {
       cursorX += (mouseX - cursorX) * 0.25; 
       cursorY += (mouseY - cursorY) * 0.25;
       
-      // PERF-6: Pre-compute offset instead of using calc() in translate3d
-      const halfW = (cursorMain ? cursorMain.offsetWidth : 24) / 2;
-      const halfH = (cursorMain ? cursorMain.offsetHeight : 24) / 2;
       const transformStr = `translate3d(${cursorX - halfW}px, ${cursorY - halfH}px, 0) scale(${cursorMain?.dataset.scale || 1})`;
       
       if (cursorMain) cursorMain.style.transform = transformStr;

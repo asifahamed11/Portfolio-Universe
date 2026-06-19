@@ -17,7 +17,10 @@ service cloud.firestore {
       // SEC-1 fix: Only allow updates that exclusively modify the 'views' field
       // Prevents arbitrary data overwrites while still allowing view tracking
       allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['views']);
-      allow create: if false;
+      // BUG-L2 fix: allow first-ever view to create the doc, but only with a numeric 'views' field.
+      // Without this, incrementPortfolioView() on a not-yet-migrated portfolio is a create -> denied.
+      allow create: if request.resource.data.keys().hasOnly(['views'])
+                    && request.resource.data.views is number;
       allow delete: if false;
     }
 
