@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, doc, setDoc } from 'firebase/firestore';
+import { getFirestore, collection, doc, setDoc, writeBatch } from 'firebase/firestore';
 
 // Load environment variables
 dotenv.config();
@@ -57,30 +57,57 @@ async function migrate() {
   const portfoliosRef = collection(db, 'portfolios');
   
   let successCount = 0;
+  const batches = [];
+  let currentBatch = writeBatch(db);
+  let opCount = 0;
+
   for (let i = 0; i < portfolios.length; i++) {
     const p = portfolios[i];
     const key = urlToKey(p.url);
+    const docRef = doc(portfoliosRef, key);
     
+    currentBatch.set(docRef, {
+      name: p.name || "",
+      url: p.url || "",
+      screenshot: p.screenshot || `https://s0.wp.com/mshots/v1/${encodeURIComponent(p.url)}?w=600`,
+      summary: p.summary || "",
+      role: p.role || "",
+      tech_stack: p.tech_stack || [],
+      available_for_hire: p.available_for_hire || false,
+      has_blog: p.has_blog || false,
+      specialization: p.specialization || "",
+      primary_language: p.primary_language || "",
+      is_portfolio: p.is_portfolio !== false,
+      portfolio_score: p.portfolio_score || 0,
+      seo_evaluation: p.seo_evaluation || ""
+    }, { merge: true });
+    
+    opCount++;
+    if (opCount === 500) {
+      batches.push(currentBatch);
+      currentBatch = writeBatch(db);
+      opCount = 0;
+    }
+  }
+  
+  if (opCount > 0) {
+    batches.push(currentBatch);
+  }
+  
+  console.log(`Created ${batches.length} batches. Writing to Firestore with delays to avoid quota limits...`);
+  
+  for (let i = 0; i < batches.length; i++) {
     try {
-      await setDoc(doc(portfoliosRef, key), {
-        name: p.name || "",
-        url: p.url || "",
-        screenshot: p.screenshot || `https://s0.wp.com/mshots/v1/${encodeURIComponent(p.url)}?w=600`,
-        summary: p.summary || "",
-        role: p.role || "",
-        tech_stack: p.tech_stack || [],
-        available_for_hire: p.available_for_hire || false,
-        has_blog: p.has_blog || false,
-        specialization: p.specialization || "",
-        primary_language: p.primary_language || "",
-        is_portfolio: p.is_portfolio !== false,
-        portfolio_score: p.portfolio_score || 0,
-        seo_evaluation: p.seo_evaluation || ""
-      }, { merge: true });
-      successCount++;
-      process.stdout.write(`\rMigrated ${successCount}/${portfolios.length}...`);
+      await batches[i].commit();
+      const docsInBatch = (i === batches.length - 1 && opCount > 0) ? opCount : 500;
+      successCount += docsInBatch;
+      console.log(`Committed batch ${i + 1}/${batches.length} (${successCount} docs migrated)`);
+      if (i < batches.length - 1) {
+        // Built-in delay to prevent overloading backend
+        await new Promise(resolve => setTimeout(resolve, 3000));
+      }
     } catch (e) {
-      console.error(`\nFailed to migrate ${p.url}:`, e.message);
+      console.error(`\nFailed to commit batch ${i + 1}:`, e.message);
     }
   }
   
@@ -88,4 +115,5 @@ async function migrate() {
   process.exit(0);
 }
 
-migrate();
+// Disabled automatic execution to prevent accidental quota exhaustion during build/load
+// migrate();
