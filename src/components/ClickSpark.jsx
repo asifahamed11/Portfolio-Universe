@@ -13,6 +13,9 @@ const ClickSpark = ({
   const canvasRef = useRef(null);
   const sparksRef = useRef([]);
   const startTimeRef = useRef(null);
+  // PERF-2 fix: keep handles so the rAF loop only runs while sparks exist.
+  const rafRef = useRef(null);
+  const drawRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -69,8 +72,6 @@ const ClickSpark = ({
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
-    let animationId;
-
     const draw = timestamp => {
       if (!startTimeRef.current) {
         startTimeRef.current = timestamp;
@@ -107,13 +108,19 @@ const ClickSpark = ({
         return true;
       });
 
-      animationId = requestAnimationFrame(draw);
+      // Keep animating only while there is something to draw; otherwise go idle.
+      if (sparksRef.current.length > 0) {
+        rafRef.current = requestAnimationFrame(draw);
+      } else {
+        rafRef.current = null;
+      }
     };
 
-    animationId = requestAnimationFrame(draw);
+    drawRef.current = draw;
 
     return () => {
-      cancelAnimationFrame(animationId);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
     };
   }, [sparkColor, sparkSize, sparkRadius, sparkCount, duration, easeFunc, extraScale]);
 
@@ -133,6 +140,10 @@ const ClickSpark = ({
     }));
 
     sparksRef.current.push(...newSparks);
+    // Kick the loop back on if it went idle.
+    if (rafRef.current == null && drawRef.current) {
+      rafRef.current = requestAnimationFrame(drawRef.current);
+    }
   };
 
   return (

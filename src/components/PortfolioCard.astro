@@ -21,9 +21,9 @@ const { name, url, screenshot, summary, role, tech_stack, available_for_hire, ba
 const screenshotUrl = screenshot || `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`;
 ---
 
-<div class="group relative flex flex-col h-full transform-gpu will-change-transform z-10 transition-transform duration-500 ease-out hover:-translate-y-1.5 active:scale-[0.98] active:translate-y-0 [backface-visibility:hidden]">
+<div class="group relative flex flex-col h-full transform-gpu z-10 transition-transform duration-500 ease-out hover:-translate-y-1.5 active:scale-[0.98] active:translate-y-0 [backface-visibility:hidden]">
   <BorderGlow
-    client:load
+    client:visible
     className="h-full w-full"
     edgeSensitivity={30}
     glowColor="40 80 80"
@@ -45,7 +45,7 @@ const screenshotUrl = screenshot || `https://api.microlink.io/?url=${encodeURICo
         src={screenshotUrl} 
         alt={`Screenshot of ${name}'s portfolio`}
         loading="lazy"
-        class="w-full h-full object-cover object-top opacity-75 grayscale-[30%] group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-[1.04] transition-all duration-700 ease-out transform-gpu will-change-transform [backface-visibility:hidden]"
+        class="w-full h-full object-cover object-top opacity-75 grayscale-[30%] group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-[1.04] transition-all duration-700 ease-out transform-gpu [backface-visibility:hidden]"
         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600&auto=format&fit=crop';"
       />
       
@@ -72,7 +72,7 @@ const screenshotUrl = screenshot || `https://api.microlink.io/?url=${encodeURICo
 
       <!-- Bookmark (Top Right) -->
       <div class="absolute top-4 right-4 z-30">
-        <ClickSpark client:load sparkColor="#f43f5e" sparkSize={6} sparkRadius={25} sparkCount={12} duration={500}>
+        <ClickSpark client:visible sparkColor="#f43f5e" sparkSize={6} sparkRadius={25} sparkCount={12} duration={500}>
           <button 
             class="bookmark-btn flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/50 backdrop-blur-xl border border-white/[0.1] text-white/70 hover:text-rose-400 hover:bg-rose-500/15 hover:border-rose-500/40 hover:shadow-[0_0_20px_rgba(244,63,94,0.3)] active:scale-90 transition-all duration-300 group/btn"
             data-url={url}

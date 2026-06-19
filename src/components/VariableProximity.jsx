@@ -62,6 +62,9 @@ const VariableProximity = forwardRef((props, ref) => {
   const interpolatedSettingsRef = useRef([]);
   const mousePositionRef = useMousePositionRef(containerRef);
   const lastPositionRef = useRef({ x: null, y: null });
+  // PERF-3 fix: cache each letter's center so we don't call getBoundingClientRect
+  // for every letter on every mouse move (layout thrash). Re-measured on resize/scroll.
+  const letterCentersRef = useRef([]);
 
   const parsedSettings = useMemo(() => {
     const parseSettings = settingsStr =>
@@ -100,9 +103,33 @@ const VariableProximity = forwardRef((props, ref) => {
     }
   };
 
+  const measureLetters = () => {
+    const container = containerRef?.current;
+    if (!container) return;
+    const containerRect = container.getBoundingClientRect();
+    letterCentersRef.current = letterRefs.current.map(letterRef => {
+      if (!letterRef) return null;
+      const rect = letterRef.getBoundingClientRect();
+      return {
+        x: rect.left + rect.width / 2 - containerRect.left,
+        y: rect.top + rect.height / 2 - containerRect.top
+      };
+    });
+  };
+
+  useEffect(() => {
+    measureLetters();
+    window.addEventListener('resize', measureLetters);
+    window.addEventListener('scroll', measureLetters, { passive: true });
+    return () => {
+      window.removeEventListener('resize', measureLetters);
+      window.removeEventListener('scroll', measureLetters);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [label]);
+
   useAnimationFrame(() => {
     if (!containerRef?.current) return;
-    const containerRect = containerRef.current.getBoundingClientRect();
     const { x, y } = mousePositionRef.current;
     if (lastPositionRef.current.x === x && lastPositionRef.current.y === y) {
       return;
@@ -112,15 +139,14 @@ const VariableProximity = forwardRef((props, ref) => {
     letterRefs.current.forEach((letterRef, index) => {
       if (!letterRef) return;
 
-      const rect = letterRef.getBoundingClientRect();
-      const letterCenterX = rect.left + rect.width / 2 - containerRect.left;
-      const letterCenterY = rect.top + rect.height / 2 - containerRect.top;
+      const center = letterCentersRef.current[index];
+      if (!center) return;
 
       const distance = calculateDistance(
         mousePositionRef.current.x,
         mousePositionRef.current.y,
-        letterCenterX,
-        letterCenterY
+        center.x,
+        center.y
       );
 
       if (distance >= radius) {
