@@ -46,6 +46,11 @@ jobs:
       - name: Fetch and Update Portfolios Data
         run: node scripts/update-data.js
 
+      - name: Sync New Portfolios to Firestore
+        env:
+          PUBLIC_FIREBASE_API_KEY: ${{ secrets.PUBLIC_FIREBASE_API_KEY }}
+        run: node scripts/migrate-to-firestore.js
+
       - name: Commit and Push Updated Portfolios
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
