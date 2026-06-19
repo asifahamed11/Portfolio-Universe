@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import CustomCursor from '../components/CustomCursor.astro';
+import CursorFluidGlassBlob from '../components/CursorFluidGlassBlob.jsx';
 ---
 
 <html lang="en">
@@ -40,7 +40,7 @@ import CustomCursor from '../components/CustomCursor.astro';
       </a>
     </div>
 
-    <CustomCursor />
+    <CursorFluidGlassBlob client:only="react" />
 
     <style>
       .glass-bg {

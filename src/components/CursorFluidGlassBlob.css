@@ -1,0 +1,139 @@
+/* Hide native cursor only once the React cursor mounts (no "no-cursor" gap). */
+@media (pointer: fine) {
+  html.fg-cursor-active,
+  html.fg-cursor-active * {
+    cursor: none !important;
+  }
+}
+
+.fg-cursor {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none; /* never blocks clicks / hovers / scroll */
+  contain: layout style size;
+}
+.fg-defs {
+  position: absolute;
+}
+
+/* ---- Goo metaball trail ---- */
+.fg-goo {
+  position: absolute;
+  inset: 0;
+  filter: url(#fgGoo); /* fuses the blobs into one liquid body */
+  -webkit-filter: url(#fgGoo);
+}
+.fg-blob {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  will-change: transform;
+  /* frosted liquid fill (no backdrop-filter here — it conflicts with the goo filter) */
+  background: radial-gradient(
+    60% 60% at 35% 30%,
+    rgba(255, 255, 255, 0.85),
+    rgba(255, 255, 255, 0.25) 45%,
+    rgba(var(--accent), 0.18) 70%,
+    rgba(var(--accent), 0) 100%
+  );
+}
+.fg-head {
+  background: radial-gradient(
+    58% 58% at 36% 30%,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.3) 48%,
+    rgba(var(--accent), 0.22) 72%,
+    rgba(var(--accent), 0) 100%
+  );
+}
+.fg-t1 {
+  opacity: 0.85;
+}
+.fg-t2 {
+  opacity: 0.6;
+}
+.fg-t3 {
+  opacity: 0.4;
+}
+
+/* ---- Fluid-glass lens ---- */
+.fg-lens {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  will-change: transform;
+  isolation: isolate;
+  /* THE refraction: displacement filter used as a backdrop-filter (Chromium). */
+  -webkit-backdrop-filter: url(#fgFluidGlass) blur(1px) saturate(160%) brightness(1.08);
+  backdrop-filter: url(#fgFluidGlass) blur(1px) saturate(160%) brightness(1.08);
+  /* "thickness" — inset edge lighting + drop for depth */
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25),
+    inset 2px 3px 6px rgba(255, 255, 255, 0.45),
+    inset -2px -3px 8px rgba(0, 0, 0, 0.35), 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+/* Chromatic aberration: red/blue fringes split a hair on each edge */
+.fg-lens::before,
+.fg-lens::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+.fg-lens::before {
+  box-shadow: inset 1.5px 0 2px rgba(255, 40, 80, 0.5);
+}
+.fg-lens::after {
+  box-shadow: inset -1.5px 0 2px rgba(40, 120, 255, 0.5);
+}
+/* Specular highlight (the glassy glint) */
+.fg-spec {
+  position: absolute;
+  top: 14%;
+  left: 18%;
+  width: 34%;
+  height: 24%;
+  border-radius: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0)
+  );
+  filter: blur(1px);
+}
+.fg-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 700 10px/1 "Space Grotesk", system-ui, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+  white-space: nowrap;
+}
+
+/* Graceful degrade: Firefox/Safari ignore the displacement url() but keep blur/saturate. */
+@supports not (backdrop-filter: url(#fgFluidGlass)) {
+  .fg-lens {
+    backdrop-filter: blur(3px) saturate(150%);
+    -webkit-backdrop-filter: blur(3px) saturate(150%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fg-goo {
+    filter: none;
+  } /* no wobble */
+  .fg-t1,
+  .fg-t2,
+  .fg-t3 {
+    display: none;
+  } /* dot + lens only */
+}
