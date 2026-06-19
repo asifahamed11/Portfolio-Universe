@@ -48,8 +48,6 @@
   document.addEventListener('DOMContentLoaded', () => {
     if (!window.matchMedia('(pointer: fine)').matches) return;
 
-    document.documentElement.classList.add('custom-cursor-active');
-    
     const cursorContainer = document.getElementById('custom-cursor');
     const cursorMain = document.getElementById('cursor-main');
     const cursorTextWrapper = document.getElementById('cursor-text-wrapper');
@@ -57,7 +55,12 @@
     const borderLayer = document.getElementById('cursor-border-layer');
     const glassLayer = document.getElementById('cursor-glass-layer');
     
-    if (cursorContainer) cursorContainer.classList.remove('hidden');
+    // Hide native cursor only after the custom cursor mounts, so a missing
+    // element never leaves the user with no visible cursor.
+    if (cursorContainer) {
+      cursorContainer.classList.remove('hidden');
+      document.documentElement.classList.add('custom-cursor-active');
+    }
 
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;

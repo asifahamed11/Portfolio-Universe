@@ -103,6 +103,7 @@ const portfolios = portfoliosData.map(p => ({
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+            <span class="text-white font-extrabold tracking-tight text-lg" style="font-family: 'Space Grotesk', sans-serif;">Portfolio<span class="text-blue-400">Universe</span></span>
           </div>
           
           <div class="flex items-center gap-3 md:gap-4">
@@ -114,7 +115,7 @@ const portfolios = portfoliosData.map(p => ({
               <input type="text" id="searchInputDesk" placeholder="Search developers..." class="w-full bg-gray-900 border border-gray-800 text-sm rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 text-gray-200 placeholder-gray-500 transition-all" />
             </div>
 
-            <button onclick="window.openSubmitModal()" class="text-sm font-medium text-gray-300 hover:text-white px-3 py-2 transition-colors hidden sm:block">
+            <button onclick="window.openSubmitModal()" class="text-sm font-medium text-gray-300 hover:text-white px-3 py-2 transition-colors">
               Submit
             </button>
             
@@ -174,7 +175,7 @@ const portfolios = portfoliosData.map(p => ({
       </h1>
       
       <!-- Minimalist Subtitle -->
-      <div class="mt-5 text-[1rem] md:text-[1.1rem] text-gray-500 max-w-2xl mx-auto leading-relaxed font-normal animate-hero-text text-center" style="font-family: 'Outfit', sans-serif; animation-delay: 0.4s;">
+      <div class="mt-5 text-[1rem] md:text-[1.1rem] text-gray-400 max-w-2xl mx-auto leading-relaxed font-normal animate-hero-text text-center" style="font-family: 'Outfit', sans-serif; animation-delay: 0.4s;">
         <VariableProximityWrapper 
           client:visible 
           count={portfolios.length} 
@@ -299,7 +300,9 @@ const portfolios = portfoliosData.map(p => ({
 
 <style>
   .glass-bg {
-    background: url(https://raw.githubusercontent.com/lucasromerodb/liquid-glass-effect-macos/refs/heads/main/assets/flowers.jpg) center center;
+    background-color: #14121a;
+    background-image: url(https://raw.githubusercontent.com/lucasromerodb/liquid-glass-effect-macos/refs/heads/main/assets/flowers.jpg);
+    background-position: center center;
     background-size: 400px;
     opacity: 0.35;
     -webkit-animation: moveBackground 800s linear infinite;

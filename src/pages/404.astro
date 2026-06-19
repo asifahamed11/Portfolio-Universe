@@ -10,7 +10,7 @@ import CustomCursor from '../components/CustomCursor.astro';
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&family=Space+Grotesk:wght@400;700;900&display=swap" rel="stylesheet">
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>404 - Page Not Found</title>
   </head>
   <body class="bg-[#0a0a0c] text-gray-200 min-h-screen font-sans antialiased flex flex-col items-center justify-center relative overflow-hidden">
@@ -44,7 +44,9 @@ import CustomCursor from '../components/CustomCursor.astro';
 
     <style>
       .glass-bg {
-        background: url(https://raw.githubusercontent.com/lucasromerodb/liquid-glass-effect-macos/refs/heads/main/assets/flowers.jpg) center center;
+        background-color: #14121a;
+        background-image: url(https://raw.githubusercontent.com/lucasromerodb/liquid-glass-effect-macos/refs/heads/main/assets/flowers.jpg);
+        background-position: center center;
         background-size: 400px;
         opacity: 0.2;
         animation: moveBackground 800s linear infinite;
