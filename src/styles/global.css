@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/* Hide the native cursor only once the custom water cursor has mounted */
+@media (pointer: fine) {
+  html.water-cursor-active,
+  html.water-cursor-active * {
+    cursor: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

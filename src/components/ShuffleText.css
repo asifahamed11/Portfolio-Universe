@@ -1,0 +1,13 @@
+/* React Bits inspired Shuffle text (hover-triggered) */
+.shuffle-text {
+  display: inline-block;
+  white-space: nowrap;
+  /* tabular spacing keeps the width stable while glyphs swap */
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+
+/* Brand accent (Tailwind blue-400) for the "Universe" portion */
+.shuffle-text__accent {
+  color: #60a5fa;
+}

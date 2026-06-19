@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import CustomCursor from '../components/CustomCursor.astro';
+import WaterCursor from '../components/WaterCursor.jsx';
 ---
 
 <html lang="en">
@@ -14,7 +14,7 @@ import CustomCursor from '../components/CustomCursor.astro';
     <title>Privacy Policy - Developer Portfolios Showcase</title>
   </head>
   <body class="bg-[#0a0a0c] text-gray-200 min-h-screen font-sans antialiased selection:bg-rose-500/30">
-    <CustomCursor />
+    <WaterCursor client:load />
     <!-- Ambient Background Effects -->
     <div class="absolute top-0 left-0 right-0 h-[400px] z-[-1] overflow-hidden pointer-events-none">
       <div class="absolute inset-0 glass-bg [mask-image:linear-gradient(to_bottom,black_50%,transparent_100%)]" style="-webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);"></div>
