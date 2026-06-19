@@ -8,3 +8,21 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* React Bits-inspired Shiny Text: a glossy sheen sweeping across the glyphs. */
+.shiny-text {
+  background: linear-gradient(110deg, #ffffff 0%, #b8b8c2 35%, #ffffff 50%, #b8b8c2 65%, #ffffff 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: shinyText 4.5s linear infinite;
+}
+@keyframes shinyText {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shiny-text { animation: none; background-position: 50% 0; }
+}
