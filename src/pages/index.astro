@@ -2,7 +2,7 @@
 import PortfolioCard from '../components/PortfolioCard.astro';
 import LoginModal from '../components/LoginModal.astro';
 import SubmitModal from '../components/SubmitModal.astro';
-import CursorFluidGlassBlob from '../components/CursorFluidGlassBlob.jsx';
+import CustomCursor from '../components/CustomCursor.astro';
 import portfoliosData from '../data/portfolios.json';
 import VariableProximityWrapper from '../components/VariableProximityWrapper.jsx';
 import GlassSurface from '../components/GlassSurface.jsx';
@@ -295,7 +295,7 @@ const portfolios = portfoliosData.map(p => ({
 
     <div id="toast-container" class="fixed bottom-6 right-6 z-[1000] flex flex-col gap-3 pointer-events-none"></div>
 
-    <CursorFluidGlassBlob client:only="react" />
+    <CustomCursor />
     <LoginModal />
     <SubmitModal />
 
