@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import WaterCursor from '../components/WaterCursor.jsx';
+import CustomCursor from '../components/CustomCursor.astro';
 ---
 
 <html lang="en">
@@ -40,7 +40,7 @@ import WaterCursor from '../components/WaterCursor.jsx';
       </a>
     </div>
 
-    <WaterCursor client:only="react" />
+    <CustomCursor />
 
     <style>
       .glass-bg {
