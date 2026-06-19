@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import CursorWaterDrop from '../components/CursorWaterDrop.jsx';
+import CustomCursor from '../components/CustomCursor.astro';
 ---
 
 <html lang="en">
@@ -40,7 +40,7 @@ import CursorWaterDrop from '../components/CursorWaterDrop.jsx';
       </a>
     </div>
 
-    <CursorWaterDrop client:only="react" />
+    <CustomCursor />
 
     <style>
       .glass-bg {

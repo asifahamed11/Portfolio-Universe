@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import CursorWaterDrop from '../components/CursorWaterDrop.jsx';
+import CustomCursor from '../components/CustomCursor.astro';
 ---
 
 <html lang="en">
@@ -67,7 +67,7 @@ import CursorWaterDrop from '../components/CursorWaterDrop.jsx';
       <p>&copy; {new Date().getFullYear()} Portfolio Universe. All rights reserved.</p>
     </footer>
 
-    <CursorWaterDrop client:only="react" />
+    <CustomCursor />
 
     <style>
       .glass-bg {

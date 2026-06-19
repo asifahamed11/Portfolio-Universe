@@ -2,8 +2,7 @@
 import PortfolioCard from '../components/PortfolioCard.astro';
 import LoginModal from '../components/LoginModal.astro';
 import SubmitModal from '../components/SubmitModal.astro';
-import CursorWaterDrop from '../components/CursorWaterDrop.jsx';
-import ShuffleText from '../components/ShuffleText.jsx';
+import CustomCursor from '../components/CustomCursor.astro';
 import portfoliosData from '../data/portfolios.json';
 import VariableProximityWrapper from '../components/VariableProximityWrapper.jsx';
 import GlassSurface from '../components/GlassSurface.jsx';
@@ -104,7 +103,7 @@ const portfolios = portfoliosData.map(p => ({
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-            <span class="text-white font-extrabold tracking-tight text-lg" style="font-family: 'Space Grotesk', sans-serif;"><ShuffleText client:visible text="PortfolioUniverse" colorFrom={9} colorClass="text-blue-400" /></span>
+            <span class="text-white font-extrabold tracking-tight text-lg" style="font-family: 'Space Grotesk', sans-serif;">Portfolio<span class="text-blue-400">Universe</span></span>
           </div>
           
           <div class="flex items-center gap-3 md:gap-4">
@@ -175,8 +174,8 @@ const portfolios = portfoliosData.map(p => ({
       
       <!-- Monochrome High-Tracking Brutalist Title -->
       <h1 class="text-5xl sm:text-6xl md:text-[5.5rem] font-bold mb-4 leading-[0.95] tracking-tighter flex flex-col items-center justify-center relative z-10 w-full uppercase" style="font-family: 'Space Grotesk', sans-serif;">
-        <span class="shiny-text animate-hero-text drop-shadow-xl" style="animation-delay: 0.2s; letter-spacing: -0.04em;">The Universe</span>
-        <span class="shiny-text animate-hero-text" style="animation-delay: 0.3s; letter-spacing: -0.04em;">of Creators</span>
+        <span class="text-white animate-hero-text drop-shadow-xl" style="animation-delay: 0.2s; letter-spacing: -0.04em;">The Universe</span>
+        <span class="text-metallic animate-hero-text" style="animation-delay: 0.3s; letter-spacing: -0.04em;">of Creators</span>
       </h1>
       
       <!-- Minimalist Subtitle -->
@@ -296,7 +295,7 @@ const portfolios = portfoliosData.map(p => ({
 
     <div id="toast-container" class="fixed bottom-6 right-6 z-[1000] flex flex-col gap-3 pointer-events-none"></div>
 
-    <CursorWaterDrop client:only="react" />
+    <CustomCursor />
     <LoginModal />
     <SubmitModal />
 
@@ -426,11 +425,6 @@ const portfolios = portfoliosData.map(p => ({
   @keyframes shimmer {
     100% { transform: translateX(100%); }
   }
-
-  /* Bug 2 fix: lift the hovered card's wrapper above sibling cards so the
-     summary popup (z-[100] inside it) always renders on top. */
-  .portfolio-wrapper { position: relative; z-index: 1; }
-  .portfolio-wrapper:hover { z-index: 50; }
 </style>
 
 <script>
@@ -818,7 +812,8 @@ const portfolios = portfoliosData.map(p => ({
       return `
         <div class="portfolio-wrapper hidden" data-index="${index}" data-name="${name.toLowerCase()}" data-url="${rawUrl}" data-role="${(portfolio.role || '').toLowerCase()}" data-tech="${tech_stack.join(',').toLowerCase()}" data-hire="${available_for_hire ? 'true' : 'false'}">
           <div class="group relative flex flex-col h-full transform-gpu">
-            <div class="absolute -inset-[1px] bg-gradient-to-r from-amber-300/0 via-amber-300/25 to-purple-500/30 rounded-[18px] opacity-0 group-hover:opacity-100 blur-md transition-all duration-700 ease-in-out group-hover:duration-300 pointer-events-none"></div>
+            <div class="absolute -inset-[1px] bg-gradient-to-r from-blue-500/0 via-blue-500/30 to-purple-500/0 rounded-[18px] opacity-0 group-hover:opacity-100 blur-md transition-all duration-700 ease-in-out group-hover:duration-300 pointer-events-none"></div>
+            <div class="absolute -inset-[1px] bg-gradient-to-b from-blue-500/40 to-transparent rounded-[18px] opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:duration-300 pointer-events-none"></div>
             
             <a href="${rawUrl}" target="_blank" rel="noopener noreferrer" class="relative flex flex-col bg-[#0B0F19] border border-white/[0.06] rounded-2xl h-full z-10 transition-transform duration-500 ease-out group-hover:-translate-y-1.5 [backface-visibility:hidden]" onclick="if(window.incrementPortfolioView) window.incrementPortfolioView('${rawUrl}')">
               <div class="relative aspect-[16/10] w-full overflow-hidden rounded-t-2xl bg-black [transform:translateZ(0)]">
