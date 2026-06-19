@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import BlobCursor from '../components/BlobCursor.jsx';
+import CustomCursor from '../components/CustomCursor.astro';
 ---
 
 <html lang="en">
@@ -40,7 +40,7 @@ import BlobCursor from '../components/BlobCursor.jsx';
       </a>
     </div>
 
-    <BlobCursor client:only="react" fluidGlass={true} blobType="circle" trailCount={3} sizes={[46, 82, 60]} innerSizes={[16, 26, 20]} opacities={[0.95, 0.7, 0.5]} fastDuration={0.12} slowDuration={0.5} zIndex={10000} />
+    <CustomCursor />
 
     <style>
       .glass-bg {

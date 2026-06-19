@@ -2,7 +2,7 @@
 import PortfolioCard from '../components/PortfolioCard.astro';
 import LoginModal from '../components/LoginModal.astro';
 import SubmitModal from '../components/SubmitModal.astro';
-import BlobCursor from '../components/BlobCursor.jsx';
+import CustomCursor from '../components/CustomCursor.astro';
 import portfoliosData from '../data/portfolios.json';
 import VariableProximityWrapper from '../components/VariableProximityWrapper.jsx';
 import GlassSurface from '../components/GlassSurface.jsx';
@@ -308,7 +308,7 @@ const portfolios = portfoliosData.map(p => ({
 
     <div id="toast-container" class="fixed bottom-6 right-6 z-[1000] flex flex-col gap-3 pointer-events-none"></div>
 
-    <BlobCursor client:only="react" fluidGlass={true} blobType="circle" trailCount={3} sizes={[46, 82, 60]} innerSizes={[16, 26, 20]} opacities={[0.95, 0.7, 0.5]} fastDuration={0.12} slowDuration={0.5} zIndex={10000} />
+    <CustomCursor />
     <LoginModal />
     <SubmitModal />
 
