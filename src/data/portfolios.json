@@ -1245,20 +1245,29 @@
     "available_for_hire": false
   },
   {
-    "portfolio_score": 0,
-    "seo_evaluation": "",
+    "portfolio_score": 6,
+    "seo_evaluation": "Needs Improvement",
     "primary_language": "",
-    "role": "",
-    "name": "Akhileswar Kamale",
+    "role": "Full Stack Developer",
+    "name": "",
     "available_for_hire": false,
     "views": 1,
     "specialization": "",
     "has_blog": false,
-    "tech_stack": [],
+    "tech_stack": [
+      "MongoDB",
+      "Express",
+      "React",
+      "Node.js"
+    ],
     "url": "https://akhileswar6.github.io/Portfolio/",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fakhileswar6.github.io%2FPortfolio%2F?w=600",
-    "summary": "",
-    "is_portfolio": true
+    "summary": "Developer passionate about turning complex problems into simple designs",
+    "is_portfolio": true,
+    "location": "Tirupati, India",
+    "projects": [],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "summary": "Mohammad Ahmad is a developer.",
@@ -2513,19 +2522,23 @@
   },
   {
     "tech_stack": [],
-    "is_portfolio": true,
+    "is_portfolio": false,
     "url": "https://talhakilic.com.tr",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftalhakilic.com.tr?w=600",
-    "summary": "Unknown role at Unknown company, website content currently inaccessible due to technical error.",
-    "name": "Talha Kılıç",
-    "role": "",
+    "summary": "",
+    "name": "",
+    "role": "Other",
     "available_for_hire": false,
-    "portfolio_score": 0,
-    "seo_evaluation": "",
+    "portfolio_score": 1,
+    "seo_evaluation": "Needs Improvement",
     "primary_language": "",
     "specialization": "",
     "has_blog": false,
-    "views": 0
+    "views": 0,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "is_portfolio": true,
