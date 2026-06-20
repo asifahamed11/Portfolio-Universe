@@ -1,0 +1,69 @@
+**Diagnosis: 3 root failures.**
+1. Jina API = external dep + rate limit = forced sequential
+2. Kaggle T4 + Ollama 7B = OOM at batch>1 = hardware wrong tool
+3. Kaggle session = human babysitter required
+
+**Fix: kill all 3 at once.** Replace local GPU + Jina with direct async scraping + free cloud LLM APIs + GitHub Actions cron. Zero GPU, zero babysitting, 40× parallel.---
+
+## Rate math
+
+| Provider | RPM | RPD | Notes |
+|---|---|---|---|
+| Gemini 2.0 Flash | 15 | 1,500 | native JSON schema |
+| Groq llama-3.3-70b | 30 | 14,400 | json_object mode |
+| **Combined** | **45** | **15,900** | alternates per call |
+
+1,700 URLs ÷ 45 RPM = **38 min total LLM time.** Scrape: 40 concurrent × ~2s avg = **85 sec.** Per 150-URL batch: ~7 min. 12 batches needed → all 1,700 done in **~24 hrs, zero babysitting.**
+
+---
+
+## 1. Scraper: `httpx` + `trafilatura`
+
+No API, no rate limit, no delay. Direct async HTTP to each portfolio URL. `trafilatura` extracts clean main content from HTML better than BeautifulSoup. ~80% of portfolio sites are static (GitHub Pages, Netlify, Vercel) → direct fetch works. Jina only fires on JS-CSR sites that return empty text.
+
+## 2. LLM: Gemini + Groq (dual free)
+
+Both support native JSON output modes — no regex parsing:
+- Gemini: `response_mime_type="application/json"` + optional `response_schema`
+- Groq: `response_format={"type": "json_object"}`
+
+Round-robin between them per call. If Gemini fails, retry on Groq. Use `asyncio.to_thread()` since both SDKs are sync.
+
+## 3. Infra: GitHub Actions scheduled workflow
+
+Public repo = unlimited free minutes. Cron fires every 2 hrs, processes batch, auto-commits results back. `[skip ci]` in commit message prevents re-trigger loop.
+
+---
+
+Now the full production code:---
+
+## Setup (5 steps, do once)
+
+**1. Get free API keys:**
+- Gemini: [aistudio.google.com](https://aistudio.google.com) → Get API key (free, no card)
+- Groq: [console.groq.com](https://console.groq.com) → API Keys (free, no card)
+
+**2. Add secrets to GitHub repo:**
+`Settings → Secrets → Actions → New secret`
+- `GEMINI_API_KEY`
+- `GROQ_API_KEY`
+
+**3. Drop `pipeline.py` + `.github/workflows/process-portfolios.yml` into your repo.** Adjust `DATA_FILE` env var if `portfolios.json` lives in `src/data/`.
+
+**4. Ensure every entry in `portfolios.json` has `"url"` field.** Entries without `ai_status: "done"` process first. Failed entries (`scrape_failed`, `llm_failed`) auto-retry next run.
+
+**5. Trigger manually first:** `Actions → process-portfolios → Run workflow`. Watch logs. If clean, leave cron to finish the rest.
+
+---
+
+## Key design decisions worth knowing
+
+`trafilatura` beats BeautifulSoup for portfolio text — strips boilerplate (nav, footer, cookie banners), returns only meaningful content. Jina fallback fires only when direct text < 80 chars (pure CSR React sites). No artificial delay — used for ~5-10% of URLs max.
+
+`asyncio.to_thread()` wraps both sync SDKs so they don't block the event loop. All 40 scrape workers run truly concurrent while LLM calls stay serialized through `RateLimiter(12)` — conservative to avoid 429s.
+
+`[skip ci]` in commit message prevents the auto-commit from triggering another workflow run.
+
+**Need faster?** For Groq, can also use `llama-3.1-8b-instant` (faster, lower quality) or `gemma2-9b-it` as third rotation. Multiple free Gemini accounts = multiply RPD cap.
+
+**Astro note:** If portfolios.json is in `public/` or `src/data/`, set `DATA_FILE=src/data/portfolios.json` in the workflow env block. The git commit step picks up changes regardless of path.

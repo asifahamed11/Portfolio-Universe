@@ -51,6 +51,34 @@ jobs:
           PUBLIC_FIREBASE_API_KEY: ${{ secrets.PUBLIC_FIREBASE_API_KEY }}
         run: node scripts/migrate-to-firestore.js
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install Python Dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Cache Playwright
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('scripts/requirements.txt') }}
+
+      - name: Install Playwright Chromium
+        run: playwright install chromium
+
+      - name: Run Hybrid AI Pipeline
+        env:
+          GEMINI_API_KEY_1: ${{ secrets.GEMINI_API_KEY_1 }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          DATA_FILE: src/data/portfolios.json
+          BATCH_SIZE: "150"
+        run: python scripts/hybrid_pipeline.py
+
       - name: Commit and Push Updated Portfolios
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"

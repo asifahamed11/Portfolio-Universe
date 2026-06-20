@@ -1,0 +1,63 @@
+name: process-portfolios
+
+on:
+  # Runs every 2 hours automatically
+  schedule:
+    - cron: '0 */2 * * *'
+
+  # Manual trigger with optional batch size override
+  workflow_dispatch:
+    inputs:
+      batch_size:
+        description: 'URLs to process per run (default: 150)'
+        required: false
+        default: '150'
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55    # safety cutoff before GitHub's 6hr job limit
+
+    # Required to allow the job to push back to the repo
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install \
+            httpx \
+            trafilatura \
+            google-generativeai \
+            groq
+
+      - name: Run pipeline
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY:   ${{ secrets.GROQ_API_KEY }}
+          BATCH_SIZE:     ${{ github.event.inputs.batch_size || '150' }}
+          # If portfolios.json lives inside Astro src/data/:
+          # DATA_FILE: src/data/portfolios.json
+        run: python pipeline.py
+
+      - name: Commit results
+        run: |
+          git config user.name  "portfolio-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add portfolios.json
+          # Only commit if file actually changed (idempotent)
+          git diff --staged --quiet || (
+            git commit -m "chore: enrich portfolio batch [skip ci]"
+            git push
+          )
