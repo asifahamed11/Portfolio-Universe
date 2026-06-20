@@ -51,6 +51,11 @@ groq_client = AsyncGroq(api_key=GROQ_KEY) if GROQ_KEY else None
 _llm_counter = 0
 _llm_lock = asyncio.Lock()
 
+# Global Quota Exhaustion Tracker
+_consecutive_failures = 0
+_exhausted_threshold = 10
+_global_exhausted = False
+
 # --- Schema ---
 class PortfolioMetadata(BaseModel):
     is_portfolio: bool = Field(description="True if personal portfolio, False otherwise")
@@ -168,6 +173,11 @@ async def process_portfolio(entry: dict, browser_context) -> dict:
 
     # 2. LLM Processing (Robust Retry Across Clients)
     import random
+    global _consecutive_failures, _global_exhausted
+    
+    if _global_exhausted:
+        return entry # Skip immediately if quota is fully exhausted
+        
     clients_to_try = [("gemini", c, i) for i, c in enumerate(gemini_clients)]
     if groq_client:
         clients_to_try.append(("groq", groq_client, 0))
@@ -200,6 +210,10 @@ async def process_portfolio(entry: dict, browser_context) -> dict:
                 entry["available_for_hire"] = data.get("available_for_hire", False)
 
                 entry["ai_processed"] = True
+                
+                async with _llm_lock:
+                    _consecutive_failures = 0 # Reset counter on success
+                    
                 print(f"  [V] {used_tier} | {llm_used} | {data.get('name', '?')} | {url}")
                 return entry
                 
@@ -210,14 +224,21 @@ async def process_portfolio(entry: dict, browser_context) -> dict:
                     continue
                 else:
                     # Other unknown error, print it but still try next key
-                    print(f"      [Debug] Error on {provider}: {err_str}")
                     continue
                     
         # If we exhausted all keys in this attempt, wait 10 seconds before next attempt
         if attempt < MAX_RETRIES - 1:
             await asyncio.sleep(10)
 
-    print(f"  [X] LLM Error on {url}: All keys exhausted or invalid.")
+    async with _llm_lock:
+        _consecutive_failures += 1
+        if _consecutive_failures >= _exhausted_threshold and not _global_exhausted:
+            _global_exhausted = True
+            print("\n🚨 GLOBAL QUOTA EXHAUSTED! Skipping the rest of the batch to save time.\n")
+
+    if not _global_exhausted:
+        print(f"  [X] LLM Error on {url}: All keys exhausted or invalid.")
+        
     return entry
 
 async def main():
