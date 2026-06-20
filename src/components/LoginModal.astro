@@ -30,9 +30,17 @@
       </button>
     </div>
 
-    <div class="mt-8 flex items-center justify-center gap-2 text-sm text-gray-500">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      Secure Auth by Google Firebase
+    <div class="mt-8 flex flex-col items-center gap-4">
+      <div class="flex items-center justify-center gap-2 text-sm text-gray-500">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Secure Auth by Google Firebase
+      </div>
+      
+      <p class="text-xs text-gray-500 text-center max-w-[280px] leading-relaxed">
+        By continuing, you agree to our 
+        <a href={`${import.meta.env.BASE_URL}terms`} class="text-gray-400 hover:text-white underline underline-offset-2 transition-colors">Terms of Service</a> and 
+        <a href={`${import.meta.env.BASE_URL}privacy`} class="text-gray-400 hover:text-white underline underline-offset-2 transition-colors">Privacy Policy</a>.
+      </p>
     </div>
   </div>
 </div>

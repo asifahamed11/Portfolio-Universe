@@ -8,3 +8,42 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* --- Premium Custom Scrollbar --- */
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) #0a0a0c;
+}
+
+/* For Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0c;
+  border-left: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 100px;
+  border: 3px solid #0a0a0c; /* Creates a seamless padding effect */
+  background-clip: padding-box;
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border: 3px solid #0a0a0c;
+  background-clip: padding-box;
+}
+
+/* Custom premium selection effect */
+::selection {
+  background: transparent; /* Removes the ugly rectangular box */
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(192, 132, 252, 1), 0 0 20px rgba(192, 132, 252, 0.9), 0 0 40px rgba(192, 132, 252, 0.6);
+}

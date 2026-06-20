@@ -7,6 +7,7 @@ import portfoliosData from '../data/portfolios.json';
 import VariableProximityWrapper from '../components/VariableProximityWrapper.jsx';
 import GlassSurface from '../components/GlassSurface.jsx';
 import FluidGlassPill from '../components/FluidGlassPill.jsx';
+import RotatingText from '../components/RotatingText.jsx';
 import '../styles/global.css';
 
 // Map portfolios to include baseLikes (real likes start at 0)
@@ -117,7 +118,22 @@ const portfolios = portfoliosData.map(p => ({
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-            <span class="text-white font-extrabold tracking-tight text-lg" style="font-family: 'Space Grotesk', sans-serif;">Portfolio<span class="text-blue-400">Universe</span></span>
+            <span class="text-white font-extrabold tracking-tight text-lg flex items-center gap-1" style="font-family: 'Space Grotesk', sans-serif;">
+              Portfolio
+              <RotatingText
+                client:load
+                texts={['Universe', 'Showcase', 'Gallery', 'Directory']}
+                mainClassName="text-blue-400 overflow-hidden inline-flex"
+                staggerFrom="last"
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-120%" }}
+                staggerDuration={0.04}
+                splitLevelClassName="overflow-hidden"
+                transition={{ type: "spring", damping: 20, stiffness: 100, mass: 1.5 }}
+                rotationInterval={4000}
+              />
+            </span>
           </div>
           
           <div class="flex items-center gap-3 md:gap-4">
@@ -511,6 +527,9 @@ const portfolios = portfoliosData.map(p => ({
         void icon.offsetWidth; // Trigger reflow
         icon.classList.add('heart-animated');
         
+        // Trigger spark particles
+        if (window.triggerSpark) window.triggerSpark(button);
+        
         // Play sound and show toast
         if (window.playPopSound) window.playPopSound(1.0);
         if (window.showToast) window.showToast('Added to your likes!', 'heart');
@@ -573,20 +592,31 @@ const portfolios = portfoliosData.map(p => ({
     });
 
     // ---- NAVBAR HIDE ON SCROLL ----
-    let lastScrollTop = 0;
     const topNavBar = document.getElementById('topNavBar');
-    window.addEventListener('scroll', () => {
-      if (!topNavBar) return;
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollTop > lastScrollTop && scrollTop > 50) {
-        // Scrolling down: Move up
-        topNavBar.style.top = '-100px';
-      } else {
-        // Scrolling up: Bounce back to normal
-        topNavBar.style.top = '16px'; // top-4 in Tailwind is 16px
-      }
-      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    }, { passive: true });
+    if (lenis) {
+      lenis.on('scroll', (e) => {
+        if (!topNavBar) return;
+        if (e.direction === 1 && e.scroll > 50) {
+          // Scrolling down: Move up
+          topNavBar.style.top = '-100px';
+        } else if (e.direction === -1 || e.scroll <= 50) {
+          // Scrolling up or at top: Bounce back to normal
+          topNavBar.style.top = '16px'; // top-4 in Tailwind is 16px
+        }
+      });
+    } else {
+      let lastScrollTop = 0;
+      window.addEventListener('scroll', () => {
+        if (!topNavBar) return;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop && scrollTop > 50) {
+          topNavBar.style.top = '-100px';
+        } else {
+          topNavBar.style.top = '16px';
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+      }, { passive: true });
+    }
 
     // ---- AUTH LOGIC (FIREBASE) ----
     const loginBtn = document.getElementById('loginBtn');
@@ -1147,6 +1177,75 @@ const portfolios = portfoliosData.map(p => ({
 </script>
 
 <script>
+  // UI Sound & Particle Engine
+  window.triggerSpark = (btn) => {
+    const sparkColor = '#f43f5e';
+    const sparkSize = 6;
+    const sparkRadius = 25;
+    const sparkCount = 12;
+    const duration = 500;
+    
+    const rect = btn.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+
+    const canvas = document.createElement('canvas');
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100vw';
+    canvas.style.height = '100vh';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '9999';
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+    const startTime = performance.now();
+    const easeOut = t => 1 - Math.pow(1 - t, 3);
+    
+    const sparks = Array.from({ length: sparkCount }, (_, i) => ({
+      angle: (2 * Math.PI * i) / sparkCount
+    }));
+
+    const draw = (timestamp) => {
+      const elapsed = timestamp - startTime;
+      if (elapsed >= duration) {
+        canvas.remove();
+        return;
+      }
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const progress = elapsed / duration;
+      const eased = easeOut(progress);
+      
+      const distance = eased * sparkRadius;
+      const lineLength = sparkSize * (1 - eased);
+      
+      sparks.forEach(spark => {
+        const x1 = x + distance * Math.cos(spark.angle);
+        const y1 = y + distance * Math.sin(spark.angle);
+        const x2 = x + (distance + lineLength) * Math.cos(spark.angle);
+        const y2 = y + (distance + lineLength) * Math.sin(spark.angle);
+        
+        ctx.strokeStyle = sparkColor;
+        ctx.lineWidth = 2.5;
+        ctx.lineCap = 'round';
+        ctx.globalAlpha = 1 - Math.pow(progress, 2);
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+      });
+      ctx.globalAlpha = 1;
+      
+      requestAnimationFrame(draw);
+    };
+    
+    requestAnimationFrame(draw);
+  };
+
   // UI Sound Engine using Web Audio API
   let audioCtx;
   const initAudio = () => {
