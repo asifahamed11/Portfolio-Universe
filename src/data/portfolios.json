@@ -56,44 +56,70 @@
     "views": 12
   },
   {
-    "summary": "Nuwan Jaliyagoda is a Full Stack Developer with extensive experience in both industry and academia. He has worked on diverse projects from IoT to software development for fintech, and holds multiple academic qualifications.",
+    "summary": "Highly skilled software engineer with experience in full-stack development and data science",
     "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fnuwanjaliyagoda.com?w=600",
     "url": "http://nuwanjaliyagoda.com",
     "is_portfolio": true,
     "tech_stack": [
-      "NextJS",
-      "PHP",
-      "Laravel",
-      "NodeJS",
-      "AWS",
-      "Python",
-      "Azure"
+      "PHP & Laravel",
+      "HTML5, CSS3 & JS",
+      "Node.js & npm",
+      "React & Vue",
+      "Java, Python",
+      "AWS, GCP & DO",
+      "git, GitHub, GitLab & Jira"
     ],
     "views": 11,
     "has_blog": false,
     "specialization": "",
-    "seo_evaluation": "",
+    "seo_evaluation": "Average",
     "primary_language": "",
-    "portfolio_score": 0,
+    "portfolio_score": 8,
     "available_for_hire": false,
-    "name": "Nuwan Jaliyagoda",
-    "role": "Full Stack Developer"
+    "name": "",
+    "role": "Full Stack Developer",
+    "location": "Singapore",
+    "projects": [
+      "CE Portal",
+      "Student Portfolio Site",
+      "Project Portfolio Site",
+      "Mixed Reality based Simulation Platform for Swarm Robotics",
+      "Greenhouse Automation System"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "is_portfolio": true,
-    "summary": "",
+    "summary": "Cross-functional designer and developer with 8 cloud certifications",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fthecodehead.com?w=600",
     "url": "https://thecodehead.com",
-    "tech_stack": [],
+    "tech_stack": [
+      "Cloud Native",
+      "Next.js",
+      "Zoho Commerce",
+      "Shopify",
+      "ERP",
+      "Marketing Automation",
+      "AI",
+      "JavaScript"
+    ],
     "has_blog": false,
     "specialization": "",
     "views": 11,
     "available_for_hire": false,
-    "name": "Ashutosh Dhakre",
-    "role": "",
-    "seo_evaluation": "",
+    "name": "Ashutosh",
+    "role": "Full Stack Developer",
+    "seo_evaluation": "Average",
     "primary_language": "",
-    "portfolio_score": 0
+    "portfolio_score": 8,
+    "location": "",
+    "projects": [
+      "Stown",
+      "Promptspot"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "has_blog": false,
@@ -114,39 +140,62 @@
   {
     "is_portfolio": true,
     "url": "https://www.aayushsood.com",
-    "summary": "Developer with a focus on creating scalable and high-quality software, using clean architecture and strong problem-solving skills.",
+    "summary": "Passionate developer creating scalable software with strong problem-solving skills",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.aayushsood.com?w=600",
     "tech_stack": [
-      "React",
-      "Node.js",
-      "Firebase",
-      "Git"
+      "Frontend",
+      "Backend",
+      "Mobile",
+      "Artificial Intelligence"
     ],
     "specialization": "",
     "has_blog": false,
     "views": 9,
-    "role": "Backend Developer",
-    "name": "Aayush Sood",
+    "role": "Full Stack Developer",
+    "name": "",
     "available_for_hire": false,
-    "portfolio_score": 0,
+    "portfolio_score": 6,
     "primary_language": "",
-    "seo_evaluation": ""
+    "seo_evaluation": "Needs Improvement",
+    "location": "Nova Scotia, Canada",
+    "projects": [],
+    "social_links": [],
+    "ai_processed": true
   },
   {
-    "tech_stack": [],
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Python",
+      "JavaScript",
+      "FastAPI",
+      "Redis"
+    ],
     "url": "http://himavanth-kumar-perni-portfolio.vercel.app",
-    "summary": "Software Engineer at Speechify, architecting high-performance backend services and full-stack features.",
+    "summary": "Passionate Full-Stack Developer with expertise in modern web technologies",
     "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fhimavanth-kumar-perni-portfolio.vercel.app?w=600",
     "is_portfolio": true,
-    "portfolio_score": 0,
+    "portfolio_score": 8,
     "primary_language": "",
-    "seo_evaluation": "",
-    "name": "Himavanth Kumar Perni",
+    "seo_evaluation": "Average",
+    "name": "",
     "role": "Full Stack Developer",
     "available_for_hire": false,
     "views": 8,
     "specialization": "",
-    "has_blog": false
+    "has_blog": false,
+    "location": "",
+    "projects": [
+      "Personal Fitness Tracker",
+      "Collective Activity Recognization",
+      "Social Media Sentiment Analysis",
+      "Online Shopping App",
+      "Hospital Billing Management System"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "portfolio_score": 0,
@@ -166,65 +215,76 @@
   },
   {
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fiabhinav.me?w=600",
-    "summary": "",
+    "summary": "Abhinav Jaiswal is a software engineer passionate about programming and web development.",
     "url": "https://iabhinav.me",
     "is_portfolio": true,
-    "tech_stack": [],
+    "tech_stack": [
+      "Java",
+      "Python",
+      "JavaScript",
+      "AWS",
+      "Cloud Computing",
+      "Scalability",
+      "Web Development",
+      "Software Engineering"
+    ],
     "views": 7,
     "has_blog": false,
     "specialization": "",
-    "seo_evaluation": "",
+    "seo_evaluation": "Average",
     "primary_language": "",
-    "portfolio_score": 0,
+    "portfolio_score": 6,
     "available_for_hire": false,
-    "role": "",
-    "name": "Abhinav Jaiswal"
+    "role": "Backend Developer",
+    "name": "Abhinav Jaiswal",
+    "location": "Bangalore, India",
+    "projects": [],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "available_for_hire": false,
     "name": "Ryan Pereira",
-    "role": "Backend Developer",
+    "role": "Frontend Developer",
     "primary_language": "",
-    "seo_evaluation": "",
-    "portfolio_score": 0,
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 4,
     "has_blog": false,
     "specialization": "",
     "views": 6,
     "tech_stack": [
-      "JavaScript",
-      "React",
-      "GraphQL",
-      "WordPress"
+      "Web Development",
+      "Software Engineering",
+      "User Interfaces"
     ],
     "is_portfolio": true,
-    "summary": "Web developer with 7 years of experience in software engineering and web development.",
+    "summary": "Ryan Pereira is a tech professional with 7 years of experience in software engineering and web development.",
     "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fryanpereira.me?w=600",
-    "url": "http://ryanpereira.me"
+    "url": "http://ryanpereira.me",
+    "location": "Mumbai",
+    "projects": [],
+    "social_links": [],
+    "ai_processed": true
   },
   {
-    "portfolio_score": 0,
+    "portfolio_score": 2,
     "primary_language": "",
-    "seo_evaluation": "",
+    "seo_evaluation": "Needs Improvement",
     "name": "Vaibhav Raj",
-    "role": "Data Scientist",
+    "role": "Other",
     "available_for_hire": false,
     "views": 5,
     "specialization": "",
     "has_blog": false,
-    "tech_stack": [
-      "C",
-      "Java",
-      "Python",
-      "MySQL",
-      "SQLite",
-      "HTML",
-      "CSS",
-      "JavaScript"
-    ],
+    "tech_stack": [],
     "url": "https://vaibhav5860.vercel.app",
-    "summary": "Under Grad Student with experience in backend development and machine learning, open to collaboration and learning opportunities.",
+    "summary": "Vaibhav Raj is a developer with experience.",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fvaibhav5860.vercel.app?w=600",
-    "is_portfolio": true
+    "is_portfolio": true,
+    "location": "India",
+    "projects": [],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "primary_language": "English",
@@ -249,23 +309,43 @@
     "is_portfolio": true
   },
   {
-    "portfolio_score": 0,
+    "portfolio_score": 8,
     "primary_language": "",
-    "seo_evaluation": "",
-    "role": "Lead Software Engineer & Consultant",
-    "name": "Becca Bailey",
+    "seo_evaluation": "Average",
+    "role": "Full Stack Developer",
+    "name": "",
     "available_for_hire": true,
     "views": 3,
     "specialization": "",
     "has_blog": false,
-    "tech_stack": [],
+    "tech_stack": [
+      "React",
+      "JavaScript",
+      "Data Visualization",
+      "Frontend Engineering",
+      "AI",
+      "Design Systems",
+      "Developer Experience",
+      "Software Development"
+    ],
     "url": "http://Becca.is",
-    "summary": "Lead Engineer and Consultant, building developer tools and exploring AI's societal impact.",
+    "summary": "Experienced developer and writer focused on design systems and data visualization",
     "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2FBecca.is?w=600",
-    "is_portfolio": true
+    "is_portfolio": true,
+    "location": "Seattle, WA",
+    "projects": [
+      "Platform & Advocacy Tech",
+      "Data Visualization",
+      "Product & E-Commerce"
+    ],
+    "social_links": [
+      "https://formidable.com/blog/",
+      "https://reactconf.com/"
+    ],
+    "ai_processed": true
   },
   {
-    "summary": "Software engineer with 6+ years experience in web app development using React and Next.js, known for privacy-focused tools like Analytick.",
+    "summary": "Mahdi Hazrati is a software engineer building digital products with React and Next.js.",
     "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fmahdi.is-a.dev?w=600",
     "url": "http://mahdi.is-a.dev",
     "is_portfolio": true,
@@ -273,20 +353,33 @@
       "React",
       "Next.js",
       "TypeScript",
-      "UI/UX implementation",
-      "Git & GitHub Actions",
-      "Node.js / APIs",
-      "Linux / Ubuntu"
+      "Node.js",
+      "Python",
+      "Git",
+      "Linux",
+      "GitHub Actions"
     ],
     "views": 3,
     "has_blog": false,
     "specialization": "",
-    "seo_evaluation": "",
+    "seo_evaluation": "Average",
     "primary_language": "",
-    "portfolio_score": 0,
-    "available_for_hire": false,
+    "portfolio_score": 8,
+    "available_for_hire": true,
     "role": "Frontend Developer",
-    "name": "Mahdi Hazrati"
+    "name": "Mahdi Hazrati",
+    "location": "Tehran",
+    "projects": [
+      "Analytick",
+      "Next Production",
+      "NPUI",
+      "abrsama.ir",
+      "samateb.ir"
+    ],
+    "social_links": [
+      "https://github.com/mahdi-hazrati"
+    ],
+    "ai_processed": true
   },
   {
     "tech_stack": [],
@@ -305,26 +398,32 @@
     "views": 3
   },
   {
-    "summary": "Dynamic Designer & Developer at an unspecified company, focusing on web/UX and application development.",
+    "summary": "Patrick Reid is a dynamic designer and developer with 16+ years of experience in web/UX design and application development.",
     "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fiamreliq.com?w=600",
     "url": "http://iamreliq.com",
     "is_portfolio": true,
     "tech_stack": [
-      "PHP",
-      "HTML5",
-      "SASS/CSS3",
-      "JavaScript",
-      "React"
+      "Web Development",
+      "UX Design",
+      "Application Development",
+      "Programming",
+      "Open Source"
     ],
     "views": 3,
     "has_blog": false,
     "specialization": "",
     "primary_language": "",
-    "seo_evaluation": "",
-    "portfolio_score": 0,
+    "seo_evaluation": "Average",
+    "portfolio_score": 7,
     "available_for_hire": true,
     "name": "Patrick Reid",
-    "role": "Web Designer & Developer"
+    "role": "Full Stack Developer",
+    "location": "",
+    "projects": [],
+    "social_links": [
+      "https://github.com/IAmReliq"
+    ],
+    "ai_processed": true
   },
   {
     "url": "https://utsavadhikari07.com.np",
@@ -353,10 +452,10 @@
   },
   {
     "primary_language": "",
-    "seo_evaluation": "",
-    "portfolio_score": 0,
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 7,
     "available_for_hire": false,
-    "name": "Andrea O.",
+    "name": "",
     "role": "Full Stack Developer",
     "views": 3,
     "has_blog": false,
@@ -364,17 +463,27 @@
     "tech_stack": [
       "React",
       "Django",
-      "Python",
       "JavaScript",
-      "Bootstrap",
-      "Node.js",
-      "Express",
-      "MongoDB"
+      "HTML/CSS",
+      "Python",
+      "SQL",
+      "Full-Stack Development",
+      "Web Development"
     ],
-    "summary": "Full-stack developer with biomedical engineering background and experience in education. Skilled in React, Django, Python, and enjoys project design and architecture.",
+    "summary": "Desarrolladora web con experiencia en proyectos de impacto real",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.andreaoz.com?w=600",
     "url": "https://www.andreaoz.com",
-    "is_portfolio": true
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Tutora",
+      "Plataforma de reseñas de concesionarias de autos",
+      "Sistema digital para gestionar envíos y recepciones de analizadores médicos",
+      "Sistema de prescripción médica digital",
+      "Certificación Profesional de Full-Stack Development de IBM"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "views": 3,
@@ -1847,22 +1956,30 @@
   {
     "is_portfolio": true,
     "url": "http://www.raptis.wtf",
-    "summary": "Founder and software engineer with experience in ReactJS, UI design, and AI-driven design analytics.",
+    "summary": "Founder and software engineer with expertise in React JS and UI design",
     "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fwww.raptis.wtf?w=600",
     "tech_stack": [
-      "React",
-      "UI Design",
-      "AI"
+      "React JS",
+      "UI design",
+      "Frontend infrastructure"
     ],
     "specialization": "",
     "has_blog": false,
     "views": 0,
-    "name": "Jim Raptis",
+    "name": "Jim",
     "role": "Full Stack Developer",
     "available_for_hire": false,
-    "portfolio_score": 0,
-    "seo_evaluation": "",
-    "primary_language": ""
+    "portfolio_score": 7,
+    "seo_evaluation": "Average",
+    "primary_language": "",
+    "location": "Greece",
+    "projects": [
+      "MagicPattern",
+      "Brandbird",
+      "VisualEyes"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "tech_stack": [
@@ -30508,5 +30625,18 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdustinvk.com?w=600"
+  },
+  {
+    "url": "https://hangga.web.id",
+    "name": "Hangga Aji Sayekti",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fhangga.web.id?w=600"
   }
 ]
