@@ -20,8 +20,10 @@ from pydantic import BaseModel, Field
 from groq import AsyncGroq
 
 # --- Config ---
-BATCH_SIZE = int(os.getenv("BATCH_SIZE", "150")) # Increased batch size since we have higher RPM
+BATCH_SIZE = int(os.getenv("BATCH_SIZE", "150"))
 DATA_FILE = Path(os.getenv("DATA_FILE", "src/data/portfolios.json"))
+RPM_LIMIT = 30 # Safe combined limit
+MAX_RETRIES = 3
 
 # Keys
 GEMINI_KEYS = [
@@ -128,7 +130,7 @@ async def scrape_tier2(url: str, browser_context) -> str | None:
 async def call_gemini(client, text):
     prompt = f"Extract metadata from this developer portfolio:\n\n{text}"
     response = await client.aio.models.generate_content(
-        model='gemini-2.5-flash',
+        model='gemini-2.0-flash', # Using 2.0-flash as it usually has 15 RPM
         contents=prompt,
         config=types.GenerateContentConfig(
             response_mime_type="application/json",
@@ -164,46 +166,58 @@ async def process_portfolio(entry: dict, browser_context) -> dict:
 
     text = text[:8000] # Cap context
 
-    # 2. LLM Processing (Round Robin)
-    await _rate_limiter.acquire()
-    
-    async with _llm_lock:
-        idx = _llm_counter
-        _llm_counter += 1
+    # 2. LLM Processing (Robust Retry Across Clients)
+    import random
+    clients_to_try = [("gemini", c, i) for i, c in enumerate(gemini_clients)]
+    if groq_client:
+        clients_to_try.append(("groq", groq_client, 0))
 
-    total_clients = len(gemini_clients) + (1 if groq_client else 0)
-    client_idx = idx % total_clients
+    random.shuffle(clients_to_try) # Randomize to distribute load
 
-    try:
-        if client_idx < len(gemini_clients):
-            # Use Gemini
-            g_client = gemini_clients[client_idx]
-            data = await call_gemini(g_client, text)
-            llm_used = f"Gemini (Key {client_idx + 1})"
-        else:
-            # Use Groq
-            data = await call_groq(text)
-            llm_used = "Groq"
-
-        # Apply schema defaults in case Groq missed something
-        entry["is_portfolio"] = data.get("is_portfolio", False)
-        entry["name"] = data.get("name", "")
-        entry["location"] = data.get("location", "")
-        entry["summary"] = data.get("summary", "")
-        entry["role"] = data.get("role", "")
-        entry["tech_stack"] = data.get("tech_stack", [])
-        entry["projects"] = data.get("projects", [])
-        entry["social_links"] = data.get("social_links", [])
-        entry["seo_evaluation"] = data.get("seo_evaluation", "")
-        entry["portfolio_score"] = data.get("portfolio_score", 0)
-        entry["available_for_hire"] = data.get("available_for_hire", False)
-
-        entry["ai_processed"] = True
-        print(f"  [V] {used_tier} | {llm_used} | {data.get('name', '?')} | {url}")
+    for attempt in range(MAX_RETRIES):
+        await _rate_limiter.acquire()
         
-    except Exception as e:
-        print(f"  [X] LLM Error on {url}: {str(e)}")
-        
+        for provider, client, idx in clients_to_try:
+            try:
+                if provider == "gemini":
+                    data = await call_gemini(client, text)
+                    llm_used = f"Gemini (Key {idx + 1})"
+                else:
+                    data = await call_groq(text)
+                    llm_used = "Groq"
+
+                # Apply schema defaults
+                entry["is_portfolio"] = data.get("is_portfolio", False)
+                entry["name"] = data.get("name", "")
+                entry["location"] = data.get("location", "")
+                entry["summary"] = data.get("summary", "")
+                entry["role"] = data.get("role", "")
+                entry["tech_stack"] = data.get("tech_stack", [])
+                entry["projects"] = data.get("projects", [])
+                entry["social_links"] = data.get("social_links", [])
+                entry["seo_evaluation"] = data.get("seo_evaluation", "")
+                entry["portfolio_score"] = data.get("portfolio_score", 0)
+                entry["available_for_hire"] = data.get("available_for_hire", False)
+
+                entry["ai_processed"] = True
+                print(f"  [V] {used_tier} | {llm_used} | {data.get('name', '?')} | {url}")
+                return entry
+                
+            except Exception as e:
+                err_str = str(e)
+                if "429" in err_str or "401" in err_str or "RESOURCE_EXHAUSTED" in err_str:
+                    # Skip to the next key quietly
+                    continue
+                else:
+                    # Other unknown error, print it but still try next key
+                    print(f"      [Debug] Error on {provider}: {err_str}")
+                    continue
+                    
+        # If we exhausted all keys in this attempt, wait 10 seconds before next attempt
+        if attempt < MAX_RETRIES - 1:
+            await asyncio.sleep(10)
+
+    print(f"  [X] LLM Error on {url}: All keys exhausted or invalid.")
     return entry
 
 async def main():
