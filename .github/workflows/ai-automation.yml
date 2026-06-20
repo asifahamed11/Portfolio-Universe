@@ -67,10 +67,13 @@ jobs:
           key: ${{ runner.os }}-playwright-${{ hashFiles('scripts/requirements.txt') }}
 
       - name: Install Playwright Chromium
-        run: playwright install chromium
+        run: |
+          playwright install chromium
+          playwright install-deps
 
       - name: Run Hybrid AI Pipeline
         env:
+          PYTHONUNBUFFERED: "1"
           GEMINI_API_KEY_1: ${{ secrets.GEMINI_API_KEY_1 }}
           GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
           GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
