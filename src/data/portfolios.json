@@ -592,26 +592,24 @@
     ]
   },
   {
-    "tech_stack": [
-      "React",
-      "Next.js",
-      "JavaScript",
-      "AWS Lambda",
-      "GraphQL"
-    ],
+    "tech_stack": [],
     "url": "https://varinder148.github.io/portfolio",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fvarinder148.github.io%2Fportfolio?w=600",
-    "summary": "Frontend Developer with expertise in React.js, Next.js, and JavaScript. Worked on serverless codebase migration, micro-frontends, proof-of-concept solutions, and more.",
+    "summary": "",
     "is_portfolio": true,
-    "portfolio_score": 0,
-    "seo_evaluation": "",
+    "portfolio_score": 1,
+    "seo_evaluation": "Needs Improvement",
     "primary_language": "",
-    "name": "Varinder Singh",
-    "role": "Frontend Developer",
+    "name": "",
+    "role": "Other",
     "available_for_hire": false,
     "views": 2,
     "specialization": "",
-    "has_blog": false
+    "has_blog": false,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "role": "Full Stack Developer",
