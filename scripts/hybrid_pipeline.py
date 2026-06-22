@@ -20,7 +20,7 @@ from pydantic import BaseModel, Field
 from groq import AsyncGroq
 
 # --- Config ---
-BATCH_SIZE = int(os.getenv("BATCH_SIZE", "150"))
+BATCH_SIZE = int(os.getenv("BATCH_SIZE", "50"))
 DATA_FILE = Path(os.getenv("DATA_FILE", "src/data/portfolios.json"))
 RPM_LIMIT = 30 # Safe combined limit
 MAX_RETRIES = 3
@@ -264,7 +264,7 @@ async def main():
         context = await browser.new_context()
         
         # We need a semaphore to avoid launching too many concurrent Playwright tabs or hitting network socket limits.
-        sem = asyncio.Semaphore(20) # 20 concurrent tasks
+        sem = asyncio.Semaphore(5) # 5 concurrent tasks
         
         async def sem_process(entry):
             async with sem:
