@@ -4702,52 +4702,75 @@
   },
   {
     "tech_stack": [
+      "JavaScript",
+      "HTML/CSS",
       "React",
       "Node.js",
-      "TypeScript",
-      "Expo",
-      "Fastify",
-      "Docker",
-      "PostgreSQL",
-      "MongoDB"
+      "MongoDB",
+      "SQL",
+      "UX/UI",
+      "Agile"
     ],
     "url": "https://valentinlefrancois.dev",
-    "summary": "A Senior Software Engineer with expertise in React, React Native, and TypeScript. Known for creating robust digital solutions that scale.",
+    "summary": "Transforms ambitious ideas into concrete digital products that simplify daily life and boost performance.",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fvalentinlefrancois.dev?w=600",
     "is_portfolio": true,
-    "portfolio_score": 0,
+    "portfolio_score": 8,
     "primary_language": "",
-    "seo_evaluation": "",
-    "role": "Backend Developer",
-    "name": "Valentin Lefrançois",
+    "seo_evaluation": "Average",
+    "role": "Full Stack Developer",
+    "name": "",
     "available_for_hire": true,
     "views": 0,
     "specialization": "",
-    "has_blog": false
+    "has_blog": false,
+    "location": "",
+    "projects": [
+      "Decathlon Digital",
+      "Ceva Santé Animale",
+      "Kozikaza",
+      "Utocat",
+      "Belab"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
-    "summary": "A Senior React Developer and Systems Architect with expertise in high-performance rendering, automated pipelines, and standalone extension architectures.",
+    "summary": "Vallarasu Kanthasamy is a Senior React Developer and Systems Architect",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fvallarasuk.com?w=600",
     "url": "https://vallarasuk.com",
     "is_portfolio": true,
     "tech_stack": [
       "React",
-      "Node.js",
+      "JavaScript",
       "Python",
       "GitHub Actions",
-      "AWS",
-      "VS Code Extensions",
-      "Open Source"
+      "Google Maps API",
+      "Google Books API",
+      "Chrome",
+      "VS Code"
     ],
     "views": 0,
     "has_blog": false,
     "specialization": "",
     "primary_language": "",
-    "seo_evaluation": "",
-    "portfolio_score": 0,
+    "seo_evaluation": "Good",
+    "portfolio_score": 9,
     "available_for_hire": false,
-    "role": "Backend Developer",
-    "name": "Vallarasu Kanthasamy"
+    "role": "Full Stack Developer",
+    "name": "Vallarasu Kanthasamy",
+    "location": "",
+    "projects": [
+      "UrPage.in",
+      "Universal Spreadsheet & Markdown Editor",
+      "Auto Console Log (VS Code)",
+      "ATS Resume Maker",
+      "Autonomous NASA Engine"
+    ],
+    "social_links": [
+      "https://www.vallarasuk.com"
+    ],
+    "ai_processed": true
   },
   {
     "views": 0,
@@ -4881,25 +4904,22 @@
     "has_blog": false,
     "specialization": "",
     "primary_language": "",
-    "seo_evaluation": "",
-    "portfolio_score": 0,
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 1,
     "available_for_hire": false,
-    "name": "Vauzher",
+    "name": "",
     "role": "Other",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fvauzher.dev?w=600",
-    "summary": "Vauzher Khairullah is an AI & Web Developer with a focus on AI tools, platform development, and full-stack projects.",
+    "summary": "",
     "url": "https://vauzher.dev",
     "is_portfolio": true,
-    "tech_stack": [
-      "AI",
-      "Web Development",
-      "Full-Stack",
-      "React",
-      "TypeScript",
-      "PHP",
-      "CSS",
-      "JavaScript"
-    ]
+    "tech_stack": [],
+    "location": "",
+    "projects": [],
+    "social_links": [
+      "https://vauzher.dev"
+    ],
+    "ai_processed": true
   },
   {
     "available_for_hire": false,
@@ -5626,29 +5646,39 @@
     "ai_processed": true
   },
   {
-    "seo_evaluation": "",
+    "seo_evaluation": "Average",
     "primary_language": "",
-    "portfolio_score": 0,
-    "available_for_hire": false,
-    "name": "Vivek Choudhary",
+    "portfolio_score": 8,
+    "available_for_hire": true,
+    "name": "",
     "role": "Full Stack Developer",
     "views": 0,
     "has_blog": false,
     "specialization": "",
     "tech_stack": [
-      "JavaScript",
-      "TypeScript",
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "Firebase",
-      "Socket.io",
-      "Payment Integration"
+      "React",
+      "Vue.js",
+      "Django",
+      "PostgreSQL",
+      "PyTorch",
+      "GPT-2",
+      "Spring Boot",
+      "Next.js"
     ],
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fvivekportfoliopersonal.vercel.app?w=600",
-    "summary": "A Full Stack Engineer & AI Specialist with over 2+ years of experience. Architecting scalable solutions and transforming complex problems into elegant, impactful solutions.",
+    "summary": "Transformative full-stack developer with AI/ML expertise, creating impactful solutions",
     "url": "https://vivekportfoliopersonal.vercel.app",
-    "is_portfolio": true
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Automated Bug-Fixing System",
+      "Django/Vue.js Application",
+      "NLP Application",
+      "Dealer Management System",
+      "Salesforce CRM Automation"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "portfolio_score": 8,
@@ -5893,28 +5923,35 @@
   },
   {
     "tech_stack": [
-      "React.js",
-      "Node.js",
-      "Python",
-      "ML",
-      "GitHub",
-      "Docker",
-      "Kubernetes",
-      "Google Cloud"
+      "JavaScript",
+      "React",
+      "Redux",
+      "GraphQL",
+      "CQRS",
+      "Cypress.io",
+      "JsonEditor"
     ],
     "is_portfolio": true,
     "url": "https://walkersmith.me",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwalkersmith.me?w=600",
-    "summary": "10 years specializing in front-end architecture and distributed systems, serving 2 billion customers. Full stack developer with experience in machine learning.",
-    "name": "Walker Smith",
+    "summary": "Walker is a seasoned developer with 10 years of experience in front-end architecture and distributed systems.",
+    "name": "Walker",
     "role": "Full Stack Developer",
     "available_for_hire": false,
-    "portfolio_score": 0,
-    "seo_evaluation": "",
+    "portfolio_score": 9,
+    "seo_evaluation": "Good",
     "primary_language": "",
     "specialization": "",
     "has_blog": false,
-    "views": 0
+    "views": 0,
+    "location": "",
+    "projects": [
+      "Microsoft Content Platform",
+      "Digital.ai Platform",
+      "Smash.gg Esports Tournaments"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "specialization": "",
@@ -6509,28 +6546,38 @@
   },
   {
     "tech_stack": [
-      "React",
-      "VueJs",
+      "ReactJs",
       "Nextjs",
+      "VueJs",
+      "React Native",
       "ExpressJs",
       "NestJs",
-      "SpringBoot",
       "MongoDB",
-      "MySQL"
+      "TypeScript"
     ],
     "is_portfolio": true,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.andy-hk.com?w=600",
-    "summary": "Full-stack developer with expertise in React, Vue, and backend frameworks like Express and NestJS. Specializes in AI projects and cloud services.",
+    "summary": "Andy Wong is a full stack developer with 4+ years of experience",
     "url": "https://www.andy-hk.com",
-    "available_for_hire": true,
+    "available_for_hire": false,
     "name": "Andy Wong",
     "role": "Full Stack Developer",
-    "seo_evaluation": "",
+    "seo_evaluation": "Average",
     "primary_language": "",
-    "portfolio_score": 0,
+    "portfolio_score": 8,
     "has_blog": false,
     "specialization": "",
-    "views": 0
+    "views": 0,
+    "location": "",
+    "projects": [
+      "Trioclear Smile Generator",
+      "TrioClear Platform",
+      "Ai Retainer",
+      "Translation Generator",
+      "Cerebro Authenticator App"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "name": "Ankur Bag",
@@ -7369,24 +7416,39 @@
   {
     "is_portfolio": true,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.badhon.online?w=600",
-    "summary": "Frontend & Mobile Developer with 7+ years of experience, specializing in React, UI/UX design, and modern frontend tools.",
+    "summary": "Badhon Biswas is a frontend and mobile developer and UI/UX designer building fast, clean, and modern digital experiences.",
     "url": "https://www.badhon.online",
     "tech_stack": [
-      "React",
-      "UI/UX",
       "HTML",
       "CSS",
-      "JavaScript"
+      "JavaScript",
+      "React",
+      "UI/UX design",
+      "Tailwind CSS",
+      "GSAP",
+      "Node.js"
     ],
     "has_blog": false,
     "specialization": "",
     "views": 0,
     "available_for_hire": true,
-    "role": "UI/UX Designer & Developer",
+    "role": "Frontend Developer",
     "name": "Badhon Biswas",
-    "seo_evaluation": "",
+    "seo_evaluation": "Good",
     "primary_language": "",
-    "portfolio_score": 0
+    "portfolio_score": 9,
+    "location": "Dhaka, Bangladesh",
+    "projects": [
+      "BadhonDev Portfolio",
+      "Live cryptocurrency dashboard",
+      "Web-based music player",
+      "Personal AI assistant",
+      "Client project for A&F Auto Repair"
+    ],
+    "social_links": [
+      "https://badhonbiswas.vercel.app"
+    ],
+    "ai_processed": true
   },
   {
     "tech_stack": [
@@ -7735,25 +7797,38 @@
   },
   {
     "tech_stack": [
-      "React.js",
-      "Next.js",
-      "Node.js",
-      "PostgreSQL",
-      "MongoDB"
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Rails",
+      "Node",
+      "Express",
+      "SQL"
     ],
     "is_portfolio": true,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.daniel-michael.com?w=600",
-    "summary": "Knowledgeable Full-Stack Software Engineer, delivering superior front-end and back-end web solutions.",
+    "summary": "Daniel is a knowledgeable Full Stack Developer with expertise in front-end and back-end design.",
     "url": "https://www.daniel-michael.com",
-    "available_for_hire": false,
+    "available_for_hire": true,
     "name": "Daniel Michael",
-    "role": "Full-stack Software Engineer",
+    "role": "Full Stack Developer",
     "primary_language": "English",
-    "seo_evaluation": "",
-    "portfolio_score": 0,
+    "seo_evaluation": "Average",
+    "portfolio_score": 8,
     "has_blog": false,
     "specialization": "Full Stack Web Development",
-    "views": 0
+    "views": 0,
+    "location": "",
+    "projects": [
+      "Care",
+      "Reluminate.gg",
+      "Daniel Michael",
+      "Discord ChatGPT Chatbot",
+      "AtmosTrend"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "url": "https://www.danielsteele.dev",
@@ -8208,22 +8283,33 @@
     "has_blog": false,
     "specialization": "Cloud Infrastructure, Backend",
     "primary_language": "English",
-    "seo_evaluation": "",
-    "portfolio_score": 0,
+    "seo_evaluation": "Average",
+    "portfolio_score": 8,
     "available_for_hire": true,
-    "name": "Kumar Nishant",
-    "role": "Backend Developer, DevOps Engineer",
+    "name": "",
+    "role": "Backend Developer",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.kumar-nishant.me?w=600",
-    "summary": "Backend and DevOps Engineer, building high-performance ecosystems using Java and Spring Boot.",
+    "summary": "High-performance backend ecosystems architect with expertise in Java and Spring Boot",
     "url": "https://www.kumar-nishant.me",
     "is_portfolio": true,
     "tech_stack": [
       "Java",
       "Spring Boot",
-      "Docker",
+      "Spring MVC",
+      "Spring Security",
+      "JPA",
+      "DevOps",
       "AWS",
-      "Kubernetes"
-    ]
+      "Docker"
+    ],
+    "location": "",
+    "projects": [
+      "Interactive ed-tech platform",
+      "Gamified LMS",
+      "Real-time data from GitHub ecosystem"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "available_for_hire": false,
@@ -8369,18 +8455,37 @@
   {
     "is_portfolio": true,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.imabhishek.site?w=600",
-    "summary": "",
+    "summary": "Abhishek Bhardwaj is a software developer who builds fast, maintainable web apps and custom Shopify apps that scale.",
     "url": "https://www.imabhishek.site",
-    "tech_stack": [],
+    "tech_stack": [
+      "Next.js",
+      "Remix",
+      "NestJS",
+      "React",
+      "TypeScript",
+      "GraphQL",
+      "Node.js",
+      "PostgreSQL"
+    ],
     "has_blog": false,
     "specialization": "",
     "views": 0,
-    "available_for_hire": false,
+    "available_for_hire": true,
     "name": "Abhishek Bhardwaj",
-    "role": "",
-    "seo_evaluation": "",
+    "role": "Full Stack Developer",
+    "seo_evaluation": "Good",
     "primary_language": "",
-    "portfolio_score": 0
+    "portfolio_score": 9,
+    "location": "",
+    "projects": [
+      "LootPulse",
+      "TheZHub",
+      "FAB Web Studio",
+      "SnapLoom",
+      "CoinEcho"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "available_for_hire": false,
@@ -8661,19 +8766,39 @@
   },
   {
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.junaidirfan.com?w=600",
-    "summary": "",
+    "summary": "Junaid Irfan is a full-stack developer specializing in DevOps and AI products",
     "url": "https://www.junaidirfan.com",
     "is_portfolio": true,
-    "tech_stack": [],
+    "tech_stack": [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Docker",
+      "AWS",
+      "Proxmox",
+      "LLM APIs"
+    ],
     "views": 0,
     "has_blog": false,
     "specialization": "",
-    "seo_evaluation": "",
+    "seo_evaluation": "Good",
     "primary_language": "",
-    "portfolio_score": 0,
-    "available_for_hire": false,
+    "portfolio_score": 9,
+    "available_for_hire": true,
     "name": "Junaid Irfan",
-    "role": ""
+    "role": "Full Stack Developer",
+    "location": "Remote",
+    "projects": [
+      "OneApply",
+      "CampusThrive",
+      "Ultimate-Selfhosted-Homelab",
+      "SmartBallot",
+      "Hoor Charms"
+    ],
+    "social_links": [
+      "https://github.com/junaydirfan"
+    ],
+    "ai_processed": true
   },
   {
     "url": "https://www.ohksoehtet.dev",
@@ -8769,20 +8894,38 @@
     "ai_processed": true
   },
   {
-    "tech_stack": [],
+    "tech_stack": [
+      "ReactJS",
+      "ReactNative",
+      "TypeScript",
+      "GraphQL",
+      "JavaScript",
+      "Redux",
+      "Expo"
+    ],
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.lexnguyen.dev?w=600",
-    "summary": "",
+    "summary": "Nguyen Van Qui is a frontend developer with 3+ years of experience in ReactJS and ReactNative.",
     "url": "https://www.lexnguyen.dev",
     "is_portfolio": true,
     "primary_language": "",
-    "seo_evaluation": "",
-    "portfolio_score": 0,
+    "seo_evaluation": "Average",
+    "portfolio_score": 7,
     "available_for_hire": false,
-    "name": "Qui Nguyen",
-    "role": "",
+    "name": "Nguyen Van Qui",
+    "role": "Frontend Developer",
     "views": 0,
     "has_blog": false,
-    "specialization": ""
+    "specialization": "",
+    "location": "",
+    "projects": [
+      "PapayaCare App",
+      "Portal",
+      "LuminPDF",
+      "NovaID",
+      "CYFEER JSC"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "has_blog": false,
@@ -8938,20 +9081,37 @@
     "ai_processed": true
   },
   {
-    "tech_stack": [],
+    "tech_stack": [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "HTML",
+      "WordPress"
+    ],
     "url": "https://www.manishtamang.com",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.manishtamang.com?w=600",
-    "summary": "",
+    "summary": "Manish crafts minimal and functional digital experiences with clean design and modern web technologies.",
     "is_portfolio": true,
-    "portfolio_score": 0,
+    "portfolio_score": 8,
     "primary_language": "",
-    "seo_evaluation": "",
-    "role": "",
-    "name": "Manish Tamang",
+    "seo_evaluation": "Average",
+    "role": "Frontend Developer",
+    "name": "Manish Gole Tamang",
     "available_for_hire": false,
     "views": 0,
     "specialization": "",
-    "has_blog": false
+    "has_blog": false,
+    "location": "",
+    "projects": [
+      "TravAction Nepal",
+      "Hackathon Management Portal",
+      "Malta Event Site",
+      "Australian Client Site"
+    ],
+    "social_links": [
+      "https://twitter.com/golecodes"
+    ],
+    "ai_processed": true
   },
   {
     "primary_language": "",
@@ -9232,18 +9392,36 @@
   {
     "url": "https://www.natashasfolio.com",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.natashasfolio.com?w=600",
-    "summary": "",
+    "summary": "Design Technologist, UX Engineer, and Frontend Developer with 12+ years of experience",
     "is_portfolio": true,
-    "tech_stack": [],
+    "tech_stack": [
+      "Angular",
+      "React",
+      "Ruby on Rails",
+      "PostgreSQL",
+      "Supabase",
+      "Tailwind CSS",
+      "TypeScript",
+      "Vite"
+    ],
     "views": 0,
     "specialization": "",
     "has_blog": false,
-    "portfolio_score": 0,
-    "seo_evaluation": "",
+    "portfolio_score": 9,
+    "seo_evaluation": "Good",
     "primary_language": "",
-    "name": "Natasha Pierre-Louis",
-    "role": "",
-    "available_for_hire": false
+    "name": "Natasha",
+    "role": "Frontend Developer",
+    "available_for_hire": false,
+    "location": "",
+    "projects": [
+      "Personal Finance App",
+      "Mood Tracker"
+    ],
+    "social_links": [
+      "https://github.com/natashapl"
+    ],
+    "ai_processed": true
   },
   {
     "tech_stack": [
@@ -9719,20 +9897,41 @@
     "ai_processed": true
   },
   {
-    "portfolio_score": 0,
-    "seo_evaluation": "",
+    "portfolio_score": 9,
+    "seo_evaluation": "Good",
     "primary_language": "",
-    "name": "Seyhun Akyurek",
-    "role": "",
-    "available_for_hire": false,
+    "name": "Seyhun Akyürek",
+    "role": "Full Stack Developer",
+    "available_for_hire": true,
     "views": 0,
     "specialization": "",
     "has_blog": false,
-    "tech_stack": [],
+    "tech_stack": [
+      "Python",
+      "Ruby",
+      "Azure OpenAI",
+      "Redis",
+      "JavaScript",
+      "Swift",
+      "Core ML",
+      "Rails"
+    ],
     "url": "https://www.seyhunakyurek.com",
-    "summary": "",
+    "summary": "Seasoned engineering leader transforming complex challenges into elegant solutions",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.seyhunakyurek.com?w=600",
-    "is_portfolio": true
+    "is_portfolio": true,
+    "location": "Dubai, United Arab Emirates",
+    "projects": [
+      "Custom AI Agents & GPTs",
+      "AgileCraftGPT",
+      "CBD Instant Digital Banking",
+      "CoreML-ProofOfConcept",
+      "active_admin"
+    ],
+    "social_links": [
+      "https://seyhunakyurek.com"
+    ],
+    "ai_processed": true
   },
   {
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.serhii-nazarov.com?w=600",
@@ -9761,57 +9960,94 @@
   },
   {
     "url": "https://www.shaankhan.dev",
-    "summary": "",
+    "summary": "Developer with experience in various projects and technologies.",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.shaankhan.dev?w=600",
-    "is_portfolio": true,
-    "tech_stack": [],
-    "views": 0,
-    "specialization": "",
-    "has_blog": false,
-    "portfolio_score": 0,
-    "seo_evaluation": "",
-    "primary_language": "",
-    "name": "Shaan Khan",
-    "role": "",
-    "available_for_hire": false
-  },
-  {
-    "summary": "Software Engineer and full-stack developer crafting digital experiences with modern web technologies.",
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.sitaramoli.com.np?w=600",
-    "url": "https://www.sitaramoli.com.np",
     "is_portfolio": true,
     "tech_stack": [
       "JavaScript",
-      "TypeScript",
-      "React",
-      "Next.js",
-      "Node.js"
+      "Discord Bot",
+      "Frontend Development",
+      "Backend Development",
+      "README Generation",
+      "Track Splitting",
+      "Pomodoro Timer",
+      "Finite Element Analysis"
     ],
+    "views": 0,
+    "specialization": "",
+    "has_blog": false,
+    "portfolio_score": 6,
+    "seo_evaluation": "Needs Improvement",
+    "primary_language": "",
+    "name": "",
+    "role": "Full Stack Developer",
+    "available_for_hire": false,
+    "location": "",
+    "projects": [
+      "Steam Profiles Design",
+      "CodeGrind Bot",
+      "Pomodoro Timer",
+      "Track Splitter",
+      "Make Read Me"
+    ],
+    "social_links": [
+      "https://shaankhan.dev"
+    ],
+    "ai_processed": true
+  },
+  {
+    "summary": "A driven developer striving to build software with flawless functionality and delightful user experience.",
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.sitaramoli.com.np?w=600",
+    "url": "https://www.sitaramoli.com.np",
+    "is_portfolio": true,
+    "tech_stack": [],
     "views": 0,
     "has_blog": false,
     "specialization": "Full-Stack Web Development",
-    "seo_evaluation": "",
+    "seo_evaluation": "Needs Improvement",
     "primary_language": "English",
-    "portfolio_score": 0,
-    "available_for_hire": false,
-    "role": "Software Engineer",
-    "name": "Baymax"
+    "portfolio_score": 6,
+    "available_for_hire": true,
+    "role": "Full Stack Developer",
+    "name": "",
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "primary_language": "",
-    "seo_evaluation": "",
-    "portfolio_score": 0,
-    "available_for_hire": false,
-    "name": "Sixtus Miracle Agbo",
-    "role": "",
+    "seo_evaluation": "Average",
+    "portfolio_score": 8,
+    "available_for_hire": true,
+    "name": "Sixtus",
+    "role": "Full Stack Developer",
     "views": 0,
     "has_blog": false,
     "specialization": "",
-    "tech_stack": [],
-    "summary": "",
+    "tech_stack": [
+      "React",
+      "Flutter",
+      "Python",
+      "TypeScript",
+      "Node.js",
+      "Next.js",
+      "JavaScript",
+      "Laravel"
+    ],
+    "summary": "Sixtus is a Full-Stack Developer crafting high-performance web and mobile applications",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.sixtusagbo.dev?w=600",
     "url": "https://www.sixtusagbo.dev",
-    "is_portfolio": true
+    "is_portfolio": true,
+    "location": "Nigeria",
+    "projects": [
+      "View all projects",
+      "Featured Projects"
+    ],
+    "social_links": [
+      "https://sixtusagbo.dev"
+    ],
+    "ai_processed": true
   },
   {
     "tech_stack": [
@@ -9845,100 +10081,204 @@
     "ai_processed": true
   },
   {
-    "summary": "",
+    "summary": "Sudev Magar designs and builds interactive web and mobile experiences",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.sudevmagar.tech?w=600",
     "url": "https://www.sudevmagar.tech",
     "is_portfolio": true,
-    "tech_stack": [],
+    "tech_stack": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "UI Design",
+      "UX Design",
+      "Branding",
+      "Product Design"
+    ],
     "views": 0,
     "has_blog": false,
     "specialization": "",
-    "seo_evaluation": "",
+    "seo_evaluation": "Average",
     "primary_language": "",
-    "portfolio_score": 0,
-    "available_for_hire": false,
-    "name": "Sudev Thapa Magar",
-    "role": ""
+    "portfolio_score": 7,
+    "available_for_hire": true,
+    "name": "Sudev Magar",
+    "role": "UI/UX Designer",
+    "location": "",
+    "projects": [
+      "UTA Earbuds"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
-    "portfolio_score": 0,
+    "portfolio_score": 8,
     "primary_language": "",
-    "seo_evaluation": "",
-    "role": "",
+    "seo_evaluation": "Average",
+    "role": "Full Stack Developer",
     "name": "Sunil Band",
     "available_for_hire": false,
     "views": 0,
     "specialization": "",
     "has_blog": false,
-    "tech_stack": [],
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Three.js",
+      "JavaScript",
+      "JSON-LD",
+      "Firebase",
+      "Stripe"
+    ],
     "url": "https://www.sunilband.com",
-    "summary": "",
+    "summary": "Sunil Band is a developer building next generation interfaces with React and Next.js",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.sunilband.com?w=600",
-    "is_portfolio": true
+    "is_portfolio": true,
+    "location": "Gurugram, India",
+    "projects": [
+      "A dual-personality portfolio",
+      "GAMEZOP",
+      "CRYPTONET TECHNOLOGIES",
+      "DIGIVENTRY TECHNOLOGIES",
+      "APPYHIGH"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "views": 0,
     "specialization": "",
     "has_blog": false,
-    "portfolio_score": 0,
+    "portfolio_score": 8,
     "primary_language": "",
-    "seo_evaluation": "",
-    "role": "",
+    "seo_evaluation": "Average",
+    "role": "DevOps/Cloud Engineer",
     "name": "Suraj Kumar Nanda",
     "available_for_hire": false,
     "url": "https://www.surajkumarnanda.com",
-    "summary": "",
+    "summary": "Senior DevOps Engineer building resilient cloud systems with AI and DevOps expertise",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.surajkumarnanda.com?w=600",
     "is_portfolio": true,
-    "tech_stack": []
+    "tech_stack": [
+      "Agentic AI",
+      "Amazon Web Services",
+      "Microsoft Azure",
+      "Kubernetes",
+      "Terraform",
+      "Docker",
+      "Git",
+      "CI/CD"
+    ],
+    "location": "Hyderabad, IN",
+    "projects": [
+      "PROJECT CEREBRO",
+      "PROJECT DATAMESH",
+      "OPERATION SKYLIFT",
+      "PROJECT AEGIS",
+      "PROTOCOL VELOCITY"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "is_portfolio": true,
     "url": "https://www.syedahamed.in",
-    "summary": "",
+    "summary": "Syed is a frontend engineer building fast and maintainable React systems",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.syedahamed.in?w=600",
-    "tech_stack": [],
+    "tech_stack": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "React Query",
+      "Java",
+      "GraphQL",
+      "Tailwind",
+      "Node.js"
+    ],
     "specialization": "",
     "has_blog": false,
     "views": 0,
-    "role": "",
-    "name": "Syed Aashiq Ahamed",
-    "available_for_hire": false,
-    "portfolio_score": 0,
+    "role": "Frontend Developer",
+    "name": "Syed",
+    "available_for_hire": true,
+    "portfolio_score": 8,
     "primary_language": "",
-    "seo_evaluation": ""
+    "seo_evaluation": "Average",
+    "location": "Coimbatore, India",
+    "projects": [
+      "JSP → React migrations",
+      "Billing UX & dashboards",
+      "UI reliability (edge cases)",
+      "Post templates",
+      "AI content generator"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
-    "portfolio_score": 0,
-    "seo_evaluation": "",
+    "portfolio_score": 7,
+    "seo_evaluation": "Needs Improvement",
     "primary_language": "",
-    "name": "Syed Zain Ul Abideen",
-    "role": "",
-    "available_for_hire": false,
+    "name": "",
+    "role": "Full Stack Developer",
+    "available_for_hire": true,
     "views": 0,
     "specialization": "",
     "has_blog": false,
-    "tech_stack": [],
+    "tech_stack": [
+      "JavaScript",
+      "HTML/CSS",
+      "React",
+      "Node.js",
+      "Swiper.js",
+      "Google Maps"
+    ],
     "url": "https://www.szain.co",
-    "summary": "",
+    "summary": "Builds fast, lightweight, and reliable websites for small businesses",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.szain.co?w=600",
-    "is_portfolio": true
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Full-stack veterinary blog and ecommerce platform",
+      "Personal portfolio and band site for musician Laksh Sharma",
+      "Portfolio site for professional video editor TON1K",
+      "NGO website with static frontend and admin portal",
+      "Recovery business site"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
-    "summary": "",
+    "summary": "Develops poker platforms with MERN-stack and Socket.io",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.patrickobermeier.at?w=600",
     "url": "https://www.patrickobermeier.at",
     "is_portfolio": true,
-    "tech_stack": [],
+    "tech_stack": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Node.js",
+      "Webpack",
+      "MERN-stack",
+      "Socket.io"
+    ],
     "views": 0,
     "has_blog": false,
     "specialization": "",
-    "seo_evaluation": "",
+    "seo_evaluation": "Needs Improvement",
     "primary_language": "",
-    "portfolio_score": 0,
+    "portfolio_score": 6,
     "available_for_hire": false,
-    "name": "Patrick Obermeier",
-    "role": ""
+    "name": "",
+    "role": "Full Stack Developer",
+    "location": "",
+    "projects": [
+      "Vintage Poker"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "primary_language": "",
@@ -9957,68 +10297,132 @@
     "is_portfolio": true
   },
   {
-    "tech_stack": [],
-    "summary": "",
+    "tech_stack": [
+      "Java",
+      "JSP",
+      "RPG",
+      "WebFacing",
+      "XML",
+      "SVF",
+      "Apache Ant",
+      "Jenkins"
+    ],
+    "summary": "Develops and maintains large-scale enterprise systems in automotive and manufacturing",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.paulatienza.dev?w=600",
     "url": "https://www.paulatienza.dev",
     "is_portfolio": true,
     "primary_language": "",
-    "seo_evaluation": "",
-    "portfolio_score": 0,
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 6,
     "available_for_hire": false,
-    "name": "Paul Henry Atienza",
-    "role": "",
+    "name": "",
+    "role": "Backend Developer",
     "views": 0,
     "has_blog": false,
-    "specialization": ""
+    "specialization": "",
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "ai_processed": true
   },
   {
-    "tech_stack": [],
+    "tech_stack": [
+      "Electron",
+      "Supabase",
+      "Next.js",
+      "JavaScript",
+      "Node.js",
+      "DNN",
+      "Oqtane",
+      "MacOS"
+    ],
     "url": "https://www.paulpietzko.com",
-    "summary": "",
+    "summary": "Full Stack Junior Developer with 1 year experience",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.paulpietzko.com?w=600",
     "is_portfolio": true,
-    "portfolio_score": 0,
+    "portfolio_score": 6,
     "primary_language": "",
-    "seo_evaluation": "",
-    "role": "",
-    "name": "Paul Pietzko",
+    "seo_evaluation": "Needs Improvement",
+    "role": "Full Stack Developer",
+    "name": "",
     "available_for_hire": false,
     "views": 0,
     "specialization": "",
-    "has_blog": false
+    "has_blog": false,
+    "location": "Switzerland",
+    "projects": [
+      "My own Saas",
+      "2sxc",
+      "SchoolSys"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "primary_language": "",
-    "seo_evaluation": "",
-    "portfolio_score": 0,
+    "seo_evaluation": "Average",
+    "portfolio_score": 8,
     "available_for_hire": false,
-    "role": "",
-    "name": "Pawaret Meungkaew",
+    "role": "Full Stack Developer",
+    "name": "Pawaret Muengkaew",
     "views": 0,
     "has_blog": false,
     "specialization": "",
-    "tech_stack": [],
-    "summary": "",
+    "tech_stack": [
+      "Next.js",
+      "Node.js",
+      "React.js",
+      "Flutter",
+      "TypeScript",
+      "JavaScript",
+      "Unity",
+      "GraphQL"
+    ],
+    "summary": "Passionate web developer with experience in backend and full stack development",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.pawaret.dev?w=600",
     "url": "https://www.pawaret.dev",
-    "is_portfolio": true
+    "is_portfolio": true,
+    "location": "Bangkok, Thailand",
+    "projects": [
+      "Assign Me",
+      "Ticketplace",
+      "Archery Adventure",
+      "NFTs marketplace",
+      "Food Order Application"
+    ],
+    "social_links": [
+      "https://github.com/pawaret",
+      "https://www.linkedin.com/in/pawaret-muengkaew"
+    ],
+    "ai_processed": true
   },
   {
-    "tech_stack": [],
-    "summary": "",
+    "tech_stack": [
+      "Angular",
+      "Modern Frameworks",
+      "Web Development",
+      "Clean Code"
+    ],
+    "summary": "Pablo Conejos is a web developer with experience in building web and mobile applications.",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.pabloconejos.dev?w=600",
     "url": "https://www.pabloconejos.dev",
     "is_portfolio": true,
-    "seo_evaluation": "",
+    "seo_evaluation": "Needs Improvement",
     "primary_language": "",
-    "portfolio_score": 0,
+    "portfolio_score": 6,
     "available_for_hire": false,
-    "name": "Pablo Conejos",
-    "role": "",
+    "name": "PABLO CONEJOS",
+    "role": "Full Stack Developer",
     "views": 0,
     "has_blog": false,
-    "specialization": ""
+    "specialization": "",
+    "location": "",
+    "projects": [],
+    "social_links": [
+      "https://github.com",
+      "https://www.linkedin.com"
+    ],
+    "ai_processed": true
   },
   {
     "seo_evaluation": "",
@@ -10037,52 +10441,79 @@
     "is_portfolio": true
   },
   {
-    "name": "Sahib Hernández",
-    "role": "",
+    "name": "",
+    "role": "Full Stack Developer",
     "available_for_hire": false,
-    "portfolio_score": 0,
-    "seo_evaluation": "",
+    "portfolio_score": 8,
+    "seo_evaluation": "Average",
     "primary_language": "",
     "specialization": "",
     "has_blog": false,
     "views": 0,
-    "tech_stack": [],
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "Typescript",
+      "Django",
+      "MySQL",
+      "Docker",
+      "AWS",
+      "Javascript"
+    ],
     "is_portfolio": true,
     "url": "https://www.presoftcore.com",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.presoftcore.com?w=600",
-    "summary": ""
+    "summary": "Full-stack developer with a product-oriented mindset, focusing on fast, maintainable, and useful solutions.",
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "url": "https://www.robert.hase-zheng.net",
-    "summary": "",
+    "summary": "Robert Zheng is a developer with a personal portfolio.",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.robert.hase-zheng.net?w=600",
     "is_portfolio": true,
     "tech_stack": [],
     "views": 0,
     "specialization": "",
     "has_blog": false,
-    "portfolio_score": 0,
+    "portfolio_score": 2,
     "primary_language": "",
-    "seo_evaluation": "",
-    "name": "Zheng Robert",
-    "role": "",
-    "available_for_hire": false
+    "seo_evaluation": "Needs Improvement",
+    "name": "ZHENG Robert",
+    "role": "Other",
+    "available_for_hire": false,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "has_blog": false,
     "specialization": "",
     "views": 0,
     "available_for_hire": false,
-    "role": "",
-    "name": "Robiul Hasan",
+    "role": "Full Stack Developer",
+    "name": "",
     "primary_language": "",
-    "seo_evaluation": "",
-    "portfolio_score": 0,
+    "seo_evaluation": "Average",
+    "portfolio_score": 7,
     "is_portfolio": true,
-    "summary": "",
+    "summary": "Full Stack Developer building web applications with clean code and accessible UI",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.robiulhasan.dev?w=600",
     "url": "https://www.robiulhasan.dev",
-    "tech_stack": []
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Framer",
+      "JavaScript"
+    ],
+    "location": "Dhaka",
+    "projects": [],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "portfolio_score": 0,
@@ -10101,36 +10532,63 @@
     "is_portfolio": true
   },
   {
-    "tech_stack": [],
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind"
+    ],
     "url": "https://www.rabinthami.com.np",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.rabinthami.com.np?w=600",
-    "summary": "",
+    "summary": "Rabin Thami is a self-taught builder from Nepal, focusing on frontend development and building maintainable systems.",
     "is_portfolio": true,
-    "portfolio_score": 0,
+    "portfolio_score": 6,
     "primary_language": "",
-    "seo_evaluation": "",
+    "seo_evaluation": "Average",
     "name": "Rabin Thami",
-    "role": "",
+    "role": "Frontend Developer",
     "available_for_hire": false,
     "views": 0,
     "specialization": "",
-    "has_blog": false
+    "has_blog": false,
+    "location": "Nepal",
+    "projects": [
+      "Reusable OpenClaw skill",
+      "SSU management system"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "has_blog": false,
     "specialization": "",
     "views": 0,
     "available_for_hire": false,
-    "name": "Rafael Santana",
-    "role": "",
-    "seo_evaluation": "",
+    "name": "Rafael",
+    "role": "Full Stack Developer",
+    "seo_evaluation": "Needs Improvement",
     "primary_language": "",
-    "portfolio_score": 0,
+    "portfolio_score": 6,
     "is_portfolio": true,
-    "summary": "",
+    "summary": "Rafael is a Full-Stack Developer with a passion for creating elegant solutions.",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.rafaelsantana.dev?w=600",
     "url": "https://www.rafaelsantana.dev",
-    "tech_stack": []
+    "tech_stack": [
+      "React Native",
+      "TypeScript",
+      "Firebase",
+      "PostgreSQL",
+      "Html",
+      "Css",
+      "Tailwind",
+      "Javascript"
+    ],
+    "location": "",
+    "projects": [
+      "MedSystems Customer Portal"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "name": "Raj Sharma",
@@ -10149,116 +10607,214 @@
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.rajsh.in?w=600"
   },
   {
-    "tech_stack": [],
+    "tech_stack": [
+      "React.js",
+      "Next.js",
+      "Node.js",
+      "TensorFlow",
+      "TypeScript",
+      "JavaScript",
+      "Python",
+      "AWS"
+    ],
     "is_portfolio": true,
-    "summary": "",
+    "summary": "Rameshwar Bhagwat is a skilled Full Stack & AI Developer with expertise in modern web technologies",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.rameshwarbhagwat.me?w=600",
     "url": "https://www.rameshwarbhagwat.me",
-    "available_for_hire": false,
+    "available_for_hire": true,
     "name": "Rameshwar Bhagwat",
-    "role": "",
+    "role": "Full Stack Developer",
     "primary_language": "",
-    "seo_evaluation": "",
-    "portfolio_score": 0,
+    "seo_evaluation": "Good",
+    "portfolio_score": 8,
     "has_blog": false,
     "specialization": "",
-    "views": 0
+    "views": 0,
+    "location": "Yeola, Maharashtra, India",
+    "projects": [
+      "WebCraft",
+      "Safecoast"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "tech_stack": [],
-    "is_portfolio": true,
+    "is_portfolio": false,
     "summary": "",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.rapidtech1898.com?w=600",
     "url": "https://www.rapidtech1898.com",
     "available_for_hire": false,
-    "name": "Markus Polzer",
-    "role": "",
+    "name": "",
+    "role": "Other",
     "primary_language": "",
-    "seo_evaluation": "",
-    "portfolio_score": 0,
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 1,
     "has_blog": false,
     "specialization": "",
-    "views": 0
+    "views": 0,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "views": 0,
     "has_blog": false,
     "specialization": "",
-    "seo_evaluation": "",
+    "seo_evaluation": "Needs Improvement",
     "primary_language": "",
-    "portfolio_score": 0,
-    "available_for_hire": false,
+    "portfolio_score": 6,
+    "available_for_hire": true,
     "name": "Redoyanul Haque",
-    "role": "",
-    "summary": "",
+    "role": "Full Stack Developer",
+    "summary": "Redoyanul Haque is an AI Engineer and Full-Stack Developer with a passion for emerging technologies.",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.redoyanulhaque.me?w=600",
     "url": "https://www.redoyanulhaque.me",
     "is_portfolio": true,
-    "tech_stack": []
+    "tech_stack": [
+      "Python",
+      "React",
+      "Arduino",
+      "C++",
+      "IoT Sensors",
+      "ML",
+      "JavaScript",
+      "RESTful APIs"
+    ],
+    "location": "",
+    "projects": [
+      "EIE - Earthquake Impact Estimator"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "views": 0,
     "specialization": "",
     "has_blog": false,
-    "portfolio_score": 0,
+    "portfolio_score": 8,
     "primary_language": "",
-    "seo_evaluation": "",
-    "name": "Remi Jara",
-    "role": "",
+    "seo_evaluation": "Average",
+    "name": "Not Provided",
+    "role": "Full Stack Developer",
     "available_for_hire": false,
     "url": "https://www.remi-jara.fr",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.remi-jara.fr?w=600",
-    "summary": "",
+    "summary": "Passionate developer with experience in full-stack development and DevOps",
     "is_portfolio": true,
-    "tech_stack": []
+    "tech_stack": [
+      "Vue.js",
+      "Nuxt",
+      "Python",
+      "Terraform",
+      "AWS",
+      "GitHub Actions",
+      "Linux",
+      "Docker"
+    ],
+    "location": "Lyon, France",
+    "projects": [
+      "Song Lyrics Translator",
+      "GoNuxt",
+      "Country Flags and Capitals",
+      "Senzu API",
+      "GitLab to GitHub Migration"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "views": 0,
     "has_blog": false,
     "specialization": "",
     "primary_language": "",
-    "seo_evaluation": "",
-    "portfolio_score": 0,
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 1,
     "available_for_hire": false,
-    "name": "Richard Hill",
-    "role": "",
+    "name": "",
+    "role": "UI/UX Designer",
     "summary": "",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.rhdigital.co.uk?w=600",
     "url": "https://www.rhdigital.co.uk",
-    "is_portfolio": true,
-    "tech_stack": []
+    "is_portfolio": false,
+    "tech_stack": [],
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "views": 0,
     "specialization": "",
     "has_blog": false,
-    "portfolio_score": 0,
-    "seo_evaluation": "",
+    "portfolio_score": 7,
+    "seo_evaluation": "Average",
     "primary_language": "",
-    "name": "Rifqisakha",
-    "role": "",
+    "name": "",
+    "role": "Full Stack Developer",
     "available_for_hire": false,
     "url": "https://www.rifqisakha.my.id",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.rifqisakha.my.id?w=600",
-    "summary": "",
+    "summary": "Experienced web and app developer with expertise in UI/UX and SaaS",
     "is_portfolio": true,
-    "tech_stack": []
+    "tech_stack": [
+      "Node.js",
+      "Next.js",
+      "Odoo",
+      "N8N",
+      "AI",
+      "NLP",
+      "SaaS",
+      "UI/UX"
+    ],
+    "location": "Semarang, Indonesia",
+    "projects": [
+      "Integrated corporate management platform",
+      "ERP system for inventory and sales",
+      "Multi-role portal with official website",
+      "Scalable email automation tool",
+      "Intelligent AI chatbot for TVKU platform"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
-    "seo_evaluation": "",
+    "seo_evaluation": "Average",
     "primary_language": "",
-    "portfolio_score": 0,
-    "available_for_hire": false,
+    "portfolio_score": 8,
+    "available_for_hire": true,
     "name": "Ruban Gino Singh",
-    "role": "",
+    "role": "ML/AI Engineer",
     "views": 0,
     "has_blog": false,
     "specialization": "",
-    "tech_stack": [],
-    "summary": "",
+    "tech_stack": [
+      "Artificial Intelligence",
+      "Computer Vision",
+      "Machine Learning",
+      "Full-Stack Development",
+      "Cloud Infrastructure",
+      "MLOps",
+      "Data Engineering",
+      "Azure"
+    ],
+    "summary": "AI Engineer and Full-Stack AI Developer building scalable AI systems",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.rubangino.ca?w=600",
     "url": "https://www.rubangino.ca",
-    "is_portfolio": true
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Conversational Search",
+      "Intelligent Information Platforms",
+      "RAG-based Systems",
+      "Centralized Financial Reporting Platform",
+      "AI-powered Digital Systems"
+    ],
+    "social_links": [
+      "https://secure, encrypted channel to my professional inbox"
+    ],
+    "ai_processed": true
   },
   {
     "views": 0,
@@ -10277,42 +10833,68 @@
     "tech_stack": []
   },
   {
-    "tech_stack": [],
+    "tech_stack": [
+      "Machine Learning",
+      "Web Development",
+      "Robotics",
+      "XR Headsets",
+      "GPT",
+      "Pinecone",
+      "Spotify API",
+      "Game Development"
+    ],
     "is_portfolio": true,
     "url": "https://www.wyatthansen.dev",
-    "summary": "",
+    "summary": "Math student at UT Austin with interests in machine learning and web development",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.wyatthansen.dev?w=600",
-    "role": "",
-    "name": "Wyatt Hansen",
+    "role": "Full Stack Developer",
+    "name": "",
     "available_for_hire": false,
-    "portfolio_score": 0,
+    "portfolio_score": 6,
     "primary_language": "",
-    "seo_evaluation": "",
+    "seo_evaluation": "Needs Improvement",
     "specialization": "",
     "has_blog": false,
-    "views": 0
+    "views": 0,
+    "location": "Austin, USA",
+    "projects": [
+      "HPC Visualizations on XR Headset",
+      "Human-to-Robot Handover Prediction",
+      "Custom Branded Waitlist App",
+      "Food Delivery Robot",
+      "League of Legends Game Statistics Tracker"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
-    "summary": "Frontend Software Engineer at Strativ AB, creating seamless user experiences with modern web technologies.",
+    "summary": "A user-centered designer and frontend engineer with experience in software development.",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.tajmirul.site?w=600",
     "url": "https://www.tajmirul.site",
     "is_portfolio": true,
     "tech_stack": [
+      "JavaScript",
+      "HTML",
+      "CSS",
       "React",
-      "Next.js",
+      "Angular",
+      "Vue.js",
       "Node.js",
-      "TypeScript",
-      "Tailwind CSS"
+      "Bootstrap"
     ],
     "views": 0,
     "has_blog": false,
     "specialization": "Frontend Web Development, User Experience",
-    "seo_evaluation": "",
+    "seo_evaluation": "Needs Improvement",
     "primary_language": "English",
-    "portfolio_score": 0,
+    "portfolio_score": 6,
     "available_for_hire": false,
-    "role": "Frontend Software Engineer",
-    "name": "Aakhand Tajmirul"
+    "role": "Frontend Developer",
+    "name": "",
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "has_blog": false,
@@ -10335,38 +10917,53 @@
     "specialization": "",
     "views": 0,
     "available_for_hire": false,
-    "name": "Vladyslav Shtatskyi",
-    "role": "",
+    "name": "",
+    "role": "Other",
     "primary_language": "",
-    "seo_evaluation": "",
-    "portfolio_score": 0,
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 2,
     "is_portfolio": true,
     "summary": "",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.techinz.dev?w=600",
     "url": "https://www.techinz.dev",
-    "tech_stack": []
+    "tech_stack": [],
+    "location": "",
+    "projects": [
+      "Milky Way",
+      "Galaxy"
+    ],
+    "social_links": [
+      "https://techinz.dev"
+    ],
+    "ai_processed": true
   },
   {
     "tech_stack": [
-      "Python",
       "React",
-      "Java",
-      "MySQL",
-      "Docker"
+      "Firebase Realtime Database",
+      "Firebase Authentication",
+      "Firestore",
+      "RESTful APIs",
+      "Clean Architecture",
+      "MVVM pattern"
     ],
     "is_portfolio": true,
-    "summary": "Software Engineer at General, researching mmWave sensing and building full-stack platforms.",
+    "summary": "Software engineer with AI and full-stack experience",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.tejas-gupta.com?w=600",
     "url": "https://www.tejas-gupta.com",
     "available_for_hire": false,
-    "role": "Software Engineer",
-    "name": "Tejas Gupta",
+    "role": "Full Stack Developer",
+    "name": "",
     "primary_language": "English",
-    "seo_evaluation": "",
-    "portfolio_score": 0,
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 6,
     "has_blog": false,
     "specialization": "Machine Learning/Full-Stack",
-    "views": 0
+    "views": 0,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "specialization": "",
@@ -10385,42 +10982,59 @@
     "tech_stack": []
   },
   {
-    "seo_evaluation": "",
+    "seo_evaluation": "Needs Improvement",
     "primary_language": "French",
-    "portfolio_score": 0,
+    "portfolio_score": 8,
     "available_for_hire": false,
-    "name": "Thibaud Dervily",
-    "role": "Developer",
+    "name": "Thibaud",
+    "role": "Full Stack Developer",
     "views": 0,
     "has_blog": false,
     "specialization": "Mobile/Web Development",
     "tech_stack": [
-      "Astro JS",
       "React",
-      "Vue",
       "Node.js",
-      "Mobile"
+      "JavaScript",
+      "Vue",
+      "Angular",
+      "Astro",
+      "TypeScript",
+      "GraphQL"
     ],
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.thibaud-dervily.fr?w=600",
-    "summary": "Developer at General, building diverse mobile applications and web projects effectively.",
+    "summary": "Thibaud is a passionate fullstack developer creating web, mobile, and AI projects.",
     "url": "https://www.thibaud-dervily.fr",
-    "is_portfolio": true
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Cave Runner 2D",
+      "THE SORORITY",
+      "Gift Card Manager",
+      "Baby'Bib",
+      "Contraceptive Pill Reminder"
+    ],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "is_portfolio": true,
     "url": "https://www.tiagocreator.com",
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.tiagocreator.com?w=600",
-    "summary": "",
+    "summary": "Shares experiences and opinions on technology and other topics.",
     "tech_stack": [],
     "specialization": "",
     "has_blog": false,
     "views": 0,
-    "name": "Tiago Leite",
-    "role": "",
+    "name": "",
+    "role": "Other",
     "available_for_hire": false,
-    "portfolio_score": 0,
+    "portfolio_score": 2,
     "primary_language": "",
-    "seo_evaluation": ""
+    "seo_evaluation": "Needs Improvement",
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "ai_processed": true
   },
   {
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.tim-maes.com?w=600",
