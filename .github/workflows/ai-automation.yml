@@ -49,6 +49,7 @@ jobs:
       - name: Sync New Portfolios to Firestore
         env:
           PUBLIC_FIREBASE_API_KEY: ${{ secrets.PUBLIC_FIREBASE_API_KEY }}
+          FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
         run: node scripts/migrate-to-firestore.js
 
       - name: Setup Python

@@ -2,8 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
-import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, doc, setDoc, writeBatch } from 'firebase/firestore';
+import { initializeApp, cert } from 'firebase-admin/app';
+import { getFirestore } from 'firebase-admin/firestore';
 
 // Load environment variables
 dotenv.config();
@@ -11,23 +11,50 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const DATA_FILE = path.join(__dirname, '../src/data/portfolios.json');
+const ROOT_DIR = path.join(__dirname, '..');
 
-const firebaseConfig = {
-  apiKey: process.env.PUBLIC_FIREBASE_API_KEY,
-  authDomain: "portfolio-universe.firebaseapp.com",
-  projectId: "portfolio-universe",
-  storageBucket: "portfolio-universe.firebasestorage.app",
-  messagingSenderId: "893366203418",
-  appId: "1:893366203418:web:13b69c585c49a443268da3"
-};
+let serviceAccount = null;
 
-if (!firebaseConfig.apiKey) {
-  console.error("ERROR: PUBLIC_FIREBASE_API_KEY is not set in .env");
+// Try to load service account from environment variable first
+if (process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
+  try {
+    serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
+    console.log('Loaded service account key from environment.');
+  } catch (e) {
+    console.error('Error parsing FIREBASE_SERVICE_ACCOUNT_KEY from env:', e.message);
+  }
+}
+
+// Fallback to searching for local JSON file starting with 'portfolio-universe-firebase-adminsdk-'
+if (!serviceAccount) {
+  try {
+    const files = fs.readdirSync(ROOT_DIR);
+    const keyFile = files.find(f => f.startsWith('portfolio-universe-firebase-adminsdk-') && f.endsWith('.json'));
+    if (keyFile) {
+      const filePath = path.join(ROOT_DIR, keyFile);
+      serviceAccount = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+      console.log(`Loaded service account key from file: ${keyFile}`);
+    }
+  } catch (e) {
+    console.error('Error searching for service account JSON file:', e.message);
+  }
+}
+
+if (!serviceAccount) {
+  console.error('ERROR: Firebase Service Account Key not found in env (FIREBASE_SERVICE_ACCOUNT_KEY) or in local json file.');
   process.exit(1);
 }
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+if (serviceAccount.private_key) {
+  serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, '\n');
+}
+
+// Initialize Firebase Admin SDK
+initializeApp({
+  credential: cert(serviceAccount)
+});
+
+const db = getFirestore();
 
 export const urlToKey = (url) => {
   try {
@@ -54,17 +81,17 @@ async function migrate() {
 
   console.log(`Found ${portfolios.length} portfolios to migrate.`);
   
-  const portfoliosRef = collection(db, 'portfolios');
+  const portfoliosRef = db.collection('portfolios');
   
   let successCount = 0;
   const batches = [];
-  let currentBatch = writeBatch(db);
+  let currentBatch = db.batch();
   let opCount = 0;
 
   for (let i = 0; i < portfolios.length; i++) {
     const p = portfolios[i];
     const key = urlToKey(p.url);
-    const docRef = doc(portfoliosRef, key);
+    const docRef = portfoliosRef.doc(key);
     
     currentBatch.set(docRef, {
       name: p.name || "",
@@ -85,7 +112,7 @@ async function migrate() {
     opCount++;
     if (opCount === 500) {
       batches.push(currentBatch);
-      currentBatch = writeBatch(db);
+      currentBatch = db.batch();
       opCount = 0;
     }
   }
@@ -108,6 +135,7 @@ async function migrate() {
       }
     } catch (e) {
       console.error(`\nFailed to commit batch ${i + 1}:`, e.message);
+      process.exit(1);
     }
   }
   
@@ -115,5 +143,4 @@ async function migrate() {
   process.exit(0);
 }
 
-// Disabled automatic execution to prevent accidental quota exhaustion during build/load
 migrate();

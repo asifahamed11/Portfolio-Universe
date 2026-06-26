@@ -292,9 +292,38 @@ document.addEventListener('DOMContentLoaded', async () => {
   let visibleCount = 40;
   const ITEMS_PER_PAGE = 20;
 
+  // Set up an IntersectionObserver for all card wrappers to virtualize them when they scroll out of view
+  const virtualizationObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const w = entry.target;
+      const child = w.firstElementChild;
+      if (!child) return;
+      if (entry.isIntersecting) {
+        if (w.hasAttribute('data-virtualized')) {
+          w.removeAttribute('data-virtualized');
+          w.style.minHeight = '';
+          child.style.display = '';
+        }
+      } else {
+        // Measure height if possible to prevent layout shifts
+        const rect = w.getBoundingClientRect();
+        if (rect.height > 100) {
+          w.style.minHeight = `${rect.height}px`;
+        } else if (!w.style.minHeight) {
+          w.style.minHeight = '350px';
+        }
+        w.setAttribute('data-virtualized', 'true');
+        child.style.display = 'none';
+      }
+    });
+  }, {
+    rootMargin: '600px 0px 600px 0px',
+  });
+
   const itemElements = new Map();
   document.querySelectorAll('.portfolio-wrapper').forEach(w => {
     itemElements.set(w.dataset.url, w);
+    virtualizationObserver.observe(w);
   });
 
   const escapeHtml = (str) => {
@@ -495,6 +524,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         w = template.content.firstChild;
         itemElements.set(p.url, w);
         newElements.push(w);
+        virtualizationObserver.observe(w);
       }
       
       if (w.style.order !== String(i)) {
@@ -506,25 +536,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       
       w.classList.remove('hidden');
       
-      // Virtualization: if item is far out of view (e.g. index is < visibleCount - 60), 
-      // give it a class that sets content-visibility or display none to save DOM memory.
-      // We will add a 'virtualized-hidden' class
-      if (visibleCount > 60 && i < visibleCount - 60) {
-        // Keep the wrapper height but empty its content to save DOM
-        if (!w.hasAttribute('data-virtualized')) {
-          w.setAttribute('data-virtualized', 'true');
-          w.style.minHeight = '300px'; 
-          const child = w.firstElementChild;
-          if (child) child.style.display = 'none';
-        }
-      } else {
-        if (w.hasAttribute('data-virtualized')) {
-          w.removeAttribute('data-virtualized');
-          w.style.minHeight = '';
-          const child = w.firstElementChild;
-          if (child) child.style.display = '';
-        }
-      }
+
     }
     
     currentlyVisible = itemsToShowSet;
