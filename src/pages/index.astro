@@ -219,13 +219,13 @@ const portfolios = portfoliosData.map(p => ({
       </div>
 
       <!-- Glassmorphic Filters Container -->
-      <div class="mt-8 w-full md:w-max max-w-full mx-auto relative z-20 shadow-2xl border-2 border-white/20 rounded-[24px]">
-        <GlassSurface client:visible width={"100%" as any} height={"auto" as any} borderRadius={24} blur={15} opacity={0.1}>
+      <div class="mt-8 w-full md:w-max max-w-full mx-auto relative z-20 shadow-2xl rounded-[24px] liquidContainer">
+        
           <div class="relative flex items-center justify-start md:justify-center overflow-x-auto overflow-y-hidden hide-scrollbar gap-2 w-full p-1.5" style="-webkit-overflow-scrolling: touch;" id="filterContainer">
         
         <!-- Smooth Fluid Indicator -->
-        <div id="activeIndicator" class="absolute top-0 left-0 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-0 pointer-events-none" style="width: 0px; height: 0px; transform: translate(0px, 0px);">
-          <FluidGlassPill client:load />
+        <div id="activeIndicator" class="absolute top-0 left-0 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-0 pointer-events-none liquidBtn" style="width: 0px; height: 0px; transform: translate(0px, 0px);">
+          
         </div>
 
         <button class="filter-btn active group relative z-10 flex items-center gap-2 px-5 py-2.5 rounded-2xl text-[14px] font-medium transition-all duration-300 tracking-wide" data-filter="all">
@@ -264,7 +264,7 @@ const portfolios = portfoliosData.map(p => ({
           My Likes
         </button>
           </div>
-        </GlassSurface>
+        
       </div>
     </header>
 
@@ -333,7 +333,25 @@ const portfolios = portfoliosData.map(p => ({
     <LoginModal />
     <SubmitModal />
 
-  </body>
+  
+    <svg style="display: none">
+      <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
+        <feTurbulence type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="1" seed="5" result="turbulence" />
+        <feComponentTransfer in="turbulence" result="mapped">
+          <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+          <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+          <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+        </feComponentTransfer>
+        <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+        <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100" lighting-color="white" result="specLight">
+          <fePointLight x="-200" y="-200" z="300" />
+        </feSpecularLighting>
+        <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
+        <feDisplacementMap in="SourceGraphic" in2="softMap" scale="150" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </svg>
+</body>
+
 </html>
 
 <style>
@@ -433,5 +451,23 @@ const portfolios = portfoliosData.map(p => ({
   import '../scripts/audio.js';
   import '../scripts/main.js';
 </script>
+
+    <svg style="display: none">
+      <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
+        <feTurbulence type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="1" seed="5" result="turbulence" />
+        <feComponentTransfer in="turbulence" result="mapped">
+          <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+          <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+          <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+        </feComponentTransfer>
+        <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+        <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100" lighting-color="white" result="specLight">
+          <fePointLight x="-200" y="-200" z="300" />
+        </feSpecularLighting>
+        <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
+        <feDisplacementMap in="SourceGraphic" in2="softMap" scale="150" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </svg>
 </body>
+
 </html>
