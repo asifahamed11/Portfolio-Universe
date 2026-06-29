@@ -20,19 +20,19 @@ const { name, url, screenshot, summary, role, tech_stack, available_for_hire, ba
 const screenshotUrl = screenshot || `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`;
 ---
 
-<div class="group relative flex flex-col h-full transform-gpu z-10 transition-transform duration-500 ease-out hover:-translate-y-1.5 active:scale-[0.98] active:translate-y-0 [backface-visibility:hidden]">
+<div class="portfolio-card-wrapper group relative flex flex-col h-full transform-gpu z-10 transition-transform duration-500 ease-out hover:-translate-y-1.5 active:scale-[0.98] active:translate-y-0 [backface-visibility:hidden]">
   <BorderGlow
     client:visible
     className="h-full w-full"
-    edgeSensitivity={30}
-    glowColor="40 80 80"
+    edgeSensitivity={40}
+    glowColor="315 100 65"
     backgroundColor="#120F17"
     borderRadius={28}
-    glowRadius={40}
-    glowIntensity={1.0}
-    coneSpread={25}
+    glowRadius={55}
+    glowIntensity={1.2}
+    coneSpread={45}
     animated={false}
-    colors={['#c084fc', '#f472b6', '#38bdf8']}
+    colors={['#FF3366', '#7C3AED', '#06B6D4']}
   >
     <a href={url} target="_blank" rel="noopener noreferrer" class="relative flex flex-col rounded-[28px] h-full outline-none" onclick={`if(window.incrementPortfolioView) window.incrementPortfolioView('${url}')`}>
     
@@ -139,11 +139,11 @@ const screenshotUrl = screenshot || `https://api.microlink.io/?url=${encodeURICo
     </a>
   </BorderGlow>
 
-  <!-- Ultra-Premium Custom Tooltip (Outside the card, Above top right) -->
+  <!-- Ultra-Premium Custom Tooltip (Follows Mouse) -->
   {summary && (
-    <div class="hidden lg:flex absolute bottom-[calc(100%+16px)] -right-4 w-[280px] sm:w-[320px] z-[100] pointer-events-none flex-col items-end">
+    <div class="card-tooltip hidden lg:flex fixed top-0 left-0 w-[280px] sm:w-[320px] z-[9999] pointer-events-none flex-col items-start">
       <!-- LiquidGL CSS Replica Wrapper -->
-      <div class="relative w-full p-0 rounded-2xl bg-white/[0.06] opacity-0 group-hover:opacity-100 -translate-y-4 group-hover:translate-y-0 transition-all duration-500 ease-out overflow-hidden" style="box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.4), inset 0 -1px 1px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05); -webkit-backdrop-filter: blur(16px) saturate(180%) brightness(1.1); backdrop-filter: blur(16px) saturate(180%) brightness(1.1);">
+      <div class="relative w-full p-0 rounded-2xl bg-white/[0.06] overflow-hidden opacity-0 scale-90 translate-y-4 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu origin-top-left" style="box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.4), inset 0 -1px 1px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05); -webkit-backdrop-filter: blur(16px) saturate(180%) brightness(1.1); backdrop-filter: blur(16px) saturate(180%) brightness(1.1);">
         
         <!-- Liquid Specular Shine -->
         <div class="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[150%] skew-x-[-45deg] group-hover:translate-x-[50%] transition-transform duration-[1500ms] ease-out pointer-events-none"></div>
@@ -157,7 +157,55 @@ const screenshotUrl = screenshot || `https://api.microlink.io/?url=${encodeURICo
           </div>
         </div>
       </div>
-      <div class="absolute -bottom-[5.5px] right-10 w-3 h-3 bg-white/[0.06] opacity-0 group-hover:opacity-100 -translate-y-4 group-hover:translate-y-0 transition-all duration-500 ease-out transform rotate-45 z-[-1] pointer-events-none" style="box-shadow: inset -1px -1px 1px rgba(0,0,0,0.4), 1px 1px 0 rgba(255,255,255,0.05); -webkit-backdrop-filter: blur(16px) saturate(180%) brightness(1.1); backdrop-filter: blur(16px) saturate(180%) brightness(1.1);"></div>
     </div>
   )}
 </div>
+
+<script>
+  // Mouse tracking logic for tooltips
+  function initTooltips() {
+    const cards = document.querySelectorAll('.portfolio-card-wrapper');
+    
+    cards.forEach(card => {
+      const tooltip = card.querySelector('.card-tooltip') as HTMLElement;
+      if (!tooltip) return;
+
+      card.addEventListener('mousemove', (e: MouseEvent) => {
+        // The card has a transform, so fixed children are positioned relative to the card's top-left corner
+        const rect = card.getBoundingClientRect();
+        
+        // Tooltip dimensions (cache them or get them dynamically)
+        const tWidth = tooltip.offsetWidth || 320;
+        const tHeight = tooltip.offsetHeight || 100;
+        
+        // Calculate mouse position relative to the card
+        let x = e.clientX - rect.left;
+        let y = e.clientY - rect.top;
+        
+        // Determine offsets
+        let offsetX = 20;
+        let offsetY = 20;
+
+        // Boundary checking against the viewport
+        if (e.clientX + offsetX + tWidth > window.innerWidth) {
+          // Flip to the left of the cursor
+          offsetX = -tWidth - 20;
+        }
+        
+        if (e.clientY + offsetY + tHeight > window.innerHeight) {
+          // Flip above the cursor
+          offsetY = -tHeight - 20;
+        }
+        
+        // Use translate3d for hardware acceleration and perfectly smooth movement
+        tooltip.style.transform = `translate3d(${x + offsetX}px, ${y + offsetY}px, 0)`;
+      });
+    });
+  }
+
+  // Run on initial load and after Astro page swaps (View Transitions)
+  document.addEventListener('DOMContentLoaded', initTooltips);
+  document.addEventListener('astro:page-load', initTooltips);
+  // Also run immediately in case the DOM is already loaded
+  initTooltips();
+</script>

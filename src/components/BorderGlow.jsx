@@ -3,7 +3,7 @@ import './BorderGlow.css';
 
 function parseHSL(hslStr) {
   const match = hslStr.match(/([\d.]+)\s*([\d.]+)%?\s*([\d.]+)%?/);
-  if (!match) return { h: 40, s: 80, l: 80 };
+  if (!match) return { h: 315, s: 100, l: 65 };
   return { h: parseFloat(match[1]), s: parseFloat(match[2]), l: parseFloat(match[3]) };
 }
 
@@ -52,7 +52,7 @@ const BorderGlow = ({
   children,
   className = '',
   edgeSensitivity = 30,
-  glowColor = '40 80 80',
+  glowColor = '315 100 65',
   backgroundColor = '#120F17',
   borderRadius = 28,
   glowRadius = 40,

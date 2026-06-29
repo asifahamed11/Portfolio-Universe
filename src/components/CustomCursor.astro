@@ -80,6 +80,8 @@
     let cursorX = mouseX;
     let cursorY = mouseY;
     let isHoveringCard = false;
+    let targetScale = 1;
+    let currentScale = 1;
     
     document.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
@@ -89,8 +91,9 @@
     const render = () => {
       cursorX += (mouseX - cursorX) * 0.25; 
       cursorY += (mouseY - cursorY) * 0.25;
+      currentScale += (targetScale - currentScale) * 0.25;
       
-      const transformStr = `translate3d(calc(${cursorX}px - 50%), calc(${cursorY}px - 50%), 0) scale(${cursorMain?.dataset.scale || 1})`;
+      const transformStr = `translate3d(calc(${cursorX}px - 50%), calc(${cursorY}px - 50%), 0) scale(${currentScale})`;
       
       if (cursorMain) cursorMain.style.transform = transformStr;
       if (cursorTextWrapper) cursorTextWrapper.style.transform = transformStr;
@@ -229,13 +232,11 @@
     
     // Click effects
     document.addEventListener('mousedown', () => {
-      if (cursorMain) cursorMain.dataset.scale = '0.8';
-      if (cursorTextWrapper) cursorTextWrapper.dataset.scale = '0.8';
+      targetScale = 0.8;
     });
     
     document.addEventListener('mouseup', () => {
-      if (cursorMain) cursorMain.dataset.scale = '1';
-      if (cursorTextWrapper) cursorTextWrapper.dataset.scale = '1';
+      targetScale = 1;
     });
   });
 </script>

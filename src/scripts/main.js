@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       button.classList.add('border-red-500/30', 'bg-red-500/10', 'text-red-400');
       
       // Trigger smart animation
-      icon.classList.remove('heart-animated');
+      icon.classList.remove('heart-animated', 'heart-unlike-animated');
       void icon.offsetWidth; // Trigger reflow
       icon.classList.add('heart-animated');
       
@@ -95,6 +95,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       bookmarks.splice(index, 1);
       icon.setAttribute('fill', 'none');
       icon.classList.remove('text-red-500', 'heart-animated');
+      
+      // Trigger reverse animation
+      icon.classList.remove('heart-unlike-animated');
+      void icon.offsetWidth; // Trigger reflow
+      icon.classList.add('heart-unlike-animated');
+      
       button.classList.remove('border-red-500/30', 'bg-red-500/10', 'text-red-400');
       countEl.textContent = Math.max(0, currentLikes - 1);
       

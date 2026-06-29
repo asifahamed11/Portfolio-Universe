@@ -136,11 +136,22 @@ const RotatingText = forwardRef((props, ref) => {
     [next, previous, jumpTo, reset]
   );
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
   useEffect(() => {
-    if (!auto) return;
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // initial check
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!auto || !isScrolled) return;
     const intervalId = setInterval(next, rotationInterval);
     return () => clearInterval(intervalId);
-  }, [next, rotationInterval, auto]);
+  }, [next, rotationInterval, auto, isScrolled]);
 
   return (
     <motion.span className={cn('text-rotate', mainClassName)} {...rest} layout transition={transition}>
