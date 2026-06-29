@@ -12,6 +12,11 @@ import sys
 import time
 from pathlib import Path
 import httpx
+from dotenv import load_dotenv
+
+# Load environment variables from .env file at the root of the project
+load_dotenv(Path(__file__).parent.parent / ".env")
+
 import trafilatura
 from playwright.async_api import async_playwright
 from google import genai
@@ -27,16 +32,14 @@ MAX_RETRIES = 3
 
 # Keys
 GEMINI_KEYS = [
-    os.getenv("GEMINI_API_KEY_1"),
-    os.getenv("GEMINI_API_KEY_2"),
-    os.getenv("GEMINI_API_KEY_3"),
+    os.getenv("GEMINI_API_KEY")
 ]
 GEMINI_KEYS = [k for k in GEMINI_KEYS if k] # Filter out None
 
 GROQ_KEY = os.getenv("GROQ_API_KEY")
 
 if not GEMINI_KEYS and not GROQ_KEY:
-    print("ERROR: No API keys provided. Please set GEMINI_API_KEY_1, etc. or GROQ_API_KEY.", file=sys.stderr)
+    print("ERROR: No API keys provided. Please set GEMINI_API_KEY or GROQ_API_KEY.", file=sys.stderr)
     sys.exit(1)
 
 # Calculate RPM limit
@@ -44,7 +47,8 @@ RPM_LIMIT = (len(GEMINI_KEYS) * 15) + (30 if GROQ_KEY else 0)
 if RPM_LIMIT == 0: RPM_LIMIT = 15
 
 # Initialize Clients
-gemini_clients = [genai.Client(api_key=key) for key in GEMINI_KEYS]
+# Note: Using NaraRouter endpoint for the provided key
+gemini_clients = [genai.Client(api_key=key, http_options={'base_url': 'https://router.bynara.id'}) for key in GEMINI_KEYS]
 groq_client = AsyncGroq(api_key=GROQ_KEY) if GROQ_KEY else None
 
 # Round-robin state
