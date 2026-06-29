@@ -362,8 +362,8 @@
   },
   {
     "url": "https://aarus2709.me",
-    "name": "Aarav Gupta",
-    "role": "",
+    "name": "",
+    "role": "Other",
     "specialization": "",
     "summary": "",
     "tech_stack": [],
@@ -371,7 +371,14 @@
     "primary_language": "",
     "views": 0,
     "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faarus2709.me?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faarus2709.me?w=600",
+    "is_portfolio": false,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 1,
+    "ai_processed": true
   },
   {
     "url": "https://aarondunphy.com",
@@ -1060,16 +1067,42 @@
   },
   {
     "url": "https://abdulrehmanwaseem.me",
-    "name": "Abdul Rehman Waseem",
-    "role": "",
+    "name": "Abdul Rehman",
+    "role": "Full Stack Developer",
     "specialization": "",
-    "summary": "",
-    "tech_stack": [],
-    "available_for_hire": false,
+    "summary": "Abdul Rehman is a senior full-stack developer with 4+ years of experience, specializing in MERN stack and 3D web technologies.",
+    "tech_stack": [
+      "TypeScript",
+      "JavaScript",
+      "React",
+      "Node.js",
+      "Next.js",
+      "NestJS",
+      "Express.js",
+      "MongoDB"
+    ],
+    "available_for_hire": true,
     "primary_language": "",
     "views": 0,
     "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdulrehmanwaseem.me?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdulrehmanwaseem.me?w=600",
+    "is_portfolio": true,
+    "location": "Remote",
+    "projects": [
+      "ShopFlow",
+      "Fynosign",
+      "LoopIQ",
+      "RallyTyper",
+      "Space Facts Explorer"
+    ],
+    "social_links": [
+      "https://github.com/AbdulRehman",
+      "https://www.linkedin.com/in/AbdulRehman",
+      "https://twitter.com/AbdulRehman"
+    ],
+    "seo_evaluation": "Good",
+    "portfolio_score": 9,
+    "ai_processed": true
   },
   {
     "url": "https://samadd.vercel.app",
@@ -1518,15 +1551,31 @@
   {
     "url": "https://iabhinav.me",
     "name": "Abhinav Jaiswal",
-    "role": "",
+    "role": "Backend Developer",
     "specialization": "",
-    "summary": "",
-    "tech_stack": [],
+    "summary": "Abhinav Jaiswal is a software engineer passionate about programming and web development.",
+    "tech_stack": [
+      "JavaScript",
+      "HTML/CSS",
+      "React",
+      "Node.js",
+      "AWS",
+      "Python",
+      "Java",
+      "C++"
+    ],
     "available_for_hire": false,
     "primary_language": "",
     "views": 0,
     "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fiabhinav.me?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fiabhinav.me?w=600",
+    "is_portfolio": true,
+    "location": "Bangalore, India",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Average",
+    "portfolio_score": 6,
+    "ai_processed": true
   },
   {
     "url": "https://terminal.iabhinav.me",
@@ -1673,16 +1722,25 @@
   },
   {
     "url": "https://abhishekpanthee.com.np",
-    "name": "Abhishek Panthee",
-    "role": "",
+    "name": "",
+    "role": "Frontend Developer",
     "specialization": "",
-    "summary": "",
+    "summary": "Cyber Defender and Frontend Developer with experience in development",
     "tech_stack": [],
     "available_for_hire": false,
     "primary_language": "",
     "views": 0,
     "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhishekpanthee.com.np?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhishekpanthee.com.np?w=600",
+    "is_portfolio": true,
+    "location": "Nepal",
+    "projects": [
+      "NexiNode Enterprises"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 4,
+    "ai_processed": true
   },
   {
     "url": "https://www.abhisheksah.dev",
