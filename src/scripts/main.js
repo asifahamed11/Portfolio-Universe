@@ -290,7 +290,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (activeBtn) moveIndicator(activeBtn);
   }, 100);
 
-  const allPortfolios = portfoliosData.map((p, i) => ({ ...p, baseLikes: 0, index: i }));
+  const allPortfolios = portfoliosData.map((p, i) => {
+    const role = (p.role || '').toLowerCase();
+    return {
+      ...p,
+      baseLikes: 0,
+      index: i,
+      normalizedRole: role.replace(/[\s-]/g, '')
+    };
+  });
   let filteredItems = [...allPortfolios];
 
   let currentFilter = 'all';
@@ -590,7 +598,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         } else if (currentFilter === 'likes') {
           matchesFilter = bookmarks.includes(portfolio.url);
         } else {
-          const normalizedRole = role.replace(/[\s-]/g, '');
+          const normalizedRole = portfolio.normalizedRole;
           if (currentFilter === 'designer') {
             matchesFilter = role.includes('design') || role.includes('ui') || role.includes('creative');
           } else if (currentFilter === 'fullstack') {
