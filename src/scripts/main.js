@@ -20,8 +20,9 @@ window.showToast = (message, icon = 'check') => {
     <div class="shrink-0 bg-white/5 p-1.5 rounded-full border border-white/10 shadow-inner">
       ${icons[icon] || icons.check}
     </div>
-    <p class="text-sm font-semibold tracking-wide drop-shadow-md pr-2">${message}</p>
+    <p class="text-sm font-semibold tracking-wide drop-shadow-md pr-2"></p>
   `;
+  toast.querySelector('p').textContent = message;
   
   container.appendChild(toast);
   
