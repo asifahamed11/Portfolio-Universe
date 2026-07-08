@@ -6,6 +6,7 @@
     "node": ">=22.12.0"
   },
   "scripts": {
+    "test": "vitest run",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "node scripts/sync-firestore-to-json.js && astro build",
@@ -35,5 +36,8 @@
     "react-dom": "^19.2.7",
     "tailwindcss": "^4.3.0",
     "three": "^0.184.0"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.10"
   }
 }
