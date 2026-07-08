@@ -35,5 +35,9 @@
     "react-dom": "^19.2.7",
     "tailwindcss": "^4.3.0",
     "three": "^0.184.0"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.10",
+    "vitest": "^4.1.10"
   }
 }
