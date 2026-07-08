@@ -12,7 +12,8 @@
     "build": "node scripts/sync-firestore-to-json.js && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "generate-summaries": "node scripts/generate-summaries.js"
+    "generate-summaries": "node scripts/generate-summaries.js",
+    "test": "node --test src/lib/utils.test.js"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.7",
