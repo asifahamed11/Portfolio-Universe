@@ -170,36 +170,66 @@ const screenshotUrl = screenshot || `https://api.microlink.io/?url=${encodeURICo
       const tooltip = card.querySelector('.card-tooltip') as HTMLElement;
       if (!tooltip) return;
 
-      card.addEventListener('mousemove', (e: MouseEvent) => {
-        // The card has a transform, so fixed children are positioned relative to the card's top-left corner
-        const rect = card.getBoundingClientRect();
-        
-        // Tooltip dimensions (cache them or get them dynamically)
-        const tWidth = tooltip.offsetWidth || 320;
-        const tHeight = tooltip.offsetHeight || 100;
-        
-        // Calculate mouse position relative to the card
-        let x = e.clientX - rect.left;
-        let y = e.clientY - rect.top;
-        
-        // Determine offsets
-        let offsetX = 20;
-        let offsetY = 20;
+      let tWidth: number;
+      let tHeight: number;
+      let rAF: number;
+      let isScheduled = false;
+      let latestX = 0;
+      let latestY = 0;
+      let hasReadInitialDimensions = false;
 
-        // Boundary checking against the viewport
-        if (e.clientX + offsetX + tWidth > window.innerWidth) {
-          // Flip to the left of the cursor
-          offsetX = -tWidth - 20;
+      card.addEventListener('mouseenter', () => {
+        tWidth = tooltip.offsetWidth || 320;
+        tHeight = tooltip.offsetHeight || 100;
+        hasReadInitialDimensions = true;
+      }, { passive: true });
+
+      card.addEventListener('mousemove', (e: MouseEvent) => {
+        if (!hasReadInitialDimensions) {
+          tWidth = tooltip.offsetWidth || 320;
+          tHeight = tooltip.offsetHeight || 100;
+          hasReadInitialDimensions = true;
         }
+
+        latestX = e.clientX;
+        latestY = e.clientY;
         
-        if (e.clientY + offsetY + tHeight > window.innerHeight) {
-          // Flip above the cursor
-          offsetY = -tHeight - 20;
-        }
+        if (isScheduled) return;
+        isScheduled = true;
         
-        // Use translate3d for hardware acceleration and perfectly smooth movement
-        tooltip.style.transform = `translate3d(${x + offsetX}px, ${y + offsetY}px, 0)`;
-      });
+        rAF = requestAnimationFrame(() => {
+          // Read DOM: getBoundingClientRect inside rAF before writing styles to prevent stale cache on scroll
+          const rect = card.getBoundingClientRect();
+
+          // Calculate mouse position relative to the card
+          let x = latestX - rect.left;
+          let y = latestY - rect.top;
+
+          // Determine offsets
+          let offsetX = 20;
+          let offsetY = 20;
+
+          // Boundary checking against the viewport
+          if (latestX + offsetX + tWidth > window.innerWidth) {
+            // Flip to the left of the cursor
+            offsetX = -tWidth - 20;
+          }
+
+          if (latestY + offsetY + tHeight > window.innerHeight) {
+            // Flip above the cursor
+            offsetY = -tHeight - 20;
+          }
+
+          // Use translate3d for hardware acceleration and perfectly smooth movement
+          tooltip.style.transform = `translate3d(${x + offsetX}px, ${y + offsetY}px, 0)`;
+          isScheduled = false;
+        });
+      }, { passive: true });
+
+      card.addEventListener('mouseleave', () => {
+        if (rAF) cancelAnimationFrame(rAF);
+        isScheduled = false;
+      }, { passive: true });
     });
   }
 
