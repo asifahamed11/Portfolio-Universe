@@ -510,7 +510,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     // more than VIRTUAL_RENDER_BUFFER items away from the bottom of the visible list if they are scrolling down.
     // However, to keep it simple and safe for Astro, we will keep them in DOM but use CSS content-visibility:
     
-    const itemsToShowSet = new Set(itemsToShow.map(p => p.url));
+    const itemsToShowSet = new Set();
+    for (let i = 0; i < itemsToShow.length; i++) {
+      itemsToShowSet.add(itemsToShow[i].url);
+    }
     
     for (const url of currentlyVisible) {
       if (!itemsToShowSet.has(url)) {
