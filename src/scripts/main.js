@@ -549,9 +549,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     if (newElements.length > 0) {
       initBookmarks(newElements);
-      if (typeof applyGlobalLikesToVisible !== 'undefined') {
-        applyGlobalLikesToVisible(newElements);
-      }
+      applyGlobalLikesToVisible(newElements);
     }
 
     if (filteredItems.length === 0) {
