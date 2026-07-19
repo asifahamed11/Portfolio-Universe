@@ -50618,15 +50618,27 @@
   {
     "url": "https://wajahat-ali-mir-dev.vercel.app",
     "name": "Wajahat Ali Mir",
-    "role": "",
+    "role": "Mobile Developer",
     "specialization": "",
-    "summary": "",
-    "tech_stack": [],
+    "summary": "Wajahat Ali Mir builds high-performance mobile applications with seamless user experiences.",
+    "tech_stack": [
+      "React Native",
+      "JavaScript"
+    ],
     "available_for_hire": false,
     "primary_language": "",
     "views": 0,
     "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwajahat-ali-mir-dev.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwajahat-ali-mir-dev.vercel.app?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "40+ Projects"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 6,
+    "ai_processed": true
   },
   {
     "url": "https://walkersmith.me",
@@ -54094,15 +54106,41 @@
   {
     "url": "https://atanu-portfolio-devsecops-production.up.railway.app",
     "name": "Atanu Biswas",
-    "role": "",
+    "role": "DevOps/Cloud Engineer",
     "specialization": "",
-    "summary": "",
-    "tech_stack": [],
-    "available_for_hire": false,
+    "summary": "Atanu Biswas is a DevSecOps Engineer with expertise in cloud-native infrastructure and CI/CD platforms.",
+    "tech_stack": [
+      "Kubernetes",
+      "Docker",
+      "Terraform",
+      "AWS",
+      "GCP",
+      "Python",
+      "Bash",
+      "GitLab CI"
+    ],
+    "available_for_hire": true,
     "primary_language": "",
     "views": 0,
     "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fatanu-portfolio-devsecops-production.up.railway.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fatanu-portfolio-devsecops-production.up.railway.app?w=600",
+    "is_portfolio": true,
+    "location": "Remote",
+    "projects": [
+      "DevSecOps Interactive Lab",
+      "CI/CD Pipeline & GitOps Orchestrator",
+      "Automated Toolbelt & Skillsets",
+      "Rapid-Ship-Bootstrap",
+      "Forward Deployed Engineering (FDE) Strategy & PaaS"
+    ],
+    "social_links": [
+      "https://www.linkedin.com/in/atanubiswas",
+      "https://github.com/atanubiswas",
+      "https://twitter.com/atanubiswas"
+    ],
+    "seo_evaluation": "Good",
+    "portfolio_score": 9,
+    "ai_processed": true
   },
   {
     "url": "https://pahasara.me",
@@ -54139,15 +54177,40 @@
   {
     "url": "https://bnsaed.com",
     "name": "Abdelrahman Saed",
-    "role": "",
+    "role": "Mobile Developer",
     "specialization": "",
-    "summary": "",
-    "tech_stack": [],
-    "available_for_hire": false,
+    "summary": "Senior Mobile Engineer with 7+ years of experience building production iOS and Android apps",
+    "tech_stack": [
+      "Flutter",
+      "Dart",
+      "iOS",
+      "Android",
+      "Firebase",
+      "Dio",
+      "GitHub",
+      "CI/CD"
+    ],
+    "available_for_hire": true,
     "primary_language": "",
     "views": 0,
     "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbnsaed.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbnsaed.com?w=600",
+    "is_portfolio": true,
+    "location": "Cairo, Egypt",
+    "projects": [
+      "Story-based English learning",
+      "WhatsApp stickers app",
+      "Native PDF viewer",
+      "Flutter clipboard plugin",
+      "Dio interceptor"
+    ],
+    "social_links": [
+      "https://www.linkedin.com/in/binSaed",
+      "https://github.com/binSaed"
+    ],
+    "seo_evaluation": "Good",
+    "portfolio_score": 9,
+    "ai_processed": true
   },
   {
     "url": "https://adityanamdeo.qzz.io/",
@@ -55318,16 +55381,23 @@
   },
   {
     "url": "https://alishbaiqbal123.vercel.app",
-    "name": "Alishba Iqbal",
-    "role": "",
+    "name": "",
+    "role": "Full Stack Developer",
     "specialization": "",
-    "summary": "",
+    "summary": "Software Engineer and Full Stack Developer building meaningful projects",
     "tech_stack": [],
     "available_for_hire": false,
     "primary_language": "",
     "views": 0,
     "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Falishbaiqbal123.vercel.app?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Falishbaiqbal123.vercel.app?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 4,
+    "ai_processed": true
   },
   {
     "url": "https://navdeep.site",
