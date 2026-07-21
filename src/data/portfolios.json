@@ -20564,8 +20564,8 @@
   },
   {
     "url": "https://hozi-web3.site",
-    "name": "Hozaifa Ali",
-    "role": "",
+    "name": "",
+    "role": "Other",
     "specialization": "",
     "summary": "",
     "tech_stack": [],
@@ -20573,7 +20573,14 @@
     "primary_language": "",
     "views": 0,
     "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fhozi-web3.site?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fhozi-web3.site?w=600",
+    "is_portfolio": false,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 1,
+    "ai_processed": true
   },
   {
     "url": "https://iamdhakrey.dev",
@@ -55457,6 +55464,335 @@
     ],
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 6,
+    "ai_processed": true
+  },
+  {
+    "url": "https://ashifek.in",
+    "name": "Ashif E.K",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Full-Stack Engineer specializing in scalable web platforms and SaaS applications",
+    "tech_stack": [
+      "Django",
+      "Django REST Framework (DRF)",
+      "FastAPI",
+      "Next.js",
+      "PostgreSQL",
+      "Docker",
+      "AWS"
+    ],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fashifek.in?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Average",
+    "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
+    "url": "https://avilashbharti.in?src=gir",
+    "name": "",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Highly skilled developer with experience in full-stack development and microservices.",
+    "tech_stack": [
+      "AI-powered coding tools",
+      ".NET Core",
+      "REST APIs",
+      "SOAP APIs",
+      "Xunit",
+      "NUnit",
+      "Sonar",
+      "Cloud monitoring"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Favilashbharti.in%3Fsrc%3Dgir?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "US pharmacy domain",
+      "Financial services domain",
+      "Non-profit domain",
+      "Energy sector",
+      "Global travel platform"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 6,
+    "ai_processed": true
+  },
+  {
+    "url": "https://portfolio-psi-lovat-25.vercel.app",
+    "name": "Bhumika",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Bhumika is a fourth year CSE student building full stack apps with complex features.",
+    "tech_stack": [
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Node",
+      "Express",
+      "MongoDB",
+      "PostgreSQL"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolio-psi-lovat-25.vercel.app?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "ContribIQ",
+      "ReThink",
+      "Recycling platform"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 7,
+    "ai_processed": true
+  },
+  {
+    "url": "https://bruno-simon.com/",
+    "name": "Bruno Simon",
+    "role": "Frontend Developer",
+    "specialization": "",
+    "summary": "Bruno Simon is a creative developer for the web, showcasing his portfolio in a unique 3D world.",
+    "tech_stack": [
+      "Three.js",
+      "WebGL",
+      "WebGPU",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Blender",
+      "GitHub"
+    ],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbruno-simon.com%2F?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "3D Portfolio",
+      "Devlogs",
+      "Music Integration"
+    ],
+    "social_links": [
+      "https://github.com/bruno-simon",
+      "https://www.youtube.com/channel/bruno-simon"
+    ],
+    "seo_evaluation": "Good",
+    "portfolio_score": 9,
+    "ai_processed": true
+  },
+  {
+    "url": "https://joaquin-mendez.vercel.app",
+    "name": "Joaquín",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Joaquín is a skilled developer with experience in building impactful products.",
+    "tech_stack": [
+      "JavaScript",
+      "HTML/CSS",
+      "React",
+      "Node.js",
+      "MySQL",
+      "MongoDB",
+      "Bootstrap",
+      "Git"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fjoaquin-mendez.vercel.app?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "C-VOTA Voting System",
+      "e-Ibs Banking System",
+      "Control de Márgenes",
+      "FakeCorp Web Application",
+      "Stark Industries Mobile App"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 6,
+    "ai_processed": true
+  },
+  {
+    "url": "https://rakibislam22.github.io",
+    "name": "",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Develops real-time collaboration and messaging platforms",
+    "tech_stack": [
+      "Next.js",
+      "Node.js"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Frakibislam22.github.io?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "ConvoX"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 6,
+    "ai_processed": true
+  },
+  {
+    "url": "https://meliharik.dev",
+    "name": "Melih Arık",
+    "role": "Mobile Developer",
+    "specialization": "",
+    "summary": "Melih Arık is a software engineer building logistics apps with expertise in mobile development",
+    "tech_stack": [
+      "SwiftUI",
+      "Flutter",
+      "React Native",
+      "Node.js",
+      "Kotlin",
+      "Firebase",
+      "Raspberry Pi",
+      "Jetpack Compose"
+    ],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmeliharik.dev?w=600",
+    "is_portfolio": true,
+    "location": "Tallinn",
+    "projects": [
+      "Beatzy Music Maker iOS App",
+      "Native macOS menu bar app",
+      "Tartu Smart Bike Mobility Analysis",
+      "Event-driven service",
+      "Nasa Space Apps Hackathon"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Average",
+    "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
+    "url": "https://iamridoydey.me",
+    "name": "Ridoy Dey",
+    "role": "DevOps/Cloud Engineer",
+    "specialization": "",
+    "summary": "Passionate Cloud & DevOps engineer focused on infrastructure automation",
+    "tech_stack": [
+      "Terraform",
+      "Kubernetes",
+      "AWS",
+      "Azure",
+      "Ansible",
+      "Jenkins",
+      "Docker",
+      "Go"
+    ],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fiamridoydey.me?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "LangChoice",
+      "VisitCounter App",
+      "Flask Notebook App",
+      "Terraform & Ansible Automation",
+      "VMSS Mini App"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
+    "url": "https://satnamsingh.in",
+    "name": "Satnam",
+    "role": "ML/AI Engineer",
+    "specialization": "",
+    "summary": "Satnam is an Agentic GenAI and Python developer with expertise in enterprise AI systems",
+    "tech_stack": [
+      "Azure AI Foundry",
+      "Microsoft Fabric",
+      "MCP",
+      "FastAPI",
+      "Python",
+      "Document Intelligence",
+      "Machine Learning"
+    ],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsatnamsingh.in?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Multi-agent analytics platform",
+      "PolicyLens",
+      "Enterprise knowledge layer",
+      "Full-stack interactive portfolio"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Good",
+    "portfolio_score": 9,
+    "ai_processed": true
+  },
+  {
+    "url": "https://sayeedjoy.com",
+    "name": "Sayeed Joy",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Sayeed Joy is a software engineer building user experiences and scalable backend systems.",
+    "tech_stack": [
+      "C#",
+      "TypeScript",
+      "Kotlin",
+      "ASP.NET Core",
+      "Node.js",
+      "React",
+      "Next.js",
+      "Tailwind"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsayeedjoy.com?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Link Arena",
+      "Rumor Scanner"
+    ],
+    "social_links": [
+      "https://www.instagram.com/"
+    ],
+    "seo_evaluation": "Average",
+    "portfolio_score": 7,
     "ai_processed": true
   }
 ]
