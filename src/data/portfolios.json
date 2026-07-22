@@ -55794,5 +55794,122 @@
     "seo_evaluation": "Average",
     "portfolio_score": 7,
     "ai_processed": true
+  },
+  {
+    "url": "https://frankduah.me",
+    "name": "Author",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Developer of device-aware RAG assistant with expertise in hybrid retrieval and model-aware embedding cache",
+    "tech_stack": [
+      "Python",
+      "Next.js",
+      "transformers.js",
+      "RAG",
+      "llama.cpp"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ffrankduah.me?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Device-Aware RAG Assistant"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Average",
+    "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
+    "url": "https://nihir-mobile-portfolio.vercel.app/",
+    "name": "",
+    "role": "Mobile Developer",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [
+      "Android",
+      "iOS",
+      "iPhone"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fnihir-mobile-portfolio.vercel.app%2F?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [],
+    "social_links": [
+      "https://www.instagram.com",
+      "https://www.linkedin.com",
+      "https://www.github.com"
+    ],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 2,
+    "ai_processed": true
+  },
+  {
+    "url": "https://portfolio-ten-gules-teouuqn2p2.vercel.app",
+    "name": "",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Full-stack developer building products from interface to API, with strong problem-solving skills.",
+    "tech_stack": [
+      "Spring Boot",
+      "RESTful APIs",
+      "Modern frontend technologies"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolio-ten-gules-teouuqn2p2.vercel.app?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "B2B marketplace",
+      "File storage and sharing application",
+      "Reusable data structures for Java",
+      "AI-driven cheat-detection system"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 7,
+    "ai_processed": true
+  },
+  {
+    "url": "https://taiwobuilds.github.io/my-portfolio",
+    "name": "Taiwo Bamidele",
+    "role": "Frontend Developer",
+    "specialization": "",
+    "summary": "Taiwo Bamidele is a passionate developer who builds beautiful user interfaces and loves designing interfaces",
+    "tech_stack": [
+      "React",
+      "TypeScript",
+      "Vue",
+      "NodeJs",
+      "JavaScript",
+      "Tailwind CSS"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftaiwobuilds.github.io%2Fmy-portfolio?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Single Page Application",
+      "Music App",
+      "Gallery App",
+      "Menja Game"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Average",
+    "portfolio_score": 7,
+    "ai_processed": true
   }
 ]
