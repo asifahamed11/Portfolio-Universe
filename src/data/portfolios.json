@@ -55911,5 +55911,293 @@
     "seo_evaluation": "Average",
     "portfolio_score": 7,
     "ai_processed": true
+  },
+  {
+    "url": "https://ashmit-borawake.vercel.app",
+    "name": "Ashmit Borawake",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Ashmit Borawake is a full-stack developer building modern web applications",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Next.js",
+      "Tailwind CSS",
+      "WebSockets",
+      "Socket.IO"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fashmit-borawake.vercel.app?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 6,
+    "ai_processed": true
+  },
+  {
+    "url": "https://bruno-simon.com",
+    "name": "Bruno Simon",
+    "role": "Frontend Developer",
+    "specialization": "",
+    "summary": "Bruno Simon is a creative developer for the web, showcasing his portfolio in a 3D world.",
+    "tech_stack": [
+      "Three.js",
+      "WebGL",
+      "WebGPU",
+      "TSL",
+      "JavaScript",
+      "Blender",
+      "GitHub",
+      "MIT"
+    ],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbruno-simon.com?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "3D Portfolio",
+      "Devlogs",
+      "Music Integration"
+    ],
+    "social_links": [
+      "https://github.com/bruno-simon",
+      "https://www.youtube.com/bruno-simon"
+    ],
+    "seo_evaluation": "Good",
+    "portfolio_score": 9,
+    "ai_processed": true
+  },
+  {
+    "url": "https://borove4ik.vercel.app/",
+    "name": "Denis Borovets",
+    "role": "Frontend Developer",
+    "specialization": "",
+    "summary": "Former lawyer turned Frontend Developer, passionate about building modern web applications.",
+    "tech_stack": [
+      "JavaScript",
+      "React",
+      "Django",
+      "REST API",
+      "UI-kit"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fborove4ik.vercel.app%2F?w=600",
+    "is_portfolio": true,
+    "location": "Kostanay, Russia",
+    "projects": [
+      "Traveling around Russia",
+      "Mesto",
+      "Codelibs",
+      "Kostanay Engineering and Economics University",
+      "ANO 'I Hear You'"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Average",
+    "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
+    "url": "https://harshithrajbangera.github.io/Portfolio/",
+    "name": "Harshith Raj",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Highly motivated Full Stack Developer with strong foundation in C, Java, and cybersecurity",
+    "tech_stack": [
+      "Java",
+      "C",
+      "Python",
+      "React",
+      "JavaScript",
+      "OpenCV",
+      "Streamlit",
+      "CSS"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fharshithrajbangera.github.io%2FPortfolio%2F?w=600",
+    "is_portfolio": true,
+    "location": "Bantwal, India",
+    "projects": [
+      "Yoga Website",
+      "Human Detection & Details Extraction",
+      "Typing Skill Evaluator",
+      "To-Do List App",
+      "Memory Match Game"
+    ],
+    "social_links": [
+      "https://github.com/HarshithRajbangera",
+      "https://linkedin.com/in/harshithraj2004"
+    ],
+    "seo_evaluation": "Average",
+    "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
+    "url": "https://ilans.net",
+    "name": "",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Develops AI-powered tools for accessibility and education",
+    "tech_stack": [
+      "AI",
+      "JavaScript",
+      "Chrome Extension",
+      "Android App",
+      "Web App"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Filans.net?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Lens"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
+    "url": "https://kritan560.github.io/portfolio/",
+    "name": "Kritan Shrestha",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Senior Full-Stack Engineer with expertise in microservices and real-time systems",
+    "tech_stack": [
+      "Socket.IO",
+      "Redis",
+      "RabbitMQ",
+      "Docker",
+      "Podman",
+      "PostgreSQL",
+      "JavaScript",
+      "WebGL"
+    ],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkritan560.github.io%2Fportfolio%2F?w=600",
+    "is_portfolio": true,
+    "location": "Kathmandu, Nepal",
+    "projects": [
+      "iRestro",
+      "Ramro Link",
+      "Developer Tools Platform",
+      "Airbnb Clone",
+      "Interactive 3D Developer Portfolio"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Average",
+    "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
+    "url": "https://itsmaruf.me",
+    "name": "Md. Maruf Hasan Soncoy",
+    "role": "Mobile Developer",
+    "specialization": "",
+    "summary": "Maruf Hasan is an Android developer expanding into cross-platform development with Flutter and Dart.",
+    "tech_stack": [
+      "Flutter",
+      "Dart",
+      "Java",
+      "XML",
+      "Android",
+      "Firebase",
+      "Django",
+      "Material Design"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fitsmaruf.me?w=600",
+    "is_portfolio": true,
+    "location": "Bangladesh",
+    "projects": [
+      "OtoWave",
+      "Plexus"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 6,
+    "ai_processed": true
+  },
+  {
+    "url": "https://nayanbobde.github.io/Portfoliowebsite/",
+    "name": "",
+    "role": "Other",
+    "specialization": "",
+    "summary": "Improved inventory allocation for an apparel retailer, increasing revenue and reducing stockouts.",
+    "tech_stack": [
+      "SQL Server",
+      "Power BI",
+      "DAX",
+      "Power Query",
+      "JDA",
+      "ODBMS",
+      "Excel"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fnayanbobde.github.io%2FPortfoliowebsite%2F?w=600",
+    "is_portfolio": false,
+    "location": "",
+    "projects": [
+      "DC-to-Store Allocation Fix"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 6,
+    "ai_processed": true
+  },
+  {
+    "url": "https://nihir-mobile-portfolio.vercel.app",
+    "name": "",
+    "role": "Mobile Developer",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [
+      "Android",
+      "iPhone",
+      "iOS"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fnihir-mobile-portfolio.vercel.app?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [],
+    "social_links": [
+      "https://www.instagram.com",
+      "https://www.linkedin.com",
+      "https://github.com"
+    ],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 2,
+    "ai_processed": true
   }
 ]
