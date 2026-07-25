@@ -1,15 +1,7 @@
 import Lenis from 'lenis';
 import { auth } from '../lib/firebase.js';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import {
-  fetchUserBookmarks,
-  toggleBookmarkInFirestore,
-} from '../lib/dbUtils.js';
-import {
-  normalizePortfolioCollection,
-  toSafeHttpsUrl,
-} from '../lib/portfolio.js';
-import portfolioDataUrl from '../data/portfolios.json?url';
+import { fetchGlobalLikes, fetchUserBookmarks, urlToKey, toggleLikeInFirestore, incrementPortfolioView } from '../lib/dbUtils.js';
 
 // --- PREMIUM GLASS TOAST ---
 window.showToast = (message, icon = 'check') => {
@@ -19,16 +11,17 @@ window.showToast = (message, icon = 'check') => {
   const toast = document.createElement('div');
   toast.className = 'flex items-center gap-3 px-4 py-3 rounded-2xl bg-white/[0.08] backdrop-blur-xl border border-white/20 text-white shadow-[0_8px_30px_rgba(0,0,0,0.4)] transform translate-y-10 opacity-0 transition-all duration-500 ease-out pointer-events-auto';
   
-  const iconElement = document.createElement('span');
-  iconElement.className = 'shrink-0 bg-white/5 px-2 py-1 rounded-full border border-white/10 shadow-inner font-bold';
-  iconElement.textContent = icon === 'heart' ? '♥' : icon === 'error' ? '!' : '✓';
-  iconElement.style.color = icon === 'heart' ? '#f43f5e' : icon === 'error' ? '#fb7185' : '#34d399';
+  const icons = {
+    check: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`,
+    heart: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#f43f5e" stroke="#f43f5e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`
+  };
 
-  const messageElement = document.createElement('p');
-  messageElement.className = 'text-sm font-semibold tracking-wide drop-shadow-md pr-2';
-  messageElement.textContent = String(message);
-
-  toast.append(iconElement, messageElement);
+  toast.innerHTML = `
+    <div class="shrink-0 bg-white/5 p-1.5 rounded-full border border-white/10 shadow-inner">
+      ${icons[icon] || icons.check}
+    </div>
+    <p class="text-sm font-semibold tracking-wide drop-shadow-md pr-2">${message}</p>
+  `;
   
   container.appendChild(toast);
   
@@ -47,91 +40,76 @@ window.showToast = (message, icon = 'check') => {
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
-  // Keep the large dataset out of the JavaScript bundle and fail gracefully.
-  let portfoliosData = [];
-  try {
-    const response = await fetch(portfolioDataUrl, {
-      credentials: 'same-origin',
-    });
-    if (!response.ok) {
-      throw new Error(`Portfolio data request failed (${response.status}).`);
-    }
-    portfoliosData = normalizePortfolioCollection(await response.json());
-  } catch (error) {
-    console.error('Failed to load portfolio data:', error);
-    window.showToast?.('Some portfolio filters are temporarily unavailable.', 'error');
-  }
+  // Dynamically load the massive JSON in the background to avoid blocking main thread
+  const portfoliosModule = await import('../data/portfolios.json');
+  const portfoliosData = portfoliosModule.default || portfoliosModule;
 
-  const setBookmarkButtonState = (button, isSaved) => {
-    const icon = button.querySelector('.heart-icon');
-    icon?.setAttribute('fill', isSaved ? 'currentColor' : 'none');
-    icon?.classList.toggle('text-red-500', isSaved);
-    button.classList.toggle('border-red-500/30', isSaved);
-    button.classList.toggle('bg-red-500/10', isSaved);
-    button.classList.toggle('text-red-400', isSaved);
-    button.setAttribute('aria-pressed', String(isSaved));
+  // Expose for inline scripts
+  window.toggleLikeInFirestore = toggleLikeInFirestore;
+
+  window.incrementPortfolioView = (url) => {
+    const viewedKey = 'pu_viewed_' + url;
+    if (sessionStorage.getItem(viewedKey)) return;
+    sessionStorage.setItem(viewedKey, '1');
+    incrementPortfolioView(url);
   };
 
-  window.toggleBookmark = async function(button, url) {
-    const user = auth.currentUser;
-    const safeUrl = toSafeHttpsUrl(url);
-    if (!user) {
+  window.toggleBookmark = function(button, url) {
+    const userJSON = localStorage.getItem('pu_user');
+    if (!userJSON) {
       if (window.openLoginModal) window.openLoginModal();
       return;
     }
-    if (!safeUrl || button.disabled) return;
-
+    const user = JSON.parse(userJSON);
     const storageKey = `pu_bookmarks_${user.uid}`;
     const icon = button.querySelector('.heart-icon');
+    const countEl = button.querySelector('.like-count');
+    let currentLikes = parseInt(countEl.textContent) || 0;
     let bookmarks = JSON.parse(localStorage.getItem(storageKey) || '[]');
-    const previousBookmarks = [...bookmarks];
-    const index = bookmarks.indexOf(safeUrl);
-    const isSaving = index === -1;
+    const index = bookmarks.indexOf(url);
+    const isLiking = index === -1;
 
-    if (isSaving) {
-      bookmarks.push(safeUrl);
+    if (isLiking) {
+      bookmarks.push(url);
+      icon.setAttribute('fill', 'currentColor');
+      icon.classList.add('text-red-500');
+      button.classList.add('border-red-500/30', 'bg-red-500/10', 'text-red-400');
+      
+      // Trigger smart animation
       icon.classList.remove('heart-animated', 'heart-unlike-animated');
-      void icon.offsetWidth;
+      void icon.offsetWidth; // Trigger reflow
       icon.classList.add('heart-animated');
+      
+      // Trigger spark particles
       if (window.triggerSpark) window.triggerSpark(button);
+      
+      // Play sound and show toast
+      if (window.playPopSound) window.playPopSound(1.0);
+      if (window.showToast) window.showToast('Added to your likes!', 'heart');
+      
+      // Haptic feedback for mobile devices
       if (navigator.vibrate) navigator.vibrate(50);
+      
+      countEl.textContent = currentLikes + 1;
     } else {
       bookmarks.splice(index, 1);
+      icon.setAttribute('fill', 'none');
       icon.classList.remove('text-red-500', 'heart-animated');
+      
+      // Trigger reverse animation
       icon.classList.remove('heart-unlike-animated');
-      void icon.offsetWidth;
+      void icon.offsetWidth; // Trigger reflow
       icon.classList.add('heart-unlike-animated');
-    }
-
-    setBookmarkButtonState(button, isSaving);
-    localStorage.setItem(storageKey, JSON.stringify(bookmarks));
-    button.disabled = true;
-
-    try {
-      const confirmedBookmarks = await toggleBookmarkInFirestore(
-        user.uid,
-        safeUrl,
-        isSaving,
-      );
-      localStorage.setItem(storageKey, JSON.stringify(confirmedBookmarks));
-      setBookmarkButtonState(button, confirmedBookmarks.includes(safeUrl));
+      
+      button.classList.remove('border-red-500/30', 'bg-red-500/10', 'text-red-400');
+      countEl.textContent = Math.max(0, currentLikes - 1);
+      
+      // Play sound and show toast
       if (window.playPopSound) window.playPopSound(1.0);
-      if (window.showToast) {
-        window.showToast(
-          isSaving ? 'Saved to your bookmarks.' : 'Removed from your bookmarks.',
-          isSaving ? 'heart' : 'check',
-        );
-      }
-    } catch (error) {
-      console.error('Failed to update bookmark:', error);
-      localStorage.setItem(storageKey, JSON.stringify(previousBookmarks));
-      setBookmarkButtonState(button, previousBookmarks.includes(safeUrl));
-      if (window.showToast) {
-        window.showToast('The bookmark could not be saved. Please try again.', 'error');
-      }
-    } finally {
-      button.disabled = false;
+      if (window.showToast) window.showToast('Removed from your likes.', 'check');
     }
+    localStorage.setItem(storageKey, JSON.stringify(bookmarks));
+    if (window.toggleLikeInFirestore) window.toggleLikeInFirestore(user.uid, url, isLiking, bookmarks);
   };
 
   const initBookmarks = (elements = null) => {
@@ -144,7 +122,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     btns.forEach(btn => {
       const url = btn.dataset.url;
-      setBookmarkButtonState(btn, bookmarks.includes(url));
+      const icon = btn.querySelector('.heart-icon');
+      if (bookmarks.includes(url)) {
+        icon.setAttribute('fill', 'currentColor');
+        icon.classList.add('text-red-500');
+        btn.classList.add('border-red-500/30', 'bg-red-500/10', 'text-red-400');
+      } else {
+        icon.setAttribute('fill', 'none');
+        icon.classList.remove('text-red-500');
+        btn.classList.remove('border-red-500/30', 'bg-red-500/10', 'text-red-400');
+      }
     });
   };
   initBookmarks();
@@ -157,14 +144,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   // ---- SMOOTH SCROLL (LENIS) ----
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const lenis = prefersReducedMotion
-    ? null
-    : new Lenis({
-        autoRaf: true,
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      });
+  const lenis = new Lenis({
+    autoRaf: true,
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  });
 
   // ---- NAVBAR HIDE ON SCROLL ----
   const topNavBar = document.getElementById('topNavBar');
@@ -235,6 +219,37 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
+  // ---- FETCH GLOBAL LIKES ----
+  let cachedGlobalLikes = {};
+  const applyGlobalLikesToVisible = (elements = null) => {
+    const btns = elements ? elements.flatMap(el => Array.from(el.querySelectorAll('.bookmark-btn'))) : document.querySelectorAll('.bookmark-btn');
+    btns.forEach(btn => {
+      const url = btn.dataset.url;
+      const key = urlToKey(url);
+      const serverLikes = cachedGlobalLikes[key];
+      
+      if (serverLikes !== undefined) {
+        const countEl = btn.querySelector('.like-count');
+        if (countEl) {
+          countEl.textContent = serverLikes;
+        }
+      }
+    });
+  };
+
+  fetchGlobalLikes().then(globalLikes => {
+    cachedGlobalLikes = globalLikes;
+    applyGlobalLikesToVisible();
+    
+    // Dynamically sort by likes
+    allPortfolios.forEach(p => {
+      p.baseLikes = cachedGlobalLikes[urlToKey(p.url)] || 0;
+    });
+    allPortfolios.sort((a, b) => b.baseLikes - a.baseLikes);
+    
+    debouncedApplyFilters();
+  });
+
   // ---- FILTER, SEARCH & PAGINATION LOGIC ----
   const loadMoreContainer = document.getElementById('loadMoreContainer');
   const emptyState = document.getElementById('emptyState');
@@ -245,38 +260,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const gridContainer = document.getElementById('portfolioGrid');
   const activeIndicator = document.getElementById('activeIndicator');
   let indicatorTimeout;
-
-  document.getElementById('homeBtn')?.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-  });
-  document.querySelectorAll('[data-action="open-submit"]').forEach((button) => {
-    button.addEventListener('click', () => window.openSubmitModal?.());
-  });
-  document.querySelectorAll('[data-action="open-login"]').forEach((button) => {
-    button.addEventListener('click', () => window.openLoginModal?.());
-  });
-
-  gridContainer?.addEventListener('click', (event) => {
-    const button = event.target.closest?.('.bookmark-btn');
-    if (!button || !gridContainer.contains(button)) return;
-    event.preventDefault();
-    event.stopPropagation();
-    window.toggleBookmark(button, button.dataset.url);
-  });
-
-  gridContainer?.addEventListener(
-    'error',
-    (event) => {
-      const image = event.target;
-      if (!image.classList?.contains('portfolio-image') || image.dataset.fallbackApplied) {
-        return;
-      }
-      image.dataset.fallbackApplied = 'true';
-      image.src =
-        'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600&auto=format&fit=crop';
-    },
-    true,
-  );
 
   const moveIndicator = (btn) => {
     if (!activeIndicator || !btn) return;
@@ -307,10 +290,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (activeBtn) moveIndicator(activeBtn);
   }, 100);
 
-  const allPortfolios = portfoliosData.map((portfolio, index) => ({
-    ...portfolio,
-    index,
-  }));
+  const allPortfolios = portfoliosData.map((p, i) => ({ ...p, baseLikes: 0, index: i }));
   let filteredItems = [...allPortfolios];
 
   let currentFilter = 'all';
@@ -352,6 +332,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     virtualizationObserver.observe(w);
   });
 
+  const escapeHtml = (str) => {
+    if (!str) return '';
+    return String(str).replace(/[&<>"']/g, c => 
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])
+    );
+  };
+
+  const BORDER_GLOW_STYLE = '--card-bg:#120F17; --edge-sensitivity:30; --border-radius:28px; --glow-padding:40px; --cone-spread:25; --fill-opacity:0.5; --glow-color:hsl(40deg 80% 80% / 100%); --glow-color-60:hsl(40deg 80% 80% / 60%); --glow-color-50:hsl(40deg 80% 80% / 50%); --glow-color-40:hsl(40deg 80% 80% / 40%); --glow-color-30:hsl(40deg 80% 80% / 30%); --glow-color-20:hsl(40deg 80% 80% / 20%); --glow-color-10:hsl(40deg 80% 80% / 10%); --gradient-one:radial-gradient(at 80% 55%, #c084fc 0px, transparent 50%); --gradient-two:radial-gradient(at 69% 34%, #f472b6 0px, transparent 50%); --gradient-three:radial-gradient(at 8% 6%, #38bdf8 0px, transparent 50%); --gradient-four:radial-gradient(at 41% 38%, #c084fc 0px, transparent 50%); --gradient-five:radial-gradient(at 86% 85%, #f472b6 0px, transparent 50%); --gradient-six:radial-gradient(at 82% 18%, #38bdf8 0px, transparent 50%); --gradient-seven:radial-gradient(at 51% 4%, #f472b6 0px, transparent 50%); --gradient-base:linear-gradient(#c084fc 0 100%);';
+
   const updateDynamicGlow = (card, clientX, clientY) => {
     const rect = card.getBoundingClientRect();
     const halfW = rect.width / 2;
@@ -376,117 +365,138 @@ document.addEventListener('DOMContentLoaded', async () => {
     gridContainer.addEventListener('pointermove', (e) => {
       const card = e.target.closest && e.target.closest('.border-glow-card[data-glow="dynamic"]');
       if (card) updateDynamicGlow(card, e.clientX, e.clientY);
-
-      const wrapper = e.target.closest?.('.portfolio-card-wrapper');
-      const tooltip = wrapper?.querySelector('.card-tooltip');
-      if (!wrapper || !tooltip || !tooltip.classList.contains('lg:flex')) return;
-
-      const rect = wrapper.getBoundingClientRect();
-      const tooltipWidth = tooltip.offsetWidth || 320;
-      const tooltipHeight = tooltip.offsetHeight || 100;
-      const offsetX =
-        e.clientX + 20 + tooltipWidth > window.innerWidth
-          ? -tooltipWidth - 20
-          : 20;
-      const offsetY =
-        e.clientY + 20 + tooltipHeight > window.innerHeight
-          ? -tooltipHeight - 20
-          : 20;
-      tooltip.style.transform = `translate3d(${e.clientX - rect.left + offsetX}px, ${e.clientY - rect.top + offsetY}px, 0)`;
     }, { passive: true });
   }
 
-  const cardTemplateSource = document.querySelector('.portfolio-wrapper');
-  const mainTechClass =
-    'portfolio-tech px-3 py-1.5 rounded-full bg-blue-500/[0.06] text-blue-200/80 text-[10px] font-bold tracking-widest uppercase border border-blue-500/20 shadow-sm transition-colors duration-300 group-hover:border-blue-500/40 group-hover:bg-blue-500/[0.12] group-hover:text-blue-100';
-  const extraTechClass =
-    'portfolio-tech-extra px-3 py-1.5 rounded-full bg-white/[0.04] text-white/60 text-[10px] font-bold tracking-widest uppercase border border-white/[0.08] shadow-sm';
+  const createCardHTML = (portfolio, index) => {
+    const name = escapeHtml(portfolio.name);
+    const url = escapeHtml(portfolio.url);
+    const rawUrl = portfolio.url; 
+    const screenshot = escapeHtml(portfolio.screenshot || `https://api.microlink.io/?url=${encodeURIComponent(rawUrl)}&screenshot=true&meta=false&embed=screenshot.url`);
+    const summary = escapeHtml(portfolio.summary || '');
+    const role = escapeHtml(portfolio.role || '');
+    const tech_stack = Array.isArray(portfolio.tech_stack) ? portfolio.tech_stack : [];
+    const available_for_hire = portfolio.available_for_hire || false;
+    const base_likes = portfolio.baseLikes || 0;
+    const views = portfolio.views || 0;
 
-  const createCardElement = (portfolio, index) => {
-    if (!cardTemplateSource) return null;
-
-    const wrapper = cardTemplateSource.cloneNode(true);
-    wrapper.classList.add('hidden');
-    wrapper.removeAttribute('style');
-    wrapper.dataset.index = String(index);
-    wrapper.dataset.name = portfolio.name.toLowerCase();
-    wrapper.dataset.url = portfolio.url;
-    wrapper.dataset.role = portfolio.role.toLowerCase();
-    wrapper.dataset.tech = portfolio.tech_stack.join(',').toLowerCase();
-    wrapper.dataset.hire = String(portfolio.available_for_hire);
-
-    wrapper.querySelectorAll(
-      '[data-cursor-bound-card], [data-cursor-bound-btn], [data-cursor-bound-like]',
-    ).forEach((element) => {
-      delete element.dataset.cursorBoundCard;
-      delete element.dataset.cursorBoundBtn;
-      delete element.dataset.cursorBoundLike;
-    });
-
-    const link = wrapper.querySelector('.portfolio-link');
-    link.href = portfolio.url;
-
-    const image = wrapper.querySelector('.portfolio-image');
-    image.src =
-      portfolio.screenshot ||
-      `https://api.microlink.io/?url=${encodeURIComponent(portfolio.url)}&screenshot=true&meta=false&embed=screenshot.url`;
-    image.alt = `Screenshot of ${portfolio.name}'s portfolio`;
-    delete image.dataset.fallbackApplied;
-
-    const bookmark = wrapper.querySelector('.bookmark-btn');
-    bookmark.dataset.url = portfolio.url;
-    bookmark.setAttribute(
-      'aria-label',
-      `Save ${portfolio.name} to bookmarks`,
-    );
-    bookmark.setAttribute('aria-pressed', 'false');
-    bookmark.disabled = false;
-
-    wrapper.querySelector('[data-field="name"]').textContent = portfolio.name;
-    wrapper.querySelector('[data-field="views"]').textContent = String(
-      portfolio.views,
-    );
-    wrapper.querySelector('[data-field="views-container"]').title =
-      `${portfolio.views} views`;
-
-    const hire = wrapper.querySelector('[data-field="hire"]');
-    hire.hidden = !portfolio.available_for_hire;
-
-    const roleContainer = wrapper.querySelector('[data-field="role-container"]');
-    roleContainer.hidden = !portfolio.role;
-    wrapper.querySelector('[data-field="role"]').textContent = portfolio.role;
-
-    const mobileSummary = wrapper.querySelector('[data-field="mobile-summary"]');
-    mobileSummary.hidden = !portfolio.summary;
-    mobileSummary.textContent = portfolio.summary;
-
-    const techStack = wrapper.querySelector('[data-field="tech-stack"]');
-    techStack.replaceChildren();
-    portfolio.tech_stack.slice(0, 3).forEach((technology) => {
-      const badge = document.createElement('span');
-      badge.className = mainTechClass;
-      badge.textContent = technology;
-      techStack.appendChild(badge);
-    });
-    if (portfolio.tech_stack.length > 3) {
-      const extraBadge = document.createElement('span');
-      extraBadge.className = extraTechClass;
-      extraBadge.textContent = `+${portfolio.tech_stack.length - 3}`;
-      techStack.appendChild(extraBadge);
+    let hireHTML = '';
+    if (available_for_hire) {
+      hireHTML = `
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 backdrop-blur-xl border border-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase tracking-widest shadow-xl">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] animate-pulse"></span>
+          Hire Me
+        </span>
+      `;
     }
-    techStack.hidden = portfolio.tech_stack.length === 0;
 
-    const tooltip = wrapper.querySelector('[data-field="tooltip"]');
-    tooltip.hidden = !portfolio.summary;
-    tooltip.classList.toggle('lg:flex', Boolean(portfolio.summary));
-    tooltip.style.transform = '';
-    wrapper.querySelector('[data-field="tooltip-summary"]').textContent =
-      portfolio.summary;
+    let techHTML = '';
+    if (tech_stack.length > 0) {
+      const mainTech = tech_stack.slice(0, 3).map(tech => `
+        <span class="px-3 py-1.5 rounded-full bg-blue-500/[0.03] text-blue-200/50 text-[10px] font-bold tracking-widest uppercase border border-blue-500/10 shadow-sm transition-colors duration-300 group-hover:border-blue-500/20 group-hover:bg-blue-500/[0.08] group-hover:text-blue-200/80">
+          ${escapeHtml(tech)}
+        </span>
+      `).join('');
+      
+      let extraTech = '';
+      if (tech_stack.length > 3) {
+        extraTech = `
+          <span class="px-3 py-1.5 rounded-full bg-white/[0.02] text-white/30 text-[10px] font-bold tracking-widest uppercase border border-white/[0.04] shadow-sm">
+            +${tech_stack.length - 3}
+          </span>
+        `;
+      }
+      
+      techHTML = `
+        <div class="flex flex-wrap gap-2 mt-6">
+          ${mainTech}
+          ${extraTech}
+        </div>
+      `;
+    }
 
-    return wrapper;
+    let roleHTML = '';
+    if (role) {
+      roleHTML = `
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 mt-1 rounded-md bg-white/[0.03] border border-white/[0.05] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm w-fit group-hover:bg-white/[0.06] group-hover:border-white/[0.1] transition-all duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400 drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span class="text-[12px] font-medium text-gray-300 group-hover:text-white transition-colors duration-300">
+            ${role}
+          </span>
+        </div>
+      `;
+    }
+
+    let tooltipHTML = '';
+    if (summary) {
+      tooltipHTML = `
+        <div class="absolute bottom-[calc(100%+16px)] -right-4 w-[280px] sm:w-[320px] z-[100] pointer-events-none flex flex-col items-end">
+          <div class="relative w-full p-0 rounded-2xl bg-white/[0.06] opacity-0 group-hover:opacity-100 -translate-y-4 group-hover:translate-y-0 transition-all duration-500 ease-out overflow-hidden" style="box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.4), inset 0 -1px 1px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05); -webkit-backdrop-filter: blur(16px) saturate(180%) brightness(1.1); backdrop-filter: blur(16px) saturate(180%) brightness(1.1);">
+            <div class="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[150%] skew-x-[-45deg] group-hover:translate-x-[50%] transition-transform duration-[1500ms] ease-out pointer-events-none"></div>
+            <div class="relative text-white/95 text-[13px] leading-relaxed p-4 rounded-2xl font-medium shadow-[inset_0_0_20px_rgba(255,255,255,0.02)]">
+              <div class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-white/60 shrink-0 mt-0.5"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                <span class="drop-shadow-md">${summary}</span>
+              </div>
+            </div>
+          </div>
+          <div class="absolute -bottom-[5.5px] right-10 w-3 h-3 bg-white/[0.06] opacity-0 group-hover:opacity-100 -translate-y-4 group-hover:translate-y-0 transition-all duration-500 ease-out transform rotate-45 z-[-1] pointer-events-none" style="box-shadow: inset -1px -1px 1px rgba(0,0,0,0.4), 1px 1px 0 rgba(255,255,255,0.05); -webkit-backdrop-filter: blur(16px) saturate(180%) brightness(1.1); backdrop-filter: blur(16px) saturate(180%) brightness(1.1);"></div>
+        </div>
+      `;
+    }
+
+    return `
+      <div class="portfolio-wrapper hidden" data-index="${index}" data-name="${name.toLowerCase()}" data-url="${rawUrl}" data-role="${(portfolio.role || '').toLowerCase()}" data-tech="${tech_stack.join(',').toLowerCase()}" data-hire="${available_for_hire ? 'true' : 'false'}">
+        <div class="group relative flex flex-col h-full transform-gpu z-10 transition-transform duration-500 ease-out hover:-translate-y-1.5 active:scale-[0.98] active:translate-y-0 [backface-visibility:hidden]">
+          <div class="border-glow-card h-full w-full" data-glow="dynamic" style="${BORDER_GLOW_STYLE}">
+            <span class="edge-light"></span>
+            <div class="border-glow-inner">
+          <a href="${rawUrl}" target="_blank" rel="noopener noreferrer" class="relative flex flex-col rounded-[28px] h-full outline-none" onclick="if(window.incrementPortfolioView) window.incrementPortfolioView('${rawUrl}')">
+            <div class="relative aspect-[16/10] w-full overflow-hidden rounded-t-[28px] bg-black [transform:translateZ(0)]">
+              <img src="${screenshot}" alt="Screenshot of ${name}'s portfolio" loading="lazy" class="w-full h-full object-cover object-top opacity-75 grayscale-[30%] group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-[1.04] transition-all duration-700 ease-out transform-gpu [backface-visibility:hidden]" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600&auto=format&fit=crop';" />
+              <div class="absolute inset-0 z-20 w-[150%] -translate-x-[150%] skew-x-[-25deg] bg-gradient-to-r from-transparent via-white/[0.12] to-transparent group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out pointer-events-none"></div>
+              <div class="absolute inset-0 z-10 pointer-events-none ring-1 ring-inset ring-white/[0.08] rounded-t-[28px]"></div>
+              <div class="absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-transparent to-black/70 opacity-90 pointer-events-none transition-opacity duration-500 group-hover:opacity-60"></div>
+              <div class="absolute inset-0 z-10 bg-gradient-to-t from-[#0B0F19] via-[#0B0F19]/40 to-transparent opacity-95 pointer-events-none"></div>
+              <div class="absolute top-4 left-4 z-20 flex flex-wrap gap-2 pointer-events-none">
+                ${hireHTML}
+              </div>
+              <button class="bookmark-btn absolute top-4 right-4 z-30 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/50 backdrop-blur-xl border border-white/[0.1] text-white/70 hover:text-rose-400 hover:bg-rose-500/15 hover:border-rose-500/40 hover:shadow-[0_0_20px_rgba(244,63,94,0.3)] transition-all duration-300 group/btn" data-url="${rawUrl}" aria-label="Bookmark and Like" onclick="event.preventDefault(); window.toggleBookmark(this, this.dataset.url)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="heart-icon transition-transform duration-300 group-hover/btn:scale-110 active:scale-90"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                <span class="text-xs font-bold tracking-wide like-count">${base_likes}</span>
+              </button>
+            </div>
+            <div class="relative z-10 p-6 flex flex-col flex-grow rounded-b-[28px] bg-gradient-to-b from-[#0B0F19] to-[#06080D]">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2 overflow-hidden pr-2">
+                  <h3 class="text-[1.1rem] font-extrabold text-white/95 tracking-tight line-clamp-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-300 transition-all duration-300">${name}</h3>
+                  <div class="flex items-center gap-1.5 text-gray-500 group-hover:text-gray-400 transition-colors shrink-0" title="${views} views">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <span class="text-xs font-semibold tracking-wide">${views}</span>
+                  </div>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-white/0 group-hover:text-cyan-400 transition-all transform -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 duration-300 shrink-0"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </div>
+              ${roleHTML}
+              <div class="flex-grow"></div>
+              ${techHTML}
+            </div>
+          </a>
+            </div>
+          </div>
+          ${tooltipHTML}
+        </div>
+      </div>
+    `;
   };
 
   let currentlyVisible = new Set(itemElements.keys());
+  
+  // Virtualization distance
+  const VIRTUAL_RENDER_BUFFER = 40; // Only keep DOM nodes for items within this buffer from view
 
   const renderGrid = () => {
     // Determine the visible range
@@ -515,8 +525,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       let w = itemElements.get(p.url);
       
       if (!w) {
-        w = createCardElement(p, p.index);
-        if (!w) continue;
+        const template = document.createElement('template');
+        template.innerHTML = createCardHTML(p, p.index).trim();
+        w = template.content.firstChild;
         itemElements.set(p.url, w);
         newElements.push(w);
         virtualizationObserver.observe(w);
@@ -538,6 +549,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     if (newElements.length > 0) {
       initBookmarks(newElements);
+      if (typeof applyGlobalLikesToVisible !== 'undefined') {
+        applyGlobalLikesToVisible(newElements);
+      }
     }
 
     if (filteredItems.length === 0) {
@@ -597,7 +611,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (currentFilter === 'most_viewed') {
       filteredItems.sort((a, b) => (b.views || 0) - (a.views || 0));
     } else {
-      filteredItems.sort((a, b) => a.index - b.index);
+      filteredItems.sort((a, b) => b.baseLikes - a.baseLikes);
     }
 
     if (_showSkeletons) {
@@ -607,45 +621,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   };
 
-  const createSkeleton = (index) => {
-    const element = (tag, className) => {
-      const node = document.createElement(tag);
-      node.className = className;
-      return node;
-    };
-
-    const wrapper = element('div', 'portfolio-wrapper skeleton-card');
-    wrapper.style.order = String(index);
-    const card = element(
-      'div',
-      'relative flex flex-col bg-[#0B0F19] border border-white/[0.06] rounded-2xl h-full z-10 overflow-hidden',
-    );
-    const shimmer = element(
-      'div',
-      'absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/[0.05] to-transparent z-20',
-    );
-    const image = element(
-      'div',
-      'relative aspect-[16/10] w-full bg-white/[0.03]',
-    );
-    const content = element(
-      'div',
-      'p-6 flex flex-col flex-grow rounded-b-2xl bg-gradient-to-b from-[#0B0F19] to-[#06080D]',
-    );
-    content.append(
-      element('div', 'h-6 bg-white/[0.05] rounded-md w-3/4 mb-3'),
-      element('div', 'h-5 bg-white/[0.03] rounded-md w-1/3 mb-6'),
-      element('div', 'flex-grow'),
-    );
-    const tags = element('div', 'flex gap-2');
-    tags.append(
-      element('div', 'h-6 bg-white/[0.04] rounded-full w-16'),
-      element('div', 'h-6 bg-white/[0.04] rounded-full w-20'),
-    );
-    content.appendChild(tags);
-    card.append(shimmer, image, content);
-    wrapper.appendChild(card);
-    return wrapper;
+  const createSkeletonHTML = (index) => {
+    return `
+      <div class="portfolio-wrapper skeleton-card" style="order: ${index}">
+        <div class="relative flex flex-col bg-[#0B0F19] border border-white/[0.06] rounded-2xl h-full z-10 overflow-hidden">
+          <div class="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/[0.05] to-transparent z-20"></div>
+          <div class="relative aspect-[16/10] w-full bg-white/[0.03]"></div>
+          <div class="p-6 flex flex-col flex-grow rounded-b-2xl bg-gradient-to-b from-[#0B0F19] to-[#06080D]">
+            <div class="h-6 bg-white/[0.05] rounded-md w-3/4 mb-3"></div>
+            <div class="h-5 bg-white/[0.03] rounded-md w-1/3 mb-6"></div>
+            <div class="flex-grow"></div>
+            <div class="flex gap-2">
+              <div class="h-6 bg-white/[0.04] rounded-full w-16"></div>
+              <div class="h-6 bg-white/[0.04] rounded-full w-20"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
   };
 
   let skeletonTimeout;
@@ -670,11 +663,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Add new skeletons
     const skeletonCount = Math.min(filteredItems.length, visibleCount) || 6;
-    const skeletons = Array.from(
-      { length: skeletonCount },
-      (_, index) => createSkeleton(index),
-    );
-    gridContainer.append(...skeletons);
+    let skeletonHTML = '';
+    for(let i=0; i<skeletonCount; i++){
+       skeletonHTML += createSkeletonHTML(i);
+    }
+    
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = skeletonHTML;
+    const skeletons = Array.from(tempDiv.children);
+    skeletons.forEach(s => gridContainer.appendChild(s));
     
     emptyState.classList.add('hidden');
     loadMoreContainer.style.display = 'none';
@@ -686,6 +683,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
 
   let filterTimeout;
+  const debouncedApplyFilters = () => {
+    clearTimeout(filterTimeout);
+    filterTimeout = setTimeout(() => {
+      applyFilters(false);
+    }, 250);
+  };
+
   const handleSearch = (e) => {
     searchQuery = e.target.value.toLowerCase().trim();
     if (e.target === searchInputDesk && searchInputMob) searchInputMob.value = e.target.value;

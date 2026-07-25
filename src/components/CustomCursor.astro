@@ -62,12 +62,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    if (
-      !window.matchMedia('(pointer: fine)').matches ||
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    ) {
-      return;
-    }
+    if (!window.matchMedia('(pointer: fine)').matches) return;
 
     document.documentElement.classList.add('custom-cursor-active');
     
@@ -109,7 +104,7 @@
 
     const attachHoverEffects = () => {
       // 1. Portfolio Cards
-      const cards = document.querySelectorAll<HTMLElement>('a[target="_blank"]');
+      const cards = document.querySelectorAll('a[target="_blank"]');
       cards.forEach((el) => {
         if (el.dataset.cursorBoundCard) return;
         el.dataset.cursorBoundCard = 'true';
@@ -129,7 +124,7 @@
             borderLayer.style.background = 'transparent';
             if(glassLayer) {
                 glassLayer.style.backdropFilter = 'blur(0px)';
-                glassLayer.style.setProperty('-webkit-backdrop-filter', 'blur(0px)');
+                glassLayer.style.webkitBackdropFilter = 'blur(0px)';
             }
           }
         });
@@ -147,14 +142,14 @@
             borderLayer.style.background = 'transparent';
             if(glassLayer) {
                 glassLayer.style.backdropFilter = 'blur(0px)';
-                glassLayer.style.setProperty('-webkit-backdrop-filter', 'blur(0px)');
+                glassLayer.style.webkitBackdropFilter = 'blur(0px)';
             }
           }
         });
       });
 
       // 2. Normal Buttons & Links
-      const clickables = document.querySelectorAll<HTMLElement>('button:not(.bookmark-btn), .filter-btn, .cursor-pointer, a:not([target="_blank"])');
+      const clickables = document.querySelectorAll('button:not(.bookmark-btn), .filter-btn, .cursor-pointer, a:not([target="_blank"])');
       clickables.forEach((el) => {
         if (el.dataset.cursorBoundBtn) return;
         el.dataset.cursorBoundBtn = 'true';
@@ -185,7 +180,7 @@
       });
 
       // 3. Like Buttons
-      const likeBtns = document.querySelectorAll<HTMLElement>('.bookmark-btn');
+      const likeBtns = document.querySelectorAll('.bookmark-btn');
       likeBtns.forEach((el) => {
         if (el.dataset.cursorBoundLike) return;
         el.dataset.cursorBoundLike = 'true';

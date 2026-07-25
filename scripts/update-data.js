@@ -1,9 +1,5 @@
 import fs from 'fs/promises';
 import path from 'path';
-import {
-  portfolioIdentity,
-  toSafeHttpsUrl,
-} from '../src/lib/portfolio.js';
 
 const README_URL = 'https://raw.githubusercontent.com/emmabostian/developer-portfolios/master/README.md';
 const DATA_FILE = path.join(process.cwd(), 'src', 'data', 'portfolios.json');
@@ -33,6 +29,15 @@ function parseMarkdownList(markdown) {
   return portfolios;
 }
 
+function isValidUrl(string) {
+  try {
+    new URL(string);
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
+
 async function run() {
   try {
     console.log('Fetching README.md...');
@@ -44,9 +49,8 @@ async function run() {
     const cleanedData = Array.from(
       new Map(
         extractedData
-          .map((item) => ({ ...item, url: toSafeHttpsUrl(item.url) }))
-          .filter((item) => item.url)
-          .map(item => [portfolioIdentity(item.url), {
+          .filter(item => isValidUrl(item.url))
+          .map(item => [item.url, {
             name: item.name,
             url: item.url,
             screenshot: `https://s0.wp.com/mshots/v1/${encodeURIComponent(item.url)}?w=600`
@@ -63,28 +67,17 @@ async function run() {
       console.log('No existing portfolios.json found, creating new one.');
     }
 
-    // Reject unsafe/non-HTTPS legacy entries and collapse normalized duplicates.
+    // Create a map of existing URLs for fast lookup
     const existingMap = new Map();
-    let rejectedCount = 0;
-    for (const portfolio of existingPortfolios) {
-      const safeUrl = toSafeHttpsUrl(portfolio.url);
-      const identity = safeUrl && portfolioIdentity(safeUrl);
-      if (!safeUrl || !identity || existingMap.has(identity)) {
-        rejectedCount++;
-        continue;
-      }
-      existingMap.set(identity, { ...portfolio, url: safeUrl });
-    }
-    existingPortfolios = [...existingMap.values()];
+    existingPortfolios.forEach(p => existingMap.set(p.url, p));
 
     let newCount = 0;
 
     // Merge new portfolios
     for (const item of cleanedData) {
-      const identity = portfolioIdentity(item.url);
-      if (identity && !existingMap.has(identity)) {
+      if (!existingMap.has(item.url)) {
         // Add completely new portfolio
-        const portfolio = {
+        existingPortfolios.push({
           url: item.url,
           name: item.name,
           role: "",
@@ -96,9 +89,7 @@ async function run() {
           views: 0,
           has_blog: false,
           screenshot: item.screenshot
-        };
-        existingPortfolios.push(portfolio);
-        existingMap.set(identity, portfolio);
+        });
         newCount++;
       }
     }
@@ -106,9 +97,7 @@ async function run() {
     // Save back to JSON
     await fs.writeFile(DATA_FILE, JSON.stringify(existingPortfolios, null, 2), 'utf-8');
     
-    console.log(
-      `\nSuccessfully synced data. Added ${newCount}, rejected ${rejectedCount} unsafe/duplicate legacy entries, total ${existingPortfolios.length}.`,
-    );
+    console.log(`\nSuccessfully synced data. Found ${newCount} new portfolios. Total is now ${existingPortfolios.length}.`);
     process.exit(0);
   } catch (error) {
     console.error('Error during data update:', error);
