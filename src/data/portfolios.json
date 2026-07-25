@@ -50736,16 +50736,41 @@
   },
   {
     "url": "https://weskershek.com",
-    "name": "Wesker Shek",
-    "role": "",
+    "name": "",
+    "role": "Full Stack Developer",
     "specialization": "",
-    "summary": "",
-    "tech_stack": [],
+    "summary": "Highly skilled developer with expertise in web and application development",
+    "tech_stack": [
+      "React.js",
+      "Next.js",
+      "JavaScript",
+      "TypeScript",
+      "Node.js",
+      "Unity",
+      "Three.js",
+      "Python"
+    ],
     "available_for_hire": false,
     "primary_language": "",
     "views": 0,
     "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fweskershek.com?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fweskershek.com?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Real estate management platform",
+      "Unitree Go1 OSC Control",
+      "AIORTC Webcam Stream",
+      "ROS Visual Tracking System",
+      "Politician"
+    ],
+    "social_links": [
+      "https://github.com/wesker",
+      "https://www.linkedin.com/in/wesker"
+    ],
+    "seo_evaluation": "Average",
+    "portfolio_score": 8,
+    "ai_processed": true
   },
   {
     "url": "https://whilmarbitoco.vercel.app",
