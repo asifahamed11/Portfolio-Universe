@@ -167,8 +167,8 @@ void main() {
 `;
 
 const Lightfall = ({
-  className,
-  dpr,
+  className = '',
+  dpr = undefined,
   paused = false,
   colors = ['#38bdf8', '#c084fc', '#f472b6'],
   backgroundColor = '#040406',
@@ -186,7 +186,7 @@ const Lightfall = ({
   mouseStrength = 0.4,
   mouseRadius = 0.8,
   mouseDampening = 0.15,
-  mixBlendMode
+  mixBlendMode = undefined
 }) => {
   const containerRef = useRef(null);
   const rafRef = useRef(null);
@@ -201,8 +201,12 @@ const Lightfall = ({
     const container = containerRef.current;
     if (!container) return;
 
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+    const requestedDpr = dpr ?? window.devicePixelRatio ?? 1;
     const renderer = new Renderer({
-      dpr: dpr ?? (typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1),
+      dpr: Math.min(Math.max(requestedDpr, 1), 1.5),
       alpha: true,
       antialias: true
     });
@@ -242,7 +246,7 @@ const Lightfall = ({
       uZoom: { value: zoom },
       uBgGlow: { value: backgroundGlow },
       uOpacity: { value: opacity },
-      uMouseEnabled: { value: mouseInteraction ? 1 : 0 },
+      uMouseEnabled: { value: mouseInteraction && !prefersReducedMotion ? 1 : 0 },
       uMouseStrength: { value: mouseStrength },
       uMouseRadius: { value: mouseRadius }
     };
@@ -275,9 +279,15 @@ const Lightfall = ({
         uniforms.iMouse.value = [x, y];
       }
     };
-    if (mouseInteraction) {
+    if (mouseInteraction && !prefersReducedMotion) {
       window.addEventListener('pointermove', onPointerMove);
     }
+
+    let pageVisible = !document.hidden;
+    const onVisibilityChange = () => {
+      pageVisible = !document.hidden;
+    };
+    document.addEventListener('visibilitychange', onVisibilityChange);
 
     const loop = t => {
       rafRef.current = requestAnimationFrame(loop);
@@ -296,7 +306,7 @@ const Lightfall = ({
       } else {
         lastTimeRef.current = t;
       }
-      if (!paused && programRef.current && meshRef.current) {
+      if (!paused && pageVisible && programRef.current && meshRef.current) {
         try {
           renderer.render({ scene: meshRef.current });
         } catch (e) {
@@ -304,11 +314,18 @@ const Lightfall = ({
         }
       }
     };
-    rafRef.current = requestAnimationFrame(loop);
+    if (paused || prefersReducedMotion) {
+      renderer.render({ scene: meshRef.current });
+    } else {
+      rafRef.current = requestAnimationFrame(loop);
+    }
 
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      if (mouseInteraction) window.removeEventListener('pointermove', onPointerMove);
+      if (mouseInteraction && !prefersReducedMotion) {
+        window.removeEventListener('pointermove', onPointerMove);
+      }
+      document.removeEventListener('visibilitychange', onVisibilityChange);
       ro.disconnect();
       if (canvas.parentElement === container) {
         container.removeChild(canvas);

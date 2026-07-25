@@ -2,93 +2,149 @@
 // SubmitModal.astro
 ---
 
-<div id="submitModal" class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+<div
+  id="submitModal"
+  role="dialog"
+  aria-modal="true"
+  aria-hidden="true"
+  aria-labelledby="submitTitle"
+  inert
+  class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300"
+>
   <div id="submitBackdrop" class="absolute inset-0 bg-gray-950/60 backdrop-blur-md"></div>
   
-  <div class="relative w-full max-w-lg bg-gray-900/80 backdrop-blur-xl border border-gray-700/50 rounded-3xl shadow-2xl p-8 transform scale-95 transition-transform duration-300" id="submitCard">
-    <button id="closeSubmitBtn" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-gray-800/50">
+  <div class="relative w-full max-w-lg bg-gray-900/80 backdrop-blur-xl border border-gray-700/50 rounded-3xl shadow-2xl p-8 transform scale-95 transition-transform duration-300" id="submitCard" tabindex="-1">
+    <button type="button" id="closeSubmitBtn" aria-label="Close portfolio submission dialog" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-gray-800/50">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
     </button>
     
     <div class="mb-6">
-      <h2 class="text-2xl font-bold text-white mb-2">Submit a Portfolio</h2>
-      <p class="text-gray-400 text-sm">Know a great developer portfolio? Add it to the universe! Our AI will automatically generate the summary and tags.</p>
+      <h2 id="submitTitle" class="text-2xl font-bold text-white mb-2">Submit a Portfolio</h2>
+      <p class="text-gray-400 text-sm">Know a great developer portfolio? Submit its HTTPS URL for automated validation and review.</p>
     </div>
 
     <form id="submitForm" class="space-y-5">
       <div>
         <label for="portfolioName" class="block text-sm font-medium text-gray-300 mb-1">Developer Name</label>
-        <input type="text" id="portfolioName" required class="w-full bg-gray-800/50 border border-gray-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors" />
+        <input type="text" id="portfolioName" required maxlength="120" autocomplete="name" class="w-full bg-gray-800/50 border border-gray-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors" />
       </div>
       <div>
         <label for="portfolioUrl" class="block text-sm font-medium text-gray-300 mb-1">Website URL</label>
-        <input type="url" id="portfolioUrl" required class="w-full bg-gray-800/50 border border-gray-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors" />
+        <input type="url" id="portfolioUrl" required maxlength="2048" pattern="https://.*" inputmode="url" placeholder="https://example.com" class="w-full bg-gray-800/50 border border-gray-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors" />
       </div>
       
       <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold py-3 px-4 rounded-xl shadow-lg shadow-blue-500/25 transition-all active:scale-[0.98]">
-        Submit for AI Review
+        <span class="submit-label">Submit for Review</span>
       </button>
     </form>
     
-    <div id="submitSuccess" class="hidden mt-4 p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-400 text-center text-sm">
-      Thanks! This portfolio has been sent to our AI queue for review.
+    <div id="submitSuccess" role="status" aria-live="polite" class="hidden mt-4 p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-400 text-center text-sm">
+      Thanks! This portfolio has entered the validation and review queue.
     </div>
   </div>
 </div>
 
 <script>
+  import { auth } from '../lib/firebase.js';
   import { submitPortfolio } from '../lib/dbUtils.js';
 
-  const submitModal = document.getElementById('submitModal');
-  const submitBackdrop = document.getElementById('submitBackdrop');
-  const submitCard = document.getElementById('submitCard');
-  const closeSubmitBtn = document.getElementById('closeSubmitBtn');
-  const submitForm = document.getElementById('submitForm');
-  const submitSuccess = document.getElementById('submitSuccess');
+  const submitModal = document.getElementById('submitModal') as HTMLElement | null;
+  const submitBackdrop = document.getElementById('submitBackdrop') as HTMLElement | null;
+  const submitCard = document.getElementById('submitCard') as HTMLElement | null;
+  const closeSubmitBtn = document.getElementById('closeSubmitBtn') as HTMLButtonElement | null;
+  const submitForm = document.getElementById('submitForm') as HTMLFormElement | null;
+  const submitSuccess = document.getElementById('submitSuccess') as HTMLElement | null;
+  const portfolioName = document.getElementById('portfolioName') as HTMLInputElement | null;
+  let lastFocusedElement: HTMLElement | null = null;
+  const focusableSelector =
+    'button:not([disabled]), a[href], input:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
   window.openSubmitModal = () => {
-    const userJSON = localStorage.getItem('pu_user');
-    if (!userJSON) {
+    if (!auth.currentUser) {
       if (window.openLoginModal) window.openLoginModal();
       return;
     }
     
     if (submitModal && submitCard) {
+      lastFocusedElement =
+        document.activeElement instanceof HTMLElement
+          ? document.activeElement
+          : null;
       submitModal.classList.remove('opacity-0', 'pointer-events-none');
+      submitModal.setAttribute('aria-hidden', 'false');
+      submitModal.inert = false;
       submitCard.classList.remove('scale-95');
       submitCard.classList.add('scale-100');
+      requestAnimationFrame(() => portfolioName?.focus());
     }
     if (submitSuccess) submitSuccess.classList.add('hidden');
     if (submitForm) submitForm.reset();
   };
 
   const closeModal = () => {
+    if (!submitModal || !submitCard) return;
     submitModal.classList.add('opacity-0', 'pointer-events-none');
+    submitModal.setAttribute('aria-hidden', 'true');
+    submitModal.inert = true;
     submitCard.classList.remove('scale-100');
     submitCard.classList.add('scale-95');
+    if (lastFocusedElement instanceof HTMLElement) {
+      lastFocusedElement.focus();
+    }
   };
 
   closeSubmitBtn?.addEventListener('click', closeModal);
   submitBackdrop?.addEventListener('click', closeModal);
 
+  submitModal?.addEventListener('keydown', (event) => {
+    if (submitModal.getAttribute('aria-hidden') === 'true') return;
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeModal();
+      return;
+    }
+    if (event.key !== 'Tab') return;
+
+    const focusable = [
+      ...submitModal.querySelectorAll<HTMLElement>(focusableSelector),
+    ];
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+
   submitForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const nameInput = document.getElementById('portfolioName');
-    const urlInput = document.getElementById('portfolioUrl');
-    const submitBtn = submitForm.querySelector('button[type="submit"]');
+    const nameInput = document.getElementById('portfolioName') as HTMLInputElement | null;
+    const urlInput = document.getElementById('portfolioUrl') as HTMLInputElement | null;
+    const submitBtn = submitForm.querySelector<HTMLButtonElement>('button[type="submit"]');
+    if (!nameInput || !urlInput || !submitBtn) return;
     
-    const userJSON = localStorage.getItem('pu_user');
-    if (!userJSON) return;
-    const user = JSON.parse(userJSON);
+    const user = auth.currentUser;
+    if (!user) {
+      closeModal();
+      window.openLoginModal?.();
+      return;
+    }
 
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = `<svg class="animate-spin h-5 w-5 mr-3 text-white inline" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Submitting...`;
+    const submitLabel = submitBtn.querySelector<HTMLElement>('.submit-label');
+    if (!submitLabel) return;
+    const originalText = submitLabel.textContent ?? 'Submit for Review';
+    submitLabel.textContent = 'Submitting…';
     submitBtn.disabled = true;
+    submitBtn.setAttribute('aria-busy', 'true');
 
     try {
       await submitPortfolio(user.uid, nameInput.value, urlInput.value);
-      submitSuccess.classList.remove('hidden');
+      submitSuccess?.classList.remove('hidden');
       setTimeout(() => {
         closeModal();
       }, 2000);
@@ -96,8 +152,9 @@
       console.error(error);
       alert("Error submitting portfolio. Please try again later.");
     } finally {
-      submitBtn.innerHTML = originalText;
+      submitLabel.textContent = originalText;
       submitBtn.disabled = false;
+      submitBtn.removeAttribute('aria-busy');
     }
   });
 </script>

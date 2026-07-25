@@ -1,107 +1,164 @@
-name: AI Summary Automation & Deploy
+name: Portfolio data refresh
 
 on:
-  # Runs whenever you push code to the main branch
-  push:
-    branches: ["main"]
-  # Allows you to manually run this workflow from the GitHub Actions tab
-  workflow_dispatch: 
-  # Runs automatically every day at midnight UTC to process any new portfolios
+  workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: "0 0 * * *"
 
-# Sets permissions of the GITHUB_TOKEN to allow committing code and deploying to GitHub Pages
 permissions:
-  contents: write
-  pages: write
-  id-token: write
+  contents: read
 
-# Allow only one concurrent deployment
 concurrency:
-  group: "pages"
+  group: portfolio-data-refresh
   cancel-in-progress: false
 
 jobs:
-  build_and_deploy:
+  prepare_data:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: "22"
-          cache: "npm"
+          cache: npm
 
-      - name: Install Dependencies
-        run: npm ci
+      - run: npm ci
 
-      - name: Fetch and Update Portfolios Data
-        run: node scripts/update-data.js
+      - name: Import upstream portfolios
+        run: npm run update:data
 
-      - name: Sync New Portfolios to Firestore
-        env:
-          PUBLIC_FIREBASE_API_KEY: ${{ secrets.PUBLIC_FIREBASE_API_KEY }}
-          FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
-        run: node scripts/migrate-to-firestore.js
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Import pending user submissions
+        run: npm run import:submissions
+
+      - run: npm run validate:data
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: prepared-portfolios
+          path: src/data/portfolios.json
+          if-no-files-found: error
+          retention-days: 1
+
+  enrich:
+    needs: prepare_data
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      pipeline_result: ${{ steps.enrichment.outcome }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: prepared-portfolios
+          path: src/data
+
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: "pip"
+          cache: pip
 
-      - name: Install Python Dependencies
-        run: pip install -r scripts/requirements.txt
+      - run: pip install -r scripts/requirements.txt
 
-      - name: Cache Playwright
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('scripts/requirements.txt') }}
+      - name: Install isolated browser
+        run: python -m playwright install --with-deps chromium
 
-      - name: Install Playwright Chromium
-        run: |
-          playwright install chromium
-          playwright install-deps
-
-      - name: Run Hybrid AI Pipeline
+      - name: Enrich validated portfolio data
+        id: enrichment
+        continue-on-error: true
         env:
           PYTHONUNBUFFERED: "1"
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           DATA_FILE: src/data/portfolios.json
           BATCH_SIZE: "150"
+          MIN_SUCCESS_RATE: "0.20"
         run: python scripts/hybrid_pipeline.py
 
-      - name: Commit and Push Updated Portfolios
+      - run: node scripts/validate-portfolios.js
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: enriched-portfolios
+          path: src/data/portfolios.json
+          if-no-files-found: error
+          retention-days: 1
+
+  persist:
+    needs: enrich
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: enriched-portfolios
+          path: src/data
+
+      - name: Commit validated data
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add src/data/portfolios.json
-          # Only commit if there are changes (prevents errors if no new portfolios were fetched)
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: auto-update portfolio list [skip ci]" && git pull --rebase && git push || echo "Push failed")
+          if git diff --cached --quiet; then
+            echo "No portfolio data changed."
+            exit 0
+          fi
+          git commit -m "chore: refresh validated portfolio data"
+          git pull --rebase origin main
+          git push origin HEAD:main
 
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v4
-
-      - name: Build Astro Project
-        env:
-          PUBLIC_FIREBASE_API_KEY: ${{ secrets.PUBLIC_FIREBASE_API_KEY }}
-        run: npm run build
-
-      - name: Upload Build Artifact
-        uses: actions/upload-pages-artifact@v3
+  sync_firestore:
+    needs: persist
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
         with:
-          path: ./dist
+          ref: main
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
+
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
+
+      - name: Reconcile Firestore from committed JSON
+        env:
+          RECONCILE_DELETIONS: "true"
+        run: npm run sync:firestore
+
+  quality_gate:
+    needs: [enrich, persist, sync_firestore]
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Require a healthy enrichment and persistence run
+        if: >-
+          needs.enrich.outputs.pipeline_result != 'success' ||
+          needs.persist.result != 'success' ||
+          needs.sync_firestore.result != 'success'
+        run: |
+          echo "Portfolio refresh failed its quality gate."
+          echo "Enrichment: ${{ needs.enrich.outputs.pipeline_result }}"
+          echo "Persistence: ${{ needs.persist.result }}"
+          echo "Firestore sync: ${{ needs.sync_firestore.result }}"
+          exit 1
