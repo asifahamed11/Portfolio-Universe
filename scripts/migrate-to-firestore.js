@@ -1,131 +1,146 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import { FieldValue } from 'firebase-admin/firestore';
-import {
-  normalizePortfolioCollection,
-  portfolioIdentity,
-  toSafeHttpsUrl,
-} from '../src/lib/portfolio.js';
-import { urlToKey } from '../src/lib/utils.js';
-import { getAdminFirestore } from './firebase-admin.js';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+import { initializeApp, cert } from 'firebase-admin/app';
+import { getFirestore } from 'firebase-admin/firestore';
 
-const dataFile = path.resolve(
-  process.env.DATA_FILE || 'src/data/portfolios.json',
-);
-const reconcileDeletions =
-  process.env.RECONCILE_DELETIONS?.toLowerCase() !== 'false';
-const db = getAdminFirestore();
+// Load environment variables
+dotenv.config();
 
-const source = JSON.parse(await fs.readFile(dataFile, 'utf8'));
-if (!Array.isArray(source)) {
-  throw new TypeError('Portfolio data must be a JSON array.');
-}
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const DATA_FILE = path.join(__dirname, '../src/data/portfolios.json');
+const ROOT_DIR = path.join(__dirname, '..');
 
-const portfolios = normalizePortfolioCollection(source);
-const targetDocuments = new Map(
-  portfolios.map((portfolio) => [urlToKey(portfolio.url), portfolio]),
-);
-const existingSnapshot = await db.collection('portfolios').get();
-const existingDocuments = new Map(
-  existingSnapshot.docs.map((document) => [document.id, document]),
-);
+let serviceAccount = null;
 
-const sameValue = (left, right) =>
-  JSON.stringify(left) === JSON.stringify(right);
-const operations = [];
-
-for (const [documentId, portfolio] of targetDocuments) {
-  const existing = existingDocuments.get(documentId);
-  if (!existing || !sameValue(existing.data(), portfolio)) {
-    operations.push({
-      type: 'set',
-      reference: db.collection('portfolios').doc(documentId),
-      value: portfolio,
-    });
+// Try to load service account from environment variable first
+if (process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
+  try {
+    serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
+    console.log('Loaded service account key from environment.');
+  } catch (e) {
+    console.error('Error parsing FIREBASE_SERVICE_ACCOUNT_KEY from env:', e.message);
   }
 }
 
-if (reconcileDeletions) {
-  for (const [documentId, document] of existingDocuments) {
-    if (!targetDocuments.has(documentId)) {
-      operations.push({ type: 'delete', reference: document.ref });
+// Fallback to searching for local JSON file starting with 'portfolio-universe-firebase-adminsdk-'
+if (!serviceAccount) {
+  try {
+    const files = fs.readdirSync(ROOT_DIR);
+    const keyFile = files.find(f => f.startsWith('portfolio-universe-firebase-adminsdk-') && f.endsWith('.json'));
+    if (keyFile) {
+      const filePath = path.join(ROOT_DIR, keyFile);
+      serviceAccount = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+      console.log(`Loaded service account key from file: ${keyFile}`);
+    }
+  } catch (e) {
+    console.error('Error searching for service account JSON file:', e.message);
+  }
+}
+
+if (!serviceAccount) {
+  console.error('ERROR: Firebase Service Account Key not found in env (FIREBASE_SERVICE_ACCOUNT_KEY) or in local json file.');
+  process.exit(1);
+}
+
+if (serviceAccount.private_key) {
+  serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, '\n');
+}
+
+// Initialize Firebase Admin SDK
+initializeApp({
+  credential: cert(serviceAccount)
+});
+
+const db = getFirestore();
+
+export const urlToKey = (url) => {
+  try {
+    return btoa(encodeURIComponent(url)).replace(/\//g, '_').replace(/\+/g, '-').replace(/=/g, '');
+  } catch (e) {
+    let hash = 0;
+    for (let i = 0; i < url.length; i++) {
+      hash = Math.imul(31, hash) + url.charCodeAt(i) | 0;
+    }
+    return `hash_${hash >>> 0}`;
+  }
+};
+
+async function migrate() {
+  console.log('Loading portfolio data...');
+  let portfolios = [];
+  try {
+    const data = fs.readFileSync(DATA_FILE, 'utf-8');
+    portfolios = JSON.parse(data);
+  } catch (err) {
+    console.error('Error reading portfolios.json:', err);
+    process.exit(1);
+  }
+
+  console.log(`Found ${portfolios.length} portfolios to migrate.`);
+  
+  const portfoliosRef = db.collection('portfolios');
+  
+  let successCount = 0;
+  const batches = [];
+  let currentBatch = db.batch();
+  let opCount = 0;
+
+  for (let i = 0; i < portfolios.length; i++) {
+    const p = portfolios[i];
+    const key = urlToKey(p.url);
+    const docRef = portfoliosRef.doc(key);
+    
+    currentBatch.set(docRef, {
+      name: p.name || "",
+      url: p.url || "",
+      screenshot: p.screenshot || `https://s0.wp.com/mshots/v1/${encodeURIComponent(p.url)}?w=600`,
+      summary: p.summary || "",
+      role: p.role || "",
+      tech_stack: p.tech_stack || [],
+      available_for_hire: p.available_for_hire || false,
+      has_blog: p.has_blog || false,
+      specialization: p.specialization || "",
+      primary_language: p.primary_language || "",
+      is_portfolio: p.is_portfolio !== false,
+      portfolio_score: p.portfolio_score || 0,
+      seo_evaluation: p.seo_evaluation || ""
+    }, { merge: true });
+    
+    opCount++;
+    if (opCount === 500) {
+      batches.push(currentBatch);
+      currentBatch = db.batch();
+      opCount = 0;
     }
   }
-}
-
-for (let offset = 0; offset < operations.length; offset += 450) {
-  const batch = db.batch();
-  for (const operation of operations.slice(offset, offset + 450)) {
-    if (operation.type === 'set') {
-      batch.set(operation.reference, operation.value);
-    } else {
-      batch.delete(operation.reference);
+  
+  if (opCount > 0) {
+    batches.push(currentBatch);
+  }
+  
+  console.log(`Created ${batches.length} batches. Writing to Firestore with delays to avoid quota limits...`);
+  
+  for (let i = 0; i < batches.length; i++) {
+    try {
+      await batches[i].commit();
+      const docsInBatch = (i === batches.length - 1 && opCount > 0) ? opCount : 500;
+      successCount += docsInBatch;
+      console.log(`Committed batch ${i + 1}/${batches.length} (${successCount} docs migrated)`);
+      if (i < batches.length - 1) {
+        // Built-in delay to prevent overloading backend
+        await new Promise(resolve => setTimeout(resolve, 3000));
+      }
+    } catch (e) {
+      console.error(`\nFailed to commit batch ${i + 1}:`, e.message);
+      process.exit(1);
     }
   }
-  await batch.commit();
+  
+  console.log(`\nMigration completed successfully. Migrated ${successCount} items.`);
+  process.exit(0);
 }
 
-const acceptedIdentities = new Set(
-  portfolios.map((portfolio) => portfolioIdentity(portfolio.url)),
-);
-const rejectedIdentities = new Set(
-  source
-    .filter((portfolio) => portfolio?.is_portfolio === false)
-    .map((portfolio) => portfolioIdentity(portfolio.url))
-    .filter(Boolean),
-);
-const reviewStates = new Map(
-  source
-    .filter((portfolio) => portfolio?.source === 'user_submission')
-    .map((portfolio) => [
-      portfolioIdentity(portfolio.url),
-      portfolio.ai_state,
-    ])
-    .filter(([identity]) => Boolean(identity)),
-);
-const pendingSubmissions = await db
-  .collection('submissions')
-  .where('status', '==', 'pending')
-  .get();
-const submissionOperations = [];
-
-for (const submission of pendingSubmissions.docs) {
-  const identity = portfolioIdentity(
-    toSafeHttpsUrl(submission.data().url),
-  );
-  if (identity && acceptedIdentities.has(identity)) {
-    submissionOperations.push({
-      reference: submission.ref,
-      status: 'imported',
-    });
-  } else if (identity && rejectedIdentities.has(identity)) {
-    submissionOperations.push({
-      reference: submission.ref,
-      status: 'rejected',
-    });
-  } else if (identity && reviewStates.get(identity) === 'dead_letter') {
-    submissionOperations.push({
-      reference: submission.ref,
-      status: 'needs_review',
-    });
-  }
-}
-
-for (
-  let offset = 0;
-  offset < submissionOperations.length;
-  offset += 450
-) {
-  const batch = db.batch();
-  for (const operation of submissionOperations.slice(offset, offset + 450)) {
-    batch.update(operation.reference, {
-      status: operation.status,
-      processedAt: FieldValue.serverTimestamp(),
-    });
-  }
-  await batch.commit();
-}
-
-console.log(
-  `Firestore reconciliation complete: ${portfolios.length} source portfolio(s), ${operations.length} portfolio mutation(s), ${submissionOperations.length} submission status update(s).`,
-);
+migrate();
