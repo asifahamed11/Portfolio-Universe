@@ -14278,8 +14278,8 @@
   },
   {
     "url": "https://delwer.live",
-    "name": "Delwer Hossain",
-    "role": "",
+    "name": "",
+    "role": "Other",
     "specialization": "",
     "summary": "",
     "tech_stack": [],
@@ -14287,7 +14287,14 @@
     "primary_language": "",
     "views": 0,
     "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdelwer.live?w=600"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdelwer.live?w=600",
+    "is_portfolio": false,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 1,
+    "ai_processed": true
   },
   {
     "url": "https://demon142.net",
@@ -56280,5 +56287,52 @@
     "seo_evaluation": "Good",
     "portfolio_score": 9,
     "ai_processed": true
+  },
+  {
+    "url": "https://alihamza-fawn.vercel.app/",
+    "name": "",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Full Stack Developer with expertise in React, Node.js, and AWS serverless",
+    "tech_stack": [
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Node.js",
+      "Express",
+      "AWS",
+      "Solidity"
+    ],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Falihamza-fawn.vercel.app%2F?w=600",
+    "is_portfolio": true,
+    "location": "Lahore, Pakistan",
+    "projects": [
+      "E-commerce platforms",
+      "Healthcare dashboards",
+      "DeFi interfaces",
+      "Blockchain indexers"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Good",
+    "portfolio_score": 9,
+    "ai_processed": true
+  },
+  {
+    "url": "https://kishormarasini.com.au",
+    "name": "Kishor Marasini",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkishormarasini.com.au?w=600"
   }
 ]
