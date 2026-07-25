@@ -5,18 +5,16 @@ import SubmitModal from '../components/SubmitModal.astro';
 import CustomCursor from '../components/CustomCursor.astro';
 import portfoliosData from '../data/portfolios.json';
 import VariableProximityWrapper from '../components/VariableProximityWrapper.jsx';
-import GlassSurface from '../components/GlassSurface.jsx';
-import FluidGlassPill from '../components/FluidGlassPill.jsx';
 import Shuffle from '../components/Shuffle.jsx';
 import '../styles/global.css';
 import Lightfall from '../components/Lightfall.jsx';
+import { normalizePortfolioCollection } from '../lib/portfolio.js';
 
-
-// Map portfolios to include baseLikes (real likes start at 0)
-const portfolios = portfoliosData.map(p => ({
-  ...p,
-  baseLikes: 0
-}));
+const portfolios = normalizePortfolioCollection(portfoliosData);
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const pageUrl = Astro.url.href;
 ---
 
 <html lang="en">
@@ -25,7 +23,8 @@ const portfolios = portfoliosData.map(p => ({
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&family=Space+Grotesk:wght@400;700;900&display=swap" rel="stylesheet">
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <link rel="icon" type="image/svg+xml" href={`${basePath}favicon.svg`} />
+    <link rel="canonical" href={pageUrl} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <title>Developer Portfolios Showcase</title>
@@ -33,25 +32,24 @@ const portfolios = portfoliosData.map(p => ({
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://portfoliouniverse.com/" />
+    <meta property="og:url" content={pageUrl} />
     <meta property="og:title" content="Developer Portfolios Showcase" />
     <meta property="og:description" content="A curated directory of developer portfolios inspired by Emma Bostian's repository." />
     <meta property="og:image" content="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1200&auto=format&fit=crop" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://portfoliouniverse.com/" />
+    <meta property="twitter:url" content={pageUrl} />
     <meta property="twitter:title" content="Developer Portfolios Showcase" />
     <meta property="twitter:description" content="A curated directory of developer portfolios inspired by Emma Bostian's repository." />
     <meta property="twitter:image" content="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1200&auto=format&fit=crop" />
 
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N4PMFMQQ6Q"></script>
-    <script>
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-N4PMFMQQ6Q"></script>
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-N4PMFMQQ6Q');
+      window.dataLayer.push(['js', new Date()]);
+      window.dataLayer.push(['config', 'G-N4PMFMQQ6Q']);
     </script>
     <!-- U1 fix: removed `.portfolio-wrapper { content-visibility: auto }`.
          Its implicit paint containment clipped the hover summary tooltip (which is
@@ -117,6 +115,9 @@ const portfolios = portfoliosData.map(p => ({
       .portfolio-wrapper:focus-within {
         z-index: 50;
       }
+      [hidden] {
+        display: none !important;
+      }
     </style>
 
     <div class="absolute top-0 left-0 right-0 h-[650px] z-[-1] overflow-hidden pointer-events-none">
@@ -131,7 +132,7 @@ const portfolios = portfoliosData.map(p => ({
     <nav id="topNavBar" class="sticky top-3 z-40 max-w-7xl mx-4 xl:mx-auto rounded-[24px] border border-white/[0.05]" style="transition: top 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-14">
-          <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+          <button id="homeBtn" type="button" class="flex items-center gap-2 cursor-pointer" aria-label="Back to top">
             <span class="text-white font-extrabold tracking-tight text-lg flex items-center gap-1.5" style="font-family: 'Space Grotesk', sans-serif;">
               Portfolio
               <Shuffle 
@@ -145,7 +146,7 @@ const portfolios = portfoliosData.map(p => ({
                 triggerOnHover={true}
               />
             </span>
-          </div>
+          </button>
           
           <div class="flex items-center gap-3 md:gap-4">
             <!-- Search Bar (Desktop) -->
@@ -156,13 +157,13 @@ const portfolios = portfoliosData.map(p => ({
               <input type="text" id="searchInputDesk" placeholder="Search developers..." class="w-full bg-gray-900 border border-gray-800 text-sm rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 text-gray-200 placeholder-gray-500 transition-all" />
             </div>
 
-            <button onclick="window.openSubmitModal()" class="text-sm font-medium text-gray-300 hover:text-white px-3 py-2 transition-colors hidden md:block">
+            <button type="button" data-action="open-submit" class="text-sm font-medium text-gray-300 hover:text-white px-3 py-2 transition-colors hidden md:block">
               Submit
             </button>
             
             <!-- Auth Section -->
             <div id="authSection" class="flex items-center gap-3">
-              <button onclick="window.openLoginModal()" id="loginBtn" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold py-2 px-4 rounded-full shadow-lg shadow-blue-500/20 transition-all active:scale-95">
+              <button type="button" data-action="open-login" id="loginBtn" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold py-2 px-4 rounded-full shadow-lg shadow-blue-500/20 transition-all active:scale-95">
                 Login
               </button>
               
@@ -184,7 +185,7 @@ const portfolios = portfoliosData.map(p => ({
             </div>
             <input type="text" id="searchInputMob" placeholder="Search developers..." class="w-full bg-gray-900 border border-gray-800 text-sm rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 text-gray-200 placeholder-gray-500 transition-all" />
           </div>
-          <button onclick="window.openSubmitModal()" aria-label="Submit a portfolio" class="shrink-0 inline-flex items-center gap-1.5 text-sm font-semibold text-white bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 px-3.5 py-2 rounded-full transition-colors active:scale-95">
+          <button type="button" data-action="open-submit" aria-label="Submit a portfolio" class="shrink-0 inline-flex items-center gap-1.5 text-sm font-semibold text-white bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 px-3.5 py-2 rounded-full transition-colors active:scale-95">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
             Submit
           </button>
@@ -301,7 +302,6 @@ const portfolios = portfoliosData.map(p => ({
               role={portfolio.role}
               tech_stack={portfolio.tech_stack}
               available_for_hire={portfolio.available_for_hire}
-              base_likes={portfolio.baseLikes}
               views={portfolio.views || 0}
             />
           </div>
@@ -335,8 +335,8 @@ const portfolios = portfoliosData.map(p => ({
         Built with <a href="https://astro.build" class="text-gray-400 hover:text-white transition-colors">Astro</a>.
       </p>
       <div class="flex justify-center gap-6 text-sm">
-        <a href={`${import.meta.env.BASE_URL}privacy/`} class="text-gray-500 hover:text-gray-300 transition-colors">Privacy Policy</a>
-        <a href={`${import.meta.env.BASE_URL}terms/`} class="text-gray-500 hover:text-gray-300 transition-colors">Terms of Service</a>
+        <a href={`${basePath}privacy/`} class="text-gray-500 hover:text-gray-300 transition-colors">Privacy Policy</a>
+        <a href={`${basePath}terms/`} class="text-gray-500 hover:text-gray-300 transition-colors">Terms of Service</a>
       </div>
     </footer>
 
@@ -363,9 +363,6 @@ const portfolios = portfoliosData.map(p => ({
         <feDisplacementMap in="SourceGraphic" in2="softMap" scale="150" xChannelSelector="R" yChannelSelector="G" />
       </filter>
     </svg>
-</body>
-
-</html>
 
 <style>
   .glass-bg {
@@ -464,23 +461,6 @@ const portfolios = portfoliosData.map(p => ({
   import '../scripts/audio.js';
   import '../scripts/main.js';
 </script>
-
-    <svg style="display: none">
-      <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
-        <feTurbulence type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="1" seed="5" result="turbulence" />
-        <feComponentTransfer in="turbulence" result="mapped">
-          <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
-          <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
-          <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
-        </feComponentTransfer>
-        <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
-        <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100" lighting-color="white" result="specLight">
-          <fePointLight x="-200" y="-200" z="300" />
-        </feSpecularLighting>
-        <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
-        <feDisplacementMap in="SourceGraphic" in2="softMap" scale="150" xChannelSelector="R" yChannelSelector="G" />
-      </filter>
-    </svg>
 </body>
 
 </html>
