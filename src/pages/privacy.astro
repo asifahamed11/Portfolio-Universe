@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import CustomCursor from '../components/CustomCursor.astro';
+const canonicalUrl = new URL(`${import.meta.env.BASE_URL}privacy/`, Astro.site);
 ---
 
 <html lang="en">
@@ -12,6 +13,8 @@ import CustomCursor from '../components/CustomCursor.astro';
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Privacy Policy - Developer Portfolios Showcase</title>
+    <meta name="description" content="How Portfolio Universe handles sign-in data, bookmarks, submissions, and analytics." />
+    <link rel="canonical" href={canonicalUrl} />
   </head>
   <body class="bg-[#0a0a0c] text-gray-200 min-h-screen font-sans antialiased selection:bg-rose-500/30">
     <CustomCursor />
@@ -33,37 +36,38 @@ import CustomCursor from '../components/CustomCursor.astro';
     <main class="max-w-3xl mx-auto px-6 py-16 relative z-10">
       <div class="bg-gray-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
         <h1 class="text-4xl md:text-5xl font-black mb-8 text-white" style="font-family: 'Space Grotesk', sans-serif;">Privacy Policy</h1>
+        <p class="text-sm text-gray-400 -mt-4 mb-8">Last updated: July 26, 2026</p>
         
         <div class="space-y-8 text-gray-300 leading-relaxed">
           <section>
             <h2 class="text-2xl font-bold text-white mb-4">1. Information We Collect</h2>
-            <p>When you log in using GitHub or Google, we collect basic profile information provided by the authentication provider, such as your name, email address, and profile picture. We also track which portfolios you bookmark/like.</p>
+            <p>When you sign in with GitHub or Google, Firebase Authentication provides basic account details such as your user ID, display name, email address, and profile picture. We store your portfolio bookmarks and, when you submit a portfolio, the submitted name, URL, account ID, status, and timestamp. Signed-in portfolio visits increment a counter, and aggregate like totals are derived from bookmark records by a trusted maintenance job. Google Analytics may also collect usage and device information.</p>
           </section>
 
           <section>
             <h2 class="text-2xl font-bold text-white mb-4">2. How We Use Your Information</h2>
-            <p>We use your information solely to provide the core functionality of the site, which includes saving your favorite portfolios across devices and displaying your name/avatar when you are logged in.</p>
+            <p>We use this information to authenticate you, synchronize bookmarks, display your profile, review portfolio submissions, operate and secure the service, and understand aggregate usage.</p>
           </section>
 
           <section>
-            <h2 class="text-2xl font-bold text-white mb-4">3. Data Storage</h2>
-            <p>Your authentication data and bookmarks are securely stored using Google Firebase. We do not sell, rent, or share your personal information with third parties.</p>
+            <h2 class="text-2xl font-bold text-white mb-4">3. Services and Data Storage</h2>
+            <p>Authentication, bookmarks, counters, and submissions use Google Firebase. Traffic measurement uses Google Analytics. Portfolio preview images may be loaded from the portfolio itself or from a screenshot service. For automated submission review and metadata generation, publicly available text extracted from a submitted portfolio may be sent to Google Gemini or Groq. These providers process data under their own privacy terms. We do not sell your personal information.</p>
           </section>
 
           <section>
-            <h2 class="text-2xl font-bold text-white mb-4">4. Analytics</h2>
-            <p>We use standard analytics tools (like Google Analytics) to track website traffic and usage patterns. This data is aggregated and does not personally identify you.</p>
+            <h2 class="text-2xl font-bold text-white mb-4">4. Your Choices</h2>
+            <p>You can use the public directory without signing in. You can remove individual bookmarks in My Likes and sign out at any time. Browser settings and content blockers may limit analytics cookies or similar storage.</p>
           </section>
 
           <section>
-            <h2 class="text-2xl font-bold text-white mb-4">5. Contact Us</h2>
-            <p>If you have questions about this Privacy Policy or wish to have your data removed, please contact the site administrator.</p>
+            <h2 class="text-2xl font-bold text-white mb-4">5. Contact and Deletion Requests</h2>
+            <p>If you have a privacy question or want to request deletion of stored account data, open a request through the <a href="https://github.com/asifahamed11/Portfolio-Universe/issues" class="text-blue-300 underline underline-offset-4 hover:text-blue-200">public project issue tracker</a>. Do not include sensitive personal information; the maintainer can arrange a private verification channel when needed.</p>
           </section>
         </div>
       </div>
     </main>
 
-    <footer class="py-8 text-center text-gray-500 text-sm">
+    <footer class="py-8 text-center text-gray-400 text-sm">
       <p>&copy; {new Date().getFullYear()} Portfolio Universe. All rights reserved.</p>
     </footer>
 

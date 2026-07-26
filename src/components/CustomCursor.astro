@@ -57,186 +57,145 @@
     html.custom-cursor-active * {
       cursor: none !important;
     }
+
+    html.custom-cursor-active input,
+    html.custom-cursor-active textarea,
+    html.custom-cursor-active select,
+    html.custom-cursor-active [contenteditable="true"] {
+      cursor: text !important;
+    }
   }
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    if (!window.matchMedia('(pointer: fine)').matches) return;
+  const initializeCustomCursor = () => {
+    const finePointer = window.matchMedia('(pointer: fine)');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    document.documentElement.classList.add('custom-cursor-active');
-    
-    const cursorContainer = document.getElementById('custom-cursor');
-    const cursorMain = document.getElementById('cursor-main');
-    const cursorTextWrapper = document.getElementById('cursor-text-wrapper');
-    const cursorText = document.getElementById('cursor-text');
-    const borderLayer = document.getElementById('cursor-border-layer');
-    const glassLayer = document.getElementById('cursor-glass-layer');
-    
-    if (cursorContainer) cursorContainer.classList.remove('hidden');
+    const cursorContainer = document.getElementById('custom-cursor') as HTMLElement | null;
+    const cursorMain = document.getElementById('cursor-main') as HTMLElement | null;
+    const cursorTextWrapper = document.getElementById('cursor-text-wrapper') as HTMLElement | null;
+    const cursorText = document.getElementById('cursor-text') as HTMLElement | null;
+    const borderLayer = document.getElementById('cursor-border-layer') as HTMLElement | null;
+    if (!cursorContainer || !cursorMain || !cursorTextWrapper || !cursorText || !borderLayer) return;
+
+    let cursorEnabled = finePointer.matches && !reducedMotion.matches;
+    document.documentElement.classList.toggle('custom-cursor-active', cursorEnabled);
+    cursorContainer.classList.toggle('hidden', !cursorEnabled);
 
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
     let cursorX = mouseX;
     let cursorY = mouseY;
-    let isHoveringCard = false;
     let targetScale = 1;
     let currentScale = 1;
-    
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
+    let frameId = 0;
+    let visible = false;
+    let currentMode = 'default';
+
+    const scheduleRender = () => {
+      if (cursorEnabled && !frameId && visible && !document.hidden) {
+        frameId = requestAnimationFrame(render);
+      }
+    };
 
     const render = () => {
-      cursorX += (mouseX - cursorX) * 0.25; 
+      frameId = 0;
+      cursorX += (mouseX - cursorX) * 0.25;
       cursorY += (mouseY - cursorY) * 0.25;
       currentScale += (targetScale - currentScale) * 0.25;
-      
-      const transformStr = `translate3d(calc(${cursorX}px - 50%), calc(${cursorY}px - 50%), 0) scale(${currentScale})`;
-      
-      if (cursorMain) cursorMain.style.transform = transformStr;
-      if (cursorTextWrapper) cursorTextWrapper.style.transform = transformStr;
-      
-      requestAnimationFrame(render);
-    };
-    requestAnimationFrame(render);
 
-    const attachHoverEffects = () => {
-      // 1. Portfolio Cards
-      const cards = document.querySelectorAll('a[target="_blank"]');
-      cards.forEach((el) => {
-        if (el.dataset.cursorBoundCard) return;
-        el.dataset.cursorBoundCard = 'true';
+      const transform = `translate3d(calc(${cursorX}px - 50%), calc(${cursorY}px - 50%), 0) scale(${currentScale})`;
+      cursorMain.style.transform = transform;
+      cursorTextWrapper.style.transform = transform;
 
-        el.addEventListener('mouseenter', () => {
-          isHoveringCard = true;
-          if (cursorMain && cursorTextWrapper && cursorText && borderLayer) {
-            cursorMain.style.width = '80px';
-            cursorMain.style.height = '80px';
-            
-            cursorTextWrapper.style.width = '80px';
-            cursorTextWrapper.style.height = '80px';
-            cursorText.textContent = 'OPEN';
-            cursorText.style.opacity = '1';
-            
-            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(255, 255, 255, 0.4), inset 0 0 5px 2px rgba(255, 255, 255, 0.2)';
-            borderLayer.style.background = 'transparent';
-            if(glassLayer) {
-                glassLayer.style.backdropFilter = 'blur(0px)';
-                glassLayer.style.webkitBackdropFilter = 'blur(0px)';
-            }
-          }
-        });
-        el.addEventListener('mouseleave', () => {
-          isHoveringCard = false;
-          if (cursorMain && cursorTextWrapper && cursorText && borderLayer) {
-            cursorMain.style.width = '24px';
-            cursorMain.style.height = '24px';
-            
-            cursorTextWrapper.style.width = '24px';
-            cursorTextWrapper.style.height = '24px';
-            cursorText.style.opacity = '0';
-            
-            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(255, 255, 255, 0.3), inset 0 0 3px 1px rgba(255, 255, 255, 0.2)';
-            borderLayer.style.background = 'transparent';
-            if(glassLayer) {
-                glassLayer.style.backdropFilter = 'blur(0px)';
-                glassLayer.style.webkitBackdropFilter = 'blur(0px)';
-            }
-          }
-        });
-      });
-
-      // 2. Normal Buttons & Links
-      const clickables = document.querySelectorAll('button:not(.bookmark-btn), .filter-btn, .cursor-pointer, a:not([target="_blank"])');
-      clickables.forEach((el) => {
-        if (el.dataset.cursorBoundBtn) return;
-        el.dataset.cursorBoundBtn = 'true';
-
-        el.addEventListener('mouseenter', () => {
-          if (cursorMain && cursorTextWrapper && !isHoveringCard && borderLayer) {
-            cursorMain.style.width = '48px';
-            cursorMain.style.height = '48px';
-            cursorTextWrapper.style.width = '48px';
-            cursorTextWrapper.style.height = '48px';
-            if (cursorText) cursorText.style.opacity = '0'; 
-            
-            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(244, 63, 94, 0.4), inset 0 0 5px 1px rgba(244, 63, 94, 0.2)';
-            borderLayer.style.background = 'rgba(244,63,94,0.02)';
-          }
-        });
-        el.addEventListener('mouseleave', () => {
-          if (cursorMain && cursorTextWrapper && !isHoveringCard && borderLayer) {
-            cursorMain.style.width = '24px';
-            cursorMain.style.height = '24px';
-            cursorTextWrapper.style.width = '24px';
-            cursorTextWrapper.style.height = '24px';
-            
-            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(255, 255, 255, 0.3), inset 0 0 3px 1px rgba(255, 255, 255, 0.2)';
-            borderLayer.style.background = 'transparent';
-          }
-        });
-      });
-
-      // 3. Like Buttons
-      const likeBtns = document.querySelectorAll('.bookmark-btn');
-      likeBtns.forEach((el) => {
-        if (el.dataset.cursorBoundLike) return;
-        el.dataset.cursorBoundLike = 'true';
-
-        el.addEventListener('mouseenter', () => {
-          if (cursorMain && cursorTextWrapper && borderLayer) {
-            cursorMain.style.width = '12px';
-            cursorMain.style.height = '12px';
-            cursorTextWrapper.style.width = '12px';
-            cursorTextWrapper.style.height = '12px';
-            if (cursorText) cursorText.style.opacity = '0'; 
-            
-            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(244, 63, 94, 0.6), inset 0 0 3px 1px rgba(244, 63, 94, 0.4)';
-            borderLayer.style.background = 'transparent';
-          }
-        });
-        el.addEventListener('mouseleave', () => {
-          if (!cursorMain || !cursorTextWrapper || !borderLayer) return;
-          
-          if (isHoveringCard) {
-            // Revert back to OPEN state
-            cursorMain.style.width = '80px';
-            cursorMain.style.height = '80px';
-            cursorTextWrapper.style.width = '80px';
-            cursorTextWrapper.style.height = '80px';
-            if (cursorText) {
-                cursorText.textContent = 'OPEN';
-                cursorText.style.opacity = '1';
-            }
-            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(255, 255, 255, 0.4), inset 0 0 5px 2px rgba(255, 255, 255, 0.2)';
-            borderLayer.style.background = 'transparent';
-          } else {
-            // Revert to normal state
-            cursorMain.style.width = '24px';
-            cursorMain.style.height = '24px';
-            cursorTextWrapper.style.width = '24px';
-            cursorTextWrapper.style.height = '24px';
-            
-            borderLayer.style.boxShadow = 'inset 2px 2px 0px -2px rgba(255, 255, 255, 0.3), inset 0 0 3px 1px rgba(255, 255, 255, 0.2)';
-            borderLayer.style.background = 'transparent';
-          }
-        });
-      });
+      if (
+        Math.abs(mouseX - cursorX) > 0.1
+        || Math.abs(mouseY - cursorY) > 0.1
+        || Math.abs(targetScale - currentScale) > 0.01
+      ) {
+        scheduleRender();
+      }
     };
 
-    attachHoverEffects();
-    const observer = new MutationObserver(() => attachHoverEffects());
-    observer.observe(document.body, { childList: true, subtree: true });
-    
-    // Click effects
-    document.addEventListener('mousedown', () => {
+    const setVisible = (nextVisible: boolean) => {
+      visible = cursorEnabled && nextVisible;
+      cursorContainer.classList.toggle('hidden', !visible);
+      if (visible) scheduleRender();
+      else if (frameId) {
+        cancelAnimationFrame(frameId);
+        frameId = 0;
+      }
+    };
+
+    const syncCursorPreference = () => {
+      const wasEnabled = cursorEnabled;
+      cursorEnabled = finePointer.matches && !reducedMotion.matches;
+      document.documentElement.classList.toggle('custom-cursor-active', cursorEnabled);
+      if (!cursorEnabled) setVisible(false);
+      else if (!wasEnabled) setVisible(true);
+    };
+
+    finePointer.addEventListener('change', syncCursorPreference);
+    reducedMotion.addEventListener('change', syncCursorPreference);
+
+    const setMode = (mode: 'default' | 'card' | 'control' | 'like') => {
+      if (mode === currentMode) return;
+      currentMode = mode;
+      const size = mode === 'card' ? 80 : mode === 'control' ? 48 : mode === 'like' ? 12 : 24;
+      cursorMain.style.width = `${size}px`;
+      cursorMain.style.height = `${size}px`;
+      cursorTextWrapper.style.width = `${size}px`;
+      cursorTextWrapper.style.height = `${size}px`;
+      cursorText.textContent = mode === 'card' ? 'OPEN' : '';
+      cursorText.style.opacity = mode === 'card' ? '1' : '0';
+      borderLayer.style.background = mode === 'control' ? 'rgba(244,63,94,0.02)' : 'transparent';
+      borderLayer.style.boxShadow = mode === 'like'
+        ? 'inset 2px 2px 0px -2px rgba(244,63,94,.6), inset 0 0 3px 1px rgba(244,63,94,.4)'
+        : mode === 'control'
+          ? 'inset 2px 2px 0px -2px rgba(244,63,94,.4), inset 0 0 5px 1px rgba(244,63,94,.2)'
+          : mode === 'card'
+            ? 'inset 2px 2px 0px -2px rgba(255,255,255,.4), inset 0 0 5px 2px rgba(255,255,255,.2)'
+            : 'inset 2px 2px 0px -2px rgba(255,255,255,.3), inset 0 0 3px 1px rgba(255,255,255,.2)';
+      scheduleRender();
+    };
+
+    document.addEventListener('pointermove', (event) => {
+      if (!cursorEnabled) return;
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+      setVisible(true);
+
+      const target = event.target instanceof Element ? event.target : null;
+      if (target?.closest('input, textarea, select, [contenteditable="true"]')) {
+        setVisible(false);
+        return;
+      }
+      if (target?.closest('.bookmark-btn')) setMode('like');
+      else if (target?.closest('.portfolio-link')) setMode('card');
+      else if (target?.closest('button, a, .filter-btn, .cursor-pointer')) setMode('control');
+      else setMode('default');
+      scheduleRender();
+    }, { passive: true });
+
+    document.addEventListener('pointerdown', () => {
       targetScale = 0.8;
-    });
-    
-    document.addEventListener('mouseup', () => {
+      scheduleRender();
+    }, { passive: true });
+    document.addEventListener('pointerup', () => {
       targetScale = 1;
+      scheduleRender();
+    }, { passive: true });
+    document.addEventListener('pointerleave', () => setVisible(false));
+    window.addEventListener('blur', () => setVisible(false));
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) setVisible(false);
     });
-  });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeCustomCursor, { once: true });
+  } else {
+    initializeCustomCursor();
+  }
 </script>

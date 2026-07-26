@@ -1,5 +1,6 @@
 // UI Sound & Particle Engine
 window.triggerSpark = (btn) => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const sparkColor = '#f43f5e';
   const sparkSize = 6;
   const sparkRadius = 25;
@@ -23,6 +24,10 @@ window.triggerSpark = (btn) => {
   document.body.appendChild(canvas);
 
   const ctx = canvas.getContext('2d');
+  if (!ctx) {
+    canvas.remove();
+    return;
+  }
   const startTime = performance.now();
   const easeOut = t => 1 - Math.pow(1 - t, 3);
   
@@ -71,7 +76,10 @@ window.triggerSpark = (btn) => {
 let audioCtx;
 const initAudio = () => {
   if (!audioCtx) {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const AudioContextClass = window.AudioContext
+      || /** @type {Window & typeof globalThis & { webkitAudioContext?: typeof AudioContext }} */ (window).webkitAudioContext;
+    if (!AudioContextClass) return;
+    audioCtx = new AudioContextClass();
   }
   if (audioCtx.state === 'suspended') {
     audioCtx.resume();
@@ -134,9 +142,8 @@ window.playDropSound = (volumeScale = 1.0) => {
 
 // Global click listener for UI sounds
 document.addEventListener('click', (e) => {
-  initAudio();
-  
-  const target = e.target;
+  const target = e.target instanceof Element ? e.target : null;
+  if (!target) return;
   
   // BUG-L1 fix: the like button plays its own sound in toggleBookmark(); skip here
   // so a single like doesn't fire the pop sound twice.
@@ -153,6 +160,7 @@ document.addEventListener('click', (e) => {
     target.closest('a') || 
     target.closest('.portfolio-wrapper')
   ) {
+    initAudio();
     if (window.playPopSound) window.playPopSound(1.0);
   }
 });

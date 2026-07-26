@@ -1,11 +1,45 @@
 @import "tailwindcss";
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 10000;
+  transform: translateY(-200%);
+  border-radius: 9999px;
+  background: #ffffff;
+  color: #111827;
+  padding: 0.625rem 1rem;
+  font-weight: 700;
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .border-glow-card::before,
+  .border-glow-card::after,
+  .border-glow-card > .edge-light {
+    display: none !important;
   }
 }
 

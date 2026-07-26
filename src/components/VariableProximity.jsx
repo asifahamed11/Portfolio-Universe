@@ -1,22 +1,34 @@
-import { forwardRef, useMemo, useRef, useEffect } from 'react';
+import { forwardRef, useMemo, useRef, useEffect, useCallback } from 'react';
 import { motion } from 'motion/react';
 import './VariableProximity.css';
 
-function useAnimationFrame(callback) {
-  useEffect(() => {
-    let frameId;
-    const loop = () => {
-      callback();
-      frameId = requestAnimationFrame(loop);
-    };
-    frameId = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(frameId);
-  }, [callback]);
+function useRafScheduler(callback) {
+  const callbackRef = useRef(callback);
+  const frameRef = useRef(0);
+  callbackRef.current = callback;
+
+  const schedule = useCallback(() => {
+    if (
+      frameRef.current
+      || document.hidden
+      || window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      return;
+    }
+    frameRef.current = requestAnimationFrame(() => {
+      frameRef.current = 0;
+      callbackRef.current();
+    });
+  }, []);
+
+  useEffect(() => () => {
+    if (frameRef.current) cancelAnimationFrame(frameRef.current);
+  }, []);
+
+  return schedule;
 }
 
-function useMousePositionRef(containerRef) {
-  const positionRef = useRef({ x: 0, y: 0 });
-
+function usePointerPosition(containerRef, positionRef, scheduleUpdate) {
   useEffect(() => {
     const updatePosition = (x, y) => {
       if (containerRef?.current) {
@@ -25,23 +37,25 @@ function useMousePositionRef(containerRef) {
       } else {
         positionRef.current = { x, y };
       }
+      scheduleUpdate();
     };
 
-    const handleMouseMove = ev => updatePosition(ev.clientX, ev.clientY);
-    const handleTouchMove = ev => {
-      const touch = ev.touches[0];
-      updatePosition(touch.clientX, touch.clientY);
+    const container = containerRef?.current;
+    if (!container) return undefined;
+
+    const handlePointerMove = event => updatePosition(event.clientX, event.clientY);
+    const handlePointerLeave = () => {
+      positionRef.current = { x: Number.NEGATIVE_INFINITY, y: Number.NEGATIVE_INFINITY };
+      scheduleUpdate();
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('touchmove', handleTouchMove);
+    container.addEventListener('pointermove', handlePointerMove, { passive: true });
+    container.addEventListener('pointerleave', handlePointerLeave, { passive: true });
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('touchmove', handleTouchMove);
+      container.removeEventListener('pointermove', handlePointerMove);
+      container.removeEventListener('pointerleave', handlePointerLeave);
     };
-  }, [containerRef]);
-
-  return positionRef;
+  }, [containerRef, positionRef, scheduleUpdate]);
 }
 
 const VariableProximity = forwardRef((props, ref) => {
@@ -60,8 +74,7 @@ const VariableProximity = forwardRef((props, ref) => {
 
   const letterRefs = useRef([]);
   const interpolatedSettingsRef = useRef([]);
-  const mousePositionRef = useMousePositionRef(containerRef);
-  const lastPositionRef = useRef({ x: null, y: null });
+  const mousePositionRef = useRef({ x: Number.NEGATIVE_INFINITY, y: Number.NEGATIVE_INFINITY });
   // PERF-3 fix: cache each letter's center so we don't call getBoundingClientRect
   // for every letter on every mouse move (layout thrash). Re-measured on resize/scroll.
   const letterCentersRef = useRef([]);
@@ -119,22 +132,22 @@ const VariableProximity = forwardRef((props, ref) => {
 
   useEffect(() => {
     measureLetters();
-    window.addEventListener('resize', measureLetters);
-    window.addEventListener('scroll', measureLetters, { passive: true });
+    const container = containerRef?.current;
+    const observer = typeof ResizeObserver === 'function' && container
+      ? new ResizeObserver(measureLetters)
+      : null;
+    observer?.observe(container);
+    window.addEventListener('resize', measureLetters, { passive: true });
     return () => {
       window.removeEventListener('resize', measureLetters);
-      window.removeEventListener('scroll', measureLetters);
+      observer?.disconnect();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [label]);
 
-  useAnimationFrame(() => {
+  const updateLetters = () => {
     if (!containerRef?.current) return;
     const { x, y } = mousePositionRef.current;
-    if (lastPositionRef.current.x === x && lastPositionRef.current.y === y) {
-      return;
-    }
-    lastPositionRef.current = { x, y };
 
     letterRefs.current.forEach((letterRef, index) => {
       if (!letterRef) return;
@@ -143,8 +156,8 @@ const VariableProximity = forwardRef((props, ref) => {
       if (!center) return;
 
       const distance = calculateDistance(
-        mousePositionRef.current.x,
-        mousePositionRef.current.y,
+        x,
+        y,
         center.x,
         center.y
       );
@@ -165,7 +178,10 @@ const VariableProximity = forwardRef((props, ref) => {
       interpolatedSettingsRef.current[index] = newSettings;
       letterRef.style.fontVariationSettings = newSettings;
     });
-  });
+  };
+
+  const scheduleUpdate = useRafScheduler(updateLetters);
+  usePointerPosition(containerRef, mousePositionRef, scheduleUpdate);
 
   const words = label.split(' ');
   let letterIndex = 0;

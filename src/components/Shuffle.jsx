@@ -19,15 +19,15 @@ const Shuffle = ({
   rootMargin = '-100px',
   tag = 'span',
   textAlign = 'center',
-  onShuffleComplete,
+  onShuffleComplete = undefined,
   shuffleTimes = 1,
   animationMode = 'evenodd',
   loop = false,
   loopDelay = 0,
   stagger = 0.03,
   scrambleCharset = '',
-  colorFrom,
-  colorTo,
+  colorFrom = undefined,
+  colorTo = undefined,
   triggerOnce = true,
   respectReducedMotion = true,
   triggerOnHover = true
@@ -252,9 +252,9 @@ const Shuffle = ({
           onRepeat: () => {
             if (scrambleCharset) randomizeScrambles();
             if (isVertical) {
-              gsap.set(strips, { y: (i, t) => parseFloat(t.getAttribute('data-start-y') || '0') });
+              gsap.set(strips, { y: (_i, t) => parseFloat(t.getAttribute('data-start-y') || '0') });
             } else {
-              gsap.set(strips, { x: (i, t) => parseFloat(t.getAttribute('data-start-x') || '0') });
+              gsap.set(strips, { x: (_i, t) => parseFloat(t.getAttribute('data-start-x') || '0') });
             }
             onShuffleComplete?.();
           },
@@ -277,9 +277,9 @@ const Shuffle = ({
             stagger: animationMode === 'evenodd' ? stagger : 0
           };
           if (isVertical) {
-            vars.y = (i, t) => parseFloat(t.getAttribute('data-final-y') || '0');
+            vars.y = (_i, t) => parseFloat(t.getAttribute('data-final-y') || '0');
           } else {
-            vars.x = (i, t) => parseFloat(t.getAttribute('data-final-x') || '0');
+            vars.x = (_i, t) => parseFloat(t.getAttribute('data-final-x') || '0');
           }
 
           tl.to(targets, vars, at);
@@ -383,7 +383,17 @@ const Shuffle = ({
   const classes = useMemo(() => `shuffle-parent ${ready ? 'is-ready' : ''} ${className}`, [ready, className]);
 
   const Tag = tag || 'span';
-  return React.createElement(Tag, { ref, className: classes, style: commonStyle }, text);
+  return React.createElement(
+    Tag,
+    {
+      ref,
+      className: classes,
+      style: commonStyle,
+      role: 'img',
+      'aria-label': text
+    },
+    text
+  );
 };
 
 export default Shuffle;

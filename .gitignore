@@ -1,31 +1,50 @@
-# build output
+# Build output and generated framework state
 dist/
-# generated types
 .astro/
 
-# dependencies
+# Dependencies and package-manager caches
 node_modules/
+.pnpm-store/
 
-# logs
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+firebase-debug.log*
+firestore-debug.log*
+ui-debug.log*
 
-
-# environment variables
+# Environment variables and local secrets
 .env
-.env.production
+.env.*
+!.env.example
+!.env.*.example
 
-# macOS-specific files
+# Firebase Admin service-account credentials
+portfolio-universe-firebase-adminsdk-*.json
+firebase-adminsdk-*.json
+*service-account*.json
+*service_account*.json
+
+# Generated Firestore exports and backups
+*.json.bak
+*.review-private*
+src/data/*.firestore-backup.json
+src/data/*firestore*.backup*.json
+
+# Python environments and caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# OS and editor files
 .DS_Store
-
-# jetbrains setting folder
 .idea/
 
-# local node runtime
+# Local bundled runtime
 .node/
-
-# Firebase Service Account private keys
-portfolio-universe-firebase-adminsdk-*.json
-*.json.bak

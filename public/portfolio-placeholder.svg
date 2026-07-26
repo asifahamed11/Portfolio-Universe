@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title description">
+  <title id="title">Portfolio preview unavailable</title>
+  <desc id="description">A dark blue and violet placeholder with a browser window and code marks.</desc>
+  <defs>
+    <radialGradient id="background" cx="25%" cy="15%" r="100%">
+      <stop offset="0" stop-color="#18223f"/>
+      <stop offset=".48" stop-color="#0b0f19"/>
+      <stop offset="1" stop-color="#050505"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#3b82f6"/>
+      <stop offset=".5" stop-color="#8b5cf6"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="600" fill="url(#background)"/>
+  <circle cx="770" cy="90" r="220" fill="#7c3aed" opacity=".08"/>
+  <circle cx="150" cy="540" r="260" fill="#06b6d4" opacity=".06"/>
+  <rect x="180" y="120" width="600" height="360" rx="28" fill="#090d16" stroke="url(#accent)" stroke-opacity=".55" stroke-width="4"/>
+  <path d="M180 190h600" stroke="#ffffff" stroke-opacity=".12" stroke-width="3"/>
+  <circle cx="225" cy="155" r="9" fill="#ff3366"/>
+  <circle cx="255" cy="155" r="9" fill="#8b5cf6"/>
+  <circle cx="285" cy="155" r="9" fill="#06b6d4"/>
+  <path d="m410 285-70 55 70 55M550 285l70 55-70 55M520 250l-80 180" fill="none" stroke="url(#accent)" stroke-linecap="round" stroke-linejoin="round" stroke-width="22"/>
+</svg>

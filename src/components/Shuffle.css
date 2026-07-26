@@ -6,7 +6,7 @@
   line-height: 1;
   font-size: inherit;
   font-family: inherit;
-  visibility: hidden;
+  visibility: visible;
 }
 
 .shuffle-parent.is-ready {

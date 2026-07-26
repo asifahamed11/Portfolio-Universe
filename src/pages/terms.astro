@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import CustomCursor from '../components/CustomCursor.astro';
+const canonicalUrl = new URL(`${import.meta.env.BASE_URL}terms/`, Astro.site);
 ---
 
 <html lang="en">
@@ -12,6 +13,8 @@ import CustomCursor from '../components/CustomCursor.astro';
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Terms of Service - Developer Portfolios Showcase</title>
+    <meta name="description" content="Terms for using Portfolio Universe and submitting portfolio links." />
+    <link rel="canonical" href={canonicalUrl} />
   </head>
   <body class="bg-[#0a0a0c] text-gray-200 min-h-screen font-sans antialiased selection:bg-rose-500/30">
     
@@ -63,7 +66,7 @@ import CustomCursor from '../components/CustomCursor.astro';
       </div>
     </main>
 
-    <footer class="py-8 text-center text-gray-500 text-sm">
+    <footer class="py-8 text-center text-gray-400 text-sm">
       <p>&copy; {new Date().getFullYear()} Portfolio Universe. All rights reserved.</p>
     </footer>
 

@@ -167,8 +167,8 @@ void main() {
 `;
 
 const Lightfall = ({
-  className,
-  dpr,
+  className = '',
+  dpr = undefined,
   paused = false,
   colors = ['#38bdf8', '#c084fc', '#f472b6'],
   backgroundColor = '#040406',
@@ -186,7 +186,7 @@ const Lightfall = ({
   mouseStrength = 0.4,
   mouseRadius = 0.8,
   mouseDampening = 0.15,
-  mixBlendMode
+  mixBlendMode = undefined
 }) => {
   const containerRef = useRef(null);
   const rafRef = useRef(null);
@@ -200,12 +200,20 @@ const Lightfall = ({
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (paused || reducedMotion.matches) return;
 
-    const renderer = new Renderer({
-      dpr: dpr ?? (typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1),
-      alpha: true,
-      antialias: true
-    });
+    let renderer;
+    try {
+      renderer = new Renderer({
+        dpr: Math.min(dpr ?? (window.devicePixelRatio || 1), 1.5),
+        alpha: true,
+        antialias: true
+      });
+    } catch (error) {
+      console.warn('WebGL background is unavailable; using the static background.', error);
+      return undefined;
+    }
     rendererRef.current = renderer;
     const gl = renderer.gl;
     const canvas = gl.canvas;
@@ -213,6 +221,8 @@ const Lightfall = ({
     canvas.style.width = '100%';
     canvas.style.height = '100%';
     canvas.style.display = 'block';
+    canvas.setAttribute('aria-hidden', 'true');
+    canvas.setAttribute('role', 'presentation');
     container.appendChild(canvas);
 
     const { arr, count, avg } = prepColors(colors);
@@ -276,11 +286,20 @@ const Lightfall = ({
       }
     };
     if (mouseInteraction) {
-      window.addEventListener('pointermove', onPointerMove);
+      window.addEventListener('pointermove', onPointerMove, { passive: true });
     }
 
+    let contextLost = false;
+    let renderFailed = false;
+    const shouldRender = () =>
+      !document.hidden
+      && !contextLost
+      && !renderFailed
+      && !reducedMotion.matches;
+
     const loop = t => {
-      rafRef.current = requestAnimationFrame(loop);
+      rafRef.current = null;
+      if (!shouldRender()) return;
       uniforms.iTime.value = t * 0.001;
       if (mouseDampening > 0) {
         if (!lastTimeRef.current) lastTimeRef.current = t;
@@ -296,19 +315,62 @@ const Lightfall = ({
       } else {
         lastTimeRef.current = t;
       }
-      if (!paused && programRef.current && meshRef.current) {
+      if (programRef.current && meshRef.current) {
         try {
           renderer.render({ scene: meshRef.current });
         } catch (e) {
+          renderFailed = true;
           console.error(e);
+          return;
         }
       }
+      rafRef.current = requestAnimationFrame(loop);
     };
-    rafRef.current = requestAnimationFrame(loop);
+
+    const startLoop = () => {
+      if (!rafRef.current && shouldRender()) {
+        lastTimeRef.current = 0;
+        rafRef.current = requestAnimationFrame(loop);
+      }
+    };
+    const stopLoop = () => {
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = null;
+      }
+    };
+    const onVisibilityChange = () => {
+      if (document.hidden) stopLoop();
+      else startLoop();
+    };
+    const onReducedMotionChange = () => {
+      if (reducedMotion.matches) stopLoop();
+      else startLoop();
+    };
+    const onContextLost = event => {
+      event.preventDefault();
+      contextLost = true;
+      stopLoop();
+    };
+    const onContextRestored = () => {
+      contextLost = false;
+      resize();
+      startLoop();
+    };
+
+    document.addEventListener('visibilitychange', onVisibilityChange);
+    reducedMotion.addEventListener('change', onReducedMotionChange);
+    canvas.addEventListener('webglcontextlost', onContextLost);
+    canvas.addEventListener('webglcontextrestored', onContextRestored);
+    startLoop();
 
     return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      stopLoop();
       if (mouseInteraction) window.removeEventListener('pointermove', onPointerMove);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+      reducedMotion.removeEventListener('change', onReducedMotionChange);
+      canvas.removeEventListener('webglcontextlost', onContextLost);
+      canvas.removeEventListener('webglcontextrestored', onContextRestored);
       ro.disconnect();
       if (canvas.parentElement === container) {
         container.removeChild(canvas);
@@ -352,6 +414,7 @@ const Lightfall = ({
     <div
       ref={containerRef}
       className={`lightfall-container ${className ?? ''}`}
+      aria-hidden="true"
       style={{
         ...(mixBlendMode && { mixBlendMode })
       }}

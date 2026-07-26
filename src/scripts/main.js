@@ -1,37 +1,115 @@
 import Lenis from 'lenis';
 import { auth } from '../lib/firebase.js';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { fetchGlobalLikes, fetchUserBookmarks, urlToKey, toggleLikeInFirestore, incrementPortfolioView } from '../lib/dbUtils.js';
+import {
+  fetchGlobalLikes,
+  fetchUserBookmarks,
+  incrementPortfolioView as incrementPortfolioViewInFirestore,
+  toggleLikeInFirestore,
+} from '../lib/dbUtils.js';
+import {
+  normalizePortfolioUrl,
+  sanitizeBookmarks,
+  sanitizePortfolio,
+  toSafeCount,
+  urlToDocumentKey,
+  urlToKey,
+} from '../lib/utils.js';
 
-// --- PREMIUM GLASS TOAST ---
+const FALLBACK_SCREENSHOT = `${import.meta.env.BASE_URL}portfolio-placeholder.svg`;
+const PORTFOLIO_DATA_TIMEOUT_MS = 30_000;
+const PORTFOLIO_DATA_RETRY_DELAYS_MS = [1_000, 3_000];
+const PORTFOLIO_DATA_BACKGROUND_RETRY_MS = 30_000;
+const DEFAULT_AVATAR =
+  'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%239CA3AF" viewBox="0 0 24 24"><path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"/></svg>';
+const memoryStorage = new Map();
+
+const storageGet = (key) => {
+  try {
+    const value = localStorage.getItem(key);
+    if (value !== null) memoryStorage.set(key, value);
+    return value ?? memoryStorage.get(key) ?? null;
+  } catch {
+    return memoryStorage.get(key) ?? null;
+  }
+};
+
+const storageSet = (key, value) => {
+  memoryStorage.set(key, value);
+  try {
+    localStorage.setItem(key, value);
+  } catch {
+    // Keep the session usable with the in-memory fallback.
+  }
+};
+
+const storageRemove = (key) => {
+  memoryStorage.delete(key);
+  try {
+    localStorage.removeItem(key);
+  } catch {
+    // The in-memory value has still been cleared.
+  }
+};
+
+const parseJSON = (value, fallback) => {
+  if (typeof value !== 'string' || !value) return fallback;
+  try {
+    return JSON.parse(value);
+  } catch {
+    return fallback;
+  }
+};
+
+const getStoredUser = () => {
+  const user = parseJSON(storageGet('pu_user'), null);
+  return user && typeof user.uid === 'string' && user.uid ? user : null;
+};
+
+const getBookmarkStorageKey = (uid) => `pu_bookmarks_${uid}`;
+
+const readStoredBookmarks = (uid) =>
+  sanitizeBookmarks(parseJSON(storageGet(getBookmarkStorageKey(uid)), []));
+
+const writeStoredBookmarks = (uid, bookmarks) => {
+  const normalized = sanitizeBookmarks(bookmarks);
+  storageSet(getBookmarkStorageKey(uid), JSON.stringify(normalized));
+  return normalized;
+};
+
+const createToastIcon = (kind) => {
+  const wrapper = document.createElement('div');
+  wrapper.className =
+    'shrink-0 bg-white/5 p-1.5 rounded-full border border-white/10 shadow-inner';
+  wrapper.innerHTML = kind === 'heart'
+    ? '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#f43f5e" stroke="#f43f5e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>'
+    : kind === 'error'
+      ? '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fb7185" stroke-width="3" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></svg>'
+      : '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+  return wrapper;
+};
+
 window.showToast = (message, icon = 'check') => {
   const container = document.getElementById('toast-container');
   if (!container) return;
-  
-  const toast = document.createElement('div');
-  toast.className = 'flex items-center gap-3 px-4 py-3 rounded-2xl bg-white/[0.08] backdrop-blur-xl border border-white/20 text-white shadow-[0_8px_30px_rgba(0,0,0,0.4)] transform translate-y-10 opacity-0 transition-all duration-500 ease-out pointer-events-auto';
-  
-  const icons = {
-    check: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`,
-    heart: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#f43f5e" stroke="#f43f5e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`
-  };
 
-  toast.innerHTML = `
-    <div class="shrink-0 bg-white/5 p-1.5 rounded-full border border-white/10 shadow-inner">
-      ${icons[icon] || icons.check}
-    </div>
-    <p class="text-sm font-semibold tracking-wide drop-shadow-md pr-2">${message}</p>
-  `;
-  
+  const toast = document.createElement('div');
+  toast.className =
+    'flex items-center gap-3 px-4 py-3 rounded-2xl bg-white/[0.08] backdrop-blur-xl border border-white/20 text-white shadow-[0_8px_30px_rgba(0,0,0,0.4)] transform translate-y-10 opacity-0 transition-all duration-500 ease-out pointer-events-auto';
+  toast.setAttribute('role', icon === 'error' ? 'alert' : 'status');
+
+  const text = document.createElement('p');
+  text.className = 'text-sm font-semibold tracking-wide drop-shadow-md pr-2';
+  text.textContent = String(message);
+
+  toast.append(createToastIcon(icon), text);
   container.appendChild(toast);
-  
-  // Animate in
+
   requestAnimationFrame(() => {
     toast.classList.remove('translate-y-10', 'opacity-0');
     toast.classList.add('translate-y-0', 'opacity-100');
   });
-  
-  // Animate out and remove
+
   setTimeout(() => {
     toast.classList.remove('translate-y-0', 'opacity-100');
     toast.classList.add('translate-y-10', 'opacity-0');
@@ -39,728 +117,963 @@ window.showToast = (message, icon = 'check') => {
   }, 3000);
 };
 
-document.addEventListener('DOMContentLoaded', async () => {
-  // Dynamically load the massive JSON in the background to avoid blocking main thread
-  const portfoliosModule = await import('../data/portfolios.json');
-  const portfoliosData = portfoliosModule.default || portfoliosModule;
+const initializeApp = () => {
+  const gridContainer = document.getElementById('portfolioGrid');
+  if (!gridContainer) return;
 
-  // Expose for inline scripts
-  window.toggleLikeInFirestore = toggleLikeInFirestore;
-
-  window.incrementPortfolioView = (url) => {
-    const viewedKey = 'pu_viewed_' + url;
-    if (sessionStorage.getItem(viewedKey)) return;
-    sessionStorage.setItem(viewedKey, '1');
-    incrementPortfolioView(url);
-  };
-
-  window.toggleBookmark = function(button, url) {
-    const userJSON = localStorage.getItem('pu_user');
-    if (!userJSON) {
-      if (window.openLoginModal) window.openLoginModal();
-      return;
-    }
-    const user = JSON.parse(userJSON);
-    const storageKey = `pu_bookmarks_${user.uid}`;
-    const icon = button.querySelector('.heart-icon');
-    const countEl = button.querySelector('.like-count');
-    let currentLikes = parseInt(countEl.textContent) || 0;
-    let bookmarks = JSON.parse(localStorage.getItem(storageKey) || '[]');
-    const index = bookmarks.indexOf(url);
-    const isLiking = index === -1;
-
-    if (isLiking) {
-      bookmarks.push(url);
-      icon.setAttribute('fill', 'currentColor');
-      icon.classList.add('text-red-500');
-      button.classList.add('border-red-500/30', 'bg-red-500/10', 'text-red-400');
-      
-      // Trigger smart animation
-      icon.classList.remove('heart-animated', 'heart-unlike-animated');
-      void icon.offsetWidth; // Trigger reflow
-      icon.classList.add('heart-animated');
-      
-      // Trigger spark particles
-      if (window.triggerSpark) window.triggerSpark(button);
-      
-      // Play sound and show toast
-      if (window.playPopSound) window.playPopSound(1.0);
-      if (window.showToast) window.showToast('Added to your likes!', 'heart');
-      
-      // Haptic feedback for mobile devices
-      if (navigator.vibrate) navigator.vibrate(50);
-      
-      countEl.textContent = currentLikes + 1;
-    } else {
-      bookmarks.splice(index, 1);
-      icon.setAttribute('fill', 'none');
-      icon.classList.remove('text-red-500', 'heart-animated');
-      
-      // Trigger reverse animation
-      icon.classList.remove('heart-unlike-animated');
-      void icon.offsetWidth; // Trigger reflow
-      icon.classList.add('heart-unlike-animated');
-      
-      button.classList.remove('border-red-500/30', 'bg-red-500/10', 'text-red-400');
-      countEl.textContent = Math.max(0, currentLikes - 1);
-      
-      // Play sound and show toast
-      if (window.playPopSound) window.playPopSound(1.0);
-      if (window.showToast) window.showToast('Removed from your likes.', 'check');
-    }
-    localStorage.setItem(storageKey, JSON.stringify(bookmarks));
-    if (window.toggleLikeInFirestore) window.toggleLikeInFirestore(user.uid, url, isLiking, bookmarks);
-  };
-
-  const initBookmarks = (elements = null) => {
-    const userJSON = localStorage.getItem('pu_user');
-    const user = userJSON ? JSON.parse(userJSON) : null;
-    const storageKey = user ? `pu_bookmarks_${user.uid}` : 'pu_bookmarks_guest';
-    const bookmarks = JSON.parse(localStorage.getItem(storageKey) || '[]');
-    
-    const btns = elements ? elements.flatMap(el => Array.from(el.querySelectorAll('.bookmark-btn'))) : document.querySelectorAll('.bookmark-btn');
-    
-    btns.forEach(btn => {
-      const url = btn.dataset.url;
-      const icon = btn.querySelector('.heart-icon');
-      if (bookmarks.includes(url)) {
-        icon.setAttribute('fill', 'currentColor');
-        icon.classList.add('text-red-500');
-        btn.classList.add('border-red-500/30', 'bg-red-500/10', 'text-red-400');
-      } else {
-        icon.setAttribute('fill', 'none');
-        icon.classList.remove('text-red-500');
-        btn.classList.remove('border-red-500/30', 'bg-red-500/10', 'text-red-400');
-      }
-    });
-  };
-  initBookmarks();
-
-  window.addEventListener('auth-changed', () => {
-    initBookmarks();
-    if (currentFilter === 'likes') {
-      applyFilters();
-    }
-  });
-
-  // ---- SMOOTH SCROLL (LENIS) ----
-  const lenis = new Lenis({
-    autoRaf: true,
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  });
-
-  // ---- NAVBAR HIDE ON SCROLL ----
+  const cardTemplate = document.getElementById('portfolioCardTemplate');
+  const loadMoreContainer = document.getElementById('loadMoreContainer');
+  const emptyState = document.getElementById('emptyState');
+  const resultStatus = document.getElementById('resultStatus');
+  const searchInputDesk = document.getElementById('searchInputDesk');
+  const searchInputMob = document.getElementById('searchInputMob');
+  const filterContainer = document.getElementById('filterContainer');
+  const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
+  const clearFiltersButton = document.getElementById('clearFiltersBtn');
+  const activeIndicator = document.getElementById('activeIndicator');
   const topNavBar = document.getElementById('topNavBar');
-  if (lenis) {
-    lenis.on('scroll', (e) => {
-      if (!topNavBar) return;
-      if (e.direction === 1 && e.scroll > 50) {
-        topNavBar.style.top = '-100px';
-      } else if (e.direction === -1 || e.scroll <= 50) {
-        topNavBar.style.top = '16px'; 
-      }
-    });
-  } else {
-    let lastScrollTop = 0;
-    window.addEventListener('scroll', () => {
-      if (!topNavBar) return;
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollTop > lastScrollTop && scrollTop > 50) {
-        topNavBar.style.top = '-100px';
-      } else {
-        topNavBar.style.top = '16px';
-      }
-      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    }, { passive: true });
-  }
-
-  // ---- AUTH LOGIC (FIREBASE) ----
-  const loginBtn = document.getElementById('loginBtn');
+  const scrollToTopButton = document.getElementById('scrollToTopBtn');
+  const loginButton = document.getElementById('loginBtn');
   const userProfile = document.getElementById('userProfile');
   const userAvatar = document.getElementById('userAvatar');
   const userName = document.getElementById('userName');
-  const logoutBtn = document.getElementById('logoutBtn');
+  const logoutButton = document.getElementById('logoutBtn');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      loginBtn.classList.add('hidden');
-      userProfile.classList.remove('hidden');
-      userProfile.classList.add('flex');
-      userAvatar.src = user.photoURL || `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%239CA3AF" viewBox="0 0 24 24"><path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"/></svg>`;
-      userName.textContent = user.displayName || "User";
-      
-      const safeUser = {
-        name: user.displayName,
-        avatar: user.photoURL,
-        uid: user.uid,
-      };
-      localStorage.setItem('pu_user', JSON.stringify(safeUser));
-
-      const serverBookmarks = await fetchUserBookmarks(user.uid);
-      localStorage.setItem(`pu_bookmarks_${user.uid}`, JSON.stringify(serverBookmarks));
-
-      window.dispatchEvent(new Event('auth-changed'));
-    } else {
-      loginBtn.classList.remove('hidden');
-      userProfile.classList.add('hidden');
-      userProfile.classList.remove('flex');
-      localStorage.removeItem('pu_user');
-      window.dispatchEvent(new Event('auth-changed'));
-    }
-  });
-
-  logoutBtn?.addEventListener('click', async (e) => {
-    e.stopPropagation();
-    try {
-      await signOut(auth);
-    } catch (error) {
-      console.error("Logout error", error);
-    }
-  });
-
-  // ---- FETCH GLOBAL LIKES ----
-  let cachedGlobalLikes = {};
-  const applyGlobalLikesToVisible = (elements = null) => {
-    const btns = elements ? elements.flatMap(el => Array.from(el.querySelectorAll('.bookmark-btn'))) : document.querySelectorAll('.bookmark-btn');
-    btns.forEach(btn => {
-      const url = btn.dataset.url;
-      const key = urlToKey(url);
-      const serverLikes = cachedGlobalLikes[key];
-      
-      if (serverLikes !== undefined) {
-        const countEl = btn.querySelector('.like-count');
-        if (countEl) {
-          countEl.textContent = serverLikes;
-        }
-      }
-    });
-  };
-
-  fetchGlobalLikes().then(globalLikes => {
-    cachedGlobalLikes = globalLikes;
-    applyGlobalLikesToVisible();
-    
-    // Dynamically sort by likes
-    allPortfolios.forEach(p => {
-      p.baseLikes = cachedGlobalLikes[urlToKey(p.url)] || 0;
-    });
-    allPortfolios.sort((a, b) => b.baseLikes - a.baseLikes);
-    
-    debouncedApplyFilters();
-  });
-
-  // ---- FILTER, SEARCH & PAGINATION LOGIC ----
-  const loadMoreContainer = document.getElementById('loadMoreContainer');
-  const emptyState = document.getElementById('emptyState');
-  const searchInputDesk = document.getElementById('searchInputDesk');
-  const searchInputMob = document.getElementById('searchInputMob');
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const clearFiltersBtn = document.getElementById('clearFiltersBtn');
-  const gridContainer = document.getElementById('portfolioGrid');
-  const activeIndicator = document.getElementById('activeIndicator');
-  let indicatorTimeout;
-
-  const moveIndicator = (btn) => {
-    if (!activeIndicator || !btn) return;
-    clearTimeout(indicatorTimeout);
-    
-    const targetX = btn.offsetLeft;
-    const targetY = btn.offsetTop;
-    const targetWidth = btn.offsetWidth;
-    
-    const currentX = activeIndicator.dataset.x ? parseFloat(activeIndicator.dataset.x) : targetX;
-    const currentWidth = activeIndicator.dataset.w ? parseFloat(activeIndicator.dataset.w) : targetWidth;
-    
-    activeIndicator.style.height = `${btn.offsetHeight}px`;
-    activeIndicator.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1)';
-    activeIndicator.style.width = `${targetWidth}px`;
-    activeIndicator.style.transform = `translate(${targetX}px, ${targetY}px)`;
-    activeIndicator.dataset.x = targetX;
-    activeIndicator.dataset.w = targetWidth;
-  };
-
-  window.addEventListener('resize', () => {
-    const activeBtn = document.querySelector('.filter-btn.active');
-    if (activeBtn) moveIndicator(activeBtn);
-  });
-
-  setTimeout(() => {
-    const activeBtn = document.querySelector('.filter-btn.active');
-    if (activeBtn) moveIndicator(activeBtn);
-  }, 100);
-
-  const allPortfolios = portfoliosData.map((p, i) => ({ ...p, baseLikes: 0, index: i }));
-  let filteredItems = [...allPortfolios];
-
+  const ITEMS_PER_PAGE = 20;
+  const INITIAL_VISIBLE_COUNT = 40;
+  const itemElements = new Map();
+  const pendingBookmarkUrls = new Set();
+  let allPortfolios = [];
+  let filteredItems = [];
   let currentFilter = 'all';
   let searchQuery = '';
-  let visibleCount = 40;
-  const ITEMS_PER_PAGE = 20;
+  let visibleCount = INITIAL_VISIBLE_COUNT;
+  let cachedGlobalLikes = {};
+  let searchTimer = 0;
+  let authGeneration = 0;
+  let bookmarkMutationVersion = 0;
+  let portfolioDataLoaded = false;
+  let portfolioLoadPromise = null;
+  let portfolioRetryTimer = 0;
+  let portfolioRetryRound = 0;
+  let portfolioFailureNotified = false;
 
-  // Set up an IntersectionObserver for all card wrappers to virtualize them when they scroll out of view
-  const virtualizationObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const w = entry.target;
-      const child = w.firstElementChild;
-      if (!child) return;
-      if (entry.isIntersecting) {
-        if (w.hasAttribute('data-virtualized')) {
-          w.removeAttribute('data-virtualized');
-          w.style.minHeight = '';
-          child.style.display = '';
-        }
-      } else {
-        // Measure height if possible to prevent layout shifts
-        const rect = w.getBoundingClientRect();
-        if (rect.height > 100) {
-          w.style.minHeight = `${rect.height}px`;
-        } else if (!w.style.minHeight) {
-          w.style.minHeight = '350px';
-        }
-        w.setAttribute('data-virtualized', 'true');
-        child.style.display = 'none';
+  const initialWrappers = Array.from(
+    gridContainer.querySelectorAll(':scope > .portfolio-wrapper')
+  );
+
+  const installImageFallback = (image) => {
+    if (!(image instanceof HTMLImageElement) || image.dataset.fallbackReady === 'true') return;
+    image.dataset.fallbackReady = 'true';
+    const applyFallback = () => {
+      if (image.dataset.fallbackAttempted === 'true') return;
+      image.dataset.fallbackAttempted = 'true';
+      image.hidden = false;
+      image.src = FALLBACK_SCREENSHOT;
+    };
+    image.addEventListener('error', applyFallback);
+    if (image.complete && image.naturalWidth === 0) {
+      queueMicrotask(applyFallback);
+    }
+  };
+
+  for (const wrapper of initialWrappers) {
+    const url = normalizePortfolioUrl(wrapper.dataset.url);
+    if (!url || itemElements.has(url)) {
+      wrapper.remove();
+      continue;
+    }
+    wrapper.dataset.url = url;
+    installImageFallback(wrapper.querySelector('.portfolio-image'));
+    itemElements.set(url, wrapper);
+  }
+
+  const extractInitialPortfolios = () =>
+    Array.from(itemElements.values())
+      .map((wrapper, index) => sanitizePortfolio({
+        name: wrapper.querySelector('.portfolio-name')?.textContent || wrapper.dataset.name,
+        url: wrapper.dataset.url,
+        screenshot: wrapper.querySelector('.portfolio-image')?.getAttribute('src'),
+        summary: wrapper.querySelector('.mobile-summary')?.textContent || '',
+        role: wrapper.querySelector('.role-text')?.textContent || wrapper.dataset.role,
+        tech_stack: (wrapper.dataset.tech || '').split(',').filter(Boolean),
+        available_for_hire: wrapper.dataset.hire === 'true',
+        baseLikes: wrapper.querySelector('.like-count')?.textContent,
+        views: wrapper.querySelector('.view-count')?.textContent,
+      }, index))
+      .filter(Boolean);
+
+  allPortfolios = extractInitialPortfolios();
+  filteredItems = [...allPortfolios];
+
+  const sanitizePortfolioList = (records) => {
+    const portfoliosByUrl = new Map();
+
+    for (let index = 0; index < records.length; index += 1) {
+      const portfolio = sanitizePortfolio(records[index], index);
+      if (!portfolio) continue;
+
+      const existing = portfoliosByUrl.get(portfolio.url);
+      if (!existing) {
+        portfoliosByUrl.set(portfolio.url, portfolio);
+        continue;
       }
-    });
-  }, {
-    rootMargin: '600px 0px 600px 0px',
-  });
 
-  const itemElements = new Map();
-  document.querySelectorAll('.portfolio-wrapper').forEach(w => {
-    itemElements.set(w.dataset.url, w);
-    virtualizationObserver.observe(w);
-  });
+      existing.summary ||= portfolio.summary;
+      existing.role ||= portfolio.role;
+      existing.screenshot ||= portfolio.screenshot;
+      existing.available_for_hire ||= portfolio.available_for_hire;
+      existing.views = Math.max(existing.views, portfolio.views);
+      existing.tech_stack = [...new Set([...existing.tech_stack, ...portfolio.tech_stack])].slice(0, 12);
+    }
 
-  const escapeHtml = (str) => {
-    if (!str) return '';
-    return String(str).replace(/[&<>"']/g, c => 
-      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])
+    return Array.from(portfoliosByUrl.values());
+  };
+
+  const setElementText = (root, selector, value) => {
+    const element = root.querySelector(selector);
+    if (element) element.textContent = String(value);
+  };
+
+  const createPortfolioElement = (portfolio) => {
+    if (!(cardTemplate instanceof HTMLTemplateElement)) return null;
+    const wrapper = cardTemplate.content.firstElementChild?.cloneNode(true);
+    if (!(wrapper instanceof HTMLElement)) return null;
+
+    wrapper.dataset.index = String(portfolio.index);
+    wrapper.dataset.name = portfolio.name.toLowerCase();
+    wrapper.dataset.url = portfolio.url;
+    wrapper.dataset.role = portfolio.role.toLowerCase();
+    wrapper.dataset.tech = portfolio.tech_stack.join(',').toLowerCase();
+    wrapper.dataset.hire = portfolio.available_for_hire ? 'true' : 'false';
+
+    const link = wrapper.querySelector('.portfolio-link');
+    if (link instanceof HTMLAnchorElement) {
+      link.href = portfolio.url;
+      link.setAttribute('aria-label', `Open ${portfolio.name}'s portfolio`);
+    }
+
+    const image = wrapper.querySelector('.portfolio-image');
+    if (image instanceof HTMLImageElement) {
+      image.src = portfolio.screenshot
+        || `https://api.microlink.io/?url=${encodeURIComponent(portfolio.url)}&screenshot=true&meta=false&embed=screenshot.url`;
+      image.alt = `Screenshot of ${portfolio.name}'s portfolio`;
+      installImageFallback(image);
+    }
+
+    setElementText(wrapper, '.portfolio-name', portfolio.name);
+    setElementText(wrapper, '.view-count', portfolio.views);
+    const viewsContainer = wrapper.querySelector('.view-count')?.parentElement;
+    if (viewsContainer) viewsContainer.title = `${portfolio.views} views`;
+
+    const hireBadge = wrapper.querySelector('.hire-badge-container');
+    if (hireBadge instanceof HTMLElement) hireBadge.hidden = !portfolio.available_for_hire;
+
+    const roleBadge = wrapper.querySelector('.role-badge');
+    if (roleBadge instanceof HTMLElement) roleBadge.hidden = !portfolio.role;
+    setElementText(wrapper, '.role-text', portfolio.role);
+
+    const mobileSummary = wrapper.querySelector('.mobile-summary');
+    if (mobileSummary instanceof HTMLElement) {
+      mobileSummary.hidden = !portfolio.summary;
+      mobileSummary.textContent = portfolio.summary;
+    }
+
+    const tooltip = wrapper.querySelector('.card-tooltip');
+    if (tooltip instanceof HTMLElement) tooltip.hidden = !portfolio.summary;
+    setElementText(wrapper, '.tooltip-summary', portfolio.summary);
+
+    const techStack = wrapper.querySelector('.tech-stack');
+    const techPills = Array.from(wrapper.querySelectorAll('.tech-pill'));
+    if (techStack instanceof HTMLElement) techStack.hidden = portfolio.tech_stack.length === 0;
+    for (let index = 0; index < techPills.length; index += 1) {
+      const pill = techPills[index];
+      const tech = portfolio.tech_stack[index];
+      pill.textContent = tech || '';
+      pill.hidden = !tech;
+    }
+    const overflow = wrapper.querySelector('.tech-overflow');
+    if (overflow instanceof HTMLElement) {
+      const overflowCount = Math.max(0, portfolio.tech_stack.length - 3);
+      overflow.hidden = overflowCount === 0;
+      overflow.textContent = `+${overflowCount}`;
+    }
+
+    const bookmarkButton = wrapper.querySelector('.bookmark-btn');
+    if (bookmarkButton instanceof HTMLButtonElement) {
+      bookmarkButton.dataset.url = portfolio.url;
+      bookmarkButton.setAttribute('aria-label', `Save ${portfolio.name}'s portfolio to My Likes`);
+      bookmarkButton.setAttribute('aria-pressed', 'false');
+    }
+    setElementText(wrapper, '.like-count', portfolio.baseLikes);
+
+    return wrapper;
+  };
+
+  const likeKeyPromises = new Map();
+  const getLikeKey = (url) => {
+    const normalized = normalizePortfolioUrl(url);
+    if (!normalized) return Promise.reject(new TypeError('Invalid portfolio URL.'));
+    if (!likeKeyPromises.has(normalized)) {
+      likeKeyPromises.set(normalized, urlToDocumentKey(normalized));
+    }
+    return likeKeyPromises.get(normalized);
+  };
+
+  const getLegacyLikeKeys = (url) => {
+    const normalized = normalizePortfolioUrl(url);
+    if (!normalized) return [];
+    const parsed = new URL(normalized);
+    const variants = new Set([normalized]);
+    const hostnames = new Set([
+      parsed.hostname,
+      parsed.hostname.startsWith('www.')
+        ? parsed.hostname.slice(4)
+        : `www.${parsed.hostname}`,
+    ]);
+    for (const protocol of ['https:', 'http:']) {
+      for (const hostname of hostnames) {
+        const variant = new URL(normalized);
+        variant.protocol = protocol;
+        variant.hostname = hostname;
+        variants.add(variant.toString());
+        if (variant.pathname === '/') {
+          variants.add(variant.toString().replace(`${variant.origin}/`, variant.origin));
+        }
+      }
+    }
+    return [...variants].map((variant) =>
+      btoa(encodeURIComponent(variant))
+        .replace(/\//g, '_')
+        .replace(/\+/g, '-')
+        .replace(/=/g, '')
     );
   };
 
-  const BORDER_GLOW_STYLE = '--card-bg:#120F17; --edge-sensitivity:30; --border-radius:28px; --glow-padding:40px; --cone-spread:25; --fill-opacity:0.5; --glow-color:hsl(40deg 80% 80% / 100%); --glow-color-60:hsl(40deg 80% 80% / 60%); --glow-color-50:hsl(40deg 80% 80% / 50%); --glow-color-40:hsl(40deg 80% 80% / 40%); --glow-color-30:hsl(40deg 80% 80% / 30%); --glow-color-20:hsl(40deg 80% 80% / 20%); --glow-color-10:hsl(40deg 80% 80% / 10%); --gradient-one:radial-gradient(at 80% 55%, #c084fc 0px, transparent 50%); --gradient-two:radial-gradient(at 69% 34%, #f472b6 0px, transparent 50%); --gradient-three:radial-gradient(at 8% 6%, #38bdf8 0px, transparent 50%); --gradient-four:radial-gradient(at 41% 38%, #c084fc 0px, transparent 50%); --gradient-five:radial-gradient(at 86% 85%, #f472b6 0px, transparent 50%); --gradient-six:radial-gradient(at 82% 18%, #38bdf8 0px, transparent 50%); --gradient-seven:radial-gradient(at 51% 4%, #f472b6 0px, transparent 50%); --gradient-base:linear-gradient(#c084fc 0 100%);';
-
-  const updateDynamicGlow = (card, clientX, clientY) => {
-    const rect = card.getBoundingClientRect();
-    const halfW = rect.width / 2;
-    const halfH = rect.height / 2;
-    const dx = (clientX - rect.left) - halfW;
-    const dy = (clientY - rect.top) - halfH;
-    let kx = Infinity;
-    let ky = Infinity;
-    if (dx !== 0) kx = halfW / Math.abs(dx);
-    if (dy !== 0) ky = halfH / Math.abs(dy);
-    const edge = Math.min(Math.max(1 / Math.min(kx, ky), 0), 1);
-    let angle = 0;
-    if (dx !== 0 || dy !== 0) {
-      angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
-      if (angle < 0) angle += 360;
-    }
-    card.style.setProperty('--edge-proximity', (edge * 100).toFixed(3));
-    card.style.setProperty('--cursor-angle', angle.toFixed(3) + 'deg');
+  const readGlobalLikeCount = (likes, url, hashedKey) => {
+    if (likes[hashedKey] !== undefined) return toSafeCount(likes[hashedKey]);
+    return [...new Set(getLegacyLikeKeys(url))].reduce(
+      (total, key) => total + toSafeCount(likes[key]),
+      0,
+    );
   };
-  
-  if (gridContainer) {
-    gridContainer.addEventListener('pointermove', (e) => {
-      const card = e.target.closest && e.target.closest('.border-glow-card[data-glow="dynamic"]');
-      if (card) updateDynamicGlow(card, e.clientX, e.clientY);
-    }, { passive: true });
-  }
 
-  const createCardHTML = (portfolio, index) => {
-    const name = escapeHtml(portfolio.name);
-    const url = escapeHtml(portfolio.url);
-    const rawUrl = portfolio.url; 
-    const screenshot = escapeHtml(portfolio.screenshot || `https://api.microlink.io/?url=${encodeURIComponent(rawUrl)}&screenshot=true&meta=false&embed=screenshot.url`);
-    const summary = escapeHtml(portfolio.summary || '');
-    const role = escapeHtml(portfolio.role || '');
-    const tech_stack = Array.isArray(portfolio.tech_stack) ? portfolio.tech_stack : [];
-    const available_for_hire = portfolio.available_for_hire || false;
-    const base_likes = portfolio.baseLikes || 0;
-    const views = portfolio.views || 0;
-
-    let hireHTML = '';
-    if (available_for_hire) {
-      hireHTML = `
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 backdrop-blur-xl border border-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase tracking-widest shadow-xl">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] animate-pulse"></span>
-          Hire Me
-        </span>
-      `;
-    }
-
-    let techHTML = '';
-    if (tech_stack.length > 0) {
-      const mainTech = tech_stack.slice(0, 3).map(tech => `
-        <span class="px-3 py-1.5 rounded-full bg-blue-500/[0.03] text-blue-200/50 text-[10px] font-bold tracking-widest uppercase border border-blue-500/10 shadow-sm transition-colors duration-300 group-hover:border-blue-500/20 group-hover:bg-blue-500/[0.08] group-hover:text-blue-200/80">
-          ${escapeHtml(tech)}
-        </span>
-      `).join('');
-      
-      let extraTech = '';
-      if (tech_stack.length > 3) {
-        extraTech = `
-          <span class="px-3 py-1.5 rounded-full bg-white/[0.02] text-white/30 text-[10px] font-bold tracking-widest uppercase border border-white/[0.04] shadow-sm">
-            +${tech_stack.length - 3}
-          </span>
-        `;
+  const applyLikesToPortfolios = async (portfolios, likes = null) => {
+    const keyedPortfolios = await Promise.all(portfolios.map(async (portfolio) => {
+      try {
+        return [portfolio, await getLikeKey(portfolio.url)];
+      } catch {
+        return [portfolio, null];
       }
-      
-      techHTML = `
-        <div class="flex flex-wrap gap-2 mt-6">
-          ${mainTech}
-          ${extraTech}
-        </div>
-      `;
+    }));
+    const source = likes ?? cachedGlobalLikes;
+    for (const [portfolio, key] of keyedPortfolios) {
+      portfolio.baseLikes = key
+        ? readGlobalLikeCount(source, portfolio.url, key)
+        : 0;
     }
-
-    let roleHTML = '';
-    if (role) {
-      roleHTML = `
-        <div class="inline-flex items-center gap-2 px-2.5 py-1 mt-1 rounded-md bg-white/[0.03] border border-white/[0.05] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm w-fit group-hover:bg-white/[0.06] group-hover:border-white/[0.1] transition-all duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400 drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-            <circle cx="12" cy="7" r="4"></circle>
-          </svg>
-          <span class="text-[12px] font-medium text-gray-300 group-hover:text-white transition-colors duration-300">
-            ${role}
-          </span>
-        </div>
-      `;
-    }
-
-    let tooltipHTML = '';
-    if (summary) {
-      tooltipHTML = `
-        <div class="absolute bottom-[calc(100%+16px)] -right-4 w-[280px] sm:w-[320px] z-[100] pointer-events-none flex flex-col items-end">
-          <div class="relative w-full p-0 rounded-2xl bg-white/[0.06] opacity-0 group-hover:opacity-100 -translate-y-4 group-hover:translate-y-0 transition-all duration-500 ease-out overflow-hidden" style="box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.4), inset 0 -1px 1px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05); -webkit-backdrop-filter: blur(16px) saturate(180%) brightness(1.1); backdrop-filter: blur(16px) saturate(180%) brightness(1.1);">
-            <div class="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[150%] skew-x-[-45deg] group-hover:translate-x-[50%] transition-transform duration-[1500ms] ease-out pointer-events-none"></div>
-            <div class="relative text-white/95 text-[13px] leading-relaxed p-4 rounded-2xl font-medium shadow-[inset_0_0_20px_rgba(255,255,255,0.02)]">
-              <div class="flex items-start gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-white/60 shrink-0 mt-0.5"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
-                <span class="drop-shadow-md">${summary}</span>
-              </div>
-            </div>
-          </div>
-          <div class="absolute -bottom-[5.5px] right-10 w-3 h-3 bg-white/[0.06] opacity-0 group-hover:opacity-100 -translate-y-4 group-hover:translate-y-0 transition-all duration-500 ease-out transform rotate-45 z-[-1] pointer-events-none" style="box-shadow: inset -1px -1px 1px rgba(0,0,0,0.4), 1px 1px 0 rgba(255,255,255,0.05); -webkit-backdrop-filter: blur(16px) saturate(180%) brightness(1.1); backdrop-filter: blur(16px) saturate(180%) brightness(1.1);"></div>
-        </div>
-      `;
-    }
-
-    return `
-      <div class="portfolio-wrapper hidden" data-index="${index}" data-name="${name.toLowerCase()}" data-url="${rawUrl}" data-role="${(portfolio.role || '').toLowerCase()}" data-tech="${tech_stack.join(',').toLowerCase()}" data-hire="${available_for_hire ? 'true' : 'false'}">
-        <div class="group relative flex flex-col h-full transform-gpu z-10 transition-transform duration-500 ease-out hover:-translate-y-1.5 active:scale-[0.98] active:translate-y-0 [backface-visibility:hidden]">
-          <div class="border-glow-card h-full w-full" data-glow="dynamic" style="${BORDER_GLOW_STYLE}">
-            <span class="edge-light"></span>
-            <div class="border-glow-inner">
-          <a href="${rawUrl}" target="_blank" rel="noopener noreferrer" class="relative flex flex-col rounded-[28px] h-full outline-none" onclick="if(window.incrementPortfolioView) window.incrementPortfolioView('${rawUrl}')">
-            <div class="relative aspect-[16/10] w-full overflow-hidden rounded-t-[28px] bg-black [transform:translateZ(0)]">
-              <img src="${screenshot}" alt="Screenshot of ${name}'s portfolio" loading="lazy" class="w-full h-full object-cover object-top opacity-75 grayscale-[30%] group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-[1.04] transition-all duration-700 ease-out transform-gpu [backface-visibility:hidden]" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600&auto=format&fit=crop';" />
-              <div class="absolute inset-0 z-20 w-[150%] -translate-x-[150%] skew-x-[-25deg] bg-gradient-to-r from-transparent via-white/[0.12] to-transparent group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out pointer-events-none"></div>
-              <div class="absolute inset-0 z-10 pointer-events-none ring-1 ring-inset ring-white/[0.08] rounded-t-[28px]"></div>
-              <div class="absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-transparent to-black/70 opacity-90 pointer-events-none transition-opacity duration-500 group-hover:opacity-60"></div>
-              <div class="absolute inset-0 z-10 bg-gradient-to-t from-[#0B0F19] via-[#0B0F19]/40 to-transparent opacity-95 pointer-events-none"></div>
-              <div class="absolute top-4 left-4 z-20 flex flex-wrap gap-2 pointer-events-none">
-                ${hireHTML}
-              </div>
-              <button class="bookmark-btn absolute top-4 right-4 z-30 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/50 backdrop-blur-xl border border-white/[0.1] text-white/70 hover:text-rose-400 hover:bg-rose-500/15 hover:border-rose-500/40 hover:shadow-[0_0_20px_rgba(244,63,94,0.3)] transition-all duration-300 group/btn" data-url="${rawUrl}" aria-label="Bookmark and Like" onclick="event.preventDefault(); window.toggleBookmark(this, this.dataset.url)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="heart-icon transition-transform duration-300 group-hover/btn:scale-110 active:scale-90"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                <span class="text-xs font-bold tracking-wide like-count">${base_likes}</span>
-              </button>
-            </div>
-            <div class="relative z-10 p-6 flex flex-col flex-grow rounded-b-[28px] bg-gradient-to-b from-[#0B0F19] to-[#06080D]">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-2 overflow-hidden pr-2">
-                  <h3 class="text-[1.1rem] font-extrabold text-white/95 tracking-tight line-clamp-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-300 transition-all duration-300">${name}</h3>
-                  <div class="flex items-center gap-1.5 text-gray-500 group-hover:text-gray-400 transition-colors shrink-0" title="${views} views">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                    <span class="text-xs font-semibold tracking-wide">${views}</span>
-                  </div>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-white/0 group-hover:text-cyan-400 transition-all transform -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 duration-300 shrink-0"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </div>
-              ${roleHTML}
-              <div class="flex-grow"></div>
-              ${techHTML}
-            </div>
-          </a>
-            </div>
-          </div>
-          ${tooltipHTML}
-        </div>
-      </div>
-    `;
   };
 
-  let currentlyVisible = new Set(itemElements.keys());
-  
-  // Virtualization distance
-  const VIRTUAL_RENDER_BUFFER = 40; // Only keep DOM nodes for items within this buffer from view
+  const applyGlobalLikesToButtons = async (root = gridContainer) => {
+    const buttons = root instanceof Element
+      ? root.querySelectorAll('.bookmark-btn')
+      : [];
+
+    for (const button of buttons) {
+      const url = normalizePortfolioUrl(button.dataset.url);
+      const countElement = button.querySelector('.like-count');
+      if (!url || !countElement) continue;
+
+      try {
+        const count = readGlobalLikeCount(
+          cachedGlobalLikes,
+          url,
+          await getLikeKey(url),
+        );
+        countElement.textContent = String(count);
+      } catch {
+        countElement.textContent = '0';
+      }
+      updateBookmarkButtonLabel(button);
+    }
+  };
+
+  const updateBookmarkButtonLabel = (button, isLiked = null) => {
+    if (!(button instanceof HTMLButtonElement)) return;
+    const liked = typeof isLiked === 'boolean'
+      ? isLiked
+      : button.getAttribute('aria-pressed') === 'true';
+    const name = button.closest('.portfolio-wrapper')
+      ?.querySelector('.portfolio-name')?.textContent?.trim() || 'this portfolio';
+    const count = toSafeCount(button.querySelector('.like-count')?.textContent);
+    const action = liked
+      ? `Remove ${name} from My Likes`
+      : `Save ${name} to My Likes`;
+    button.setAttribute(
+      'aria-label',
+      `${action}. ${count} ${count === 1 ? 'like' : 'likes'}.`,
+    );
+  };
+
+  const updateBookmarkButtons = (root = gridContainer) => {
+    const user = getStoredUser();
+    const bookmarks = user ? readStoredBookmarks(user.uid) : [];
+    const buttons = root instanceof Element
+      ? root.querySelectorAll('.bookmark-btn')
+      : [];
+
+    for (const button of buttons) {
+      const url = normalizePortfolioUrl(button.dataset.url);
+      const isLiked = Boolean(url && bookmarks.includes(url));
+      const icon = button.querySelector('.heart-icon');
+
+      button.setAttribute('aria-pressed', String(isLiked));
+      updateBookmarkButtonLabel(button, isLiked);
+      button.classList.toggle('border-red-500/30', isLiked);
+      button.classList.toggle('bg-red-500/10', isLiked);
+      button.classList.toggle('text-red-400', isLiked);
+      button.toggleAttribute('disabled', Boolean(url && pendingBookmarkUrls.has(url)));
+
+      if (icon) {
+        icon.setAttribute('fill', isLiked ? 'currentColor' : 'none');
+        icon.classList.toggle('text-red-500', isLiked);
+      }
+    }
+  };
+
+  const updateResultStatus = () => {
+    if (!resultStatus) return;
+    const qualifier = searchQuery || currentFilter !== 'all' ? ' matching your filters' : '';
+    resultStatus.textContent =
+      `${filteredItems.length} portfolio${filteredItems.length === 1 ? '' : 's'}${qualifier}.`;
+  };
 
   const renderGrid = () => {
-    // Determine the visible range
     const itemsToShow = filteredItems.slice(0, visibleCount);
-    
-    // For DOM virtualization, we only want to render the last N items and the visible items
-    // Since this is a simple "load more" approach, the user sees 0 to visibleCount
-    // A true virtualizer would determine scroll position. But since we use DOM addition,
-    // we can optimize by setting non-visible wrappers to contain-intrinsic-size or hiding them 
-    // if they are far above. For simplicity and robustness, we will hide elements that are 
-    // more than VIRTUAL_RENDER_BUFFER items away from the bottom of the visible list if they are scrolling down.
-    // However, to keep it simple and safe for Astro, we will keep them in DOM but use CSS content-visibility:
-    
-    const itemsToShowSet = new Set(itemsToShow.map(p => p.url));
-    
-    for (const url of currentlyVisible) {
-      if (!itemsToShowSet.has(url)) {
-        const w = itemElements.get(url);
-        if (w) w.classList.add('hidden');
-      }
-    }
-    
-    const newElements = [];
-    for (let i = 0; i < itemsToShow.length; i++) {
-      const p = itemsToShow[i];
-      let w = itemElements.get(p.url);
-      
-      if (!w) {
-        const template = document.createElement('template');
-        template.innerHTML = createCardHTML(p, p.index).trim();
-        w = template.content.firstChild;
-        itemElements.set(p.url, w);
-        newElements.push(w);
-        virtualizationObserver.observe(w);
-      }
-      
-      if (w.style.order !== String(i)) {
-        w.style.order = i;
-      }
-      if (!w.parentElement) {
-        gridContainer.appendChild(w);
-      }
-      
-      w.classList.remove('hidden');
-      
+    const fragment = document.createDocumentFragment();
 
-    }
-    
-    currentlyVisible = itemsToShowSet;
-    
-    if (newElements.length > 0) {
-      initBookmarks(newElements);
-      if (typeof applyGlobalLikesToVisible !== 'undefined') {
-        applyGlobalLikesToVisible(newElements);
+    for (const portfolio of itemsToShow) {
+      let wrapper = itemElements.get(portfolio.url);
+      if (!wrapper) {
+        wrapper = createPortfolioElement(portfolio);
+        if (!wrapper) continue;
+        itemElements.set(portfolio.url, wrapper);
       }
+      fragment.appendChild(wrapper);
     }
 
-    if (filteredItems.length === 0) {
-      emptyState.classList.remove('hidden');
-      loadMoreContainer.style.display = 'none';
-    } else {
-      emptyState.classList.add('hidden');
-      if (filteredItems.length > visibleCount) {
-        loadMoreContainer.style.display = 'flex';
-      } else {
-        loadMoreContainer.style.display = 'none';
-      }
+    gridContainer.replaceChildren(fragment);
+    updateBookmarkButtons();
+    void applyGlobalLikesToButtons();
+    updateResultStatus();
+    gridContainer.setAttribute('aria-busy', 'false');
+
+    const hasResults = filteredItems.length > 0;
+    emptyState?.classList.toggle('hidden', hasResults);
+    if (loadMoreContainer) {
+      loadMoreContainer.style.display =
+        hasResults && visibleCount < filteredItems.length ? 'flex' : 'none';
     }
   };
 
-  const applyFilters = (_showSkeletons = true) => {
-    const userJSON = localStorage.getItem('pu_user');
-    const user = userJSON ? JSON.parse(userJSON) : null;
-    const bookmarks = user ? JSON.parse(localStorage.getItem(`pu_bookmarks_${user.uid}`) || '[]') : [];
+  const applyFilters = ({ resetPage = false } = {}) => {
+    if (resetPage) visibleCount = INITIAL_VISIBLE_COUNT;
 
-    filteredItems = allPortfolios.filter(portfolio => {
+    const user = getStoredUser();
+    const bookmarks = user ? readStoredBookmarks(user.uid) : [];
+    const query = searchQuery;
+
+    filteredItems = allPortfolios.filter((portfolio) => {
       const name = portfolio.name.toLowerCase();
-      const role = (portfolio.role || '').toLowerCase();
-      const tech = (portfolio.tech_stack || []).join(',').toLowerCase();
-      const hire = portfolio.available_for_hire === true;
-      
-      const matchesSearch = searchQuery === '' || 
-                            name.includes(searchQuery) || 
-                            role.includes(searchQuery) || 
-                            tech.includes(searchQuery);
+      const role = portfolio.role.toLowerCase();
+      const tech = portfolio.tech_stack.join(',').toLowerCase();
+      const normalizedRole = role.replace(/[\s-]/g, '');
+      const matchesSearch =
+        !query || name.includes(query) || role.includes(query) || tech.includes(query);
 
       let matchesFilter = true;
-      if (currentFilter !== 'all' && currentFilter !== 'most_viewed') {
-        if (currentFilter === 'hire') {
-          matchesFilter = hire;
-        } else if (currentFilter === 'likes') {
-          matchesFilter = bookmarks.includes(portfolio.url);
-        } else {
-          const normalizedRole = role.replace(/[\s-]/g, '');
-          if (currentFilter === 'designer') {
-            matchesFilter = role.includes('design') || role.includes('ui') || role.includes('creative');
-          } else if (currentFilter === 'fullstack') {
-            matchesFilter = normalizedRole.includes('fullstack');
-          } else if (currentFilter === 'frontend') {
-            matchesFilter = normalizedRole.includes('frontend');
-          } else if (currentFilter === 'backend') {
-            matchesFilter = normalizedRole.includes('backend');
-          } else {
-            matchesFilter = role.includes(currentFilter);
-          }
-        }
+      if (currentFilter === 'hire') {
+        matchesFilter = portfolio.available_for_hire;
+      } else if (currentFilter === 'likes') {
+        matchesFilter = bookmarks.includes(portfolio.url);
+      } else if (currentFilter === 'designer') {
+        matchesFilter =
+          role.includes('design') || role.includes('ui') || role.includes('creative');
+      } else if (currentFilter === 'fullstack') {
+        matchesFilter = normalizedRole.includes('fullstack');
+      } else if (currentFilter === 'frontend') {
+        matchesFilter = normalizedRole.includes('frontend');
+      } else if (currentFilter === 'backend') {
+        matchesFilter = normalizedRole.includes('backend');
       }
 
       return matchesSearch && matchesFilter;
     });
 
-    if (currentFilter === 'most_viewed') {
-      filteredItems.sort((a, b) => (b.views || 0) - (a.views || 0));
-    } else {
-      filteredItems.sort((a, b) => b.baseLikes - a.baseLikes);
-    }
+    filteredItems.sort((a, b) => {
+      if (currentFilter === 'most_viewed') {
+        return b.views - a.views || a.index - b.index;
+      }
+      return b.baseLikes - a.baseLikes || a.index - b.index;
+    });
 
-    if (_showSkeletons) {
-      renderSkeletonsThenGrid();
-    } else {
-      renderGrid();
+    renderGrid();
+  };
+
+  const moveIndicator = (button) => {
+    if (!activeIndicator || !(button instanceof HTMLElement)) return;
+    activeIndicator.style.height = `${button.offsetHeight}px`;
+    activeIndicator.style.width = `${button.offsetWidth}px`;
+    activeIndicator.style.transform = `translate(${button.offsetLeft}px, ${button.offsetTop}px)`;
+  };
+
+  const selectFilterButton = (selectedButton) => {
+    for (const button of filterButtons) {
+      const selected = button === selectedButton;
+      button.classList.toggle('active', selected);
+      button.setAttribute('aria-pressed', String(selected));
+      if (!['hire', 'likes'].includes(button.dataset.filter || '')) {
+        button.classList.toggle('text-gray-400', !selected);
+      }
+    }
+    moveIndicator(selectedButton);
+    if (
+      filterContainer
+      && filterContainer.scrollWidth > filterContainer.clientWidth
+    ) {
+      requestAnimationFrame(() => {
+        const containerRect = filterContainer.getBoundingClientRect();
+        const buttonRect = selectedButton.getBoundingClientRect();
+        let nextScrollLeft = filterContainer.scrollLeft;
+        if (buttonRect.left < containerRect.left) {
+          nextScrollLeft -= containerRect.left - buttonRect.left;
+        } else if (buttonRect.right > containerRect.right) {
+          nextScrollLeft += buttonRect.right - containerRect.right;
+        }
+        filterContainer.scrollTo({
+          left: nextScrollLeft,
+          behavior: reducedMotion.matches ? 'auto' : 'smooth',
+        });
+      });
     }
   };
 
-  const createSkeletonHTML = (index) => {
-    return `
-      <div class="portfolio-wrapper skeleton-card" style="order: ${index}">
-        <div class="relative flex flex-col bg-[#0B0F19] border border-white/[0.06] rounded-2xl h-full z-10 overflow-hidden">
-          <div class="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/[0.05] to-transparent z-20"></div>
-          <div class="relative aspect-[16/10] w-full bg-white/[0.03]"></div>
-          <div class="p-6 flex flex-col flex-grow rounded-b-2xl bg-gradient-to-b from-[#0B0F19] to-[#06080D]">
-            <div class="h-6 bg-white/[0.05] rounded-md w-3/4 mb-3"></div>
-            <div class="h-5 bg-white/[0.03] rounded-md w-1/3 mb-6"></div>
-            <div class="flex-grow"></div>
-            <div class="flex gap-2">
-              <div class="h-6 bg-white/[0.04] rounded-full w-16"></div>
-              <div class="h-6 bg-white/[0.04] rounded-full w-20"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
+  const animateHeart = (url, isLiked) => {
+    for (const button of gridContainer.querySelectorAll('.bookmark-btn')) {
+      if (normalizePortfolioUrl(button.dataset.url) !== url) continue;
+      const icon = button.querySelector('.heart-icon');
+      if (!icon) continue;
+      icon.classList.remove('heart-animated', 'heart-unlike-animated');
+      void icon.offsetWidth;
+      icon.classList.add(isLiked ? 'heart-animated' : 'heart-unlike-animated');
+      if (isLiked) window.triggerSpark?.(button);
+    }
   };
 
-  let skeletonTimeout;
-  const renderSkeletonsThenGrid = () => {
-    clearTimeout(skeletonTimeout);
-    
-    // Hide all current items
-    for (const url of currentlyVisible) {
-      const w = itemElements.get(url);
-      if (w) w.classList.add('hidden');
+  const refreshBookmarksFromServer = async (uid, generation = authGeneration) => {
+    const versionAtStart = bookmarkMutationVersion;
+    try {
+      const bookmarks = await fetchUserBookmarks(uid);
+      const sameUser = getStoredUser()?.uid === uid;
+      if (
+        generation === authGeneration
+        && sameUser
+        && versionAtStart === bookmarkMutationVersion
+      ) {
+        writeStoredBookmarks(uid, bookmarks);
+        updateBookmarkButtons();
+        if (currentFilter === 'likes') applyFilters();
+      }
+    } catch (error) {
+      console.warn('Using cached bookmarks because the server read failed.', error);
     }
-    currentlyVisible.clear();
-    
-    // Remove old skeletons if any
-    document.querySelectorAll('.skeleton-card').forEach(el => el.remove());
-    
-    // If no items, skip skeletons and just renderGrid (which shows empty state)
-    if (filteredItems.length === 0) {
-      renderGrid();
+  };
+
+  const toggleBookmark = async (sourceButton, rawUrl) => {
+    const user = getStoredUser();
+    if (!user) {
+      window.openLoginModal?.();
       return;
     }
 
-    // Add new skeletons
-    const skeletonCount = Math.min(filteredItems.length, visibleCount) || 6;
-    let skeletonHTML = '';
-    for(let i=0; i<skeletonCount; i++){
-       skeletonHTML += createSkeletonHTML(i);
+    const url = normalizePortfolioUrl(rawUrl);
+    if (!url || pendingBookmarkUrls.has(url)) return;
+
+    const before = readStoredBookmarks(user.uid);
+    const shouldLike = !before.includes(url);
+    const optimistic = shouldLike
+      ? [...before, url]
+      : before.filter((bookmark) => bookmark !== url);
+    let nextFocusUrl = null;
+    const restoreFilterFocus =
+      currentFilter === 'likes'
+      && !shouldLike
+      && document.activeElement === sourceButton;
+    if (restoreFilterFocus) {
+      const visibleButtons = Array.from(
+        gridContainer.querySelectorAll('.bookmark-btn'),
+      ).filter((button) => button instanceof HTMLButtonElement);
+      const currentIndex = visibleButtons.indexOf(sourceButton);
+      const orderedCandidates = [
+        ...visibleButtons.slice(currentIndex + 1),
+        ...visibleButtons.slice(0, Math.max(0, currentIndex)),
+      ];
+      const candidate = orderedCandidates.find((button) => {
+        const candidateUrl = normalizePortfolioUrl(button.dataset.url);
+        return candidateUrl && optimistic.includes(candidateUrl);
+      });
+      nextFocusUrl = candidate
+        ? normalizePortfolioUrl(candidate.dataset.url)
+        : null;
     }
-    
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = skeletonHTML;
-    const skeletons = Array.from(tempDiv.children);
-    skeletons.forEach(s => gridContainer.appendChild(s));
-    
-    emptyState.classList.add('hidden');
-    loadMoreContainer.style.display = 'none';
 
-    skeletonTimeout = setTimeout(() => {
-      skeletons.forEach(s => s.remove());
-      renderGrid();
-    }, 400);
+    bookmarkMutationVersion += 1;
+    writeStoredBookmarks(user.uid, optimistic);
+    pendingBookmarkUrls.add(url);
+    updateBookmarkButtons();
+    animateHeart(url, shouldLike);
+    if (currentFilter === 'likes') {
+      applyFilters();
+      if (restoreFilterFocus) {
+        requestAnimationFrame(() => {
+          const nextButton = Array.from(
+            gridContainer.querySelectorAll('.bookmark-btn'),
+          ).find((button) =>
+            normalizePortfolioUrl(button.dataset.url) === nextFocusUrl
+          );
+          if (nextButton instanceof HTMLButtonElement) nextButton.focus();
+          else filterButtons.find((button) => button.dataset.filter === 'likes')?.focus();
+        });
+      }
+    }
+
+    try {
+      await toggleLikeInFirestore(user.uid, url, shouldLike);
+      window.playPopSound?.(1);
+      window.showToast?.(
+        shouldLike ? 'Saved to My Likes!' : 'Removed from My Likes.',
+        shouldLike ? 'heart' : 'check'
+      );
+      if (shouldLike && navigator.vibrate) navigator.vibrate(50);
+    } catch (error) {
+      console.error('Bookmark update failed:', error);
+      const current = readStoredBookmarks(user.uid);
+      const rolledBack = shouldLike
+        ? current.filter((bookmark) => bookmark !== url)
+        : [...new Set([...current, url])];
+      bookmarkMutationVersion += 1;
+      writeStoredBookmarks(user.uid, rolledBack);
+      window.showToast?.('Could not save that change. Please try again.', 'error');
+      if (currentFilter === 'likes') applyFilters();
+    } finally {
+      pendingBookmarkUrls.delete(url);
+      updateBookmarkButtons();
+      if (pendingBookmarkUrls.size === 0) {
+        void refreshBookmarksFromServer(user.uid);
+      }
+    }
   };
 
-  let filterTimeout;
-  const debouncedApplyFilters = () => {
-    clearTimeout(filterTimeout);
-    filterTimeout = setTimeout(() => {
-      applyFilters(false);
-    }, 250);
+  const recordPortfolioView = async (rawUrl) => {
+    if (!auth.currentUser) return;
+    const url = normalizePortfolioUrl(rawUrl);
+    if (!url) return;
+
+    let key;
+    try {
+      key = `pu_viewed_${urlToKey(url)}`;
+      if (sessionStorage.getItem(key)) return;
+      sessionStorage.setItem(key, 'pending');
+    } catch {
+      key = null;
+    }
+
+    try {
+      await incrementPortfolioViewInFirestore(url);
+      if (key) sessionStorage.setItem(key, '1');
+    } catch (error) {
+      if (key) sessionStorage.removeItem(key);
+      console.warn('View counter update failed:', error);
+    }
   };
 
-  const handleSearch = (e) => {
-    searchQuery = e.target.value.toLowerCase().trim();
-    if (e.target === searchInputDesk && searchInputMob) searchInputMob.value = e.target.value;
-    if (e.target === searchInputMob && searchInputDesk) searchInputDesk.value = e.target.value;
-    clearTimeout(filterTimeout);
-    filterTimeout = setTimeout(() => {
-      visibleCount = ITEMS_PER_PAGE;
-      applyFilters(false);
-    }, 250);
+  window.incrementPortfolioView = (url) => {
+    void recordPortfolioView(url);
+  };
+
+  gridContainer.addEventListener('click', (event) => {
+    const target = event.target instanceof Element ? event.target : null;
+    const bookmarkButton = target?.closest('.bookmark-btn');
+    if (bookmarkButton instanceof HTMLButtonElement) {
+      event.preventDefault();
+      event.stopPropagation();
+      void toggleBookmark(bookmarkButton, bookmarkButton.dataset.url);
+      return;
+    }
+
+    const link = target?.closest('.portfolio-link');
+    if (link instanceof HTMLAnchorElement) {
+      void recordPortfolioView(link.href);
+    }
+  });
+
+  if (!reducedMotion.matches) {
+    gridContainer.addEventListener('pointermove', (event) => {
+      const target = event.target instanceof Element ? event.target : null;
+      const card = target?.closest('.border-glow-card[data-glow="dynamic"]');
+      if (!(card instanceof HTMLElement)) return;
+
+      const rect = card.getBoundingClientRect();
+      const halfWidth = rect.width / 2;
+      const halfHeight = rect.height / 2;
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const dx = x - halfWidth;
+      const dy = y - halfHeight;
+      const kx = dx === 0 ? Infinity : halfWidth / Math.abs(dx);
+      const ky = dy === 0 ? Infinity : halfHeight / Math.abs(dy);
+      const edge = Math.min(Math.max(1 / Math.min(kx, ky), 0), 1);
+      let angle = dx === 0 && dy === 0 ? 0 : Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+      if (angle < 0) angle += 360;
+      card.style.setProperty('--edge-proximity', (edge * 100).toFixed(3));
+      card.style.setProperty('--cursor-angle', `${angle.toFixed(3)}deg`);
+    }, { passive: true });
+  }
+
+  const handleSearch = (event) => {
+    const input = event.currentTarget;
+    if (!(input instanceof HTMLInputElement)) return;
+
+    if (input === searchInputDesk && searchInputMob instanceof HTMLInputElement) {
+      searchInputMob.value = input.value;
+    } else if (input === searchInputMob && searchInputDesk instanceof HTMLInputElement) {
+      searchInputDesk.value = input.value;
+    }
+
+    window.clearTimeout(searchTimer);
+    searchTimer = window.setTimeout(() => {
+      searchQuery = input.value.toLowerCase().trim();
+      applyFilters({ resetPage: true });
+    }, 200);
   };
 
   searchInputDesk?.addEventListener('input', handleSearch);
   searchInputMob?.addEventListener('input', handleSearch);
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (btn.dataset.filter === 'likes' && !localStorage.getItem('pu_user')) {
-        if (window.openLoginModal) window.openLoginModal();
+  for (const button of filterButtons) {
+    button.addEventListener('click', () => {
+      const nextFilter = button.dataset.filter || 'all';
+      if (nextFilter === 'likes' && !getStoredUser()) {
+        window.openLoginModal?.();
         return;
       }
 
-      filterBtns.forEach(b => {
-        b.classList.remove('active');
-        const f = b.dataset.filter;
-        if (f !== 'hire' && f !== 'likes') {
-          b.classList.add('text-gray-400');
-        }
-      });
-
-      if (btn.dataset.filter !== 'hire' && btn.dataset.filter !== 'likes') {
-        btn.classList.remove('text-gray-400');
-      }
-      btn.classList.add('active');
-      
-      moveIndicator(btn);
-
-      currentFilter = btn.dataset.filter;
-      visibleCount = ITEMS_PER_PAGE;
-      applyFilters();
+      currentFilter = nextFilter;
+      selectFilterButton(button);
+      applyFilters({ resetPage: true });
     });
-  });
-
-  clearFiltersBtn?.addEventListener('click', () => {
-    searchQuery = '';
-    if (searchInputDesk) searchInputDesk.value = '';
-    if (searchInputMob) searchInputMob.value = '';
-    
-    const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
-    if (allBtn) allBtn.click();
-  });
-
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      if (entry.isIntersecting && filteredItems.length > visibleCount) {
-        setTimeout(() => {
-          visibleCount += ITEMS_PER_PAGE;
-          renderGrid();
-        }, 300);
-      }
-    }, {
-      rootMargin: '150px',
-    });
-
-    if (loadMoreContainer) {
-      observer.observe(loadMoreContainer);
-    }
-  } else {
-    visibleCount = allPortfolios.length;
-    renderGrid();
   }
 
-  applyFilters();
-});
+  clearFiltersButton?.addEventListener('click', () => {
+    searchQuery = '';
+    if (searchInputDesk instanceof HTMLInputElement) searchInputDesk.value = '';
+    if (searchInputMob instanceof HTMLInputElement) searchInputMob.value = '';
+    const allButton = filterButtons.find((button) => button.dataset.filter === 'all');
+    if (allButton instanceof HTMLButtonElement) allButton.click();
+  });
+
+  const loadNextPage = () => {
+    if (visibleCount >= filteredItems.length) return;
+    visibleCount = Math.min(filteredItems.length, visibleCount + ITEMS_PER_PAGE);
+    renderGrid();
+  };
+
+  loadMoreContainer?.addEventListener('click', loadNextPage);
+  if ('IntersectionObserver' in window && loadMoreContainer) {
+    const loadMoreObserver = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) loadNextPage();
+    }, { rootMargin: '250px' });
+    loadMoreObserver.observe(loadMoreContainer);
+  }
+
+  const initializeScroll = () => {
+    let lenis = null;
+    let lastScrollTop = window.scrollY;
+
+    const updateNavbar = (scrollTop, direction) => {
+      if (!topNavBar) return;
+      topNavBar.style.top = direction > 0 && scrollTop > 50 ? '-100px' : '12px';
+    };
+
+    if (!reducedMotion.matches) {
+      try {
+        lenis = new Lenis({
+          autoRaf: true,
+          duration: 1.2,
+          easing: (time) => Math.min(1, 1.001 - Math.pow(2, -10 * time)),
+        });
+        lenis.on('scroll', ({ direction, scroll }) => updateNavbar(scroll, direction));
+      } catch (error) {
+        console.warn('Smooth scrolling is unavailable; using native scrolling.', error);
+      }
+    }
+
+    if (!lenis) {
+      window.addEventListener('scroll', () => {
+        const nextScrollTop = window.scrollY;
+        updateNavbar(nextScrollTop, nextScrollTop > lastScrollTop ? 1 : -1);
+        lastScrollTop = Math.max(0, nextScrollTop);
+      }, { passive: true });
+    }
+
+    scrollToTopButton?.addEventListener('click', () => {
+      if (lenis) lenis.scrollTo(0);
+      else window.scrollTo({ top: 0, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+    });
+  };
+
+  initializeScroll();
+
+  const updateAuthUI = (user) => {
+    const activeElement = document.activeElement;
+    const focusLogoutAfterUpdate = Boolean(user && activeElement === loginButton);
+    const focusLoginAfterUpdate = Boolean(
+      !user
+      && activeElement instanceof Node
+      && userProfile?.contains(activeElement),
+    );
+
+    if (user) {
+      loginButton?.classList.add('hidden');
+      userProfile?.classList.remove('hidden');
+      userProfile?.classList.add('flex');
+      if (userAvatar instanceof HTMLImageElement) {
+        userAvatar.hidden = false;
+        userAvatar.src = user.photoURL || DEFAULT_AVATAR;
+        userAvatar.alt = `${user.displayName || 'User'}'s avatar`;
+      }
+      if (userName) userName.textContent = user.displayName || 'User';
+    } else {
+      loginButton?.classList.remove('hidden');
+      userProfile?.classList.add('hidden');
+      userProfile?.classList.remove('flex');
+      if (userAvatar instanceof HTMLImageElement) {
+        userAvatar.removeAttribute('src');
+        userAvatar.alt = 'User avatar';
+      }
+      if (userName) userName.textContent = '';
+    }
+
+    if (focusLogoutAfterUpdate || focusLoginAfterUpdate) {
+      requestAnimationFrame(() => {
+        const target = focusLogoutAfterUpdate ? logoutButton : loginButton;
+        if (target instanceof HTMLElement && target.offsetParent !== null) target.focus();
+      });
+    }
+  };
+
+  userAvatar?.addEventListener('error', () => {
+    if (!(userAvatar instanceof HTMLImageElement)) return;
+    if (userAvatar.getAttribute('src') === DEFAULT_AVATAR) {
+      userAvatar.hidden = true;
+      return;
+    }
+    userAvatar.src = DEFAULT_AVATAR;
+  });
+
+  onAuthStateChanged(auth, (user) => {
+    const generation = ++authGeneration;
+    updateAuthUI(user);
+
+    if (user) {
+      storageSet('pu_user', JSON.stringify({
+        name: user.displayName || 'User',
+        avatar: user.photoURL || null,
+        uid: user.uid,
+      }));
+      updateBookmarkButtons();
+      if (currentFilter === 'likes') applyFilters();
+      void refreshBookmarksFromServer(user.uid, generation);
+    } else {
+      storageRemove('pu_user');
+      updateBookmarkButtons();
+      if (currentFilter === 'likes') {
+        currentFilter = 'all';
+        const allButton = filterButtons.find((button) => button.dataset.filter === 'all');
+        if (allButton) selectFilterButton(allButton);
+        applyFilters({ resetPage: true });
+      }
+    }
+
+    window.dispatchEvent(new Event('auth-changed'));
+  });
+
+  logoutButton?.addEventListener('click', async (event) => {
+    event.stopPropagation();
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error('Logout failed:', error);
+      window.showToast?.('Could not log out. Please try again.', 'error');
+    }
+  });
+
+  window.addEventListener('storage', (event) => {
+    const user = getStoredUser();
+    if (!user || event.key !== getBookmarkStorageKey(user.uid)) return;
+    updateBookmarkButtons();
+    if (currentFilter === 'likes') applyFilters();
+  });
+
+  const loadGlobalLikes = async () => {
+    try {
+      const likes = await fetchGlobalLikes();
+      cachedGlobalLikes = likes;
+      await applyLikesToPortfolios(allPortfolios, likes);
+      await applyGlobalLikesToButtons();
+      applyFilters();
+    } catch (error) {
+      console.warn('Global like totals are unavailable; keeping the current counters.', error);
+    }
+  };
+
+  const fetchPortfolioRecords = async () => {
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(
+      () => controller.abort(),
+      PORTFOLIO_DATA_TIMEOUT_MS,
+    );
+    try {
+      const response = await fetch(`${import.meta.env.BASE_URL}portfolios.json`, {
+        credentials: 'same-origin',
+        headers: { Accept: 'application/json' },
+        signal: controller.signal,
+      });
+      if (!response.ok) {
+        throw new Error(`Portfolio data request failed with HTTP ${response.status}.`);
+      }
+      const contentType = response.headers.get('content-type') || '';
+      if (!contentType.toLowerCase().includes('application/json')) {
+        throw new TypeError('Portfolio data response was not JSON.');
+      }
+      const records = await response.json();
+      if (!Array.isArray(records)) throw new TypeError('Portfolio data must be an array.');
+      return records;
+    } finally {
+      window.clearTimeout(timeoutId);
+    }
+  };
+
+  const schedulePortfolioRetry = () => {
+    if (portfolioDataLoaded || portfolioRetryTimer) return;
+    const delay = Math.min(
+      5 * 60_000,
+      PORTFOLIO_DATA_BACKGROUND_RETRY_MS * (2 ** Math.min(portfolioRetryRound, 4)),
+    );
+    portfolioRetryTimer = window.setTimeout(() => {
+      portfolioRetryTimer = 0;
+      portfolioRetryRound += 1;
+      void loadPortfolioData({ notifyOnFailure: false });
+    }, delay);
+  };
+
+  const loadPortfolioData = async ({ notifyOnFailure = true } = {}) => {
+    if (portfolioDataLoaded) return true;
+    if (portfolioLoadPromise) return portfolioLoadPromise;
+
+    portfolioLoadPromise = (async () => {
+      let lastError = new Error('Portfolio data could not be loaded.');
+
+      for (let attempt = 0; attempt <= PORTFOLIO_DATA_RETRY_DELAYS_MS.length; attempt += 1) {
+        if (attempt > 0) {
+          await new Promise((resolve) => {
+            window.setTimeout(resolve, PORTFOLIO_DATA_RETRY_DELAYS_MS[attempt - 1]);
+          });
+        }
+
+        try {
+          const records = await fetchPortfolioRecords();
+          const sanitized = sanitizePortfolioList(records);
+          if (sanitized.length === 0) throw new TypeError('No valid portfolios were found.');
+
+          await applyLikesToPortfolios(sanitized);
+          allPortfolios = sanitized;
+          portfolioDataLoaded = true;
+          portfolioRetryRound = 0;
+          if (portfolioRetryTimer) {
+            window.clearTimeout(portfolioRetryTimer);
+            portfolioRetryTimer = 0;
+          }
+          applyFilters({ resetPage: true });
+          if (portfolioFailureNotified) {
+            window.showToast?.('All portfolios are available again.');
+          }
+          portfolioFailureNotified = false;
+          return true;
+        } catch (error) {
+          lastError = error instanceof Error ? error : new Error(String(error));
+          if (!navigator.onLine) break;
+        }
+      }
+
+      console.error('Portfolio data failed to load:', lastError);
+      if (!portfolioFailureNotified) {
+        allPortfolios = extractInitialPortfolios();
+        applyFilters({ resetPage: true });
+        if (notifyOnFailure) {
+          window.showToast?.(
+            'Some portfolios could not be loaded. Showing the available cards while reconnecting.',
+            'error',
+          );
+        }
+        portfolioFailureNotified = true;
+      }
+      schedulePortfolioRetry();
+      return false;
+    })();
+
+    try {
+      return await portfolioLoadPromise;
+    } finally {
+      portfolioLoadPromise = null;
+    }
+  };
+
+  filterContainer?.addEventListener('scroll', () => {
+    const atEnd =
+      filterContainer.scrollLeft + filterContainer.clientWidth >= filterContainer.scrollWidth - 4;
+    filterContainer.parentElement?.classList.toggle('filter-rail-at-end', atEnd);
+  }, { passive: true });
+
+  window.addEventListener('resize', () => {
+    const selected = filterButtons.find((button) => button.getAttribute('aria-pressed') === 'true');
+    if (selected) moveIndicator(selected);
+  }, { passive: true });
+
+  window.addEventListener('online', () => {
+    if (portfolioDataLoaded) return;
+    if (portfolioRetryTimer) {
+      window.clearTimeout(portfolioRetryTimer);
+      portfolioRetryTimer = 0;
+    }
+    void loadPortfolioData({ notifyOnFailure: false });
+  });
+
+  const selectedFilter = filterButtons.find((button) => button.classList.contains('active'));
+  if (selectedFilter) {
+    selectedFilter.setAttribute('aria-pressed', 'true');
+    requestAnimationFrame(() => moveIndicator(selectedFilter));
+  }
+
+  updateBookmarkButtons();
+  void applyGlobalLikesToButtons();
+  void loadPortfolioData();
+  void loadGlobalLikes();
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeApp, { once: true });
+} else {
+  initializeApp();
+}
