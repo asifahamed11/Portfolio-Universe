@@ -521,11 +521,52 @@ const initializeApp = () => {
     renderGrid();
   };
 
+  let indicatorMeasureFrame = 0;
+  let pendingIndicatorButton = null;
+
+  const measureIndicator = (button) => {
+    if (
+      !activeIndicator
+      || !filterContainer
+      || !(button instanceof HTMLElement)
+    ) return;
+
+    const containerRect = filterContainer.getBoundingClientRect();
+    const buttonRect = button.getBoundingClientRect();
+    const x = buttonRect.left - containerRect.left + filterContainer.scrollLeft;
+    const y = buttonRect.top - containerRect.top + filterContainer.scrollTop;
+
+    activeIndicator.style.height = `${buttonRect.height}px`;
+    activeIndicator.style.width = `${buttonRect.width}px`;
+    activeIndicator.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    if (!activeIndicator.classList.contains('is-ready')) {
+      requestAnimationFrame(() => activeIndicator.classList.add('is-ready'));
+    }
+  };
+
   const moveIndicator = (button) => {
-    if (!activeIndicator || !(button instanceof HTMLElement)) return;
-    activeIndicator.style.height = `${button.offsetHeight}px`;
-    activeIndicator.style.width = `${button.offsetWidth}px`;
-    activeIndicator.style.transform = `translate(${button.offsetLeft}px, ${button.offsetTop}px)`;
+    if (!(button instanceof HTMLElement)) return;
+    pendingIndicatorButton = button;
+    if (indicatorMeasureFrame) return;
+    indicatorMeasureFrame = requestAnimationFrame(() => {
+      indicatorMeasureFrame = 0;
+      const target = pendingIndicatorButton;
+      pendingIndicatorButton = null;
+      measureIndicator(target);
+    });
+  };
+
+  const updateFilterRailCue = () => {
+    if (!filterContainer) return;
+    const rail = filterContainer.parentElement;
+    if (!rail) return;
+    const hasOverflow = filterContainer.scrollWidth > filterContainer.clientWidth + 1;
+    const atEnd =
+      !hasOverflow
+      || filterContainer.scrollLeft + filterContainer.clientWidth
+        >= filterContainer.scrollWidth - 4;
+    rail.classList.toggle('filter-rail-has-overflow', hasOverflow);
+    rail.classList.toggle('filter-rail-at-end', atEnd);
   };
 
   const selectFilterButton = (selectedButton) => {
@@ -1040,16 +1081,37 @@ const initializeApp = () => {
     }
   };
 
-  filterContainer?.addEventListener('scroll', () => {
-    const atEnd =
-      filterContainer.scrollLeft + filterContainer.clientWidth >= filterContainer.scrollWidth - 4;
-    filterContainer.parentElement?.classList.toggle('filter-rail-at-end', atEnd);
-  }, { passive: true });
+  filterContainer?.addEventListener('scroll', updateFilterRailCue, { passive: true });
 
   window.addEventListener('resize', () => {
     const selected = filterButtons.find((button) => button.getAttribute('aria-pressed') === 'true');
     if (selected) moveIndicator(selected);
+    updateFilterRailCue();
   }, { passive: true });
+
+  window.visualViewport?.addEventListener('resize', () => {
+    const selected = filterButtons.find((button) => button.getAttribute('aria-pressed') === 'true');
+    if (selected) moveIndicator(selected);
+    updateFilterRailCue();
+  }, { passive: true });
+
+  if (filterContainer && 'ResizeObserver' in window) {
+    const filterResizeObserver = new ResizeObserver(() => {
+      const selected = filterButtons.find(
+        button => button.getAttribute('aria-pressed') === 'true',
+      );
+      if (selected) moveIndicator(selected);
+      updateFilterRailCue();
+    });
+    filterResizeObserver.observe(filterContainer);
+    for (const button of filterButtons) filterResizeObserver.observe(button);
+  }
+
+  document.fonts?.ready.then(() => {
+    const selected = filterButtons.find(button => button.getAttribute('aria-pressed') === 'true');
+    if (selected) moveIndicator(selected);
+    updateFilterRailCue();
+  });
 
   window.addEventListener('online', () => {
     if (portfolioDataLoaded) return;
@@ -1063,8 +1125,9 @@ const initializeApp = () => {
   const selectedFilter = filterButtons.find((button) => button.classList.contains('active'));
   if (selectedFilter) {
     selectedFilter.setAttribute('aria-pressed', 'true');
-    requestAnimationFrame(() => moveIndicator(selectedFilter));
+    moveIndicator(selectedFilter);
   }
+  updateFilterRailCue();
 
   updateBookmarkButtons();
   void applyGlobalLikesToButtons();

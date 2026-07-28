@@ -92,6 +92,13 @@
     }
   };
 
+  document.addEventListener('click', event => {
+    const target = event.target;
+    if (target instanceof Element && target.closest('[data-login-trigger]')) {
+      (window as any).openLoginModal();
+    }
+  });
+
   const closeModal = () => {
     if (loginModal && loginCard && isOpen()) {
       loginModal.setAttribute('aria-hidden', 'true');

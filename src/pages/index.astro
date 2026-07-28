@@ -6,8 +6,9 @@ import CustomCursor from '../components/CustomCursor.astro';
 import portfoliosData from '../data/portfolios.json';
 import VariableProximityWrapper from '../components/VariableProximityWrapper.jsx';
 import Shuffle from '../components/Shuffle.jsx';
+import SpecularButton from '../components/SpecularButton.jsx';
+import DotField from '../components/DotField.jsx';
 import '../styles/global.css';
-import Lightfall from '../components/Lightfall.jsx';
 import { sanitizePortfolio } from '../lib/utils.js';
 
 const portfolios = portfoliosData
@@ -56,7 +57,26 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
          drawn above the card). Off-screen cards are already virtualized in JS by
          toggling the `hidden` class, so the perf intent is preserved. -->
   </head>
-  <body class="bg-[#050505] text-gray-200 min-h-screen font-sans antialiased selection:bg-rose-500/30">
+  <body class="bg-[#020204] text-gray-200 min-h-screen font-sans antialiased selection:bg-rose-500/30">
+    <div class="site-background" aria-hidden="true">
+      <div class="site-background__ambient"></div>
+      <DotField
+        client:load
+        className="site-background__dots"
+        dotRadius={1.8}
+        dotSpacing={18}
+        cursorRadius={230}
+        bulgeStrength={26}
+        glowRadius={180}
+        bulgeOnly={true}
+        sparkle={false}
+        waveAmplitude={0}
+        gradientFrom="rgba(34, 211, 238, 0.30)"
+        gradientTo="rgba(139, 92, 246, 0.23)"
+        glowColor="rgba(56, 189, 248, 0.10)"
+      />
+      <div class="site-background__veil"></div>
+    </div>
     <a href="#portfolioMain" class="skip-link">Skip to portfolios</a>
     <style>
       .animate-hero-text {
@@ -118,14 +138,6 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
       }
     </style>
 
-    <div class="absolute top-0 left-0 right-0 h-[650px] z-[-1] overflow-hidden pointer-events-none">
-      <div class="absolute inset-0 glass-bg [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]" style="-webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);"></div>
-    </div>
-    <div class="fixed inset-0 z-[-4] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1a1820] via-[#0a0a0c] to-[#040405]"></div>
-
-    
-    <!-- SVG filters removed for performance (PERF-1). Glass effect achieved with CSS-only backdrop-filter. -->
-
     <!-- Navigation Bar -->
     <nav id="topNavBar" class="sticky top-3 z-40 max-w-7xl mx-4 xl:mx-auto rounded-[24px] border border-white/[0.05]" style="transition: top 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -156,15 +168,52 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
               <input type="text" id="searchInputDesk" placeholder="Search developers..." class="w-full bg-gray-900 border border-gray-800 text-sm rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 text-gray-200 placeholder-gray-500 transition-all" />
             </div>
 
-            <button type="button" onclick="window.openSubmitModal()" data-submit-trigger class="text-sm font-medium text-gray-300 hover:text-white px-3 py-2 transition-colors hidden md:block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-lg">
-              Submit
-            </button>
+            <div class="hidden md:block">
+              <SpecularButton
+                client:load
+                size="sm"
+                radius={999}
+                tint="#8b5cf6"
+                tintOpacity={0.07}
+                blur={10}
+                textColor="#dbeafe"
+                lineColor="#c4b5fd"
+                baseColor="#475569"
+                intensity={1.1}
+                shineSize={12}
+                shineFade={34}
+                thickness={1}
+                proximity={190}
+                className="specular-button--nav-quiet"
+                data-submit-trigger="true"
+              >
+                Submit
+              </SpecularButton>
+            </div>
             
             <!-- Auth Section -->
             <div id="authSection" class="flex items-center gap-3">
-              <button type="button" onclick="window.openLoginModal()" id="loginBtn" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold py-2 px-4 rounded-full shadow-lg shadow-blue-500/20 transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300">
+              <SpecularButton
+                client:load
+                id="loginBtn"
+                size="sm"
+                radius={999}
+                tint="#2563eb"
+                tintOpacity={0.18}
+                blur={12}
+                textColor="#ffffff"
+                lineColor="#e0f2fe"
+                baseColor="#2563eb"
+                intensity={1.25}
+                shineSize={13}
+                shineFade={36}
+                thickness={1.15}
+                proximity={210}
+                className="specular-button--nav-primary"
+                data-login-trigger="true"
+              >
                 Login
-              </button>
+              </SpecularButton>
               
               <!-- Logged In User View (Hidden by default) -->
               <div id="userProfile" class="hidden items-center gap-2 group">
@@ -185,30 +234,31 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
             </div>
             <input type="text" id="searchInputMob" placeholder="Search developers..." class="w-full bg-gray-900 border border-gray-800 text-sm rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 text-gray-200 placeholder-gray-500 transition-all" />
           </div>
-          <button type="button" onclick="window.openSubmitModal()" data-submit-trigger aria-label="Submit a portfolio" class="shrink-0 inline-flex items-center gap-1.5 text-sm font-semibold text-white bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 px-3.5 py-2 rounded-full transition-colors active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+          <SpecularButton
+            client:load
+            size="sm"
+            radius={999}
+            tint="#8b5cf6"
+            tintOpacity={0.09}
+            blur={10}
+            textColor="#ffffff"
+            lineColor="#bae6fd"
+            baseColor="#475569"
+            intensity={1.1}
+            shineSize={12}
+            shineFade={34}
+            thickness={1}
+            proximity={170}
+            className="specular-button--mobile-submit"
+            data-submit-trigger="true"
+            aria-label="Submit a portfolio"
+          >
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
             Submit
-          </button>
+          </SpecularButton>
         </div>
       </div>
     </nav>
-    
-    
-        <!-- Clean WebGL Lightfall Background -->
-    <div class="fixed inset-0 z-[-4] pointer-events-none bg-[#020202]">
-      <Lightfall 
-        client:only="react" 
-        colors={['#3b82f6', '#8b5cf6', '#06b6d4']} 
-        speed={0.06} 
-        streakCount={4} 
-        opacity={0.45} 
-        glow={0.5} 
-        backgroundColor="#020202"
-        mouseInteraction={true}
-      />
-    </div>
-
-
 
     <header class="pt-10 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center relative z-10 flex flex-col items-center justify-center">
       
@@ -233,12 +283,12 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
       </div>
 
       <!-- Glassmorphic Filters Container -->
-      <div class="filter-rail-shell mt-8 w-full md:w-max max-w-full mx-auto relative z-20 shadow-2xl rounded-[24px] liquidContainer">
+      <div class="filter-rail-shell mt-8 w-full md:w-max max-w-full mx-auto relative z-20 shadow-2xl rounded-[24px]">
         
           <div class="relative flex items-center justify-start md:justify-center overflow-x-auto overflow-y-hidden hide-scrollbar gap-2 w-full p-1.5" style="-webkit-overflow-scrolling: touch;" id="filterContainer" role="group" aria-label="Filter portfolios">
         
         <!-- Smooth Fluid Indicator -->
-        <div id="activeIndicator" class="absolute top-0 left-0 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-0 pointer-events-none liquidBtn" style="width: 0px; height: 0px; transform: translate(0px, 0px);">
+        <div id="activeIndicator" class="absolute top-0 left-0 z-0 pointer-events-none" style="width: 0px; height: 0px; transform: translate3d(0px, 0px, 0);">
           
         </div>
 
@@ -364,30 +414,7 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
     <LoginModal />
     <SubmitModal />
 
-  
-    <svg style="display: none">
-      <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
-        <feTurbulence type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="1" seed="5" result="turbulence" />
-        <feComponentTransfer in="turbulence" result="mapped">
-          <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
-          <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
-          <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
-        </feComponentTransfer>
-        <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
-        <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100" lighting-color="white" result="specLight">
-          <fePointLight x="-200" y="-200" z="300" />
-        </feSpecularLighting>
-        <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
-        <feDisplacementMap in="SourceGraphic" in2="softMap" scale="150" xChannelSelector="R" yChannelSelector="G" />
-      </filter>
-    </svg>
-
 <style>
-  .glass-bg {
-    background-color: #14121a;
-    opacity: 0.15;
-  }
-
   #topNavBar::before {
       content: '';
       position: absolute;
@@ -412,36 +439,62 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
   }
 
 
-  #activeIndicator {
+  .filter-rail-shell {
+    isolation: isolate;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.075);
+    background:
+      linear-gradient(115deg, rgba(15, 23, 42, 0.66), rgba(3, 7, 18, 0.76));
+    -webkit-backdrop-filter: blur(18px) saturate(135%);
+    backdrop-filter: blur(18px) saturate(135%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 -1px 0 rgba(15, 23, 42, 0.75),
+      0 18px 46px rgba(0, 0, 0, 0.32);
+  }
+
+  .filter-rail-shell::before {
+    content: '';
     position: absolute;
+    inset: 0;
+    z-index: 20;
+    border-radius: inherit;
+    box-shadow:
+      inset 1px 1px 0 rgba(255, 255, 255, 0.1),
+      inset -1px -1px 0 rgba(99, 102, 241, 0.06);
+    pointer-events: none;
+  }
+
+  #activeIndicator {
+    border: 1px solid transparent;
     border-radius: 16px;
-    z-index: 0;
+    opacity: 0;
+    background:
+      linear-gradient(125deg, rgba(14, 23, 43, 0.9), rgba(18, 13, 38, 0.78)) padding-box,
+      conic-gradient(
+        from 220deg,
+        rgba(71, 85, 105, 0.52),
+        rgba(125, 211, 252, 0.92),
+        rgba(196, 181, 253, 0.6),
+        rgba(71, 85, 105, 0.45),
+        rgba(96, 165, 250, 0.72),
+        rgba(71, 85, 105, 0.52)
+      ) border-box;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      0 7px 20px rgba(14, 165, 233, 0.08);
+    -webkit-backdrop-filter: blur(10px) saturate(135%);
+    backdrop-filter: blur(10px) saturate(135%);
+    will-change: transform, width, height;
   }
-  
-  #activeIndicator::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      overflow: hidden;
-      border-radius: 16px;
-      -webkit-box-shadow: inset 2px 2px 0px -2px rgba(255, 255, 255, 0.7), inset 0 0 3px 1px rgba(255, 255, 255, 0.7);
-              box-shadow: inset 2px 2px 0px -2px rgba(255, 255, 255, 0.7), inset 0 0 3px 1px rgba(255, 255, 255, 0.7);
-      background-color: transparent;
-      pointer-events: none;
-  }
-  
-  #activeIndicator::after {
-      content: '';
-      position: absolute;
-      z-index: -1;
-      inset: 0;
-      border-radius: 16px;
-      -webkit-backdrop-filter: blur(12px) saturate(140%) brightness(1.05);
-              backdrop-filter: blur(12px) saturate(140%) brightness(1.05);
-      overflow: hidden;
-      isolation: isolate;
-      pointer-events: none;
+
+  #activeIndicator.is-ready {
+    opacity: 1;
+    transition:
+      transform 460ms cubic-bezier(0.34, 1.56, 0.64, 1),
+      width 460ms cubic-bezier(0.34, 1.56, 0.64, 1),
+      height 460ms cubic-bezier(0.34, 1.56, 0.64, 1),
+      opacity 160ms ease;
   }
 
   @keyframes fadeInUp {
@@ -474,18 +527,24 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
     content: '';
     position: absolute;
     top: 2px;
+    left: auto;
     right: 2px;
     bottom: 2px;
     width: 2.5rem;
     border-radius: 0 22px 22px 0;
-    background: linear-gradient(to right, transparent, rgba(5, 5, 5, 0.92));
+    background: linear-gradient(to right, transparent, rgba(2, 4, 12, 0.94));
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    -webkit-filter: none;
+    filter: none;
     pointer-events: none;
     z-index: 30;
+    opacity: 0;
     transition: opacity 200ms ease;
   }
 
-  .filter-rail-shell.filter-rail-at-end::after {
-    opacity: 0;
+  .filter-rail-shell.filter-rail-has-overflow:not(.filter-rail-at-end)::after {
+    opacity: 1;
   }
 
   @media (min-width: 768px) {

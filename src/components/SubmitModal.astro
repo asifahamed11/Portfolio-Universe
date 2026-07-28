@@ -1,5 +1,6 @@
 ---
 // SubmitModal.astro
+import SpecularButton from './SpecularButton.jsx';
 ---
 
 <div
@@ -34,9 +35,27 @@
         <input type="url" id="portfolioUrl" required class="w-full bg-gray-800/50 border border-gray-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors" />
       </div>
       
-      <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold py-3 px-4 rounded-xl shadow-lg shadow-blue-500/25 transition-all active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 disabled:opacity-60 disabled:cursor-wait">
+      <SpecularButton
+        client:load
+        id="submitPortfolioBtn"
+        type="submit"
+        size="md"
+        radius={12}
+        tint="#2563eb"
+        tintOpacity={0.24}
+        blur={10}
+        textColor="#ffffff"
+        lineColor="#e0f2fe"
+        baseColor="#4f46e5"
+        intensity={1.2}
+        shineSize={13}
+        shineFade={36}
+        thickness={1.1}
+        proximity={240}
+        className="specular-button--modal-primary"
+      >
         Submit for AI Review
-      </button>
+      </SpecularButton>
     </form>
     
     <div id="submitSuccess" class="hidden mt-4 p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-400 text-center text-sm" role="status" aria-live="polite" tabindex="-1">
@@ -58,6 +77,7 @@
   const nameInput = document.getElementById('portfolioName') as HTMLInputElement | null;
   const urlInput = document.getElementById('portfolioUrl') as HTMLInputElement | null;
   const submitBtn = submitForm?.querySelector<HTMLButtonElement>('button[type="submit"]') ?? null;
+  const submitLabel = submitBtn?.querySelector<HTMLElement>('.specular-button__label') ?? null;
   let previouslyFocused: HTMLElement | null = null;
   let closeTimer: ReturnType<typeof setTimeout> | null = null;
   let isSubmitting = false;
@@ -107,11 +127,19 @@
     submitForm?.reset();
     if (submitBtn) {
       submitBtn.disabled = isSubmitting;
+      submitBtn.classList.toggle('specular-button--loading', isSubmitting);
       if (isSubmitting) submitBtn.setAttribute('aria-busy', 'true');
       else submitBtn.removeAttribute('aria-busy');
     }
     requestAnimationFrame(() => nameInput?.focus());
   };
+
+  document.addEventListener('click', event => {
+    const target = event.target;
+    if (target instanceof Element && target.closest('[data-submit-trigger]')) {
+      (window as any).openSubmitModal();
+    }
+  });
 
   const closeModal = () => {
     if (!submitModal || !submitCard || !isOpen() || isSubmitting) return;
@@ -195,8 +223,8 @@
       return;
     }
 
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = `<svg class="animate-spin h-5 w-5 mr-3 text-white inline" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Submitting...`;
+    if (submitLabel) submitLabel.textContent = 'Submitting...';
+    submitBtn.classList.add('specular-button--loading');
     submitBtn.disabled = true;
     submitBtn.setAttribute('aria-busy', 'true');
     if (closeSubmitBtn) closeSubmitBtn.disabled = true;
@@ -238,7 +266,8 @@
         );
       }
     } finally {
-      submitBtn.innerHTML = originalText;
+      if (submitLabel) submitLabel.textContent = 'Submit for AI Review';
+      submitBtn.classList.remove('specular-button--loading');
       submitBtn.removeAttribute('aria-busy');
       submitBtn.disabled = succeeded;
       if (closeSubmitBtn) closeSubmitBtn.disabled = false;
