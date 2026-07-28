@@ -55600,7 +55600,6 @@
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkishormarasini.com.au?w=600"
   },
   {
-<<<<<<< HEAD
     "url": "https://ahmednassar7.github.io",
     "name": "Ahmed Nassar",
     "role": "",
@@ -55609,28 +55608,10 @@
     "tech_stack": [],
     "projects": [],
     "social_links": [],
-=======
-    "url": "https://ahmednassar7.github.io/",
-    "name": "Mohamed Nassar",
-    "role": "Backend Developer",
-    "specialization": "",
-    "summary": "Software Engineer specializing in backend development and open-source contributions",
-    "tech_stack": [
-      "Django",
-      "RESTful APIs",
-      "Python",
-      "GitHub",
-      "Discord",
-      "PDF tools",
-      "JavaScript",
-      "SQL"
-    ],
->>>>>>> a8117dd0a0b49cbd3d452b4f8670a85cba36c13f
     "available_for_hire": false,
     "primary_language": "",
     "views": 0,
     "has_blog": false,
-<<<<<<< HEAD
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fahmednassar7.github.io?w=600"
@@ -55644,53 +55625,12 @@
     "tech_stack": [],
     "projects": [],
     "social_links": [],
-=======
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fahmednassar7.github.io%2F?w=600",
-    "is_portfolio": true,
-    "location": "Cairo, Egypt",
-    "projects": [
-      "Scalable Django backend",
-      "Client-side PDF tools",
-      "Real-time train tracking",
-      "Secure ticketing",
-      "Software Engineering community"
-    ],
-    "social_links": [
-      "https://github.com/mohamednassar",
-      "https://discord.com/invite/softwareengineering"
-    ],
-    "seo_evaluation": "Average",
-    "portfolio_score": 8,
-    "ai_processed": true
-  },
-  {
-    "url": "https://swarnava.dev",
-    "name": "",
-    "role": "ML/AI Engineer",
-    "specialization": "",
-    "summary": "Senior Generative AI Engineer with expertise in improving pipeline latency and learner skill-gap detection accuracy",
-    "tech_stack": [
-      "Redis",
-      "Generative AI"
-    ],
->>>>>>> a8117dd0a0b49cbd3d452b4f8670a85cba36c13f
     "available_for_hire": false,
     "primary_language": "",
     "views": 0,
     "has_blog": false,
-<<<<<<< HEAD
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fswarnava.dev?w=600"
-=======
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fswarnava.dev?w=600",
-    "is_portfolio": false,
-    "location": "",
-    "projects": [],
-    "social_links": [],
-    "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 2,
-    "ai_processed": true
->>>>>>> a8117dd0a0b49cbd3d452b4f8670a85cba36c13f
   }
 ]
