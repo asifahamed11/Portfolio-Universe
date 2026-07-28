@@ -2,10 +2,10 @@
 window.triggerSpark = (btn) => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const sparkColor = '#f43f5e';
-  const sparkSize = 6;
-  const sparkRadius = 25;
-  const sparkCount = 12;
-  const duration = 500;
+  const sparkSize = 5;
+  const sparkRadius = 22;
+  const sparkCount = 10;
+  const duration = 320;
   
   const rect = btn.getBoundingClientRect();
   const x = rect.left + rect.width / 2;

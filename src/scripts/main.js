@@ -127,6 +127,8 @@ const initializeApp = () => {
   const resultStatus = document.getElementById('resultStatus');
   const searchInputDesk = document.getElementById('searchInputDesk');
   const searchInputMob = document.getElementById('searchInputMob');
+  const searchShells = Array.from(document.querySelectorAll('[data-search-shell]'));
+  const searchClearButtons = Array.from(document.querySelectorAll('[data-search-clear]'));
   const filterContainer = document.getElementById('filterContainer');
   const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
   const clearFiltersButton = document.getElementById('clearFiltersBtn');
@@ -144,6 +146,7 @@ const initializeApp = () => {
   const INITIAL_VISIBLE_COUNT = 40;
   const itemElements = new Map();
   const pendingBookmarkUrls = new Set();
+  const optimisticLikeDeltas = new Map();
   let allPortfolios = [];
   let filteredItems = [];
   let currentFilter = 'all';
@@ -369,9 +372,13 @@ const initializeApp = () => {
     }));
     const source = likes ?? cachedGlobalLikes;
     for (const [portfolio, key] of keyedPortfolios) {
-      portfolio.baseLikes = key
+      const persistedCount = key
         ? readGlobalLikeCount(source, portfolio.url, key)
         : 0;
+      portfolio.baseLikes = Math.max(
+        0,
+        persistedCount + (optimisticLikeDeltas.get(portfolio.url) || 0),
+      );
     }
   };
 
@@ -386,10 +393,13 @@ const initializeApp = () => {
       if (!url || !countElement) continue;
 
       try {
-        const count = readGlobalLikeCount(
-          cachedGlobalLikes,
-          url,
-          await getLikeKey(url),
+        const count = Math.max(
+          0,
+          readGlobalLikeCount(
+            cachedGlobalLikes,
+            url,
+            await getLikeKey(url),
+          ) + (optimisticLikeDeltas.get(url) || 0),
         );
         countElement.textContent = String(count);
       } catch {
@@ -416,6 +426,22 @@ const initializeApp = () => {
     );
   };
 
+  const setBookmarkButtonState = (button, isLiked, pending = false) => {
+    if (!(button instanceof HTMLButtonElement)) return;
+    const icon = button.querySelector('.heart-icon');
+    button.setAttribute('aria-pressed', String(isLiked));
+    button.setAttribute('aria-busy', String(pending));
+    button.classList.toggle('border-red-500/30', isLiked);
+    button.classList.toggle('bg-red-500/10', isLiked);
+    button.classList.toggle('text-red-400', isLiked);
+    button.toggleAttribute('disabled', pending);
+    if (icon) {
+      icon.setAttribute('fill', isLiked ? 'currentColor' : 'none');
+      icon.classList.toggle('text-red-500', isLiked);
+    }
+    updateBookmarkButtonLabel(button, isLiked);
+  };
+
   const updateBookmarkButtons = (root = gridContainer) => {
     const user = getStoredUser();
     const bookmarks = user ? readStoredBookmarks(user.uid) : [];
@@ -426,19 +452,40 @@ const initializeApp = () => {
     for (const button of buttons) {
       const url = normalizePortfolioUrl(button.dataset.url);
       const isLiked = Boolean(url && bookmarks.includes(url));
-      const icon = button.querySelector('.heart-icon');
+      setBookmarkButtonState(
+        button,
+        isLiked,
+        Boolean(url && pendingBookmarkUrls.has(url)),
+      );
+    }
+  };
 
-      button.setAttribute('aria-pressed', String(isLiked));
-      updateBookmarkButtonLabel(button, isLiked);
-      button.classList.toggle('border-red-500/30', isLiked);
-      button.classList.toggle('bg-red-500/10', isLiked);
-      button.classList.toggle('text-red-400', isLiked);
-      button.toggleAttribute('disabled', Boolean(url && pendingBookmarkUrls.has(url)));
+  const updateBookmarkButtonsForUrl = (url, isLiked, pending = false) => {
+    for (const button of gridContainer.querySelectorAll('.bookmark-btn')) {
+      if (normalizePortfolioUrl(button.dataset.url) !== url) continue;
+      setBookmarkButtonState(button, isLiked, pending);
+    }
+  };
 
-      if (icon) {
-        icon.setAttribute('fill', isLiked ? 'currentColor' : 'none');
-        icon.classList.toggle('text-red-500', isLiked);
+  const adjustOptimisticLikeCount = (url, amount) => {
+    const nextDelta = (optimisticLikeDeltas.get(url) || 0) + amount;
+    if (nextDelta === 0) optimisticLikeDeltas.delete(url);
+    else optimisticLikeDeltas.set(url, nextDelta);
+
+    for (const portfolio of allPortfolios) {
+      if (portfolio.url === url) {
+        portfolio.baseLikes = Math.max(0, toSafeCount(portfolio.baseLikes) + amount);
       }
+    }
+    for (const button of gridContainer.querySelectorAll('.bookmark-btn')) {
+      if (normalizePortfolioUrl(button.dataset.url) !== url) continue;
+      const countElement = button.querySelector('.like-count');
+      if (countElement) {
+        countElement.textContent = String(
+          Math.max(0, toSafeCount(countElement.textContent) + amount),
+        );
+      }
+      updateBookmarkButtonLabel(button);
     }
   };
 
@@ -605,9 +652,11 @@ const initializeApp = () => {
       if (normalizePortfolioUrl(button.dataset.url) !== url) continue;
       const icon = button.querySelector('.heart-icon');
       if (!icon) continue;
+      for (const animation of icon.getAnimations?.() || []) animation.cancel();
       icon.classList.remove('heart-animated', 'heart-unlike-animated');
-      void icon.offsetWidth;
-      icon.classList.add(isLiked ? 'heart-animated' : 'heart-unlike-animated');
+      requestAnimationFrame(() => {
+        icon.classList.add(isLiked ? 'heart-animated' : 'heart-unlike-animated');
+      });
       if (isLiked) window.triggerSpark?.(button);
     }
   };
@@ -672,8 +721,11 @@ const initializeApp = () => {
     bookmarkMutationVersion += 1;
     writeStoredBookmarks(user.uid, optimistic);
     pendingBookmarkUrls.add(url);
-    updateBookmarkButtons();
+    adjustOptimisticLikeCount(url, shouldLike ? 1 : -1);
+    updateBookmarkButtonsForUrl(url, shouldLike, true);
     animateHeart(url, shouldLike);
+    window.playPopSound?.(shouldLike ? 1 : 0.8);
+    if (shouldLike && navigator.vibrate) navigator.vibrate(28);
     if (currentFilter === 'likes') {
       applyFilters();
       if (restoreFilterFocus) {
@@ -691,12 +743,10 @@ const initializeApp = () => {
 
     try {
       await toggleLikeInFirestore(user.uid, url, shouldLike);
-      window.playPopSound?.(1);
       window.showToast?.(
         shouldLike ? 'Saved to My Likes!' : 'Removed from My Likes.',
         shouldLike ? 'heart' : 'check'
       );
-      if (shouldLike && navigator.vibrate) navigator.vibrate(50);
     } catch (error) {
       console.error('Bookmark update failed:', error);
       const current = readStoredBookmarks(user.uid);
@@ -705,11 +755,13 @@ const initializeApp = () => {
         : [...new Set([...current, url])];
       bookmarkMutationVersion += 1;
       writeStoredBookmarks(user.uid, rolledBack);
+      adjustOptimisticLikeCount(url, shouldLike ? -1 : 1);
       window.showToast?.('Could not save that change. Please try again.', 'error');
       if (currentFilter === 'likes') applyFilters();
     } finally {
       pendingBookmarkUrls.delete(url);
-      updateBookmarkButtons();
+      const isLiked = readStoredBookmarks(user.uid).includes(url);
+      updateBookmarkButtonsForUrl(url, isLiked, false);
       if (pendingBookmarkUrls.size === 0) {
         void refreshBookmarksFromServer(user.uid);
       }
@@ -782,25 +834,102 @@ const initializeApp = () => {
     }, { passive: true });
   }
 
+  const syncSearchUi = (value, { searching = false } = {}) => {
+    const normalizedValue = typeof value === 'string' ? value : '';
+    const hasValue = normalizedValue.length > 0;
+    for (const input of [searchInputDesk, searchInputMob]) {
+      if (input instanceof HTMLInputElement && input.value !== normalizedValue) {
+        input.value = normalizedValue;
+      }
+    }
+    for (const shell of searchShells) {
+      if (!(shell instanceof HTMLElement)) continue;
+      shell.dataset.hasValue = String(hasValue);
+      shell.dataset.searching = String(searching);
+    }
+    for (const button of searchClearButtons) {
+      if (!(button instanceof HTMLButtonElement)) continue;
+      button.hidden = !hasValue;
+      button.disabled = !hasValue;
+      button.tabIndex = hasValue ? 0 : -1;
+      button.setAttribute('aria-hidden', String(!hasValue));
+    }
+  };
+
+  const commitSearch = (value) => {
+    searchQuery = value.toLowerCase().trim();
+    syncSearchUi(value, { searching: false });
+    applyFilters({ resetPage: true });
+  };
+
+  const clearSearch = ({ focusInput = null, apply = true } = {}) => {
+    window.clearTimeout(searchTimer);
+    searchTimer = 0;
+    searchQuery = '';
+    syncSearchUi('', { searching: false });
+    if (apply) applyFilters({ resetPage: true });
+    if (focusInput instanceof HTMLInputElement) focusInput.focus();
+  };
+
   const handleSearch = (event) => {
     const input = event.currentTarget;
     if (!(input instanceof HTMLInputElement)) return;
 
-    if (input === searchInputDesk && searchInputMob instanceof HTMLInputElement) {
-      searchInputMob.value = input.value;
-    } else if (input === searchInputMob && searchInputDesk instanceof HTMLInputElement) {
-      searchInputDesk.value = input.value;
-    }
-
+    syncSearchUi(input.value, { searching: true });
     window.clearTimeout(searchTimer);
     searchTimer = window.setTimeout(() => {
-      searchQuery = input.value.toLowerCase().trim();
-      applyFilters({ resetPage: true });
-    }, 200);
+      searchTimer = 0;
+      commitSearch(input.value);
+    }, 125);
   };
 
   searchInputDesk?.addEventListener('input', handleSearch);
   searchInputMob?.addEventListener('input', handleSearch);
+
+  for (const button of searchClearButtons) {
+    button.addEventListener('click', () => {
+      const input = button.closest('[data-search-shell]')?.querySelector('input[type="search"]');
+      clearSearch({
+        focusInput: input instanceof HTMLInputElement ? input : null,
+      });
+    });
+  }
+
+  for (const input of [searchInputDesk, searchInputMob]) {
+    if (!(input instanceof HTMLInputElement)) continue;
+    input.addEventListener('keydown', event => {
+      if (event.key !== 'Escape') return;
+      event.preventDefault();
+      if (input.value) clearSearch({ focusInput: input });
+      else input.blur();
+    });
+  }
+
+  document.addEventListener('keydown', event => {
+    if (
+      event.key !== '/'
+      || event.defaultPrevented
+      || event.metaKey
+      || event.ctrlKey
+      || event.altKey
+      || document.querySelector('[role="dialog"][aria-hidden="false"]')
+    ) return;
+    const target = event.target;
+    if (
+      target instanceof HTMLInputElement
+      || target instanceof HTMLTextAreaElement
+      || (target instanceof HTMLElement && target.isContentEditable)
+    ) return;
+    const visibleInput = [searchInputDesk, searchInputMob].find(
+      input => input instanceof HTMLInputElement && input.offsetParent !== null,
+    );
+    if (!(visibleInput instanceof HTMLInputElement)) return;
+    event.preventDefault();
+    visibleInput.focus();
+    visibleInput.select();
+  });
+
+  syncSearchUi('');
 
   for (const button of filterButtons) {
     button.addEventListener('click', () => {
@@ -817,9 +946,7 @@ const initializeApp = () => {
   }
 
   clearFiltersButton?.addEventListener('click', () => {
-    searchQuery = '';
-    if (searchInputDesk instanceof HTMLInputElement) searchInputDesk.value = '';
-    if (searchInputMob instanceof HTMLInputElement) searchInputMob.value = '';
+    clearSearch({ apply: false });
     const allButton = filterButtons.find((button) => button.dataset.filter === 'all');
     if (allButton instanceof HTMLButtonElement) allButton.click();
   });

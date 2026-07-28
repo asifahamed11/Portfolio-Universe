@@ -5,7 +5,7 @@ import SpecularButton from './SpecularButton.jsx';
 
 <div
   id="submitModal"
-  class="fixed inset-0 z-50 flex items-start sm:items-center justify-center overflow-y-auto p-4 opacity-0 pointer-events-none transition-opacity duration-300"
+  class="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto p-3 sm:p-5 opacity-0 pointer-events-none transition-opacity duration-300"
   role="dialog"
   aria-modal="true"
   aria-labelledby="submitTitle"
@@ -13,56 +13,516 @@ import SpecularButton from './SpecularButton.jsx';
   aria-hidden="true"
   inert
 >
-  <div id="submitBackdrop" class="absolute inset-0 bg-gray-950/60 backdrop-blur-md"></div>
+  <div id="submitBackdrop" class="submit-modal__backdrop fixed inset-0"></div>
   
-  <div class="relative my-auto w-full max-w-lg max-h-[calc(100dvh-2rem)] overflow-y-auto bg-gray-900/80 backdrop-blur-xl border border-gray-700/50 rounded-3xl shadow-2xl p-6 sm:p-8 transform scale-95 transition-transform duration-300" id="submitCard" tabindex="-1" data-lenis-prevent>
-    <button type="button" id="closeSubmitBtn" aria-label="Close portfolio submission dialog" class="absolute top-4 right-4 text-gray-400 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 transition-colors p-2 rounded-full hover:bg-gray-800/50">
+  <div class="submit-modal__card relative my-auto w-full max-w-[34rem] overflow-hidden rounded-[28px] transform scale-95 focus:outline-none" id="submitCard" tabindex="-1" data-lenis-prevent>
+    <span class="submit-modal__glow submit-modal__glow--cyan" aria-hidden="true"></span>
+    <span class="submit-modal__glow submit-modal__glow--violet" aria-hidden="true"></span>
+    <span class="submit-modal__accent" aria-hidden="true"></span>
+
+    <button type="button" id="closeSubmitBtn" aria-label="Close portfolio submission dialog" class="submit-modal__close absolute top-4 right-4 z-20">
       <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
     </button>
-    
-    <div class="mb-6">
-      <h2 id="submitTitle" class="text-2xl font-bold text-white mb-2">Submit a Portfolio</h2>
-      <p id="submitDescription" class="text-gray-400 text-sm">Know a great developer portfolio? Add it to the universe! Approved submissions are analyzed to generate the summary and tags.</p>
-    </div>
 
-    <form id="submitForm" class="space-y-5">
-      <div>
-        <label for="portfolioName" class="block text-sm font-medium text-gray-300 mb-1">Developer Name</label>
-        <input type="text" id="portfolioName" required class="w-full bg-gray-800/50 border border-gray-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors" />
+    <div class="submit-modal__content relative z-10 p-5 pt-7 sm:p-8">
+      <div class="submit-modal__header submit-modal__reveal pr-12">
+        <div class="submit-modal__mark" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a7.7 7.7 0 0 0 .1-5.8M4.6 9a7.7 7.7 0 0 0 .1 6M9 4.6a7.7 7.7 0 0 1 6 0"/><path d="m17.5 5.5.5-2m-11.5 15-.5 2M5.5 6.5l-2-.5m15 12 2 .5"/></svg>
+        </div>
+        <div>
+          <p class="submit-modal__eyebrow">Community submission</p>
+          <h2 id="submitTitle" class="submit-modal__title">Submit a Portfolio</h2>
+          <p id="submitDescription" class="submit-modal__description">Send a standout creator into the universe. AI prepares the details, then every portfolio is reviewed before publishing.</p>
+        </div>
       </div>
-      <div>
-        <label for="portfolioUrl" class="block text-sm font-medium text-gray-300 mb-1">Website URL</label>
-        <input type="url" id="portfolioUrl" required class="w-full bg-gray-800/50 border border-gray-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors" />
+
+      <div class="submit-modal__pipeline submit-modal__reveal" aria-label="Review process">
+        <span><strong>01</strong> Submit</span>
+        <i aria-hidden="true"></i>
+        <span><strong>02</strong> AI analysis</span>
+        <i aria-hidden="true"></i>
+        <span><strong>03</strong> Review</span>
       </div>
+
+      <form id="submitForm" class="submit-modal__form submit-modal__reveal" aria-describedby="submitReviewNote submitFeedback">
+        <div class="submit-modal__field">
+          <label for="portfolioName">Developer name</label>
+          <div class="submit-modal__control">
+            <span aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+            </span>
+            <input type="text" id="portfolioName" required autocomplete="name" placeholder="e.g. Alex Morgan" />
+          </div>
+        </div>
+
+        <div class="submit-modal__field">
+          <label for="portfolioUrl">Portfolio URL</label>
+          <div class="submit-modal__control">
+            <span aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+            </span>
+            <input type="url" id="portfolioUrl" required inputmode="url" autocapitalize="none" spellcheck="false" placeholder="https://portfolio.dev" />
+          </div>
+        </div>
+
+        <p id="submitReviewNote" class="submit-modal__note">
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+          Only public portfolio links are accepted. Nothing publishes automatically.
+        </p>
+
+        <div id="submitFeedback" class="submit-modal__feedback hidden" role="alert" aria-live="assertive" tabindex="-1"></div>
+
+        <SpecularButton
+          client:load
+          id="submitPortfolioBtn"
+          type="submit"
+          size="md"
+          radius={12}
+          tint="#2563eb"
+          tintOpacity={0.24}
+          blur={10}
+          textColor="#ffffff"
+          lineColor="#e0f2fe"
+          baseColor="#4f46e5"
+          intensity={1.2}
+          shineSize={13}
+          shineFade={36}
+          thickness={1.1}
+          proximity={240}
+          className="specular-button--modal-primary"
+        >
+          <span data-submit-copy>Submit for AI Review</span>
+          <svg class="submit-modal__submit-arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m14 7 5 5-5 5"/></svg>
+        </SpecularButton>
+      </form>
       
-      <SpecularButton
-        client:load
-        id="submitPortfolioBtn"
-        type="submit"
-        size="md"
-        radius={12}
-        tint="#2563eb"
-        tintOpacity={0.24}
-        blur={10}
-        textColor="#ffffff"
-        lineColor="#e0f2fe"
-        baseColor="#4f46e5"
-        intensity={1.2}
-        shineSize={13}
-        shineFade={36}
-        thickness={1.1}
-        proximity={240}
-        className="specular-button--modal-primary"
-      >
-        Submit for AI Review
-      </SpecularButton>
-    </form>
-    
-    <div id="submitSuccess" class="hidden mt-4 p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-400 text-center text-sm" role="status" aria-live="polite" tabindex="-1">
-      Thanks! This portfolio has been queued for review.
+      <div id="submitSuccess" class="submit-modal__success hidden" role="status" aria-live="polite" tabindex="-1">
+        <div class="submit-modal__success-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>
+        </div>
+        <p>Queued for review</p>
+        <span>Thanks! We’ll analyze the portfolio and review it before it joins the universe.</span>
+      </div>
     </div>
   </div>
 </div>
+
+<style is:global>
+  #submitModal .submit-modal__backdrop {
+    background:
+      radial-gradient(circle at 22% 16%, rgba(34, 211, 238, 0.11), transparent 34%),
+      radial-gradient(circle at 82% 82%, rgba(139, 92, 246, 0.13), transparent 38%),
+      rgba(2, 6, 18, 0.7);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    backdrop-filter: blur(14px) saturate(120%);
+  }
+
+  #submitModal .submit-modal__card {
+    border: 1px solid rgba(148, 163, 184, 0.19);
+    background:
+      linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(6, 11, 25, 0.94));
+    box-shadow:
+      0 32px 90px rgba(0, 0, 0, 0.52),
+      0 0 0 1px rgba(56, 189, 248, 0.055),
+      inset 0 1px 0 rgba(255, 255, 255, 0.09);
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+    transition:
+      opacity 320ms ease,
+      transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #submitModal[aria-hidden="false"] .submit-modal__card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  #submitModal .submit-modal__glow {
+    position: absolute;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 999px;
+    filter: blur(72px);
+    opacity: 0.16;
+    pointer-events: none;
+  }
+
+  #submitModal .submit-modal__glow--cyan {
+    top: -9rem;
+    left: -7rem;
+    background: #22d3ee;
+  }
+
+  #submitModal .submit-modal__glow--violet {
+    right: -8rem;
+    bottom: -10rem;
+    background: #8b5cf6;
+  }
+
+  #submitModal .submit-modal__accent {
+    position: absolute;
+    top: 0;
+    left: 12%;
+    right: 12%;
+    z-index: 2;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #67e8f9, #c4b5fd, transparent);
+    box-shadow: 0 0 18px rgba(103, 232, 249, 0.65);
+    transform: scaleX(0);
+    transform-origin: center;
+  }
+
+  #submitModal[aria-hidden="false"] .submit-modal__accent {
+    animation: submitAccentReveal 650ms 120ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  #submitModal .submit-modal__close {
+    display: grid;
+    width: 2.5rem;
+    height: 2.5rem;
+    place-items: center;
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.64);
+    color: rgba(203, 213, 225, 0.75);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition:
+      color 160ms ease,
+      border-color 160ms ease,
+      background-color 160ms ease,
+      transform 160ms ease;
+  }
+
+  #submitModal .submit-modal__close:hover {
+    border-color: rgba(103, 232, 249, 0.3);
+    background: rgba(34, 211, 238, 0.09);
+    color: #ecfeff;
+    transform: rotate(5deg);
+  }
+
+  #submitModal .submit-modal__close:focus-visible {
+    outline: 2px solid #67e8f9;
+    outline-offset: 3px;
+  }
+
+  #submitModal .submit-modal__close:disabled {
+    cursor: wait;
+    opacity: 0.45;
+  }
+
+  #submitModal .submit-modal__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+  }
+
+  #submitModal .submit-modal__mark {
+    display: grid;
+    flex: 0 0 auto;
+    width: 3rem;
+    height: 3rem;
+    place-items: center;
+    border: 1px solid rgba(103, 232, 249, 0.22);
+    border-radius: 1rem;
+    background:
+      linear-gradient(135deg, rgba(34, 211, 238, 0.14), rgba(139, 92, 246, 0.12));
+    color: #a5f3fc;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.11),
+      0 10px 30px rgba(8, 145, 178, 0.08);
+  }
+
+  #submitModal .submit-modal__eyebrow {
+    margin: 0 0 0.3rem;
+    color: #67e8f9;
+    font-size: 0.67rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  #submitModal .submit-modal__title {
+    margin: 0;
+    color: #f8fafc;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.55rem, 5vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.08;
+  }
+
+  #submitModal .submit-modal__description {
+    max-width: 28rem;
+    margin: 0.55rem 0 0;
+    color: rgba(203, 213, 225, 0.72);
+    font-size: 0.875rem;
+    line-height: 1.55;
+  }
+
+  #submitModal .submit-modal__pipeline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.55rem;
+    margin: 1.35rem 0;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid rgba(148, 163, 184, 0.11);
+    border-radius: 0.9rem;
+    background: rgba(15, 23, 42, 0.42);
+    color: rgba(203, 213, 225, 0.65);
+    font-size: 0.68rem;
+    font-weight: 650;
+    letter-spacing: 0.03em;
+  }
+
+  #submitModal .submit-modal__pipeline span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    white-space: nowrap;
+  }
+
+  #submitModal .submit-modal__pipeline strong {
+    color: #a5f3fc;
+    font-size: 0.6rem;
+  }
+
+  #submitModal .submit-modal__pipeline i {
+    flex: 1 1 auto;
+    height: 1px;
+    min-width: 0.6rem;
+    background: linear-gradient(90deg, rgba(103, 232, 249, 0.3), rgba(167, 139, 250, 0.25));
+  }
+
+  #submitModal .submit-modal__form {
+    display: grid;
+    gap: 1rem;
+  }
+
+  #submitModal .submit-modal__field label {
+    display: block;
+    margin: 0 0 0.45rem 0.15rem;
+    color: rgba(226, 232, 240, 0.86);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.015em;
+  }
+
+  #submitModal .submit-modal__control {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 3.05rem;
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    border-radius: 0.9rem;
+    background: rgba(8, 15, 31, 0.7);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+    transition:
+      transform 190ms cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 190ms ease,
+      box-shadow 190ms ease,
+      background-color 190ms ease;
+  }
+
+  #submitModal .submit-modal__control:focus-within {
+    border-color: rgba(103, 232, 249, 0.5);
+    background: rgba(8, 18, 36, 0.86);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.055),
+      0 0 0 3px rgba(34, 211, 238, 0.09),
+      0 8px 24px rgba(8, 145, 178, 0.08);
+    transform: translateY(-1px);
+  }
+
+  #submitModal .submit-modal__control > span {
+    position: absolute;
+    left: 0.9rem;
+    display: grid;
+    place-items: center;
+    color: rgba(148, 163, 184, 0.66);
+    pointer-events: none;
+    transition:
+      color 180ms ease,
+      filter 180ms ease;
+  }
+
+  #submitModal .submit-modal__control:focus-within > span {
+    color: #67e8f9;
+    filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.42));
+  }
+
+  #submitModal .submit-modal__control input {
+    width: 100%;
+    height: 3.05rem;
+    border: 0;
+    outline: none;
+    background: transparent;
+    padding: 0 1rem 0 2.75rem;
+    color: #f1f5f9;
+    caret-color: #67e8f9;
+    font-size: 0.94rem;
+  }
+
+  #submitModal .submit-modal__control input::placeholder {
+    color: rgba(100, 116, 139, 0.82);
+  }
+
+  #submitModal .submit-modal__control input:disabled {
+    cursor: wait;
+    opacity: 0.58;
+  }
+
+  #submitModal .submit-modal__note {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    margin: 0;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid rgba(52, 211, 153, 0.11);
+    border-radius: 0.8rem;
+    background: rgba(16, 185, 129, 0.045);
+    color: rgba(167, 243, 208, 0.68);
+    font-size: 0.71rem;
+    line-height: 1.45;
+  }
+
+  #submitModal .submit-modal__note svg {
+    flex: 0 0 auto;
+    margin-top: 0.08rem;
+    color: #6ee7b7;
+  }
+
+  #submitModal .submit-modal__feedback {
+    padding: 0.75rem 0.85rem;
+    border: 1px solid rgba(251, 113, 133, 0.24);
+    border-radius: 0.8rem;
+    background: rgba(244, 63, 94, 0.08);
+    color: #fecdd3;
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  #submitModal .submit-modal__feedback:focus {
+    outline: 2px solid rgba(251, 113, 133, 0.52);
+    outline-offset: 2px;
+  }
+
+  #submitModal .submit-modal__submit-arrow {
+    transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #submitModal .specular-button--modal-primary:hover .submit-modal__submit-arrow {
+    transform: translateX(3px);
+  }
+
+  #submitModal .submit-modal__success {
+    padding: 2.3rem 1.2rem 1.8rem;
+    text-align: center;
+  }
+
+  #submitModal .submit-modal__success:not(.hidden) {
+    animation: submitItemReveal 430ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  #submitModal .submit-modal__success-icon {
+    display: grid;
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto 1rem;
+    place-items: center;
+    border: 1px solid rgba(110, 231, 183, 0.3);
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(34, 211, 238, 0.1));
+    color: #6ee7b7;
+    box-shadow:
+      0 0 0 8px rgba(16, 185, 129, 0.035),
+      0 16px 42px rgba(16, 185, 129, 0.12);
+  }
+
+  #submitModal .submit-modal__success p {
+    margin: 0;
+    color: #ecfdf5;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+  }
+
+  #submitModal .submit-modal__success span {
+    display: block;
+    max-width: 24rem;
+    margin: 0.55rem auto 0;
+    color: rgba(167, 243, 208, 0.7);
+    font-size: 0.84rem;
+    line-height: 1.5;
+  }
+
+  #submitModal .submit-modal__reveal {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+
+  #submitModal[aria-hidden="false"] .submit-modal__reveal {
+    animation: submitItemReveal 430ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  #submitModal[aria-hidden="false"] .submit-modal__pipeline {
+    animation-delay: 55ms;
+  }
+
+  #submitModal[aria-hidden="false"] .submit-modal__form {
+    animation-delay: 105ms;
+  }
+
+  @keyframes submitAccentReveal {
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes submitItemReveal {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 480px) {
+    #submitModal .submit-modal__content {
+      padding: 1.25rem;
+      padding-top: 1.5rem;
+    }
+
+    #submitModal .submit-modal__header {
+      gap: 0.7rem;
+    }
+
+    #submitModal .submit-modal__mark {
+      width: 2.65rem;
+      height: 2.65rem;
+      border-radius: 0.85rem;
+    }
+
+    #submitModal .submit-modal__description {
+      font-size: 0.8rem;
+    }
+
+    #submitModal .submit-modal__control input {
+      font-size: 1rem;
+    }
+
+    #submitModal .submit-modal__pipeline {
+      gap: 0.35rem;
+      padding: 0.6rem;
+      font-size: 0.61rem;
+    }
+
+    #submitModal .submit-modal__pipeline strong {
+      display: none;
+    }
+  }
+</style>
 
 <script>
   import { auth } from '../lib/firebase.js';
@@ -74,10 +534,11 @@ import SpecularButton from './SpecularButton.jsx';
   const closeSubmitBtn = document.getElementById('closeSubmitBtn') as HTMLButtonElement | null;
   const submitForm = document.getElementById('submitForm') as HTMLFormElement | null;
   const submitSuccess = document.getElementById('submitSuccess') as HTMLElement | null;
+  const submitFeedback = document.getElementById('submitFeedback') as HTMLElement | null;
   const nameInput = document.getElementById('portfolioName') as HTMLInputElement | null;
   const urlInput = document.getElementById('portfolioUrl') as HTMLInputElement | null;
   const submitBtn = submitForm?.querySelector<HTMLButtonElement>('button[type="submit"]') ?? null;
-  const submitLabel = submitBtn?.querySelector<HTMLElement>('.specular-button__label') ?? null;
+  const submitCopy = submitBtn?.querySelector<HTMLElement>('[data-submit-copy]') ?? null;
   let previouslyFocused: HTMLElement | null = null;
   let closeTimer: ReturnType<typeof setTimeout> | null = null;
   let isSubmitting = false;
@@ -123,6 +584,10 @@ import SpecularButton from './SpecularButton.jsx';
       document.body.classList.add('modal-open');
     }
     submitSuccess?.classList.add('hidden');
+    if (submitFeedback) {
+      submitFeedback.textContent = '';
+      submitFeedback.classList.add('hidden');
+    }
     submitForm?.classList.remove('hidden');
     submitForm?.reset();
     if (submitBtn) {
@@ -131,6 +596,9 @@ import SpecularButton from './SpecularButton.jsx';
       if (isSubmitting) submitBtn.setAttribute('aria-busy', 'true');
       else submitBtn.removeAttribute('aria-busy');
     }
+    submitForm?.setAttribute('aria-busy', String(isSubmitting));
+    if (nameInput) nameInput.disabled = isSubmitting;
+    if (urlInput) urlInput.disabled = isSubmitting;
     requestAnimationFrame(() => nameInput?.focus());
   };
 
@@ -181,6 +649,14 @@ import SpecularButton from './SpecularButton.jsx';
 
   closeSubmitBtn?.addEventListener('click', closeModal);
   submitBackdrop?.addEventListener('click', closeModal);
+  for (const input of [nameInput, urlInput]) {
+    input?.addEventListener('input', () => {
+      if (submitFeedback && !submitFeedback.classList.contains('hidden')) {
+        submitFeedback.textContent = '';
+        submitFeedback.classList.add('hidden');
+      }
+    });
+  }
   document.addEventListener('keydown', (event) => {
     if (!isOpen()) return;
     if (event.key === 'Escape') {
@@ -223,10 +699,13 @@ import SpecularButton from './SpecularButton.jsx';
       return;
     }
 
-    if (submitLabel) submitLabel.textContent = 'Submitting...';
+    if (submitCopy) submitCopy.textContent = 'Submitting...';
     submitBtn.classList.add('specular-button--loading');
     submitBtn.disabled = true;
     submitBtn.setAttribute('aria-busy', 'true');
+    submitForm.setAttribute('aria-busy', 'true');
+    nameInput.disabled = true;
+    urlInput.disabled = true;
     if (closeSubmitBtn) closeSubmitBtn.disabled = true;
     submitCard?.focus();
     isSubmitting = true;
@@ -255,21 +734,29 @@ import SpecularButton from './SpecularButton.jsx';
       closeTimer = setTimeout(() => {
         closeTimer = null;
         closeModal();
-      }, 2000);
+      }, 2800);
     } catch (error) {
       console.error(error);
       if (currentRun === submissionRun && isOpen()) {
-        alert(
-          error instanceof DOMException && error.name === 'TimeoutError'
-            ? 'The network is taking too long. The submission may still finish; please wait before retrying.'
-            : 'Error submitting portfolio. Please try again later.'
-        );
+        const message = error instanceof DOMException && error.name === 'TimeoutError'
+          ? 'The network is taking too long. Your submission may still finish—please wait before retrying.'
+          : 'We could not submit this portfolio. Check the details and try again.';
+        if (submitFeedback) {
+          submitFeedback.textContent = message;
+          submitFeedback.classList.remove('hidden');
+          submitFeedback.focus();
+        } else {
+          (window as any).showToast?.(message, 'error');
+        }
       }
     } finally {
-      if (submitLabel) submitLabel.textContent = 'Submit for AI Review';
+      if (submitCopy) submitCopy.textContent = 'Submit for AI Review';
       submitBtn.classList.remove('specular-button--loading');
       submitBtn.removeAttribute('aria-busy');
       submitBtn.disabled = succeeded;
+      submitForm.setAttribute('aria-busy', 'false');
+      nameInput.disabled = false;
+      urlInput.disabled = false;
       if (closeSubmitBtn) closeSubmitBtn.disabled = false;
       isSubmitting = false;
     }
