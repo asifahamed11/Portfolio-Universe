@@ -4,8 +4,6 @@ import LoginModal from '../components/LoginModal.astro';
 import SubmitModal from '../components/SubmitModal.astro';
 import CustomCursor from '../components/CustomCursor.astro';
 import portfoliosData from '../data/portfolios.json';
-import VariableProximityWrapper from '../components/VariableProximityWrapper.jsx';
-import Shuffle from '../components/Shuffle.jsx';
 import SpecularButton from '../components/SpecularButton.jsx';
 import DotField from '../components/DotField.jsx';
 import '../styles/global.css';
@@ -95,12 +93,6 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
         }
       }
 
-      .text-metallic {
-        background: linear-gradient(to bottom right, #ffffff 30%, #737373 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
       @keyframes heartBurst {
         0% { transform: scale(1); }
         25% { transform: scale(1.5) rotate(-10deg); filter: brightness(1.5) drop-shadow(0 0 8px rgba(244,63,94,0.6)); }
@@ -131,6 +123,9 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
       .portfolio-wrapper {
         position: relative;
         z-index: 1;
+        display: flex;
+        min-width: 0;
+        height: 100%;
       }
       .portfolio-wrapper:hover,
       .portfolio-wrapper:focus-within {
@@ -139,40 +134,24 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
     </style>
 
     <!-- Navigation Bar -->
-    <nav id="topNavBar" class="sticky top-3 z-40 max-w-7xl mx-4 xl:mx-auto rounded-[24px] border border-white/[0.05]" style="transition: top 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);">
+    <nav id="topNavBar" class="site-nav sticky top-3 z-[80] mx-3 max-w-7xl rounded-[22px] sm:mx-4 xl:mx-auto">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-14">
-          <button type="button" id="scrollToTopBtn" aria-label="Scroll to the top" class="flex items-center gap-2 cursor-pointer rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
-            <span class="text-white font-extrabold tracking-tight text-lg flex items-center gap-1.5" style="font-family: 'Space Grotesk', sans-serif;">
-              Portfolio
-              <Shuffle 
-                client:load 
-                text="Universe" 
-                className="text-cyan-400 pb-1"
-                shuffleDirection="right"
-                duration={0.35}
-                stagger={0.03}
-                shuffleTimes={1}
-                triggerOnHover={true}
-              />
+        <div class="flex items-center justify-between h-16">
+          <button type="button" id="scrollToTopBtn" aria-label="Scroll to the top" class="brand-lockup group/brand flex min-w-0 items-center gap-2.5 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/80 focus-visible:ring-offset-4 focus-visible:ring-offset-[#07101e]">
+            <span class="brand-orbit" aria-hidden="true">
+              <span class="brand-orbit__ring"></span>
+              <span class="brand-orbit__ring brand-orbit__ring--inner"></span>
+              <span class="brand-orbit__core"></span>
             </span>
+            <span class="brand-wordmark" aria-hidden="true">
+              <span class="brand-wordmark__portfolio">Portfolio</span>
+              <span class="brand-wordmark__universe">Universe</span>
+            </span>
+            <span class="sr-only">Portfolio Universe</span>
           </button>
           
           <div class="flex items-center gap-3 md:gap-4">
-            <!-- Search Bar (Desktop) -->
-            <div class="search-shell relative hidden md:block w-64 lg:w-72" data-search-shell>
-              <label for="searchInputDesk" class="sr-only">Search developer portfolios</label>
-              <span class="search-shell__icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7.5"/><path d="m20 20-3.8-3.8"/></svg>
-              </span>
-              <input type="search" id="searchInputDesk" placeholder="Search creators, roles, tech..." class="search-shell__input" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="search" aria-controls="portfolioGrid" aria-keyshortcuts="/" />
-              <span class="search-shell__shortcut" aria-hidden="true">/</span>
-              <button type="button" class="search-shell__clear" data-search-clear aria-label="Clear search" aria-hidden="true" tabindex="-1" hidden>
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m7 7 10 10M17 7 7 17"/></svg>
-              </button>
-            </div>
-
-            <div class="hidden md:block">
+            <div>
               <SpecularButton
                 client:load
                 size="sm"
@@ -190,8 +169,10 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
                 proximity={190}
                 className="specular-button--nav-quiet"
                 data-submit-trigger="true"
+                aria-label="Submit a portfolio"
               >
-                Submit
+                <svg aria-hidden="true" class="sm:hidden" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                <span class="hidden sm:inline">Submit portfolio</span>
               </SpecularButton>
             </div>
             
@@ -228,120 +209,97 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
             </div>
           </div>
         </div>
-        
-        <!-- Mobile actions: search + Submit (md:hidden) -->
-        <div class="md:hidden pb-3 flex items-center gap-2">
-          <div class="search-shell search-shell--mobile relative flex-1 min-w-0" data-search-shell>
-            <label for="searchInputMob" class="sr-only">Search developer portfolios</label>
-            <span class="search-shell__icon" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7.5"/><path d="m20 20-3.8-3.8"/></svg>
-            </span>
-            <input type="search" id="searchInputMob" placeholder="Search creators..." class="search-shell__input" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="search" aria-controls="portfolioGrid" />
-            <button type="button" class="search-shell__clear" data-search-clear aria-label="Clear search" aria-hidden="true" tabindex="-1" hidden>
-              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m7 7 10 10M17 7 7 17"/></svg>
-            </button>
-          </div>
-          <SpecularButton
-            client:load
-            size="sm"
-            radius={999}
-            tint="#8b5cf6"
-            tintOpacity={0.09}
-            blur={10}
-            textColor="#ffffff"
-            lineColor="#bae6fd"
-            baseColor="#475569"
-            intensity={1.1}
-            shineSize={12}
-            shineFade={34}
-            thickness={1}
-            proximity={170}
-            className="specular-button--mobile-submit"
-            data-submit-trigger="true"
-            aria-label="Submit a portfolio"
-          >
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-            Submit
-          </SpecularButton>
-        </div>
       </div>
     </nav>
 
-    <header class="pt-10 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center relative z-10 flex flex-col items-center justify-center">
-      
-      <!-- Linear/Vercel Style Sharp Badge -->
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-transparent text-[11px] font-semibold text-white/70 uppercase tracking-widest mb-6 animate-hero-text" style="animation-delay: 0.1s; box-shadow: 0 0 20px rgba(255,255,255,0.02);">
-        <span class="w-1.5 h-1.5 rounded-full bg-sky-400 shadow-[0_0_10px_rgba(56,189,248,0.8)] animate-pulse"></span>
-        Regularly Updated Showcase
-      </div>
-      
-      <!-- Monochrome High-Tracking Brutalist Title -->
-      <h1 class="text-5xl sm:text-6xl md:text-[5.5rem] font-bold mb-4 leading-[0.95] tracking-tighter flex flex-col items-center justify-center relative z-10 w-full uppercase" style="font-family: 'Space Grotesk', sans-serif;">
-        <span class="text-white animate-hero-text drop-shadow-xl" style="animation-delay: 0.2s; letter-spacing: -0.04em;">The Universe</span>
-        <span class="text-metallic animate-hero-text" style="animation-delay: 0.3s; letter-spacing: -0.04em;">of Creators</span>
-      </h1>
-      
-      <!-- Minimalist Subtitle -->
-      <div class="mt-5 text-[1rem] md:text-[1.1rem] text-gray-400 max-w-2xl mx-auto leading-relaxed font-normal animate-hero-text text-center" style="font-family: 'Outfit', sans-serif; animation-delay: 0.4s;">
-        <VariableProximityWrapper 
-          client:visible 
-          count={portfolios.length} 
-        />
+    <header class="hero-section relative z-10 mx-auto flex max-w-7xl flex-col items-center px-4 pb-8 pt-12 text-center sm:px-6 sm:pt-16 lg:px-8">
+      <div class="hero-aurora" aria-hidden="true"></div>
+      <div class="hero-orbit hero-orbit--one" aria-hidden="true"></div>
+      <div class="hero-orbit hero-orbit--two" aria-hidden="true"></div>
+
+      <div class="hero-eyebrow animate-hero-text" style="animation-delay: 0.08s;">
+        <span class="hero-eyebrow__signal" aria-hidden="true"></span>
+        Curated developer portfolios
+        <span class="hero-eyebrow__divider" aria-hidden="true"></span>
+        Updated regularly
       </div>
 
-      <!-- Glassmorphic Filters Container -->
-      <div class="filter-rail-shell mt-8 w-full md:w-max max-w-full mx-auto relative z-20 shadow-2xl rounded-[24px]">
-        
-          <div class="relative flex items-center justify-start md:justify-center overflow-x-auto overflow-y-hidden hide-scrollbar gap-2 w-full p-1.5" style="-webkit-overflow-scrolling: touch;" id="filterContainer" role="group" aria-label="Filter portfolios">
-        
-        <!-- Smooth Fluid Indicator -->
-        <div id="activeIndicator" class="absolute top-0 left-0 z-0 pointer-events-none" style="width: 0px; height: 0px; transform: translate3d(0px, 0px, 0);">
-          
+      <h1 class="hero-title" style="font-family: 'Space Grotesk', sans-serif;">
+        <span class="hero-title__line animate-hero-text" style="animation-delay: 0.16s;">The universe</span>
+        <span class="hero-title__line hero-title__line--accent animate-hero-text" style="animation-delay: 0.24s;">of creators</span>
+      </h1>
+
+      <p class="hero-copy animate-hero-text" style="animation-delay: 0.32s;">
+        Explore <strong>{portfolios.length.toLocaleString('en-US')}</strong> thoughtfully curated portfolios.
+        Find the craft, technology, and people behind standout work.
+      </p>
+
+      <section class="discovery-dock animate-hero-text" style="animation-delay: 0.4s;" aria-label="Discover portfolios">
+        <div class="search-shell discovery-search relative" data-search-shell>
+          <label for="searchInput" class="sr-only">Search developer portfolios</label>
+          <span class="search-shell__icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7.5"/><path d="m20 20-3.8-3.8"/></svg>
+          </span>
+          <input type="search" id="searchInput" placeholder="Search creator, role, or technology…" class="search-shell__input" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="search" aria-controls="portfolioGrid" aria-keyshortcuts="/" />
+          <span class="search-shell__shortcut" aria-hidden="true">/</span>
+          <button type="button" class="search-shell__clear" data-search-clear aria-label="Clear search" aria-hidden="true" tabindex="-1" hidden>
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m7 7 10 10M17 7 7 17"/></svg>
+          </button>
         </div>
 
-        <button type="button" class="filter-btn active group relative z-10 flex items-center gap-2 px-5 py-2.5 rounded-2xl text-[14px] font-medium transition-all duration-300 tracking-wide" data-filter="all" aria-pressed="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-70 group-hover:opacity-100 transition-opacity"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
-          All
-        </button>
-        <button type="button" class="filter-btn group relative z-10 flex items-center gap-2 px-5 py-2.5 rounded-2xl text-[14px] font-medium text-purple-400 hover:text-purple-300 hover:bg-purple-500/10 transition-all duration-300 tracking-wide" data-filter="most_viewed" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
-          Trending
-        </button>
-        <button type="button" class="filter-btn group relative z-10 flex items-center gap-2 px-5 py-2.5 rounded-2xl text-[14px] font-medium text-gray-400 hover:text-white hover:bg-white/[0.05] transition-all duration-300 tracking-wide" data-filter="frontend" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-70 group-hover:opacity-100 transition-opacity"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          Frontend
-        </button>
-        <button type="button" class="filter-btn group relative z-10 flex items-center gap-2 px-5 py-2.5 rounded-2xl text-[14px] font-medium text-gray-400 hover:text-white hover:bg-white/[0.05] transition-all duration-300 tracking-wide" data-filter="backend" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-70 group-hover:opacity-100 transition-opacity"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-          Backend
-        </button>
-        <button type="button" class="filter-btn group relative z-10 flex items-center gap-2 px-5 py-2.5 rounded-2xl text-[14px] font-medium text-gray-400 hover:text-white hover:bg-white/[0.05] transition-all duration-300 tracking-wide" data-filter="fullstack" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-70 group-hover:opacity-100 transition-opacity"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-          Full Stack
-        </button>
-        <button type="button" class="filter-btn group relative z-10 flex items-center gap-2 px-5 py-2.5 rounded-2xl text-[14px] font-medium text-gray-400 hover:text-white hover:bg-white/[0.05] transition-all duration-300 tracking-wide" data-filter="designer" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-70 group-hover:opacity-100 transition-opacity"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-          Design
-        </button>
-        
-        <div class="w-[2px] h-6 bg-white/[0.08] rounded-full self-center mx-2 hidden sm:block relative z-10"></div>
+        <label class="discovery-select">
+          <span class="discovery-control__icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+          </span>
+          <span class="discovery-control__copy"><small>Role</small></span>
+          <select id="roleFilterSelect" aria-label="Filter by role">
+            <option value="all">All roles</option>
+            <option value="fullstack">Full Stack</option>
+            <option value="frontend">Frontend</option>
+            <option value="backend">Backend</option>
+            <option value="ai">AI / ML</option>
+            <option value="mobile">Mobile</option>
+            <option value="devops">DevOps / Cloud</option>
+            <option value="designer">Design</option>
+            <option value="other">Other roles</option>
+          </select>
+          <svg class="discovery-select__chevron" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m7 10 5 5 5-5"/></svg>
+        </label>
 
-        <button type="button" class="filter-btn group relative z-10 flex items-center gap-2 px-5 py-2.5 rounded-2xl text-[14px] font-medium text-emerald-400 hover:text-emerald-300 hover:bg-emerald-500/10 transition-all duration-300 tracking-wide" data-filter="hire" aria-pressed="false">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] group-hover:animate-pulse"></span>
-          Hire Me
+        <button type="button" id="hireFilterBtn" class="discovery-toggle" aria-pressed="false">
+          <span class="discovery-toggle__signal" aria-hidden="true"></span>
+          <span><small>Availability</small>Open to work</span>
         </button>
-        <button type="button" class="filter-btn group relative z-10 flex items-center gap-2 px-5 py-2.5 rounded-2xl text-[14px] font-medium text-rose-400 hover:text-rose-300 hover:bg-rose-500/10 transition-all duration-300 tracking-wide" data-filter="likes" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-          My Likes
+
+        <label class="discovery-select">
+          <span class="discovery-control__icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M6 12h12M9 18h6"/></svg>
+          </span>
+          <span class="discovery-control__copy"><small>Sort</small></span>
+          <select id="sortSelect" aria-label="Sort portfolios">
+            <option value="curated">Curated</option>
+            <option value="score">Top rated</option>
+            <option value="likes">Most liked</option>
+            <option value="views">Most viewed</option>
+          </select>
+          <svg class="discovery-select__chevron" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m7 10 5 5 5-5"/></svg>
+        </label>
+
+        <button type="button" id="savedFilterBtn" class="discovery-toggle discovery-toggle--saved" aria-pressed="false">
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          <span><small>Collection</small>Saved</span>
         </button>
-          </div>
-        
+      </section>
+
+      <div class="discovery-meta animate-hero-text" style="animation-delay: 0.46s;">
+        <span><strong id="resultCount">{portfolios.length.toLocaleString('en-US')}</strong> portfolios ready to explore</span>
+        <button type="button" class="discovery-reset" data-clear-filters hidden>Reset filters</button>
       </div>
     </header>
 
     <main id="portfolioMain" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-24 z-10" tabindex="-1">
       <p id="resultStatus" class="sr-only" role="status" aria-live="polite" aria-atomic="true">{portfolios.length} portfolios available.</p>
-      <div id="portfolioGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 items-start" aria-busy="false">
+      <div id="portfolioGrid" class="grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-8" aria-busy="false">
         {portfolios.slice(0, 40).map((portfolio, index) => (
           <div 
             class="portfolio-wrapper" 
@@ -351,6 +309,7 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
             data-role={portfolio.role?.toLowerCase() || ''}
             data-tech={Array.isArray(portfolio.tech_stack) ? portfolio.tech_stack.join(',').toLowerCase() : ''}
             data-hire={portfolio.available_for_hire ? 'true' : 'false'}
+            data-score={portfolio.portfolioScore || 0}
           >
             <PortfolioCard 
               name={portfolio.name} 
@@ -390,7 +349,7 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
         </div>
         <h3 class="text-xl font-bold text-white mb-2">No portfolios found</h3>
         <p class="text-gray-400 text-lg">Try adjusting your search or filters.</p>
-        <button type="button" id="clearFiltersBtn" class="mt-4 text-blue-400 hover:text-blue-300 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded">Clear all filters</button>
+        <button type="button" class="mt-4 rounded font-medium text-blue-400 hover:text-blue-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400" data-clear-filters>Clear all filters</button>
       </div>
 
       <!-- Infinite Scroll Trigger / Loader -->
@@ -619,14 +578,6 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
     outline-offset: 2px;
   }
 
-  .search-shell--mobile {
-    height: 2.75rem;
-  }
-
-  .search-shell--mobile .search-shell__input {
-    font-size: 1rem;
-  }
-
   @keyframes searchRimSweep {
     to {
       background-position: -220% 0;
@@ -664,122 +615,597 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
   }
 
 
-  .filter-rail-shell {
+  .site-nav {
     isolation: isolate;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.075);
+    border: 1px solid rgba(148, 163, 184, 0.13);
     background:
-      linear-gradient(115deg, rgba(15, 23, 42, 0.66), rgba(3, 7, 18, 0.76));
-    -webkit-backdrop-filter: blur(18px) saturate(135%);
-    backdrop-filter: blur(18px) saturate(135%);
+      linear-gradient(120deg, rgba(10, 17, 32, 0.88), rgba(7, 11, 24, 0.78));
+    -webkit-backdrop-filter: blur(20px) saturate(145%);
+    backdrop-filter: blur(20px) saturate(145%);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.08),
-      inset 0 -1px 0 rgba(15, 23, 42, 0.75),
-      0 18px 46px rgba(0, 0, 0, 0.32);
+      inset 0 1px 0 rgba(255, 255, 255, 0.07),
+      0 18px 55px rgba(0, 0, 0, 0.27);
+    transition:
+      transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 220ms ease;
+    will-change: transform;
   }
 
-  .filter-rail-shell::before {
+  #topNavBar::before {
+    background:
+      linear-gradient(90deg, rgba(34, 211, 238, 0.03), transparent 32%, transparent 68%, rgba(139, 92, 246, 0.04));
+  }
+
+  #topNavBar::after {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .brand-lockup {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .brand-orbit {
+    position: relative;
+    display: grid;
+    width: 1.85rem;
+    height: 1.85rem;
+    flex: 0 0 auto;
+    place-items: center;
+  }
+
+  .brand-orbit__ring {
+    position: absolute;
+    inset: 0.2rem;
+    border: 1px solid rgba(103, 232, 249, 0.55);
+    border-radius: 50%;
+    box-shadow:
+      0 0 14px rgba(34, 211, 238, 0.14),
+      inset 0 0 10px rgba(139, 92, 246, 0.1);
+    transform: rotate(-22deg) scaleY(0.55);
+    transition:
+      border-color 200ms ease,
+      box-shadow 200ms ease,
+      transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .brand-orbit__ring--inner {
+    inset: 0.42rem;
+    border-color: rgba(196, 181, 253, 0.56);
+    transform: rotate(58deg) scaleY(0.64);
+  }
+
+  .brand-orbit__core {
+    width: 0.34rem;
+    height: 0.34rem;
+    border-radius: 50%;
+    background: #a5f3fc;
+    box-shadow:
+      0 0 10px rgba(103, 232, 249, 0.85),
+      0 0 22px rgba(139, 92, 246, 0.5);
+  }
+
+  .brand-lockup:hover .brand-orbit__ring,
+  .brand-lockup:focus-visible .brand-orbit__ring {
+    border-color: rgba(165, 243, 252, 0.86);
+    box-shadow: 0 0 18px rgba(34, 211, 238, 0.26);
+    transform: rotate(158deg) scaleY(0.55);
+  }
+
+  .brand-lockup:hover .brand-orbit__ring--inner,
+  .brand-lockup:focus-visible .brand-orbit__ring--inner {
+    border-color: rgba(221, 214, 254, 0.8);
+    transform: rotate(-122deg) scaleY(0.64);
+  }
+
+  .brand-wordmark {
+    display: flex;
+    min-width: 0;
+    align-items: baseline;
+    gap: 0.38rem;
+    overflow: hidden;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.03rem;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    white-space: nowrap;
+  }
+
+  .brand-wordmark__portfolio {
+    color: rgba(248, 250, 252, 0.96);
+  }
+
+  .brand-wordmark__universe {
+    position: relative;
+    display: inline-block;
+    background:
+      linear-gradient(100deg, #67e8f9 0%, #a5b4fc 48%, #c4b5fd 72%, #67e8f9 100%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: brandReveal 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .brand-lockup:hover .brand-wordmark__universe,
+  .brand-lockup:focus-visible .brand-wordmark__universe {
+    animation: brandSweep 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes brandReveal {
+    from {
+      opacity: 0;
+      letter-spacing: 0.08em;
+      transform: translateY(0.45rem);
+    }
+  }
+
+  @keyframes brandSweep {
+    from { background-position: 100% 0; }
+    to { background-position: -100% 0; }
+  }
+
+  .hero-section {
+    min-height: 35rem;
+    overflow: hidden;
+  }
+
+  .hero-aurora {
+    position: absolute;
+    top: -9rem;
+    left: 50%;
+    z-index: -2;
+    width: min(64rem, 96vw);
+    height: 34rem;
+    background:
+      radial-gradient(circle at 38% 38%, rgba(34, 211, 238, 0.14), transparent 32%),
+      radial-gradient(circle at 64% 42%, rgba(139, 92, 246, 0.16), transparent 38%);
+    filter: blur(14px);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  .hero-orbit {
+    position: absolute;
+    z-index: -1;
+    border: 1px solid rgba(125, 211, 252, 0.055);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: rotate(-12deg) scaleY(0.38);
+  }
+
+  .hero-orbit--one {
+    top: -12rem;
+    width: 60rem;
+    height: 60rem;
+  }
+
+  .hero-orbit--two {
+    top: -7rem;
+    width: 42rem;
+    height: 42rem;
+    border-color: rgba(196, 181, 253, 0.065);
+    transform: rotate(14deg) scaleY(0.46);
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.62rem;
+    margin-bottom: 1.45rem;
+    padding: 0.42rem 0.72rem;
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.46);
+    color: rgba(203, 213, 225, 0.78);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+
+  .hero-eyebrow__signal {
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 50%;
+    background: #67e8f9;
+    box-shadow: 0 0 11px rgba(34, 211, 238, 0.8);
+  }
+
+  .hero-eyebrow__divider {
+    width: 1px;
+    height: 0.8rem;
+    background: rgba(148, 163, 184, 0.24);
+  }
+
+  .hero-title {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    font-size: clamp(3.45rem, 8vw, 6.8rem);
+    font-weight: 800;
+    line-height: 0.86;
+    letter-spacing: -0.068em;
+    text-transform: uppercase;
+  }
+
+  .hero-title__line {
+    display: block;
+    color: rgba(248, 250, 252, 0.98);
+    text-shadow: 0 20px 55px rgba(0, 0, 0, 0.38);
+  }
+
+  .hero-title__line--accent {
+    padding: 0.08em 0.09em 0.12em 0;
+    background: linear-gradient(105deg, #dbeafe 10%, #67e8f9 42%, #a5b4fc 68%, #c4b5fd 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero-copy {
+    max-width: 43rem;
+    margin-top: 1.7rem;
+    color: rgba(148, 163, 184, 0.9);
+    font-size: clamp(0.95rem, 1.7vw, 1.08rem);
+    line-height: 1.75;
+  }
+
+  .hero-copy strong {
+    color: #cffafe;
+    font-weight: 700;
+  }
+
+  .discovery-dock {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    width: 100%;
+    max-width: 76rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.55rem;
+    margin-top: 2.25rem;
+    padding: 0.6rem;
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    border-radius: 1.35rem;
+    background:
+      linear-gradient(118deg, rgba(12, 21, 38, 0.88), rgba(7, 12, 26, 0.91));
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.07),
+      0 24px 70px rgba(0, 0, 0, 0.34),
+      0 0 0 1px rgba(34, 211, 238, 0.025);
+    -webkit-backdrop-filter: blur(22px) saturate(145%);
+    backdrop-filter: blur(22px) saturate(145%);
+  }
+
+  .discovery-dock::before {
     content: '';
     position: absolute;
     inset: 0;
-    z-index: 20;
+    z-index: -1;
+    padding: 1px;
     border-radius: inherit;
-    box-shadow:
-      inset 1px 1px 0 rgba(255, 255, 255, 0.1),
-      inset -1px -1px 0 rgba(99, 102, 241, 0.06);
+    background: linear-gradient(105deg, transparent 3%, rgba(103, 232, 249, 0.36), transparent 45%, rgba(167, 139, 250, 0.3), transparent 92%);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    opacity: 0.55;
     pointer-events: none;
   }
 
-  #activeIndicator {
-    border: 1px solid transparent;
-    border-radius: 16px;
-    opacity: 0;
-    background:
-      linear-gradient(125deg, rgba(14, 23, 43, 0.9), rgba(18, 13, 38, 0.78)) padding-box,
-      conic-gradient(
-        from 220deg,
-        rgba(71, 85, 105, 0.52),
-        rgba(125, 211, 252, 0.92),
-        rgba(196, 181, 253, 0.6),
-        rgba(71, 85, 105, 0.45),
-        rgba(96, 165, 250, 0.72),
-        rgba(71, 85, 105, 0.52)
-      ) border-box;
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.12),
-      0 7px 20px rgba(14, 165, 233, 0.08);
-    -webkit-backdrop-filter: blur(10px) saturate(135%);
-    backdrop-filter: blur(10px) saturate(135%);
-    will-change: transform, width, height;
+  .discovery-search {
+    width: 100%;
+    height: 3.5rem;
+    border-radius: 0.9rem;
+    background: rgba(3, 8, 20, 0.62);
   }
 
-  #activeIndicator.is-ready {
-    opacity: 1;
+  .discovery-search .search-shell__input {
+    padding-left: 2.8rem;
+    font-size: 0.9rem;
+  }
+
+  .discovery-select,
+  .discovery-toggle {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    min-height: 3.5rem;
+    align-items: center;
+    gap: 0.55rem;
+    border: 1px solid rgba(148, 163, 184, 0.105);
+    border-radius: 0.9rem;
+    background: rgba(255, 255, 255, 0.025);
+    color: rgba(203, 213, 225, 0.88);
+    text-align: left;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
     transition:
-      transform 460ms cubic-bezier(0.34, 1.56, 0.64, 1),
-      width 460ms cubic-bezier(0.34, 1.56, 0.64, 1),
-      height 460ms cubic-bezier(0.34, 1.56, 0.64, 1),
-      opacity 160ms ease;
+      border-color 180ms ease,
+      background-color 180ms ease,
+      color 180ms ease,
+      transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 180ms ease;
   }
 
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .animate-fade-in-up {
-    animation: fadeInUp 0.5s ease-out forwards;
-  }
-  
-  /* Active filter button styles */
-  .filter-btn {
-    flex-shrink: 0;
-    white-space: nowrap;
-  }
-  .filter-btn.active {
-    color: rgb(96, 165, 250) !important; /* text-blue-400 */
+  .discovery-select {
+    padding: 0 0.72rem;
   }
 
-  /* Hide scrollbar for smooth horizontal scrolling */
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .hide-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  .discovery-control__icon {
+    display: grid;
+    flex: 0 0 auto;
+    place-items: center;
+    color: rgba(125, 211, 252, 0.68);
   }
 
-  .filter-rail-shell::after {
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: auto;
-    right: 2px;
-    bottom: 2px;
-    width: 2.5rem;
-    border-radius: 0 22px 22px 0;
-    background: linear-gradient(to right, transparent, rgba(2, 4, 12, 0.94));
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-    -webkit-filter: none;
-    filter: none;
+  .discovery-control__copy small,
+  .discovery-toggle small {
+    display: block;
+    margin-bottom: 0.08rem;
+    color: rgba(100, 116, 139, 0.82);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .discovery-select select {
+    min-width: 0;
+    flex: 1;
+    appearance: none;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: rgba(241, 245, 249, 0.92);
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 650;
+    cursor: pointer;
+  }
+
+  .discovery-select select option {
+    background: #0b1220;
+    color: #e2e8f0;
+  }
+
+  .discovery-select__chevron {
+    flex: 0 0 auto;
+    color: rgba(148, 163, 184, 0.62);
     pointer-events: none;
-    z-index: 30;
-    opacity: 0;
-    transition: opacity 200ms ease;
   }
 
-  .filter-rail-shell.filter-rail-has-overflow:not(.filter-rail-at-end)::after {
-    opacity: 1;
+  .discovery-toggle {
+    justify-content: flex-start;
+    padding: 0 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 650;
+    cursor: pointer;
   }
 
-  @media (min-width: 768px) {
-    .filter-rail-shell::after {
+  .discovery-toggle__signal {
+    width: 0.48rem;
+    height: 0.48rem;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: rgba(100, 116, 139, 0.85);
+    box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.08);
+    transition:
+      background-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .discovery-select:hover,
+  .discovery-select:focus-within,
+  .discovery-toggle:hover {
+    border-color: rgba(125, 211, 252, 0.24);
+    background: rgba(56, 189, 248, 0.055);
+    color: #f8fafc;
+  }
+
+  .discovery-select:focus-within,
+  .discovery-toggle:focus-visible {
+    outline: 2px solid rgba(103, 232, 249, 0.72);
+    outline-offset: 2px;
+  }
+
+  .discovery-toggle:active {
+    transform: scale(0.98);
+  }
+
+  .discovery-toggle[aria-pressed='true'] {
+    border-color: rgba(52, 211, 153, 0.28);
+    background: rgba(16, 185, 129, 0.085);
+    color: #a7f3d0;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 8px 24px rgba(16, 185, 129, 0.07);
+  }
+
+  .discovery-toggle[aria-pressed='true'] .discovery-toggle__signal {
+    background: #34d399;
+    box-shadow:
+      0 0 0 3px rgba(52, 211, 153, 0.1),
+      0 0 12px rgba(52, 211, 153, 0.7);
+  }
+
+  .discovery-toggle--saved > svg {
+    flex: 0 0 auto;
+    color: rgba(251, 113, 133, 0.8);
+  }
+
+  .discovery-toggle--saved[aria-pressed='true'] {
+    border-color: rgba(251, 113, 133, 0.3);
+    background: rgba(244, 63, 94, 0.085);
+    color: #fecdd3;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 8px 24px rgba(244, 63, 94, 0.07);
+  }
+
+  .discovery-toggle--saved[aria-pressed='true'] > svg {
+    fill: currentColor;
+    color: #fb7185;
+  }
+
+  .discovery-meta {
+    display: flex;
+    width: 100%;
+    max-width: 76rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.8rem;
+    padding: 0 0.35rem;
+    color: rgba(100, 116, 139, 0.92);
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-align: left;
+  }
+
+  .discovery-meta strong {
+    color: rgba(165, 243, 252, 0.9);
+  }
+
+  .discovery-reset {
+    flex: 0 0 auto;
+    border-radius: 999px;
+    color: rgba(165, 180, 252, 0.88);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .discovery-reset:hover {
+    color: #e0e7ff;
+  }
+
+  .discovery-reset:focus-visible {
+    outline: 2px solid rgba(165, 180, 252, 0.75);
+    outline-offset: 3px;
+  }
+
+  @media (min-width: 40rem) {
+    .discovery-dock {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .discovery-search {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .discovery-dock {
+      grid-template-columns:
+        minmax(18rem, 1.7fr)
+        minmax(10.5rem, 0.84fr)
+        minmax(9.5rem, 0.72fr)
+        minmax(9.5rem, 0.74fr)
+        minmax(7.5rem, 0.56fr);
+    }
+
+    .discovery-search {
+      grid-column: auto;
+    }
+  }
+
+  @media (max-width: 39.999rem) {
+    .brand-wordmark {
+      gap: 0.28rem;
+      font-size: 0.82rem;
+    }
+
+    .hero-section {
+      min-height: auto;
+      padding-top: 3rem;
+    }
+
+    .hero-title {
+      font-size: clamp(3.15rem, 17vw, 4.6rem);
+      line-height: 0.88;
+      letter-spacing: -0.06em;
+    }
+
+    .hero-copy {
+      margin-top: 1.35rem;
+      font-size: 0.92rem;
+    }
+
+    .hero-eyebrow {
+      max-width: 100%;
+      gap: 0.45rem;
+      font-size: 0.57rem;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-orbit {
+      display: none;
+    }
+
+    .discovery-dock {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 1.65rem;
+      padding: 0.5rem;
+      border-radius: 1.15rem;
+    }
+
+    .discovery-search {
+      grid-column: 1 / -1;
+    }
+
+    .discovery-select,
+    .discovery-toggle {
+      min-height: 3.25rem;
+    }
+
+    .discovery-control__copy {
+      display: none;
+    }
+
+    .discovery-select select,
+    .discovery-toggle {
+      font-size: 0.73rem;
+    }
+
+    .discovery-toggle {
+      padding-inline: 0.7rem;
+    }
+
+    .discovery-meta {
+      font-size: 0.68rem;
+    }
+  }
+
+  @media (max-width: 22.5rem) {
+    .brand-wordmark__universe {
       display: none;
     }
   }
-  
-  @keyframes shimmer {
-    100% { transform: translateX(100%); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .brand-wordmark__universe,
+    .brand-lockup:hover .brand-wordmark__universe,
+    .brand-lockup:focus-visible .brand-wordmark__universe {
+      animation: none;
+    }
+
+    .brand-orbit__ring,
+    .site-nav {
+      transition-duration: 1ms;
+    }
   }
 </style>
 

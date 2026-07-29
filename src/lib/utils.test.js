@@ -55,7 +55,14 @@ describe('portfolio sanitization', () => {
       tech_stack: ['React'],
       available_for_hire: false,
       views: 0,
+      portfolioScore: 0,
     });
+
+    expect(sanitizePortfolio({
+      name: 'Rated portfolio',
+      url: 'https://rated.example',
+      portfolio_score: 8.5,
+    })).toMatchObject({ portfolioScore: 8.5 });
   });
 
   it('uses the hostname when enrichment left the name blank', () => {

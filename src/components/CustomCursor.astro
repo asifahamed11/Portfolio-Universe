@@ -2,195 +2,403 @@
 // CustomCursor.astro
 ---
 
-<div id="custom-cursor" class="pointer-events-none fixed inset-0 z-[10000] hidden">
-  
-  <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <filter id="cursor-glass-filter" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
-      <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="1" seed="5" result="turbulence" />
-      <feComponentTransfer in="turbulence" result="mapped">
-        <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
-        <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
-        <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
-      </feComponentTransfer>
-      <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
-      <feSpecularLighting in="softMap" surfaceScale="3" specularConstant="0.4" specularExponent="100" lighting-color="white" result="specLight">
-        <fePointLight x="-200" y="-200" z="300" />
-      </feSpecularLighting>
-      <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
-      <feDisplacementMap in="SourceGraphic" in2="softMap" scale="40" xChannelSelector="R" yChannelSelector="G" />
-    </filter>
-  </svg>
-
-  <!-- Main Container -->
-  <div id="cursor-main" class="absolute top-0 left-0 rounded-full flex items-center justify-center will-change-transform transition-[width,height] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] z-[10000]" style="width: 24px; height: 24px; transform: translate(-50%, -50%);">
-    
-    <!-- Dynamic Background Glass Distortion Layer -->
-    <div id="cursor-glass-layer" class="absolute inset-0 rounded-full pointer-events-none overflow-hidden transition-[backdrop-filter] duration-300 transform-gpu" 
-         style="
-           -webkit-backdrop-filter: blur(0px);
-           backdrop-filter: blur(0px);
-           -webkit-filter: url(#cursor-glass-filter);
-           filter: url(#cursor-glass-filter);
-           will-change: transform, backdrop-filter;
-           transform: translateZ(0);
-         ">
-    </div>
-
-    <!-- Edge Lighting Layer -->
-    <div id="cursor-border-layer" class="absolute inset-0 rounded-full pointer-events-none transition-all duration-300"
-         style="
-           box-shadow: inset 2px 2px 0px -2px rgba(255, 255, 255, 0.3), inset 0 0 3px 1px rgba(255, 255, 255, 0.2);
-           border: 1px solid rgba(255,255,255,0.05);
-         ">
-    </div>
-  </div>
-  
-  <!-- Clear text wrapper -->
-  <div id="cursor-text-wrapper" class="absolute top-0 left-0 flex items-center justify-center will-change-transform pointer-events-none transition-[width,height] duration-300 z-[10001]" style="transform: translate(-50%, -50%); width: 24px; height: 24px;">
-    <span id="cursor-text" class="text-white text-[11px] uppercase tracking-[0.2em] font-extrabold opacity-0 transition-opacity duration-300 ml-[2px]" style="text-shadow: 0 2px 10px rgba(0,0,0,1);"></span>
-  </div>
+<div id="custom-cursor" class="custom-cursor" aria-hidden="true">
+  <span id="cursor-core" class="custom-cursor__core"></span>
+  <span id="cursor-ring" class="custom-cursor__ring">
+    <span id="cursor-label" class="custom-cursor__label"></span>
+  </span>
 </div>
 
 <style is:global>
-  @media (pointer: fine) {
+  .custom-cursor {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 120ms ease;
+  }
+
+  .custom-cursor.is-visible {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .custom-cursor__core,
+  .custom-cursor__ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    will-change: transform;
+    pointer-events: none;
+  }
+
+  .custom-cursor__core {
+    width: 6px;
+    height: 6px;
+    background: #e0f2fe;
+    box-shadow:
+      0 0 8px rgba(103, 232, 249, 0.95),
+      0 0 18px rgba(139, 92, 246, 0.5);
+    transition:
+      opacity 140ms ease,
+      background-color 140ms ease,
+      box-shadow 140ms ease;
+  }
+
+  .custom-cursor__ring {
+    width: 64px;
+    height: 64px;
+    border: 1px solid rgba(125, 211, 252, 0.62);
+    background: rgba(8, 18, 35, 0.075);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 0 18px rgba(34, 211, 238, 0.11);
+    -webkit-backdrop-filter: blur(2px) saturate(120%);
+    backdrop-filter: blur(2px) saturate(120%);
+    transition:
+      border-color 150ms ease,
+      background-color 150ms ease,
+      box-shadow 150ms ease;
+  }
+
+  .custom-cursor__ring::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(196, 181, 253, 0.12);
+    border-radius: inherit;
+  }
+
+  .custom-cursor__label {
+    margin-left: 0.12em;
+    color: #ecfeff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    opacity: 0;
+    text-shadow: 0 2px 9px rgba(0, 0, 0, 0.9);
+    transition: opacity 120ms ease;
+  }
+
+  .custom-cursor[data-mode='card'] .custom-cursor__core {
+    opacity: 0;
+  }
+
+  .custom-cursor[data-mode='card'] .custom-cursor__ring {
+    border-color: rgba(103, 232, 249, 0.72);
+    background:
+      radial-gradient(circle at 34% 26%, rgba(255, 255, 255, 0.13), transparent 26%),
+      rgba(7, 18, 34, 0.38);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.22),
+      0 0 22px rgba(34, 211, 238, 0.15),
+      0 0 34px rgba(139, 92, 246, 0.08);
+    -webkit-backdrop-filter: blur(5px) saturate(130%);
+    backdrop-filter: blur(5px) saturate(130%);
+  }
+
+  .custom-cursor[data-mode='card'] .custom-cursor__label {
+    opacity: 1;
+  }
+
+  .custom-cursor[data-mode='control'] .custom-cursor__ring {
+    border-color: rgba(165, 180, 252, 0.7);
+    background: rgba(99, 102, 241, 0.06);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.16),
+      0 0 18px rgba(99, 102, 241, 0.16);
+  }
+
+  .custom-cursor[data-mode='like'] .custom-cursor__core {
+    background: #fecdd3;
+    box-shadow: 0 0 11px rgba(251, 113, 133, 0.95);
+  }
+
+  .custom-cursor[data-mode='like'] .custom-cursor__ring {
+    border-color: rgba(251, 113, 133, 0.82);
+    background: rgba(244, 63, 94, 0.07);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      0 0 18px rgba(244, 63, 94, 0.2);
+  }
+
+  @media (any-hover: hover) and (any-pointer: fine) {
     html.custom-cursor-active,
-    html.custom-cursor-active * {
+    html.custom-cursor-active body,
+    html.custom-cursor-active body * {
       cursor: none !important;
     }
 
     html.custom-cursor-active input,
     html.custom-cursor-active textarea,
-    html.custom-cursor-active select,
-    html.custom-cursor-active [contenteditable="true"] {
+    html.custom-cursor-active [contenteditable='true'] {
       cursor: text !important;
+    }
+
+    html.custom-cursor-active select,
+    html.custom-cursor-active iframe,
+    html.custom-cursor-active video,
+    html.custom-cursor-active [data-cursor='native'],
+    html.custom-cursor-active input[type='checkbox'],
+    html.custom-cursor-active input[type='radio'],
+    html.custom-cursor-active input[type='range'] {
+      cursor: auto !important;
+    }
+
+    html.custom-cursor-active :disabled,
+    html.custom-cursor-active [aria-disabled='true'] {
+      cursor: not-allowed !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce), (forced-colors: active) {
+    .custom-cursor {
+      display: none !important;
     }
   }
 </style>
 
 <script>
   const initializeCustomCursor = () => {
-    const finePointer = window.matchMedia('(pointer: fine)');
+    const previousCleanup = (window as any).__portfolioCursorCleanup;
+    if (typeof previousCleanup === 'function') previousCleanup();
+
+    const capability = window.matchMedia('(any-hover: hover) and (any-pointer: fine)');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const forcedColors = window.matchMedia('(forced-colors: active)');
+    const cursor = document.getElementById('custom-cursor') as HTMLElement | null;
+    const core = document.getElementById('cursor-core') as HTMLElement | null;
+    const ring = document.getElementById('cursor-ring') as HTMLElement | null;
+    const label = document.getElementById('cursor-label') as HTMLElement | null;
+    if (!cursor || !core || !ring || !label) return;
 
-    const cursorContainer = document.getElementById('custom-cursor') as HTMLElement | null;
-    const cursorMain = document.getElementById('cursor-main') as HTMLElement | null;
-    const cursorTextWrapper = document.getElementById('cursor-text-wrapper') as HTMLElement | null;
-    const cursorText = document.getElementById('cursor-text') as HTMLElement | null;
-    const borderLayer = document.getElementById('cursor-border-layer') as HTMLElement | null;
-    if (!cursorContainer || !cursorMain || !cursorTextWrapper || !cursorText || !borderLayer) return;
+    const controller = new AbortController();
+    const { signal } = controller;
+    const modeScale = {
+      default: 0.4,
+      control: 0.59,
+      card: 1,
+      like: 0.53,
+    } as const;
+    type CursorMode = keyof typeof modeScale;
 
-    let cursorEnabled = finePointer.matches && !reducedMotion.matches;
-    document.documentElement.classList.toggle('custom-cursor-active', cursorEnabled);
-    cursorContainer.classList.toggle('hidden', !cursorEnabled);
-
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let cursorX = mouseX;
-    let cursorY = mouseY;
-    let targetScale = 1;
-    let currentScale = 1;
-    let frameId = 0;
+    let enabled = false;
     let visible = false;
-    let currentMode = 'default';
+    let initializedPosition = false;
+    let targetX = 0;
+    let targetY = 0;
+    let ringX = 0;
+    let ringY = 0;
+    let velocityX = 0;
+    let velocityY = 0;
+    let currentScale = modeScale.default;
+    let scaleVelocity = 0;
+    let targetPressScale = 1;
+    let currentMode: CursorMode = 'default';
+    let lastTarget: Element | null = null;
+    let lastTime = performance.now();
+    let frameId = 0;
 
-    const scheduleRender = () => {
-      if (cursorEnabled && !frameId && visible && !document.hidden) {
-        frameId = requestAnimationFrame(render);
-      }
-    };
+    const preferenceAllowsCursor = () =>
+      capability.matches && !reducedMotion.matches && !forcedColors.matches;
 
-    const render = () => {
-      frameId = 0;
-      cursorX += (mouseX - cursorX) * 0.25;
-      cursorY += (mouseY - cursorY) * 0.25;
-      currentScale += (targetScale - currentScale) * 0.25;
-
-      const transform = `translate3d(calc(${cursorX}px - 50%), calc(${cursorY}px - 50%), 0) scale(${currentScale})`;
-      cursorMain.style.transform = transform;
-      cursorTextWrapper.style.transform = transform;
-
-      if (
-        Math.abs(mouseX - cursorX) > 0.1
-        || Math.abs(mouseY - cursorY) > 0.1
-        || Math.abs(targetScale - currentScale) > 0.01
-      ) {
-        scheduleRender();
-      }
+    const setDocumentCursor = (active: boolean) => {
+      document.documentElement.classList.toggle('custom-cursor-active', active);
     };
 
     const setVisible = (nextVisible: boolean) => {
-      visible = cursorEnabled && nextVisible;
-      cursorContainer.classList.toggle('hidden', !visible);
-      if (visible) scheduleRender();
-      else if (frameId) {
+      const wasVisible = visible;
+      visible = enabled && nextVisible;
+      cursor.classList.toggle('is-visible', visible);
+      setDocumentCursor(visible);
+      if (visible && !wasVisible) lastTime = performance.now();
+      if (!visible && frameId) {
         cancelAnimationFrame(frameId);
         frameId = 0;
       }
     };
 
-    const syncCursorPreference = () => {
-      const wasEnabled = cursorEnabled;
-      cursorEnabled = finePointer.matches && !reducedMotion.matches;
-      document.documentElement.classList.toggle('custom-cursor-active', cursorEnabled);
-      if (!cursorEnabled) setVisible(false);
-      else if (!wasEnabled) setVisible(true);
+    const isNativeTarget = (target: Element | null) => Boolean(target?.closest(
+      'input, textarea, select, iframe, video, [contenteditable="true"], [data-cursor="native"], :disabled, [aria-disabled="true"]'
+    ));
+
+    const resolveMode = (target: Element | null): CursorMode => {
+      const explicitMode = target?.closest<HTMLElement>('[data-cursor]')?.dataset.cursor;
+      if (explicitMode === 'card' || explicitMode === 'control' || explicitMode === 'like') {
+        return explicitMode;
+      }
+      if (target?.closest('.bookmark-btn')) return 'like';
+      if (target?.closest('.portfolio-link')) return 'card';
+      if (target?.closest('button, a, [role="button"], label, .cursor-pointer')) return 'control';
+      return 'default';
     };
 
-    finePointer.addEventListener('change', syncCursorPreference);
-    reducedMotion.addEventListener('change', syncCursorPreference);
-
-    const setMode = (mode: 'default' | 'card' | 'control' | 'like') => {
+    const setMode = (mode: CursorMode) => {
       if (mode === currentMode) return;
       currentMode = mode;
-      const size = mode === 'card' ? 80 : mode === 'control' ? 48 : mode === 'like' ? 12 : 24;
-      cursorMain.style.width = `${size}px`;
-      cursorMain.style.height = `${size}px`;
-      cursorTextWrapper.style.width = `${size}px`;
-      cursorTextWrapper.style.height = `${size}px`;
-      cursorText.textContent = mode === 'card' ? 'OPEN' : '';
-      cursorText.style.opacity = mode === 'card' ? '1' : '0';
-      borderLayer.style.background = mode === 'control' ? 'rgba(244,63,94,0.02)' : 'transparent';
-      borderLayer.style.boxShadow = mode === 'like'
-        ? 'inset 2px 2px 0px -2px rgba(244,63,94,.6), inset 0 0 3px 1px rgba(244,63,94,.4)'
-        : mode === 'control'
-          ? 'inset 2px 2px 0px -2px rgba(244,63,94,.4), inset 0 0 5px 1px rgba(244,63,94,.2)'
-          : mode === 'card'
-            ? 'inset 2px 2px 0px -2px rgba(255,255,255,.4), inset 0 0 5px 2px rgba(255,255,255,.2)'
-            : 'inset 2px 2px 0px -2px rgba(255,255,255,.3), inset 0 0 3px 1px rgba(255,255,255,.2)';
+      cursor.dataset.mode = mode;
+      label.textContent = mode === 'card' ? 'VIEW' : '';
       scheduleRender();
     };
 
-    document.addEventListener('pointermove', (event) => {
-      if (!cursorEnabled) return;
-      mouseX = event.clientX;
-      mouseY = event.clientY;
-      setVisible(true);
+    const render = (now: number) => {
+      frameId = 0;
+      if (!visible || document.hidden) return;
 
-      const target = event.target instanceof Element ? event.target : null;
-      if (target?.closest('input, textarea, select, [contenteditable="true"]')) {
+      const deltaTime = Math.min(0.032, Math.max(0.001, (now - lastTime) / 1000));
+      lastTime = now;
+
+      const stiffness = 340;
+      const damping = 34;
+      velocityX += ((targetX - ringX) * stiffness - velocityX * damping) * deltaTime;
+      velocityY += ((targetY - ringY) * stiffness - velocityY * damping) * deltaTime;
+      ringX += velocityX * deltaTime;
+      ringY += velocityY * deltaTime;
+
+      const targetScale = modeScale[currentMode] * targetPressScale;
+      scaleVelocity += ((targetScale - currentScale) * 420 - scaleVelocity * 30) * deltaTime;
+      currentScale += scaleVelocity * deltaTime;
+
+      const speed = Math.min(900, Math.hypot(velocityX, velocityY));
+      const stretch = Math.min(0.18, speed / 4200);
+      const angle = speed > 12
+        ? Math.atan2(velocityY, velocityX) * (180 / Math.PI)
+        : 0;
+      const scaleX = Math.max(0.1, currentScale * (1 + stretch));
+      const scaleY = Math.max(0.1, currentScale * (1 - stretch * 0.52));
+
+      ring.style.transform =
+        `translate3d(${ringX - 32}px, ${ringY - 32}px, 0) rotate(${angle}deg) scaleX(${scaleX}) scaleY(${scaleY})`;
+
+      const unsettled =
+        Math.abs(targetX - ringX) > 0.08
+        || Math.abs(targetY - ringY) > 0.08
+        || Math.abs(velocityX) > 0.8
+        || Math.abs(velocityY) > 0.8
+        || Math.abs(targetScale - currentScale) > 0.002
+        || Math.abs(scaleVelocity) > 0.01;
+      if (unsettled) scheduleRender();
+    };
+
+    const scheduleRender = () => {
+      if (visible && !frameId && !document.hidden) {
+        frameId = requestAnimationFrame(render);
+      }
+    };
+
+    const resetPress = () => {
+      targetPressScale = 1;
+      scheduleRender();
+    };
+
+    const syncPreference = () => {
+      enabled = preferenceAllowsCursor();
+      if (!enabled) {
+        initializedPosition = false;
         setVisible(false);
+      }
+    };
+
+    const hideUntilMouseMoves = () => {
+      resetPress();
+      setVisible(false);
+    };
+
+    const handlePointerMove = (event: PointerEvent) => {
+      if (event.pointerType !== 'mouse' || !preferenceAllowsCursor()) {
+        if (event.pointerType !== 'mouse') setVisible(false);
         return;
       }
-      if (target?.closest('.bookmark-btn')) setMode('like');
-      else if (target?.closest('.portfolio-link')) setMode('card');
-      else if (target?.closest('button, a, .filter-btn, .cursor-pointer')) setMode('control');
-      else setMode('default');
-      scheduleRender();
-    }, { passive: true });
 
-    document.addEventListener('pointerdown', () => {
-      targetScale = 0.8;
+      enabled = true;
+      targetX = event.clientX;
+      targetY = event.clientY;
+      core.style.transform = `translate3d(${targetX - 3}px, ${targetY - 3}px, 0)`;
+
+      const target = event.target instanceof Element ? event.target : null;
+      if (isNativeTarget(target)) {
+        setVisible(false);
+        lastTarget = target;
+        return;
+      }
+
+      if (!initializedPosition) {
+        initializedPosition = true;
+        ringX = targetX;
+        ringY = targetY;
+        velocityX = 0;
+        velocityY = 0;
+        ring.style.transform =
+          `translate3d(${ringX - 32}px, ${ringY - 32}px, 0) scale(${currentScale})`;
+      }
+
+      if (target !== lastTarget) {
+        lastTarget = target;
+        setMode(resolveMode(target));
+      }
+      setVisible(true);
       scheduleRender();
-    }, { passive: true });
-    document.addEventListener('pointerup', () => {
-      targetScale = 1;
+    };
+
+    document.addEventListener('pointermove', handlePointerMove, { passive: true, signal });
+    document.addEventListener('pointerover', (event) => {
+      if (!visible || !(event instanceof PointerEvent) || event.pointerType !== 'mouse') return;
+      const target = event.target instanceof Element ? event.target : null;
+      lastTarget = target;
+      if (isNativeTarget(target)) setVisible(false);
+      else setMode(resolveMode(target));
+    }, { passive: true, signal });
+    window.addEventListener('pointerdown', (event) => {
+      if (event.pointerType !== 'mouse' || event.button !== 0 || !visible) return;
+      targetPressScale = 0.84;
       scheduleRender();
-    }, { passive: true });
-    document.addEventListener('pointerleave', () => setVisible(false));
-    window.addEventListener('blur', () => setVisible(false));
+    }, { passive: true, signal });
+    window.addEventListener('pointerup', resetPress, { passive: true, signal });
+    window.addEventListener('pointercancel', resetPress, { passive: true, signal });
+    document.addEventListener('pointerleave', () => {
+      resetPress();
+      setVisible(false);
+    }, { signal });
+    window.addEventListener('blur', () => {
+      resetPress();
+      setVisible(false);
+    }, { signal });
+    window.addEventListener('pagehide', () => {
+      resetPress();
+      setVisible(false);
+    }, { signal });
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden) setVisible(false);
-    });
+      if (document.hidden) {
+        resetPress();
+        setVisible(false);
+      }
+    }, { signal });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Tab' || event.key.startsWith('Arrow')) hideUntilMouseMoves();
+    }, { signal });
+
+    capability.addEventListener('change', syncPreference);
+    reducedMotion.addEventListener('change', syncPreference);
+    forcedColors.addEventListener('change', syncPreference);
+    syncPreference();
+
+    const cleanup = () => {
+      controller.abort();
+      capability.removeEventListener('change', syncPreference);
+      reducedMotion.removeEventListener('change', syncPreference);
+      forcedColors.removeEventListener('change', syncPreference);
+      if (frameId) cancelAnimationFrame(frameId);
+      cursor.classList.remove('is-visible');
+      setDocumentCursor(false);
+    };
+    (window as any).__portfolioCursorCleanup = cleanup;
+    document.addEventListener('astro:before-swap', cleanup, { once: true, signal });
   };
 
   if (document.readyState === 'loading') {

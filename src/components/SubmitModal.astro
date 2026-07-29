@@ -5,7 +5,7 @@ import SpecularButton from './SpecularButton.jsx';
 
 <div
   id="submitModal"
-  class="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto p-3 sm:p-5 opacity-0 pointer-events-none transition-opacity duration-300"
+  class="fixed inset-0 z-[200] flex items-start justify-center overflow-y-auto p-3 sm:p-5 opacity-0 pointer-events-none transition-opacity duration-300"
   role="dialog"
   aria-modal="true"
   aria-labelledby="submitTitle"
@@ -15,9 +15,7 @@ import SpecularButton from './SpecularButton.jsx';
 >
   <div id="submitBackdrop" class="submit-modal__backdrop fixed inset-0"></div>
   
-  <div class="submit-modal__card relative my-auto w-full max-w-[34rem] overflow-hidden rounded-[28px] transform scale-95 focus:outline-none" id="submitCard" tabindex="-1" data-lenis-prevent>
-    <span class="submit-modal__glow submit-modal__glow--cyan" aria-hidden="true"></span>
-    <span class="submit-modal__glow submit-modal__glow--violet" aria-hidden="true"></span>
+  <div class="submit-modal__card relative my-auto w-full max-w-[38rem] overflow-hidden rounded-[26px] transform scale-95 focus:outline-none" id="submitCard" tabindex="-1" data-lenis-prevent>
     <span class="submit-modal__accent" aria-hidden="true"></span>
 
     <button type="button" id="closeSubmitBtn" aria-label="Close portfolio submission dialog" class="submit-modal__close absolute top-4 right-4 z-20">
@@ -30,23 +28,23 @@ import SpecularButton from './SpecularButton.jsx';
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a7.7 7.7 0 0 0 .1-5.8M4.6 9a7.7 7.7 0 0 0 .1 6M9 4.6a7.7 7.7 0 0 1 6 0"/><path d="m17.5 5.5.5-2m-11.5 15-.5 2M5.5 6.5l-2-.5m15 12 2 .5"/></svg>
         </div>
         <div>
-          <p class="submit-modal__eyebrow">Community submission</p>
+          <p class="submit-modal__eyebrow">Portfolio intake</p>
           <h2 id="submitTitle" class="submit-modal__title">Submit a Portfolio</h2>
-          <p id="submitDescription" class="submit-modal__description">Send a standout creator into the universe. AI prepares the details, then every portfolio is reviewed before publishing.</p>
+          <p id="submitDescription" class="submit-modal__description">Share a standout creator. AI prepares a structured snapshot, then a human review keeps the collection high quality.</p>
         </div>
       </div>
 
       <div class="submit-modal__pipeline submit-modal__reveal" aria-label="Review process">
-        <span><strong>01</strong> Submit</span>
+        <span><strong>01</strong> Details</span>
         <i aria-hidden="true"></i>
         <span><strong>02</strong> AI analysis</span>
         <i aria-hidden="true"></i>
-        <span><strong>03</strong> Review</span>
+        <span><strong>03</strong> Human review</span>
       </div>
 
       <form id="submitForm" class="submit-modal__form submit-modal__reveal" aria-describedby="submitReviewNote submitFeedback">
         <div class="submit-modal__field">
-          <label for="portfolioName">Developer name</label>
+          <label for="portfolioName">Developer name <span>Required</span></label>
           <div class="submit-modal__control">
             <span aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
@@ -56,7 +54,7 @@ import SpecularButton from './SpecularButton.jsx';
         </div>
 
         <div class="submit-modal__field">
-          <label for="portfolioUrl">Portfolio URL</label>
+          <label for="portfolioUrl">Portfolio URL <span>Required</span></label>
           <div class="submit-modal__control">
             <span aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
@@ -91,8 +89,13 @@ import SpecularButton from './SpecularButton.jsx';
           proximity={240}
           className="specular-button--modal-primary"
         >
-          <span data-submit-copy>Submit for AI Review</span>
-          <svg class="submit-modal__submit-arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m14 7 5 5-5 5"/></svg>
+          <span class="submit-modal__cta-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.7 5.2a2 2 0 0 1-1.3 1.3L4 11.2l5 1.7a2 2 0 0 1 1.3 1.3L12 19l1.7-4.8a2 2 0 0 1 1.3-1.3l5-1.7-5-1.7a2 2 0 0 1-1.3-1.3L12 3Z"/></svg>
+          </span>
+          <span class="submit-modal__cta-copy" data-submit-copy>Submit for AI Review</span>
+          <span class="submit-modal__cta-arrow-well" aria-hidden="true">
+            <svg class="submit-modal__submit-arrow" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m14 7 5 5-5 5"/></svg>
+          </span>
         </SpecularButton>
       </form>
       
@@ -516,6 +519,249 @@ import SpecularButton from './SpecularButton.jsx';
       gap: 0.35rem;
       padding: 0.6rem;
       font-size: 0.61rem;
+    }
+
+    #submitModal .submit-modal__pipeline strong {
+      display: none;
+    }
+  }
+
+  /* Professional intake surface: one clear hierarchy, no competing glow layers. */
+  #submitModal .submit-modal__backdrop {
+    background:
+      radial-gradient(circle at 50% 8%, rgba(56, 189, 248, 0.075), transparent 32%),
+      rgba(2, 6, 16, 0.78);
+    -webkit-backdrop-filter: blur(12px) saturate(110%);
+    backdrop-filter: blur(12px) saturate(110%);
+  }
+
+  #submitModal .submit-modal__card {
+    max-height: calc(100dvh - 1.5rem);
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-color: rgba(103, 232, 249, 0.25) transparent;
+    border-color: rgba(148, 163, 184, 0.16);
+    background: #0b1220;
+    box-shadow:
+      0 32px 100px rgba(0, 0, 0, 0.58),
+      inset 0 1px 0 rgba(255, 255, 255, 0.055);
+  }
+
+  #submitModal .submit-modal__card::-webkit-scrollbar {
+    width: 0.4rem;
+  }
+
+  #submitModal .submit-modal__card::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(103, 232, 249, 0.2);
+  }
+
+  #submitModal .submit-modal__accent {
+    left: 18%;
+    right: 18%;
+    background: linear-gradient(90deg, transparent, rgba(103, 232, 249, 0.9), rgba(167, 139, 250, 0.82), transparent);
+    box-shadow: 0 0 14px rgba(103, 232, 249, 0.34);
+  }
+
+  #submitModal .submit-modal__content {
+    padding: 2rem;
+  }
+
+  #submitModal .submit-modal__header {
+    gap: 1rem;
+  }
+
+  #submitModal .submit-modal__mark {
+    width: 2.85rem;
+    height: 2.85rem;
+    border-color: rgba(103, 232, 249, 0.18);
+    border-radius: 0.9rem;
+    background: rgba(34, 211, 238, 0.065);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  }
+
+  #submitModal .submit-modal__description {
+    max-width: 30rem;
+    color: rgba(148, 163, 184, 0.88);
+  }
+
+  #submitModal .submit-modal__pipeline {
+    margin: 1.35rem 0 1.45rem;
+    padding: 0.65rem 0.8rem;
+    border-color: rgba(148, 163, 184, 0.09);
+    background: rgba(2, 6, 18, 0.28);
+    color: rgba(148, 163, 184, 0.82);
+  }
+
+  #submitModal .submit-modal__pipeline strong {
+    display: grid;
+    width: 1.35rem;
+    height: 1.35rem;
+    place-items: center;
+    border: 1px solid rgba(103, 232, 249, 0.16);
+    border-radius: 999px;
+    background: rgba(34, 211, 238, 0.055);
+    font-size: 0.55rem;
+  }
+
+  #submitModal .submit-modal__form {
+    gap: 1.05rem;
+  }
+
+  #submitModal .submit-modal__field label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  #submitModal .submit-modal__field label span {
+    color: rgba(100, 116, 139, 0.8);
+    font-size: 0.58rem;
+    font-weight: 750;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  #submitModal .submit-modal__control,
+  #submitModal .submit-modal__control input {
+    min-height: 3.25rem;
+  }
+
+  #submitModal .submit-modal__control {
+    border-radius: 0.85rem;
+    background: rgba(3, 9, 22, 0.6);
+  }
+
+  #submitModal .submit-modal__control:has(input:user-invalid) {
+    border-color: rgba(251, 113, 133, 0.42);
+    box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.07);
+  }
+
+  #submitModal .submit-modal__note {
+    border-color: rgba(103, 232, 249, 0.1);
+    background: rgba(34, 211, 238, 0.035);
+    color: rgba(186, 230, 253, 0.65);
+  }
+
+  #submitModal .submit-modal__note svg {
+    color: #67e8f9;
+  }
+
+  #submitModal .specular-button--modal-primary {
+    min-height: 3.35rem;
+    margin-top: 0.15rem;
+    overflow: hidden;
+    border: 1px solid rgba(165, 180, 252, 0.32);
+    border-radius: 0.9rem;
+    background:
+      linear-gradient(105deg, rgba(30, 95, 210, 0.98), rgba(79, 70, 229, 0.96));
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 15px 34px rgba(37, 99, 235, 0.22);
+    transition:
+      transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 180ms ease,
+      filter 180ms ease;
+  }
+
+  #submitModal .specular-button--modal-primary::before {
+    background: linear-gradient(110deg, rgba(186, 230, 253, 0.38), rgba(196, 181, 253, 0.52), rgba(186, 230, 253, 0.25));
+    opacity: 0.72;
+  }
+
+  #submitModal .specular-button--modal-primary::after {
+    content: '';
+    position: absolute;
+    top: -70%;
+    bottom: -70%;
+    left: -30%;
+    z-index: 1;
+    width: 18%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+    opacity: 0;
+    pointer-events: none;
+    transform: skewX(-18deg);
+    transition:
+      left 520ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 180ms ease;
+  }
+
+  #submitModal .specular-button--modal-primary:hover {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.22),
+      0 18px 42px rgba(37, 99, 235, 0.3);
+    transform: translateY(-1px);
+  }
+
+  #submitModal .specular-button--modal-primary:hover::after {
+    left: 112%;
+    opacity: 1;
+  }
+
+  #submitModal .specular-button--modal-primary .specular-button__fx {
+    display: none;
+  }
+
+  #submitModal .specular-button--modal-primary .specular-button__label {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.65rem;
+  }
+
+  #submitModal .submit-modal__cta-icon,
+  #submitModal .submit-modal__cta-arrow-well {
+    display: grid;
+    width: 1.85rem;
+    height: 1.85rem;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 0.58rem;
+    background: rgba(255, 255, 255, 0.075);
+  }
+
+  #submitModal .submit-modal__cta-copy {
+    flex: 1;
+    text-align: left;
+  }
+
+  #submitModal .submit-modal__cta-arrow-well {
+    margin-left: auto;
+    background: rgba(3, 7, 18, 0.14);
+  }
+
+  #submitModal .specular-button--loading .submit-modal__cta-icon {
+    display: none;
+  }
+
+  @media (max-width: 480px) {
+    #submitModal .submit-modal__content {
+      padding: 1.35rem;
+      padding-top: 1.55rem;
+    }
+
+    #submitModal .submit-modal__pipeline {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.35rem;
+      padding: 0.45rem;
+    }
+
+    #submitModal .submit-modal__pipeline i {
+      display: none;
+    }
+
+    #submitModal .submit-modal__pipeline span {
+      justify-content: center;
+      padding: 0.45rem 0.25rem;
+      border: 1px solid rgba(148, 163, 184, 0.07);
+      border-radius: 0.55rem;
+      background: rgba(255, 255, 255, 0.018);
+      font-size: 0.58rem;
+      white-space: normal;
+      text-align: center;
     }
 
     #submitModal .submit-modal__pipeline strong {

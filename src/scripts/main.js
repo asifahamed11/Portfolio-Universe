@@ -130,14 +130,15 @@ const initializeApp = () => {
   const loadMoreContainer = document.getElementById('loadMoreContainer');
   const emptyState = document.getElementById('emptyState');
   const resultStatus = document.getElementById('resultStatus');
-  const searchInputDesk = document.getElementById('searchInputDesk');
-  const searchInputMob = document.getElementById('searchInputMob');
+  const resultCount = document.getElementById('resultCount');
+  const searchInput = document.getElementById('searchInput');
   const searchShells = Array.from(document.querySelectorAll('[data-search-shell]'));
   const searchClearButtons = Array.from(document.querySelectorAll('[data-search-clear]'));
-  const filterContainer = document.getElementById('filterContainer');
-  const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
-  const clearFiltersButton = document.getElementById('clearFiltersBtn');
-  const activeIndicator = document.getElementById('activeIndicator');
+  const roleFilterSelect = document.getElementById('roleFilterSelect');
+  const sortSelect = document.getElementById('sortSelect');
+  const hireFilterButton = document.getElementById('hireFilterBtn');
+  const savedFilterButton = document.getElementById('savedFilterBtn');
+  const clearFilterButtons = Array.from(document.querySelectorAll('[data-clear-filters]'));
   const topNavBar = document.getElementById('topNavBar');
   const scrollToTopButton = document.getElementById('scrollToTopBtn');
   const loginButton = document.getElementById('loginBtn');
@@ -154,7 +155,10 @@ const initializeApp = () => {
   const optimisticLikeDeltas = new Map();
   let allPortfolios = [];
   let filteredItems = [];
-  let currentFilter = 'all';
+  let roleFilter = 'all';
+  let onlyHire = false;
+  let onlySaved = false;
+  let sortMode = 'curated';
   let searchQuery = '';
   let visibleCount = INITIAL_VISIBLE_COUNT;
   let cachedGlobalLikes = {};
@@ -220,6 +224,7 @@ const initializeApp = () => {
         available_for_hire: wrapper.dataset.hire === 'true',
         baseLikes: wrapper.querySelector('.like-count')?.textContent,
         views: wrapper.querySelector('.view-count')?.textContent,
+        portfolio_score: wrapper.dataset.score,
       }, index))
       .filter(Boolean);
 
@@ -244,6 +249,7 @@ const initializeApp = () => {
       existing.screenshot ||= portfolio.screenshot;
       existing.available_for_hire ||= portfolio.available_for_hire;
       existing.views = Math.max(existing.views, portfolio.views);
+      existing.portfolioScore = Math.max(existing.portfolioScore, portfolio.portfolioScore);
       existing.tech_stack = [...new Set([...existing.tech_stack, ...portfolio.tech_stack])].slice(0, 12);
     }
 
@@ -253,6 +259,15 @@ const initializeApp = () => {
   const setElementText = (root, selector, value) => {
     const element = root.querySelector(selector);
     if (element) element.textContent = String(value);
+  };
+
+  const createSummaryId = (url) => {
+    let hash = 2166136261;
+    for (const character of url) {
+      hash ^= character.charCodeAt(0);
+      hash = Math.imul(hash, 16777619);
+    }
+    return `portfolio-summary-${(hash >>> 0).toString(36)}`;
   };
 
   const createPortfolioElement = (portfolio) => {
@@ -266,11 +281,17 @@ const initializeApp = () => {
     wrapper.dataset.role = portfolio.role.toLowerCase();
     wrapper.dataset.tech = portfolio.tech_stack.join(',').toLowerCase();
     wrapper.dataset.hire = portfolio.available_for_hire ? 'true' : 'false';
+    wrapper.dataset.score = String(portfolio.portfolioScore);
 
     const link = wrapper.querySelector('.portfolio-link');
     if (link instanceof HTMLAnchorElement) {
       link.href = portfolio.url;
       link.setAttribute('aria-label', `Open ${portfolio.name}'s portfolio`);
+      const summaryId = createSummaryId(portfolio.url);
+      const accessibleSummary = wrapper.querySelector('.sr-summary');
+      if (accessibleSummary instanceof HTMLElement) accessibleSummary.id = summaryId;
+      if (portfolio.summary) link.setAttribute('aria-describedby', summaryId);
+      else link.removeAttribute('aria-describedby');
     }
 
     const image = wrapper.querySelector('.portfolio-image');
@@ -302,6 +323,7 @@ const initializeApp = () => {
     const tooltip = wrapper.querySelector('.card-tooltip');
     if (tooltip instanceof HTMLElement) tooltip.hidden = !portfolio.summary;
     setElementText(wrapper, '.tooltip-summary', portfolio.summary);
+    setElementText(wrapper, '.sr-summary', portfolio.summary);
 
     const techStack = wrapper.querySelector('.tech-stack');
     const techPills = Array.from(wrapper.querySelectorAll('.tech-pill'));
@@ -314,7 +336,7 @@ const initializeApp = () => {
     }
     const overflow = wrapper.querySelector('.tech-overflow');
     if (overflow instanceof HTMLElement) {
-      const overflowCount = Math.max(0, portfolio.tech_stack.length - 3);
+      const overflowCount = Math.max(0, portfolio.tech_stack.length - 2);
       overflow.hidden = overflowCount === 0;
       overflow.textContent = `+${overflowCount}`;
     }
@@ -506,10 +528,21 @@ const initializeApp = () => {
   };
 
   const updateResultStatus = () => {
-    if (!resultStatus) return;
-    const qualifier = searchQuery || currentFilter !== 'all' ? ' matching your filters' : '';
-    resultStatus.textContent =
-      `${filteredItems.length} portfolio${filteredItems.length === 1 ? '' : 's'}${qualifier}.`;
+    const hasActiveFilters =
+      Boolean(searchQuery)
+      || roleFilter !== 'all'
+      || onlyHire
+      || onlySaved
+      || sortMode !== 'curated';
+    const qualifier = hasActiveFilters ? ' matching your filters' : '';
+    if (resultStatus) {
+      resultStatus.textContent =
+        `${filteredItems.length} portfolio${filteredItems.length === 1 ? '' : 's'}${qualifier}.`;
+    }
+    if (resultCount) resultCount.textContent = filteredItems.length.toLocaleString('en-US');
+    for (const button of clearFilterButtons) {
+      if (button instanceof HTMLButtonElement) button.hidden = !hasActiveFilters;
+    }
   };
 
   const renderGrid = () => {
@@ -540,127 +573,65 @@ const initializeApp = () => {
     }
   };
 
+  const matchesRoleFilter = (portfolio) => {
+    if (roleFilter === 'all') return true;
+    const role = portfolio.role.toLowerCase();
+    const tech = portfolio.tech_stack.join(' ').toLowerCase();
+    const normalizedRole = role.replace(/[\s/-]/g, '');
+    const roleChecks = {
+      fullstack: () => normalizedRole.includes('fullstack'),
+      frontend: () => normalizedRole.includes('frontend'),
+      backend: () => normalizedRole.includes('backend'),
+      ai: () =>
+        /\b(ai|ml|machine learning|artificial intelligence|data scientist|data science)\b/.test(`${role} ${tech}`),
+      mobile: () =>
+        /\b(mobile|android|ios|flutter|react native)\b/.test(`${role} ${tech}`),
+      devops: () =>
+        /\b(devops|cloud|site reliability|sre|platform engineer|kubernetes)\b/.test(`${role} ${tech}`),
+      designer: () =>
+        /\b(design|designer|creative|ui\/ux|ux\/ui)\b/.test(role),
+    };
+    if (roleFilter === 'other') {
+      return !Object.values(roleChecks).some((check) => check());
+    }
+    return roleChecks[roleFilter]?.() ?? true;
+  };
+
   const applyFilters = ({ resetPage = false } = {}) => {
     if (resetPage) visibleCount = INITIAL_VISIBLE_COUNT;
 
     const user = getStoredUser();
-    const bookmarks = user ? readStoredBookmarks(user.uid) : [];
+    const bookmarks = new Set(user ? readStoredBookmarks(user.uid) : []);
     const query = searchQuery;
 
     filteredItems = allPortfolios.filter((portfolio) => {
       const name = portfolio.name.toLowerCase();
       const role = portfolio.role.toLowerCase();
       const tech = portfolio.tech_stack.join(',').toLowerCase();
-      const normalizedRole = role.replace(/[\s-]/g, '');
       const matchesSearch =
         !query || name.includes(query) || role.includes(query) || tech.includes(query);
-
-      let matchesFilter = true;
-      if (currentFilter === 'hire') {
-        matchesFilter = portfolio.available_for_hire;
-      } else if (currentFilter === 'likes') {
-        matchesFilter = bookmarks.includes(portfolio.url);
-      } else if (currentFilter === 'designer') {
-        matchesFilter =
-          role.includes('design') || role.includes('ui') || role.includes('creative');
-      } else if (currentFilter === 'fullstack') {
-        matchesFilter = normalizedRole.includes('fullstack');
-      } else if (currentFilter === 'frontend') {
-        matchesFilter = normalizedRole.includes('frontend');
-      } else if (currentFilter === 'backend') {
-        matchesFilter = normalizedRole.includes('backend');
-      }
-
-      return matchesSearch && matchesFilter;
+      return (
+        matchesSearch
+        && matchesRoleFilter(portfolio)
+        && (!onlyHire || portfolio.available_for_hire)
+        && (!onlySaved || bookmarks.has(portfolio.url))
+      );
     });
 
     filteredItems.sort((a, b) => {
-      if (currentFilter === 'most_viewed') {
+      if (sortMode === 'score') {
+        return b.portfolioScore - a.portfolioScore || a.index - b.index;
+      }
+      if (sortMode === 'likes') {
+        return b.baseLikes - a.baseLikes || a.index - b.index;
+      }
+      if (sortMode === 'views') {
         return b.views - a.views || a.index - b.index;
       }
-      return b.baseLikes - a.baseLikes || a.index - b.index;
+      return a.index - b.index;
     });
 
     renderGrid();
-  };
-
-  let indicatorMeasureFrame = 0;
-  let pendingIndicatorButton = null;
-
-  const measureIndicator = (button) => {
-    if (
-      !activeIndicator
-      || !filterContainer
-      || !(button instanceof HTMLElement)
-    ) return;
-
-    const containerRect = filterContainer.getBoundingClientRect();
-    const buttonRect = button.getBoundingClientRect();
-    const x = buttonRect.left - containerRect.left + filterContainer.scrollLeft;
-    const y = buttonRect.top - containerRect.top + filterContainer.scrollTop;
-
-    activeIndicator.style.height = `${buttonRect.height}px`;
-    activeIndicator.style.width = `${buttonRect.width}px`;
-    activeIndicator.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-    if (!activeIndicator.classList.contains('is-ready')) {
-      requestAnimationFrame(() => activeIndicator.classList.add('is-ready'));
-    }
-  };
-
-  const moveIndicator = (button) => {
-    if (!(button instanceof HTMLElement)) return;
-    pendingIndicatorButton = button;
-    if (indicatorMeasureFrame) return;
-    indicatorMeasureFrame = requestAnimationFrame(() => {
-      indicatorMeasureFrame = 0;
-      const target = pendingIndicatorButton;
-      pendingIndicatorButton = null;
-      measureIndicator(target);
-    });
-  };
-
-  const updateFilterRailCue = () => {
-    if (!filterContainer) return;
-    const rail = filterContainer.parentElement;
-    if (!rail) return;
-    const hasOverflow = filterContainer.scrollWidth > filterContainer.clientWidth + 1;
-    const atEnd =
-      !hasOverflow
-      || filterContainer.scrollLeft + filterContainer.clientWidth
-        >= filterContainer.scrollWidth - 4;
-    rail.classList.toggle('filter-rail-has-overflow', hasOverflow);
-    rail.classList.toggle('filter-rail-at-end', atEnd);
-  };
-
-  const selectFilterButton = (selectedButton) => {
-    for (const button of filterButtons) {
-      const selected = button === selectedButton;
-      button.classList.toggle('active', selected);
-      button.setAttribute('aria-pressed', String(selected));
-      if (!['hire', 'likes'].includes(button.dataset.filter || '')) {
-        button.classList.toggle('text-gray-400', !selected);
-      }
-    }
-    moveIndicator(selectedButton);
-    if (
-      filterContainer
-      && filterContainer.scrollWidth > filterContainer.clientWidth
-    ) {
-      requestAnimationFrame(() => {
-        const containerRect = filterContainer.getBoundingClientRect();
-        const buttonRect = selectedButton.getBoundingClientRect();
-        let nextScrollLeft = filterContainer.scrollLeft;
-        if (buttonRect.left < containerRect.left) {
-          nextScrollLeft -= containerRect.left - buttonRect.left;
-        } else if (buttonRect.right > containerRect.right) {
-          nextScrollLeft += buttonRect.right - containerRect.right;
-        }
-        filterContainer.scrollTo({
-          left: nextScrollLeft,
-          behavior: reducedMotion.matches ? 'auto' : 'smooth',
-        });
-      });
-    }
   };
 
   const animateHeart = (url, isLiked) => {
@@ -689,7 +660,7 @@ const initializeApp = () => {
       ) {
         writeStoredBookmarks(uid, bookmarks);
         updateBookmarkButtons();
-        if (currentFilter === 'likes') applyFilters();
+        if (onlySaved) applyFilters();
       }
     } catch (error) {
       console.warn('Using cached bookmarks because the server read failed.', error);
@@ -713,7 +684,7 @@ const initializeApp = () => {
       : before.filter((bookmark) => bookmark !== url);
     let nextFocusUrl = null;
     const restoreFilterFocus =
-      currentFilter === 'likes'
+      onlySaved
       && !shouldLike
       && document.activeElement === sourceButton;
     if (restoreFilterFocus) {
@@ -742,7 +713,7 @@ const initializeApp = () => {
     animateHeart(url, shouldLike);
     window.playPopSound?.(shouldLike ? 1 : 0.8);
     if (shouldLike && navigator.vibrate) navigator.vibrate(28);
-    if (currentFilter === 'likes') {
+    if (onlySaved) {
       applyFilters();
       if (restoreFilterFocus) {
         requestAnimationFrame(() => {
@@ -752,7 +723,7 @@ const initializeApp = () => {
             normalizePortfolioUrl(button.dataset.url) === nextFocusUrl
           );
           if (nextButton instanceof HTMLButtonElement) nextButton.focus();
-          else filterButtons.find((button) => button.dataset.filter === 'likes')?.focus();
+          else if (savedFilterButton instanceof HTMLButtonElement) savedFilterButton.focus();
         });
       }
     }
@@ -773,7 +744,7 @@ const initializeApp = () => {
       writeStoredBookmarks(user.uid, rolledBack);
       adjustOptimisticLikeCount(url, shouldLike ? -1 : 1);
       window.showToast?.('Could not save that change. Please try again.', 'error');
-      if (currentFilter === 'likes') applyFilters();
+      if (onlySaved) applyFilters();
     } finally {
       pendingBookmarkUrls.delete(url);
       const isLiked = readStoredBookmarks(user.uid).includes(url);
@@ -853,10 +824,8 @@ const initializeApp = () => {
   const syncSearchUi = (value, { searching = false } = {}) => {
     const normalizedValue = typeof value === 'string' ? value : '';
     const hasValue = normalizedValue.length > 0;
-    for (const input of [searchInputDesk, searchInputMob]) {
-      if (input instanceof HTMLInputElement && input.value !== normalizedValue) {
-        input.value = normalizedValue;
-      }
+    if (searchInput instanceof HTMLInputElement && searchInput.value !== normalizedValue) {
+      searchInput.value = normalizedValue;
     }
     for (const shell of searchShells) {
       if (!(shell instanceof HTMLElement)) continue;
@@ -899,8 +868,7 @@ const initializeApp = () => {
     }, 125);
   };
 
-  searchInputDesk?.addEventListener('input', handleSearch);
-  searchInputMob?.addEventListener('input', handleSearch);
+  searchInput?.addEventListener('input', handleSearch);
 
   for (const button of searchClearButtons) {
     button.addEventListener('click', () => {
@@ -911,13 +879,12 @@ const initializeApp = () => {
     });
   }
 
-  for (const input of [searchInputDesk, searchInputMob]) {
-    if (!(input instanceof HTMLInputElement)) continue;
-    input.addEventListener('keydown', event => {
+  if (searchInput instanceof HTMLInputElement) {
+    searchInput.addEventListener('keydown', event => {
       if (event.key !== 'Escape') return;
       event.preventDefault();
-      if (input.value) clearSearch({ focusInput: input });
-      else input.blur();
+      if (searchInput.value) clearSearch({ focusInput: searchInput });
+      else searchInput.blur();
     });
   }
 
@@ -936,36 +903,58 @@ const initializeApp = () => {
       || target instanceof HTMLTextAreaElement
       || (target instanceof HTMLElement && target.isContentEditable)
     ) return;
-    const visibleInput = [searchInputDesk, searchInputMob].find(
-      input => input instanceof HTMLInputElement && input.offsetParent !== null,
-    );
-    if (!(visibleInput instanceof HTMLInputElement)) return;
+    if (!(searchInput instanceof HTMLInputElement) || searchInput.offsetParent === null) return;
     event.preventDefault();
-    visibleInput.focus();
-    visibleInput.select();
+    searchInput.focus();
+    searchInput.select();
   });
 
   syncSearchUi('');
 
-  for (const button of filterButtons) {
-    button.addEventListener('click', () => {
-      const nextFilter = button.dataset.filter || 'all';
-      if (nextFilter === 'likes' && !getStoredUser()) {
-        window.openLoginModal?.();
-        return;
-      }
-
-      currentFilter = nextFilter;
-      selectFilterButton(button);
-      applyFilters({ resetPage: true });
-    });
-  }
-
-  clearFiltersButton?.addEventListener('click', () => {
-    clearSearch({ apply: false });
-    const allButton = filterButtons.find((button) => button.dataset.filter === 'all');
-    if (allButton instanceof HTMLButtonElement) allButton.click();
+  roleFilterSelect?.addEventListener('change', (event) => {
+    if (!(event.currentTarget instanceof HTMLSelectElement)) return;
+    roleFilter = event.currentTarget.value || 'all';
+    applyFilters({ resetPage: true });
   });
+
+  sortSelect?.addEventListener('change', (event) => {
+    if (!(event.currentTarget instanceof HTMLSelectElement)) return;
+    sortMode = event.currentTarget.value || 'curated';
+    applyFilters({ resetPage: true });
+  });
+
+  hireFilterButton?.addEventListener('click', () => {
+    onlyHire = !onlyHire;
+    hireFilterButton.setAttribute('aria-pressed', String(onlyHire));
+    applyFilters({ resetPage: true });
+  });
+
+  savedFilterButton?.addEventListener('click', () => {
+    if (!getStoredUser()) {
+      window.openLoginModal?.();
+      return;
+    }
+    onlySaved = !onlySaved;
+    savedFilterButton.setAttribute('aria-pressed', String(onlySaved));
+    applyFilters({ resetPage: true });
+  });
+
+  const resetDiscovery = () => {
+    clearSearch({ apply: false });
+    roleFilter = 'all';
+    onlyHire = false;
+    onlySaved = false;
+    sortMode = 'curated';
+    if (roleFilterSelect instanceof HTMLSelectElement) roleFilterSelect.value = roleFilter;
+    if (sortSelect instanceof HTMLSelectElement) sortSelect.value = sortMode;
+    hireFilterButton?.setAttribute('aria-pressed', 'false');
+    savedFilterButton?.setAttribute('aria-pressed', 'false');
+    applyFilters({ resetPage: true });
+  };
+
+  for (const button of clearFilterButtons) {
+    button.addEventListener('click', resetDiscovery);
+  }
 
   const loadNextPage = () => {
     if (visibleCount >= filteredItems.length) return;
@@ -987,7 +976,14 @@ const initializeApp = () => {
 
     const updateNavbar = (scrollTop, direction) => {
       if (!topNavBar) return;
-      topNavBar.style.top = direction > 0 && scrollTop > 50 ? '-100px' : '12px';
+      const keepVisible =
+        topNavBar.matches(':focus-within')
+        || Boolean(document.querySelector('[role="dialog"][aria-hidden="false"]'));
+      const shouldHide = !keepVisible && direction > 0 && scrollTop > 72;
+      topNavBar.style.transform = shouldHide
+        ? 'translate3d(0, calc(-100% - 1.5rem), 0)'
+        : 'translate3d(0, 0, 0)';
+      topNavBar.style.opacity = shouldHide ? '0' : '1';
     };
 
     if (!reducedMotion.matches) {
@@ -1015,6 +1011,7 @@ const initializeApp = () => {
       if (lenis) lenis.scrollTo(0);
       else window.scrollTo({ top: 0, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
     });
+    topNavBar?.addEventListener('focusin', () => updateNavbar(window.scrollY, -1));
   };
 
   initializeScroll();
@@ -1077,15 +1074,14 @@ const initializeApp = () => {
         uid: user.uid,
       }));
       updateBookmarkButtons();
-      if (currentFilter === 'likes') applyFilters();
+      if (onlySaved) applyFilters();
       void refreshBookmarksFromServer(user.uid, generation);
     } else {
       storageRemove('pu_user');
       updateBookmarkButtons();
-      if (currentFilter === 'likes') {
-        currentFilter = 'all';
-        const allButton = filterButtons.find((button) => button.dataset.filter === 'all');
-        if (allButton) selectFilterButton(allButton);
+      if (onlySaved) {
+        onlySaved = false;
+        savedFilterButton?.setAttribute('aria-pressed', 'false');
         applyFilters({ resetPage: true });
       }
     }
@@ -1107,7 +1103,7 @@ const initializeApp = () => {
     const user = getStoredUser();
     if (!user || event.key !== getBookmarkStorageKey(user.uid)) return;
     updateBookmarkButtons();
-    if (currentFilter === 'likes') applyFilters();
+    if (onlySaved) applyFilters();
   });
 
   const loadGlobalLikes = async () => {
@@ -1224,36 +1220,42 @@ const initializeApp = () => {
     }
   };
 
-  filterContainer?.addEventListener('scroll', updateFilterRailCue, { passive: true });
+  const updateTooltipPlacement = (wrapper) => {
+    if (!(wrapper instanceof HTMLElement)) return;
+    const tooltip = wrapper.querySelector('.card-tooltip');
+    if (!(tooltip instanceof HTMLElement) || tooltip.hidden) return;
 
-  window.addEventListener('resize', () => {
-    const selected = filterButtons.find((button) => button.getAttribute('aria-pressed') === 'true');
-    if (selected) moveIndicator(selected);
-    updateFilterRailCue();
+    tooltip.dataset.placement = 'top';
+    tooltip.style.setProperty('--tooltip-shift', '0px');
+    const cardRect = wrapper.getBoundingClientRect();
+    const tooltipHeight = tooltip.offsetHeight;
+    const tooltipWidth = tooltip.offsetWidth;
+    const navBottom = topNavBar?.getBoundingClientRect().bottom || 0;
+    const spaceAbove = cardRect.top - Math.max(navBottom, 0);
+    const spaceBelow = window.innerHeight - cardRect.bottom;
+    if (spaceAbove < tooltipHeight + 18 && spaceBelow > tooltipHeight + 18) {
+      tooltip.dataset.placement = 'bottom';
+    }
+
+    const idealLeft = cardRect.left + (cardRect.width - tooltipWidth) / 2;
+    const clampedLeft = Math.min(
+      window.innerWidth - tooltipWidth - 12,
+      Math.max(12, idealLeft),
+    );
+    tooltip.style.setProperty('--tooltip-shift', `${clampedLeft - idealLeft}px`);
+  };
+
+  gridContainer.addEventListener('pointerover', (event) => {
+    if (event.pointerType && event.pointerType !== 'mouse') return;
+    const target = event.target instanceof Element ? event.target : null;
+    const wrapper = target?.closest('.portfolio-wrapper');
+    if (wrapper) updateTooltipPlacement(wrapper);
   }, { passive: true });
 
-  window.visualViewport?.addEventListener('resize', () => {
-    const selected = filterButtons.find((button) => button.getAttribute('aria-pressed') === 'true');
-    if (selected) moveIndicator(selected);
-    updateFilterRailCue();
-  }, { passive: true });
-
-  if (filterContainer && 'ResizeObserver' in window) {
-    const filterResizeObserver = new ResizeObserver(() => {
-      const selected = filterButtons.find(
-        button => button.getAttribute('aria-pressed') === 'true',
-      );
-      if (selected) moveIndicator(selected);
-      updateFilterRailCue();
-    });
-    filterResizeObserver.observe(filterContainer);
-    for (const button of filterButtons) filterResizeObserver.observe(button);
-  }
-
-  document.fonts?.ready.then(() => {
-    const selected = filterButtons.find(button => button.getAttribute('aria-pressed') === 'true');
-    if (selected) moveIndicator(selected);
-    updateFilterRailCue();
+  gridContainer.addEventListener('focusin', (event) => {
+    const target = event.target instanceof Element ? event.target : null;
+    const wrapper = target?.closest('.portfolio-wrapper');
+    if (wrapper) updateTooltipPlacement(wrapper);
   });
 
   window.addEventListener('online', () => {
@@ -1264,13 +1266,6 @@ const initializeApp = () => {
     }
     void loadPortfolioData({ notifyOnFailure: false });
   });
-
-  const selectedFilter = filterButtons.find((button) => button.classList.contains('active'));
-  if (selectedFilter) {
-    selectedFilter.setAttribute('aria-pressed', 'true');
-    moveIndicator(selectedFilter);
-  }
-  updateFilterRailCue();
 
   updateBookmarkButtons();
   void applyGlobalLikesToButtons();

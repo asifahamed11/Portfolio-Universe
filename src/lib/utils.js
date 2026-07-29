@@ -133,7 +133,8 @@ export const getPortfolioDisplayName = (name, url) => {
  *   tech_stack: string[],
  *   available_for_hire: boolean,
  *   baseLikes: number,
- *   views: number
+ *   views: number,
+ *   portfolioScore: number
  * }}
  */
 export const sanitizePortfolio = (value, index = 0) => {
@@ -156,6 +157,10 @@ export const sanitizePortfolio = (value, index = 0) => {
       .filter(Boolean))]
       .slice(0, 12)
     : [];
+  const rawPortfolioScore = Number(value.portfolioScore ?? value.portfolio_score);
+  const portfolioScore = Number.isFinite(rawPortfolioScore) && rawPortfolioScore >= 0
+    ? Math.min(100, rawPortfolioScore)
+    : 0;
 
   return {
     index: Number.isSafeInteger(index) && index >= 0 ? index : 0,
@@ -168,6 +173,7 @@ export const sanitizePortfolio = (value, index = 0) => {
     available_for_hire: value.available_for_hire === true,
     baseLikes: toSafeCount(value.baseLikes ?? value.base_likes),
     views: toSafeCount(value.views),
+    portfolioScore,
   };
 };
 
