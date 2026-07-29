@@ -1,5 +1,6 @@
 ---
 import './BorderGlow.css';
+import { createMshotsScreenshotUrl } from '../lib/previewRecovery.js';
 
 interface Props {
   name?: string;
@@ -39,7 +40,7 @@ const safeTechStack = Array.isArray(tech_stack)
   ? tech_stack.filter((tech): tech is string => typeof tech === 'string' && tech.trim().length > 0)
   : [];
 const screenshotUrl = screenshot
-  || `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`;
+  || createMshotsScreenshotUrl(url);
 ---
 
 <div class="portfolio-card-wrapper group relative flex h-full flex-col transform-gpu z-10 transition-transform duration-500 ease-out hover:-translate-y-1.5 focus-within:-translate-y-1.5 active:scale-[0.98] active:translate-y-0 [backface-visibility:hidden]">

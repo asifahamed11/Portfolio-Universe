@@ -15,6 +15,11 @@ import {
   urlToDocumentKey,
   urlToKey,
 } from '../lib/utils.js';
+import {
+  createMshotsScreenshotUrl,
+  createPreviewAttemptGate,
+  installPreviewRecovery,
+} from '../lib/previewRecovery.js';
 
 const FALLBACK_SCREENSHOT = `${import.meta.env.BASE_URL}portfolio-placeholder.svg`;
 const PORTFOLIO_DATA_TIMEOUT_MS = 30_000;
@@ -161,24 +166,35 @@ const initializeApp = () => {
   let portfolioRetryTimer = 0;
   let portfolioRetryRound = 0;
   let portfolioFailureNotified = false;
+  const requestMshotsRetryAttempt = createPreviewAttemptGate({
+    concurrency: 4,
+    maxQueued: 48,
+    maxTotal: Number.POSITIVE_INFINITY,
+  });
+  const requestSecondaryPreviewAttempt = createPreviewAttemptGate({
+    concurrency: 2,
+    maxQueued: 8,
+    maxTotal: 16,
+  });
 
   const initialWrappers = Array.from(
     gridContainer.querySelectorAll(':scope > .portfolio-wrapper')
   );
 
-  const installImageFallback = (image) => {
-    if (!(image instanceof HTMLImageElement) || image.dataset.fallbackReady === 'true') return;
-    image.dataset.fallbackReady = 'true';
-    const applyFallback = () => {
-      if (image.dataset.fallbackAttempted === 'true') return;
-      image.dataset.fallbackAttempted = 'true';
-      image.hidden = false;
-      image.src = FALLBACK_SCREENSHOT;
-    };
-    image.addEventListener('error', applyFallback);
-    if (image.complete && image.naturalWidth === 0) {
-      queueMicrotask(applyFallback);
+  const installImageFallback = (image, portfolioUrl) => {
+    if (
+      !(image instanceof HTMLImageElement)
+      || image.dataset.previewRecoveryReady === 'true'
+    ) {
+      return;
     }
+
+    installPreviewRecovery(image, {
+      portfolioUrl,
+      fallbackSrc: FALLBACK_SCREENSHOT,
+      requestMshotsRetryAttempt,
+      requestSecondaryAttempt: requestSecondaryPreviewAttempt,
+    });
   };
 
   for (const wrapper of initialWrappers) {
@@ -188,7 +204,7 @@ const initializeApp = () => {
       continue;
     }
     wrapper.dataset.url = url;
-    installImageFallback(wrapper.querySelector('.portfolio-image'));
+    installImageFallback(wrapper.querySelector('.portfolio-image'), url);
     itemElements.set(url, wrapper);
   }
 
@@ -260,9 +276,9 @@ const initializeApp = () => {
     const image = wrapper.querySelector('.portfolio-image');
     if (image instanceof HTMLImageElement) {
       image.src = portfolio.screenshot
-        || `https://api.microlink.io/?url=${encodeURIComponent(portfolio.url)}&screenshot=true&meta=false&embed=screenshot.url`;
+        || createMshotsScreenshotUrl(portfolio.url);
       image.alt = `Screenshot of ${portfolio.name}'s portfolio`;
-      installImageFallback(image);
+      installImageFallback(image, portfolio.url);
     }
 
     setElementText(wrapper, '.portfolio-name', portfolio.name);
