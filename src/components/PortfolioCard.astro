@@ -49,7 +49,7 @@ for (const character of url) {
 const summaryId = `portfolio-summary-${(summaryHash >>> 0).toString(36)}`;
 ---
 
-<div class="portfolio-card-wrapper group relative z-10 flex h-[31rem] min-w-0 flex-col transform-gpu transition-transform duration-500 ease-out [backface-visibility:hidden] hover:-translate-y-1.5 focus-within:-translate-y-1.5 active:translate-y-0 active:scale-[0.98] sm:h-[30rem] lg:h-[28.5rem] xl:h-[27.5rem]">
+<div class="portfolio-card-wrapper group relative flex h-full flex-col transform-gpu z-10 transition-transform duration-500 ease-out hover:-translate-y-1.5 focus-within:-translate-y-1.5 active:scale-[0.98] active:translate-y-0 [backface-visibility:hidden]">
   <div
     class="border-glow-card h-full w-full"
     data-glow="dynamic"
@@ -62,13 +62,12 @@ const summaryId = `portfolio-summary-${(summaryHash >>> 0).toString(36)}`;
         target="_blank"
         rel="noopener noreferrer"
         class="portfolio-link group/card relative flex h-full flex-col rounded-[28px] outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505]"
-        data-cursor="card"
         aria-label={`Open ${displayName}'s portfolio`}
         aria-describedby={summary ? summaryId : undefined}
       >
         <span id={summaryId} class="sr-summary sr-only">{summary}</span>
 
-        <div class="relative h-52 w-full shrink-0 overflow-hidden rounded-t-[28px] bg-black [transform:translateZ(0)] sm:h-48 lg:h-44 xl:h-40">
+        <div class="relative aspect-[16/10] w-full overflow-hidden rounded-t-[28px] bg-black [transform:translateZ(0)]">
           <img
             src={screenshotUrl}
             alt={`Screenshot of ${displayName}'s portfolio`}
@@ -91,10 +90,10 @@ const summaryId = `portfolio-summary-${(summaryHash >>> 0).toString(36)}`;
           )}
         </div>
 
-        <div class="relative z-10 flex min-h-0 flex-1 flex-col rounded-b-[28px] bg-gradient-to-b from-[#0B0F19] to-[#06080D] p-5 sm:p-6 lg:p-5">
-          <div class="flex min-h-7 items-center justify-between gap-2">
-            <div class="flex min-w-0 items-center gap-2 overflow-hidden pr-1">
-              <h3 class="portfolio-name min-w-0 truncate text-[1.08rem] font-extrabold tracking-tight text-white/95 transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-300 group-hover:bg-clip-text group-hover:text-transparent group-focus-within:bg-gradient-to-r group-focus-within:from-blue-400 group-focus-within:to-cyan-300 group-focus-within:bg-clip-text group-focus-within:text-transparent">
+        <div class="relative z-10 p-6 flex flex-col flex-grow rounded-b-[28px] bg-gradient-to-b from-[#0B0F19] to-[#06080D]">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2 overflow-hidden pr-2">
+              <h3 class="portfolio-name text-[1.1rem] font-extrabold text-white/95 tracking-tight line-clamp-1 group-hover:text-transparent group-focus-within:text-transparent group-hover:bg-clip-text group-focus-within:bg-clip-text group-hover:bg-gradient-to-r group-focus-within:bg-gradient-to-r group-hover:from-blue-400 group-focus-within:from-blue-400 group-hover:to-cyan-300 group-focus-within:to-cyan-300 transition-all duration-300">
                 {displayName}
               </h3>
               <div class="flex items-center gap-1.5 text-gray-400 group-hover:text-gray-300 group-focus-within:text-gray-300 transition-colors shrink-0" title={`${safeViews} views`}>
@@ -105,27 +104,29 @@ const summaryId = `portfolio-summary-${(summaryHash >>> 0).toString(36)}`;
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-white/0 group-hover:text-cyan-400 group-focus-within:text-cyan-400 transition-all transform -translate-x-2 translate-y-2 group-hover:translate-x-0 group-focus-within:translate-x-0 group-hover:translate-y-0 group-focus-within:translate-y-0 duration-300 shrink-0"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
           </div>
 
-          <div class="role-slot mt-1.5 flex h-8 min-w-0 items-center">
-            <div class="role-badge inline-flex max-w-full items-center gap-2 rounded-md border border-white/[0.05] bg-white/[0.03] px-2.5 py-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm transition-all duration-300 group-hover:border-white/[0.1] group-hover:bg-white/[0.06] group-focus-within:border-white/[0.1] group-focus-within:bg-white/[0.06]" hidden={!role}>
+          {role && (
+            <div class="role-badge inline-flex items-center gap-2 px-2.5 py-1 mt-1 rounded-md bg-white/[0.03] border border-white/[0.05] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm w-fit group-hover:bg-white/[0.06] group-focus-within:bg-white/[0.06] group-hover:border-white/[0.1] group-focus-within:border-white/[0.1] transition-all duration-300">
               <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400 drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-              <span class="role-text truncate text-[12px] font-medium text-gray-300 transition-colors duration-300 group-hover:text-white group-focus-within:text-white">{role}</span>
+              <span class="role-text text-[12px] font-medium text-gray-300 group-hover:text-white group-focus-within:text-white transition-colors duration-300">{role}</span>
             </div>
-          </div>
+          )}
 
-          <div class="mt-2.5 h-10 lg:hidden">
-            <p class="mobile-summary line-clamp-2 text-[13px] leading-5 text-gray-400" hidden={!summary}>{summary}</p>
-          </div>
+          {summary && (
+            <p class="mobile-summary mt-3 text-[13px] leading-relaxed text-gray-400 line-clamp-2 lg:hidden">{summary}</p>
+          )}
 
           <div class="flex-grow"></div>
 
-          <div class="tech-slot mt-4 flex h-7 min-w-0 items-center">
-            <div class="tech-stack flex min-w-0 max-w-full items-center gap-1.5 overflow-hidden" hidden={safeTechStack.length === 0}>
-              {safeTechStack.slice(0, 2).map(tech => (
-                <span class="tech-pill min-w-0 max-w-[8.5rem] truncate rounded-full border border-blue-500/20 bg-blue-500/[0.06] px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-[0.12em] text-blue-200/80 shadow-sm transition-colors duration-300 group-hover:border-blue-500/40 group-hover:bg-blue-500/[0.12] group-hover:text-blue-100 group-focus-within:border-blue-500/40 group-focus-within:bg-blue-500/[0.12] group-focus-within:text-blue-100">{tech}</span>
+          {safeTechStack.length > 0 && (
+            <div class="tech-stack flex flex-wrap gap-2 mt-6">
+              {safeTechStack.slice(0, 3).map(tech => (
+                <span class="tech-pill px-3 py-1.5 rounded-full bg-blue-500/[0.06] text-blue-200/80 text-[10px] font-bold tracking-widest uppercase border border-blue-500/20 shadow-sm transition-colors duration-300 group-hover:border-blue-500/40 group-focus-within:border-blue-500/40 group-hover:bg-blue-500/[0.12] group-focus-within:bg-blue-500/[0.12] group-hover:text-blue-100 group-focus-within:text-blue-100">{tech}</span>
               ))}
-              <span class="tech-overflow shrink-0 rounded-full border border-white/[0.08] bg-white/[0.04] px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-widest text-white/70 shadow-sm" hidden={safeTechStack.length <= 2}>+{Math.max(0, safeTechStack.length - 2)}</span>
+              {safeTechStack.length > 3 && (
+                <span class="tech-overflow px-3 py-1.5 rounded-full bg-white/[0.04] text-white/70 text-[10px] font-bold tracking-widest uppercase border border-white/[0.08] shadow-sm">+{safeTechStack.length - 3}</span>
+              )}
             </div>
-          </div>
+          )}
         </div>
       </a>
 
@@ -133,7 +134,6 @@ const summaryId = `portfolio-summary-${(summaryHash >>> 0).toString(36)}`;
         type="button"
         class="bookmark-btn absolute top-4 right-4 z-30 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/50 backdrop-blur-xl border border-white/[0.1] text-white/70 hover:text-rose-400 hover:bg-rose-500/15 hover:border-rose-500/40 hover:shadow-[0_0_20px_rgba(244,63,94,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black active:scale-90 transition-[transform,color,background-color,border-color,box-shadow] duration-150 group/btn"
         data-url={url}
-        data-cursor="like"
         aria-label={`Save ${displayName}'s portfolio to My Likes. ${safeLikes} ${safeLikes === 1 ? 'like' : 'likes'}.`}
         aria-pressed="false"
       >

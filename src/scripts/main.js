@@ -336,7 +336,7 @@ const initializeApp = () => {
     }
     const overflow = wrapper.querySelector('.tech-overflow');
     if (overflow instanceof HTMLElement) {
-      const overflowCount = Math.max(0, portfolio.tech_stack.length - 2);
+      const overflowCount = Math.max(0, portfolio.tech_stack.length - 3);
       overflow.hidden = overflowCount === 0;
       overflow.textContent = `+${overflowCount}`;
     }
