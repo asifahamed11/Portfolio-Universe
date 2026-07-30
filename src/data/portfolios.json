@@ -134,7 +134,7 @@
     ],
     "available_for_hire": false,
     "primary_language": "",
-    "views": 11,
+    "views": 12,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fnuwanjaliyagoda.com?w=600",
     "is_portfolio": true,
@@ -241,6 +241,26 @@
     "ai_processed": true
   },
   {
+    "url": "https://vaibhav5860.vercel.app",
+    "name": "Vaibhav Raj",
+    "role": "Other",
+    "specialization": "",
+    "summary": "Vaibhav Raj is a developer with experience.",
+    "tech_stack": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 7,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fvaibhav5860.vercel.app?w=600",
+    "is_portfolio": true,
+    "location": "India",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 2,
+    "ai_processed": true
+  },
+  {
     "url": "https://www.nareshkhatri.site",
     "name": "Naresh Khatri",
     "role": "Full Stack Developer",
@@ -327,26 +347,6 @@
     "social_links": [],
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 4,
-    "ai_processed": true
-  },
-  {
-    "url": "https://vaibhav5860.vercel.app",
-    "name": "Vaibhav Raj",
-    "role": "Other",
-    "specialization": "",
-    "summary": "Vaibhav Raj is a developer with experience.",
-    "tech_stack": [],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 6,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fvaibhav5860.vercel.app?w=600",
-    "is_portfolio": true,
-    "location": "India",
-    "projects": [],
-    "social_links": [],
-    "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 2,
     "ai_processed": true
   },
   {
@@ -644,6 +644,43 @@
     "ai_processed": true
   },
   {
+    "url": "http://leewarrick.com",
+    "name": "Lee Warrick",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Software engineer and educator with a focus in web development",
+    "tech_stack": [
+      "JavaScript",
+      "React",
+      "NextJS",
+      "Node",
+      "Mongo",
+      "Gatsby",
+      "Vue",
+      "Gridsome"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 2,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fleewarrick.com?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Booker",
+      "Tech Jr Podcast",
+      "Goaler",
+      "Babelfish",
+      "Live code blog"
+    ],
+    "social_links": [
+      "https://email protected"
+    ],
+    "seo_evaluation": "Average",
+    "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
     "url": "http://raalzz.com",
     "name": "Rahul Sawant",
     "role": "Tech Architect",
@@ -664,6 +701,106 @@
     "ai_processed": true
   },
   {
+    "url": "https://alevoldon.com",
+    "name": "Vladimir Rybalsky",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 2,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Falevoldon.com?w=600",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:11.864970+00:00",
+    "ai_last_error": "no-usable-text",
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:12.278344+00:00"
+  },
+  {
+    "url": "https://kuldeepjadeja.dev",
+    "name": "Kuldeepsinh Jadeja",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 2,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkuldeepjadeja.dev?w=600",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:11.865263+00:00",
+    "ai_last_error": "scrape-temporarily-unavailable",
+    "ai_next_retry_at": "2026-07-30T05:51:22.537597+00:00"
+  },
+  {
+    "url": "https://martineoficial-portfolio.vercel.app",
+    "name": "Diana Pontes",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Full Stack Developer with expertise in Front-end and software engineering",
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "Java",
+      "Spring Boot",
+      "JavaScript",
+      "HTML/CSS"
+    ],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 2,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmartineoficial-portfolio.vercel.app?w=600",
+    "is_portfolio": true,
+    "location": "Recife, PE - Brasil",
+    "projects": [
+      "Elo Design System",
+      "Rebranding da marca Elo"
+    ],
+    "social_links": [
+      "https://github.com/"
+    ],
+    "seo_evaluation": "Average",
+    "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
+    "url": "https://portfolio-website-abdullah-jamess.vercel.app",
+    "name": "Abdullah James",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Software engineer tackling complex problems with innovative solutions",
+    "tech_stack": [
+      "JavaScript",
+      "Stripe",
+      "JWT",
+      "Neural Networks",
+      "Reinforcement Learning",
+      "QuantConnect",
+      "VB.NET",
+      "Graph Theory"
+    ],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 2,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolio-website-abdullah-jamess.vercel.app?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Full-stack appointment booking platform",
+      "Machine learning trading system",
+      "Interactive graph theory educational tool"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Average",
+    "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
     "url": "https://sawad.framer.website",
     "name": "Aaaabad Ahmed",
     "role": "Software Engineer",
@@ -681,6 +818,26 @@
     "social_links": [],
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 4,
+    "ai_processed": true
+  },
+  {
+    "url": "https://tejafolio.dev",
+    "name": "Guna Teja",
+    "role": "Other",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 2,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftejafolio.dev?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 2,
     "ai_processed": true
   },
   {
@@ -738,6 +895,77 @@
     "ai_processed": true
   },
   {
+    "url": "https://utkarshaggarwal.vercel.app",
+    "name": "Utkarsh Aggarwal",
+    "role": "Backend Developer",
+    "specialization": "",
+    "summary": "Utkarsh Aggarwal is a cybersecurity and web technologies enthusiast with experience in AI and automation.",
+    "tech_stack": [
+      "Cyber Security",
+      "Web Technologies",
+      "AI",
+      "Automation",
+      "ServiceNow",
+      "GitHub",
+      "Qwiklabs",
+      "Microsoft"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 2,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Futkarshaggarwal.vercel.app?w=600",
+    "is_portfolio": true,
+    "location": "Uttar Pradesh, India",
+    "projects": [
+      "HackRally platform",
+      "AI-integrated projects",
+      "Non-Revenue Water (NRW) problem",
+      "Aligner and Outlier at Scale AI Labs",
+      "CyberWarriorsClub"
+    ],
+    "social_links": [
+      "https://github.com/utkarshaggarwal"
+    ],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 6,
+    "ai_processed": true
+  },
+  {
+    "url": "https://vamsi-krishna-portfolio.vercel.app",
+    "name": "Vamsi Krishna Chandaluri",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Full Stack TypeScript Engineer with 5+ years of experience building SaaS products and web systems",
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "NestJS",
+      "PostgreSQL",
+      "Prisma",
+      "TypeScript",
+      "JavaScript"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 2,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fvamsi-krishna-portfolio.vercel.app?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Docita",
+      "TeamOps",
+      "Super Tic Tac Toe",
+      "Digital Library"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
     "url": "https://varinder148.github.io/portfolio",
     "name": "Varinder Singh",
     "role": "Other",
@@ -755,6 +983,57 @@
     "social_links": [],
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 1,
+    "ai_processed": true
+  },
+  {
+    "url": "https://wadi3.codes",
+    "name": "Wadi3 EL-Wardy",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Wadi3 builds production-ready web applications with strong backend logic and user interfaces.",
+    "tech_stack": [
+      "JavaScript",
+      "HTML/CSS",
+      "Backend Logic"
+    ],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 2,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwadi3.codes?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 6,
+    "ai_processed": true
+  },
+  {
+    "url": "https://www.derekchen.dev",
+    "name": "Derek Chen",
+    "role": "Frontend Developer",
+    "specialization": "",
+    "summary": "Develops open-source Chrome extensions for university course registration",
+    "tech_stack": [
+      "React",
+      "TypeScript",
+      "Tailwind",
+      "Vite"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 2,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.derekchen.dev?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "UT Registration Plus"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 6,
     "ai_processed": true
   },
   {
@@ -891,43 +1170,6 @@
     "ai_processed": true
   },
   {
-    "url": "http://leewarrick.com",
-    "name": "Lee Warrick",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Software engineer and educator with a focus in web development",
-    "tech_stack": [
-      "JavaScript",
-      "React",
-      "NextJS",
-      "Node",
-      "Mongo",
-      "Gatsby",
-      "Vue",
-      "Gridsome"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 1,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fleewarrick.com?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [
-      "Booker",
-      "Tech Jr Podcast",
-      "Goaler",
-      "Babelfish",
-      "Live code blog"
-    ],
-    "social_links": [
-      "https://email protected"
-    ],
-    "seo_evaluation": "Average",
-    "portfolio_score": 8,
-    "ai_processed": true
-  },
-  {
     "url": "http://robinmastromarino.com",
     "name": "Robin Mastromarino",
     "role": "UI/UX Designer",
@@ -972,6 +1214,46 @@
     "location": "Vancouver",
     "projects": [],
     "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 2,
+    "ai_processed": true
+  },
+  {
+    "url": "http://shankumar.is-a.dev",
+    "name": "Shankumar Pitta",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fshankumar.is-a.dev?w=600",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:22.574926+00:00",
+    "ai_last_error": "no-usable-text",
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:22.914684+00:00"
+  },
+  {
+    "url": "http://techggdev.vercel.app",
+    "name": "Gunjan Ghate",
+    "role": "Other",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Ftechggdev.vercel.app?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [],
+    "social_links": [
+      "https://www.linkedin.com/"
+    ],
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 2,
     "ai_processed": true
@@ -1110,11 +1392,11 @@
     "views": 1,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabhicodestudio.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:56.982982+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:11.864684+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:57.205660+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:11.967582+00:00"
   },
   {
     "url": "https://abhijitmondal.info",
@@ -1191,6 +1473,29 @@
     "ai_processed": true
   },
   {
+    "url": "https://abubakrmo.com",
+    "name": "Abu-Bak'r",
+    "role": "Software Engineer",
+    "specialization": "",
+    "summary": "Abu-Bak'r is a Software Engineer and Digital Creator making a positive difference in people's lives through code.",
+    "tech_stack": [
+      "Java",
+      "Computer Science"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabubakrmo.com?w=600",
+    "is_portfolio": true,
+    "location": "United Kingdom",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 6,
+    "ai_processed": true
+  },
+  {
     "url": "https://adarshsinghh.vercel.app",
     "name": "Adarsh Singh",
     "role": "Full Stack Developer",
@@ -1215,6 +1520,110 @@
     "social_links": [],
     "seo_evaluation": "Average",
     "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
+    "url": "https://aditya-chauhan.vercel.app",
+    "name": "Aditya",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Aditya is a passionate Full-Stack Web & Mobile App Developer creating modern digital experiences.",
+    "tech_stack": [
+      "React Native",
+      "PHP",
+      "Laravel",
+      "API Development",
+      "Database Design",
+      "Cloud Deployment",
+      "JavaScript",
+      "HTML/CSS"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faditya-chauhan.vercel.app?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Average",
+    "portfolio_score": 7,
+    "ai_processed": true
+  },
+  {
+    "url": "https://aditya-pillai.vercel.app",
+    "name": "Aditya Pillai",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faditya-pillai.vercel.app?w=600",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:22.950757+00:00",
+    "ai_last_error": "no-usable-text",
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:23.390338+00:00"
+  },
+  {
+    "url": "https://adityapunmiya.com",
+    "name": "Aditya Punmiya",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Highly skilled developer with experience in various technologies",
+    "tech_stack": [
+      "TypeScript",
+      "React.js",
+      "Node.js",
+      "Go",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "ASP.NET Core",
+      "Next.js"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadityapunmiya.com?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Portfolio Website",
+      "Notesheet Management System",
+      "Wuggy",
+      "Captcha Resolver",
+      "Wallace"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Average",
+    "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
+    "url": "https://agney.dev",
+    "name": "Agney Menon",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Agney Menon is a web developer and storyteller.",
+    "tech_stack": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fagney.dev?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Webmarks"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 6,
     "ai_processed": true
   },
   {
@@ -1329,22 +1738,380 @@
     "ai_processed": true
   },
   {
-    "url": "https://alevoldon.com",
-    "name": "Vladimir Rybalsky",
-    "role": "",
+    "url": "https://akwastaken.github.io",
+    "name": "Aneeth",
+    "role": "Other",
     "specialization": "",
-    "summary": "",
+    "summary": "Aneeth is a multifaceted creator and problem solver.",
     "tech_stack": [],
     "available_for_hire": false,
     "primary_language": "",
     "views": 1,
     "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Falevoldon.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:13.129284+00:00",
-    "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:13.595921+00:00"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fakwastaken.github.io?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 2,
+    "ai_processed": true
+  },
+  {
+    "url": "https://almeida-matheus.com",
+    "name": "Matheus",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Matheus is a skilled developer with a strong work ethic and collaborative mindset.",
+    "tech_stack": [
+      "Vue.js",
+      "Firebase",
+      "Java",
+      "JavaScript",
+      "AI",
+      "PWA",
+      "Algorithm complexity",
+      "Data structures"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Falmeida-matheus.com?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Platform for Humanamente",
+      "Professional website for psychologists",
+      "PWA for price comparison",
+      "Finance.AI",
+      "HR platform evolution"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
+    "url": "https://andy-bell.design",
+    "name": "Andy",
+    "role": "Other",
+    "specialization": "",
+    "summary": "Andy is a freelance designer, developer and educator.",
+    "tech_stack": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fandy-bell.design?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [],
+    "social_links": [
+      "https://twitter.com"
+    ],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 2,
+    "ai_processed": true
+  },
+  {
+    "url": "https://anuragaffection.vercel.app",
+    "name": "Anurag",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Full Stack Developer with 2.8+ years of experience in building scalable SaaS and web applications",
+    "tech_stack": [
+      "MERN",
+      "Microservices",
+      "Cloud",
+      "Next.js",
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fanuragaffection.vercel.app?w=600",
+    "is_portfolio": true,
+    "location": "Bengaluru, India",
+    "projects": [
+      "PIMS / OMS / CRM SaaS Modules",
+      "Documentation Portal",
+      "Resume Maker"
+    ],
+    "social_links": [
+      "https://twitter.com/anurag"
+    ],
+    "seo_evaluation": "Average",
+    "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
+    "url": "https://anushkaisuranga.github.io",
+    "name": "Anushka Isuranga",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Anushka Isuranga is a full-stack software engineer.",
+    "tech_stack": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fanushkaisuranga.github.io?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 2,
+    "ai_processed": true
+  },
+  {
+    "url": "https://arafat.com.bd",
+    "name": "Md. Arafat Hossan",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Full-stack engineer with expertise in scalable systems and readable code",
+    "tech_stack": [
+      "Next.js",
+      "React.js",
+      "Node.js",
+      "NestJS",
+      "PostgreSQL",
+      "Redis",
+      "Docker",
+      "Tailwind CSS"
+    ],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Farafat.com.bd?w=600",
+    "is_portfolio": true,
+    "location": "Dhaka, Bangladesh · Remote",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Average",
+    "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
+    "url": "https://arkamahajan.in",
+    "name": "Arka Mahajan",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Arka Mahajan is an IoT specialist with frontend knowledge and AI/ML interest, building systems connecting physical and digital worlds.",
+    "tech_stack": [
+      "IoT",
+      "AI/ML",
+      "Android",
+      "Data Structures",
+      "Algorithms",
+      "Python",
+      "Raspberry Pi",
+      "Firebase"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Farkamahajan.in?w=600",
+    "is_portfolio": true,
+    "location": "Jaipur, India",
+    "projects": [
+      "Agro-Tech / Machine Learning",
+      "IoT / Hardware Security",
+      "Autonomous Ground Vehicle for Precision Agriculture",
+      "Railway accident precaution system",
+      "Automatic Train Sorting System"
+    ],
+    "social_links": [
+      "https://github.com/MyArsenal"
+    ],
+    "seo_evaluation": "Average",
+    "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
+    "url": "https://axelwesselgren.dev",
+    "name": "Axel Lönnby Wesselgren",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Highly skilled developer with expertise in migration and optimization",
+    "tech_stack": [
+      "React",
+      "Astro",
+      "Gatsby",
+      "Next.js",
+      "React Router",
+      "Nano Stores",
+      "SWR"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faxelwesselgren.dev?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Ecommerce storefront migration",
+      "Gatsby-based site migration",
+      "Next.js implementation replacement"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 7,
+    "ai_processed": true
+  },
+  {
+    "url": "https://ayushacharya.vercel.app",
+    "name": "Ayush Acharya",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Ayush Acharya is a passionate full stack developer building clean web applications.",
+    "tech_stack": [
+      "Java",
+      "Python"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fayushacharya.vercel.app?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 6,
+    "ai_processed": true
+  },
+  {
+    "url": "https://ayushpradhan29.netlify.app",
+    "name": "Ayush Pradhan",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Ayush Pradhan is a passionate Full Stack Developer and Intelligent Systems Developer",
+    "tech_stack": [
+      "Python",
+      "Java",
+      "C",
+      "AI",
+      "Computer Vision",
+      "NLP",
+      "Web Development",
+      "ML"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fayushpradhan29.netlify.app?w=600",
+    "is_portfolio": true,
+    "location": "Bhubaneswar",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Average",
+    "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
+    "url": "https://beatrizneaime.com",
+    "name": "Beatriz",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Beatriz is a Mid-Level Full Stack Developer with experience in creating technological solutions.",
+    "tech_stack": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Next.js",
+      "Node.js",
+      "MongoDB",
+      "TypeScript"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbeatrizneaime.com?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Herbário",
+      "Pokédex",
+      "Physiotherapy Exercises App",
+      "Drawing and Painting Championship Website",
+      "Marble Shop Website"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Average",
+    "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
+    "url": "https://bhavya.dev",
+    "name": "Bhavya Tomar",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Developer of Chatarooni, a random stranger chat platform",
+    "tech_stack": [
+      "Next.js",
+      "Node.js",
+      "Cloudflare D1",
+      "Tailwind",
+      "SQLite"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbhavya.dev?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Chatarooni"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Average",
+    "portfolio_score": 6,
+    "ai_processed": true
+  },
+  {
+    "url": "https://bsodium.fr",
+    "name": "Elliot Négrel-Jerzy",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Elliot Négrel-Jerzy is a dynamic full-stack engineer with experience in frontend and backend development.",
+    "tech_stack": [
+      "JavaScript",
+      "HTML/CSS",
+      "React",
+      "Node.js",
+      "GitHub",
+      "DALL·E",
+      "Bing Image Creator",
+      "ChatGPT"
+    ],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbsodium.fr?w=600",
+    "is_portfolio": true,
+    "location": "Barcelona, Spain",
+    "projects": [],
+    "social_links": [
+      "https://github.com/"
+    ],
+    "seo_evaluation": "Average",
+    "portfolio_score": 7,
+    "ai_processed": true
   },
   {
     "url": "https://dineshbarri-portfolio.vercel.app",
@@ -1409,21 +2176,90 @@
     "ai_processed": true
   },
   {
-    "url": "https://kuldeepjadeja.dev",
-    "name": "Kuldeepsinh Jadeja",
-    "role": "",
+    "url": "https://forbrig.github.io",
+    "name": "Vitor Forbrig",
+    "role": "Frontend Developer",
     "specialization": "",
-    "summary": "",
-    "tech_stack": [],
+    "summary": "Vitor Forbrig is a Senior Frontend Engineer with 6+ years of experience.",
+    "tech_stack": [
+      "JavaScript",
+      "TypeScript",
+      "ReactJS",
+      "Next.js"
+    ],
     "available_for_hire": false,
     "primary_language": "",
     "views": 1,
     "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkuldeepjadeja.dev?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:59.441455+00:00",
-    "ai_last_error": "scrape-temporarily-unavailable",
-    "ai_next_retry_at": "2026-07-29T04:00:09.927876+00:00"
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fforbrig.github.io?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 6,
+    "ai_processed": true
+  },
+  {
+    "url": "https://ganesh717.netlify.app",
+    "name": "Ganesh M",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Ganesh M is a Full-Stack Developer and Computer Science undergrad",
+    "tech_stack": [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Flask",
+      "Python",
+      "OpenCV",
+      "Arduino"
+    ],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fganesh717.netlify.app?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Social media platform for VIT-AP students",
+      "Full-stack SaaS platform for website hosting",
+      "AI-powered GitHub profile summarizer",
+      "Lightweight micro-framework for embedding Python in HTML",
+      "Automation Workflow Engine Experiment"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 8,
+    "ai_processed": true
+  },
+  {
+    "url": "https://hamishw.com",
+    "name": "Hamish Williams",
+    "role": "UI/UX Designer",
+    "specialization": "",
+    "summary": "Hamish Williams is a designer and developer creating innovative solutions",
+    "tech_stack": [
+      "React Native",
+      "JavaScript"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fhamishw.com?w=600",
+    "is_portfolio": true,
+    "location": "Sydney",
+    "projects": [
+      "Video game tracking app",
+      "Biomedical image collaboration"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Average",
+    "portfolio_score": 7,
+    "ai_processed": true
   },
   {
     "url": "https://lakshanrukantha.github.io",
@@ -1454,71 +2290,6 @@
     "social_links": [],
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 7,
-    "ai_processed": true
-  },
-  {
-    "url": "https://martineoficial-portfolio.vercel.app",
-    "name": "Diana Pontes",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Full Stack Developer with expertise in Front-end and software engineering",
-    "tech_stack": [
-      "React",
-      "Next.js",
-      "Java",
-      "Spring Boot",
-      "JavaScript",
-      "HTML/CSS"
-    ],
-    "available_for_hire": true,
-    "primary_language": "",
-    "views": 1,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmartineoficial-portfolio.vercel.app?w=600",
-    "is_portfolio": true,
-    "location": "Recife, PE - Brasil",
-    "projects": [
-      "Elo Design System",
-      "Rebranding da marca Elo"
-    ],
-    "social_links": [
-      "https://github.com/"
-    ],
-    "seo_evaluation": "Average",
-    "portfolio_score": 8,
-    "ai_processed": true
-  },
-  {
-    "url": "https://portfolio-website-abdullah-jamess.vercel.app",
-    "name": "Abdullah James",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Software engineer tackling complex problems with innovative solutions",
-    "tech_stack": [
-      "JavaScript",
-      "Stripe",
-      "JWT",
-      "Neural Networks",
-      "Reinforcement Learning",
-      "QuantConnect",
-      "VB.NET",
-      "Graph Theory"
-    ],
-    "available_for_hire": true,
-    "primary_language": "",
-    "views": 1,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolio-website-abdullah-jamess.vercel.app?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [
-      "Full-stack appointment booking platform",
-      "Machine learning trading system",
-      "Interactive graph theory educational tool"
-    ],
-    "social_links": [],
-    "seo_evaluation": "Average",
-    "portfolio_score": 8,
     "ai_processed": true
   },
   {
@@ -1588,26 +2359,6 @@
     ],
     "seo_evaluation": "Good",
     "portfolio_score": 9,
-    "ai_processed": true
-  },
-  {
-    "url": "https://tejafolio.dev",
-    "name": "Guna Teja",
-    "role": "Other",
-    "specialization": "",
-    "summary": "",
-    "tech_stack": [],
-    "available_for_hire": true,
-    "primary_language": "",
-    "views": 1,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftejafolio.dev?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [],
-    "social_links": [],
-    "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 2,
     "ai_processed": true
   },
   {
@@ -1697,43 +2448,6 @@
     ],
     "seo_evaluation": "Average",
     "portfolio_score": 8,
-    "ai_processed": true
-  },
-  {
-    "url": "https://utkarshaggarwal.vercel.app",
-    "name": "Utkarsh Aggarwal",
-    "role": "Backend Developer",
-    "specialization": "",
-    "summary": "Utkarsh Aggarwal is a cybersecurity and web technologies enthusiast with experience in AI and automation.",
-    "tech_stack": [
-      "Cyber Security",
-      "Web Technologies",
-      "AI",
-      "Automation",
-      "ServiceNow",
-      "GitHub",
-      "Qwiklabs",
-      "Microsoft"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 1,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Futkarshaggarwal.vercel.app?w=600",
-    "is_portfolio": true,
-    "location": "Uttar Pradesh, India",
-    "projects": [
-      "HackRally platform",
-      "AI-integrated projects",
-      "Non-Revenue Water (NRW) problem",
-      "Aligner and Outlier at Scale AI Labs",
-      "CyberWarriorsClub"
-    ],
-    "social_links": [
-      "https://github.com/utkarshaggarwal"
-    ],
-    "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 6,
     "ai_processed": true
   },
   {
@@ -1834,40 +2548,6 @@
     ],
     "social_links": [],
     "seo_evaluation": "Average",
-    "portfolio_score": 8,
-    "ai_processed": true
-  },
-  {
-    "url": "https://vamsi-krishna-portfolio.vercel.app",
-    "name": "Vamsi Krishna Chandaluri",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Full Stack TypeScript Engineer with 5+ years of experience building SaaS products and web systems",
-    "tech_stack": [
-      "React",
-      "Next.js",
-      "Node.js",
-      "NestJS",
-      "PostgreSQL",
-      "Prisma",
-      "TypeScript",
-      "JavaScript"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 1,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fvamsi-krishna-portfolio.vercel.app?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [
-      "Docita",
-      "TeamOps",
-      "Super Tic Tac Toe",
-      "Digital Library"
-    ],
-    "social_links": [],
-    "seo_evaluation": "Needs Improvement",
     "portfolio_score": 8,
     "ai_processed": true
   },
@@ -1976,57 +2656,6 @@
     "is_portfolio": true,
     "location": "",
     "projects": [],
-    "social_links": [],
-    "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 6,
-    "ai_processed": true
-  },
-  {
-    "url": "https://wadi3.codes",
-    "name": "Wadi3 EL-Wardy",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Wadi3 builds production-ready web applications with strong backend logic and user interfaces.",
-    "tech_stack": [
-      "JavaScript",
-      "HTML/CSS",
-      "Backend Logic"
-    ],
-    "available_for_hire": true,
-    "primary_language": "",
-    "views": 1,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwadi3.codes?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [],
-    "social_links": [],
-    "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 6,
-    "ai_processed": true
-  },
-  {
-    "url": "https://www.derekchen.dev",
-    "name": "Derek Chen",
-    "role": "Frontend Developer",
-    "specialization": "",
-    "summary": "Develops open-source Chrome extensions for university course registration",
-    "tech_stack": [
-      "React",
-      "TypeScript",
-      "Tailwind",
-      "Vite"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 1,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.derekchen.dev?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [
-      "UT Registration Plus"
-    ],
     "social_links": [],
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 6,
@@ -2467,11 +3096,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Ffidalgo.dev?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:58.579029+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:22.574776+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:58.676456+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:22.677276+00:00"
   },
   {
     "url": "http://gianlucafiore.it",
@@ -2867,24 +3496,6 @@
     "ai_processed": true
   },
   {
-    "url": "http://shankumar.is-a.dev",
-    "name": "Shankumar Pitta",
-    "role": "",
-    "specialization": "",
-    "summary": "",
-    "tech_stack": [],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fshankumar.is-a.dev?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:12.649901+00:00",
-    "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:13.091843+00:00"
-  },
-  {
     "url": "http://shannoncrabill.com",
     "name": "Shannon Crabill",
     "role": "Other",
@@ -3012,28 +3623,6 @@
     "ai_processed": true
   },
   {
-    "url": "http://techggdev.vercel.app",
-    "name": "Gunjan Ghate",
-    "role": "Other",
-    "specialization": "",
-    "summary": "",
-    "tech_stack": [],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Ftechggdev.vercel.app?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [],
-    "social_links": [
-      "https://www.linkedin.com/"
-    ],
-    "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 2,
-    "ai_processed": true
-  },
-  {
     "url": "http://tekkshetri.com.np",
     "name": "Tek Bahadur Kshetri",
     "role": "Backend Developer",
@@ -3134,11 +3723,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fvaibhavsingh97.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:13.128945+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:22.574988+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:13.249136+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:22.645235+00:00"
   },
   {
     "url": "http://valentinpotie.github.io/portfolio",
@@ -3362,11 +3951,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fa-coderr.github.io%2Fportfolio-website?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:57.317629+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:22.575046+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:57.386650+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:22.672395+00:00"
   },
   {
     "url": "https://aaabaa-aayush.vercel.app",
@@ -4085,11 +4674,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdulmal1ksy3d.vercel.app?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:13.924822+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:22.575132+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:14.150504+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:22.794866+00:00"
   },
   {
     "url": "https://abdulmomin.dev",
@@ -4565,29 +5154,6 @@
     "ai_processed": true
   },
   {
-    "url": "https://abubakrmo.com",
-    "name": "Abu-Bak'r",
-    "role": "Software Engineer",
-    "specialization": "",
-    "summary": "Abu-Bak'r is a Software Engineer and Digital Creator making a positive difference in people's lives through code.",
-    "tech_stack": [
-      "Java",
-      "Computer Science"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabubakrmo.com?w=600",
-    "is_portfolio": true,
-    "location": "United Kingdom",
-    "projects": [],
-    "social_links": [],
-    "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 6,
-    "ai_processed": true
-  },
-  {
     "url": "https://acchyut.com.np",
     "name": "Rizan Bhandari",
     "role": "Full Stack Developer",
@@ -4749,53 +5315,6 @@
     "ai_processed": true
   },
   {
-    "url": "https://aditya-chauhan.vercel.app",
-    "name": "Aditya",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Aditya is a passionate Full-Stack Web & Mobile App Developer creating modern digital experiences.",
-    "tech_stack": [
-      "React Native",
-      "PHP",
-      "Laravel",
-      "API Development",
-      "Database Design",
-      "Cloud Deployment",
-      "JavaScript",
-      "HTML/CSS"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faditya-chauhan.vercel.app?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [],
-    "social_links": [],
-    "seo_evaluation": "Average",
-    "portfolio_score": 7,
-    "ai_processed": true
-  },
-  {
-    "url": "https://aditya-pillai.vercel.app",
-    "name": "Aditya Pillai",
-    "role": "",
-    "specialization": "",
-    "summary": "",
-    "tech_stack": [],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faditya-pillai.vercel.app?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:56.983616+00:00",
-    "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:57.280048+00:00"
-  },
-  {
     "url": "https://aditya-portfolio-dusky.vercel.app",
     "name": "Aditya Chaudhary",
     "role": "Backend Developer",
@@ -4892,11 +5411,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faditya30051993.github.io%2Fmy-portfolio?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:56.983291+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:22.950907+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:57.182244+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:23.004543+00:00"
   },
   {
     "url": "https://adityacodes.in",
@@ -4996,41 +5515,6 @@
     ],
     "social_links": [],
     "seo_evaluation": "Good",
-    "portfolio_score": 8,
-    "ai_processed": true
-  },
-  {
-    "url": "https://adityapunmiya.com",
-    "name": "Aditya Punmiya",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Highly skilled developer with experience in various technologies",
-    "tech_stack": [
-      "TypeScript",
-      "React.js",
-      "Node.js",
-      "Go",
-      "PostgreSQL",
-      "Tailwind CSS",
-      "ASP.NET Core",
-      "Next.js"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadityapunmiya.com?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [
-      "Portfolio Website",
-      "Notesheet Management System",
-      "Wuggy",
-      "Captcha Resolver",
-      "Wallace"
-    ],
-    "social_links": [],
-    "seo_evaluation": "Average",
     "portfolio_score": 8,
     "ai_processed": true
   },
@@ -5414,28 +5898,6 @@
     "ai_processed": true
   },
   {
-    "url": "https://agney.dev",
-    "name": "Agney Menon",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Agney Menon is a web developer and storyteller.",
-    "tech_stack": [],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fagney.dev?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [
-      "Webmarks"
-    ],
-    "social_links": [],
-    "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 6,
-    "ai_processed": true
-  },
-  {
     "url": "https://agrawalpratham.in",
     "name": "Pratham Agrawal",
     "role": "Full Stack Developer",
@@ -5581,11 +6043,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fahmednassar7.github.io?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:13.924554+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:22.950970+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:13.977066+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:23.131275+00:00"
   },
   {
     "url": "https://ahmedtokyo.com",
@@ -5735,11 +6197,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faishwarya-cs-portfolio.netlify.app?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:13.924888+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:22.951024+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:14.482734+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:23.427587+00:00"
   },
   {
     "url": "https://aitezazdev.vercel.app",
@@ -6162,26 +6624,6 @@
     "ai_processed": true
   },
   {
-    "url": "https://akwastaken.github.io",
-    "name": "Aneeth",
-    "role": "Other",
-    "specialization": "",
-    "summary": "Aneeth is a multifaceted creator and problem solver.",
-    "tech_stack": [],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fakwastaken.github.io?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [],
-    "social_links": [],
-    "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 2,
-    "ai_processed": true
-  },
-  {
     "url": "https://alamin-portfolio-site.vercel.app",
     "name": "Al Amin",
     "role": "Full Stack Developer",
@@ -6222,11 +6664,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Falamy.vercel.app?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:09.964852+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:22.951103+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:10.008547+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:23.004426+00:00"
   },
   {
     "url": "https://alejandro-gomez.vercel.app",
@@ -6581,41 +7023,6 @@
     "ai_processed": true
   },
   {
-    "url": "https://almeida-matheus.com",
-    "name": "Matheus",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Matheus is a skilled developer with a strong work ethic and collaborative mindset.",
-    "tech_stack": [
-      "Vue.js",
-      "Firebase",
-      "Java",
-      "JavaScript",
-      "AI",
-      "PWA",
-      "Algorithm complexity",
-      "Data structures"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Falmeida-matheus.com?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [
-      "Platform for Humanamente",
-      "Professional website for psychologists",
-      "PWA for price comparison",
-      "Finance.AI",
-      "HR platform evolution"
-    ],
-    "social_links": [],
-    "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 8,
-    "ai_processed": true
-  },
-  {
     "url": "https://althruist.fyi",
     "name": "Kieran",
     "role": "Game Developer",
@@ -6811,10 +7218,10 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Famiralirashidi.github.io?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:57.317342+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:23.465561+00:00",
     "ai_last_error": "scrape-temporarily-unavailable",
-    "ai_next_retry_at": "2026-07-29T03:59:57.356263+00:00"
+    "ai_next_retry_at": "2026-07-30T05:51:23.666167+00:00"
   },
   {
     "url": "https://amirdev.nl",
@@ -7265,28 +7672,6 @@
     "social_links": [],
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 6,
-    "ai_processed": true
-  },
-  {
-    "url": "https://andy-bell.design",
-    "name": "Andy",
-    "role": "Other",
-    "specialization": "",
-    "summary": "Andy is a freelance designer, developer and educator.",
-    "tech_stack": [],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fandy-bell.design?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [],
-    "social_links": [
-      "https://twitter.com"
-    ],
-    "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 2,
     "ai_processed": true
   },
   {
@@ -7977,61 +8362,6 @@
     "ai_processed": true
   },
   {
-    "url": "https://anuragaffection.vercel.app",
-    "name": "Anurag",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Full Stack Developer with 2.8+ years of experience in building scalable SaaS and web applications",
-    "tech_stack": [
-      "MERN",
-      "Microservices",
-      "Cloud",
-      "Next.js",
-      "React",
-      "Node.js",
-      "Express.js",
-      "MongoDB"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fanuragaffection.vercel.app?w=600",
-    "is_portfolio": true,
-    "location": "Bengaluru, India",
-    "projects": [
-      "PIMS / OMS / CRM SaaS Modules",
-      "Documentation Portal",
-      "Resume Maker"
-    ],
-    "social_links": [
-      "https://twitter.com/anurag"
-    ],
-    "seo_evaluation": "Average",
-    "portfolio_score": 8,
-    "ai_processed": true
-  },
-  {
-    "url": "https://anushkaisuranga.github.io",
-    "name": "Anushka Isuranga",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Anushka Isuranga is a full-stack software engineer.",
-    "tech_stack": [],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fanushkaisuranga.github.io?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [],
-    "social_links": [],
-    "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 2,
-    "ai_processed": true
-  },
-  {
     "url": "https://anvv.tech",
     "name": "Anuvab Das",
     "role": "Full Stack Developer",
@@ -8257,35 +8587,6 @@
     "ai_processed": true
   },
   {
-    "url": "https://arafat.com.bd",
-    "name": "Md. Arafat Hossan",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Full-stack engineer with expertise in scalable systems and readable code",
-    "tech_stack": [
-      "Next.js",
-      "React.js",
-      "Node.js",
-      "NestJS",
-      "PostgreSQL",
-      "Redis",
-      "Docker",
-      "Tailwind CSS"
-    ],
-    "available_for_hire": true,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Farafat.com.bd?w=600",
-    "is_portfolio": true,
-    "location": "Dhaka, Bangladesh · Remote",
-    "projects": [],
-    "social_links": [],
-    "seo_evaluation": "Average",
-    "portfolio_score": 8,
-    "ai_processed": true
-  },
-  {
     "url": "https://aravinthvr.github.io/portfolio",
     "name": "Aravinthaprasath Venkataramanan",
     "role": "Full Stack Developer",
@@ -8332,11 +8633,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Farbazansari.dev?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:57.317687+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:23.465705+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:57.398668+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:23.584073+00:00"
   },
   {
     "url": "https://arctan2.github.io",
@@ -8560,43 +8861,6 @@
     "location": "",
     "projects": [],
     "social_links": [],
-    "seo_evaluation": "Average",
-    "portfolio_score": 8,
-    "ai_processed": true
-  },
-  {
-    "url": "https://arkamahajan.in",
-    "name": "Arka Mahajan",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Arka Mahajan is an IoT specialist with frontend knowledge and AI/ML interest, building systems connecting physical and digital worlds.",
-    "tech_stack": [
-      "IoT",
-      "AI/ML",
-      "Android",
-      "Data Structures",
-      "Algorithms",
-      "Python",
-      "Raspberry Pi",
-      "Firebase"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Farkamahajan.in?w=600",
-    "is_portfolio": true,
-    "location": "Jaipur, India",
-    "projects": [
-      "Agro-Tech / Machine Learning",
-      "IoT / Hardware Security",
-      "Autonomous Ground Vehicle for Precision Agriculture",
-      "Railway accident precaution system",
-      "Automatic Train Sorting System"
-    ],
-    "social_links": [
-      "https://github.com/MyArsenal"
-    ],
     "seo_evaluation": "Average",
     "portfolio_score": 8,
     "ai_processed": true
@@ -9279,10 +9543,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fashutoshdash.in?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:19.455204+00:00",
-    "ai_last_error": "scrape-temporarily-unavailable",
-    "ai_next_retry_at": "2026-07-29T04:00:29.554340+00:00"
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:23.465766+00:00",
+    "ai_last_error": "no-usable-text",
+    "ai_terminal_attempts": 1,
+    "ai_next_retry_at": "2026-07-30T05:51:23.721375+00:00"
   },
   {
     "url": "https://ashwinhariharan.com/software-engineering",
@@ -9883,38 +10148,6 @@
     "ai_processed": true
   },
   {
-    "url": "https://axelwesselgren.dev",
-    "name": "Axel Lönnby Wesselgren",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Highly skilled developer with expertise in migration and optimization",
-    "tech_stack": [
-      "React",
-      "Astro",
-      "Gatsby",
-      "Next.js",
-      "React Router",
-      "Nano Stores",
-      "SWR"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faxelwesselgren.dev?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [
-      "Ecommerce storefront migration",
-      "Gatsby-based site migration",
-      "Next.js implementation replacement"
-    ],
-    "social_links": [],
-    "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 7,
-    "ai_processed": true
-  },
-  {
     "url": "https://ayanabha.life",
     "name": "Ayanabha Misra",
     "role": "Full Stack Developer",
@@ -10025,11 +10258,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faymanismail.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:57.317738+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:23.465826+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:57.370625+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:23.566203+00:00"
   },
   {
     "url": "https://ayooladev.vercel.app",
@@ -10051,29 +10284,6 @@
     "social_links": [],
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 2,
-    "ai_processed": true
-  },
-  {
-    "url": "https://ayushacharya.vercel.app",
-    "name": "Ayush Acharya",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Ayush Acharya is a passionate full stack developer building clean web applications.",
-    "tech_stack": [
-      "Java",
-      "Python"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fayushacharya.vercel.app?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [],
-    "social_links": [],
-    "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 6,
     "ai_processed": true
   },
   {
@@ -10230,35 +10440,6 @@
     ],
     "social_links": [],
     "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 8,
-    "ai_processed": true
-  },
-  {
-    "url": "https://ayushpradhan29.netlify.app",
-    "name": "Ayush Pradhan",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Ayush Pradhan is a passionate Full Stack Developer and Intelligent Systems Developer",
-    "tech_stack": [
-      "Python",
-      "Java",
-      "C",
-      "AI",
-      "Computer Vision",
-      "NLP",
-      "Web Development",
-      "ML"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fayushpradhan29.netlify.app?w=600",
-    "is_portfolio": true,
-    "location": "Bhubaneswar",
-    "projects": [],
-    "social_links": [],
-    "seo_evaluation": "Average",
     "portfolio_score": 8,
     "ai_processed": true
   },
@@ -10440,10 +10621,10 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbalkrishnabk.com.np?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:57.607704+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:23.465875+00:00",
     "ai_last_error": "scrape-temporarily-unavailable",
-    "ai_next_retry_at": "2026-07-29T03:59:57.924167+00:00"
+    "ai_next_retry_at": "2026-07-30T05:51:23.810484+00:00"
   },
   {
     "url": "https://bandirevanth.github.io",
@@ -10606,11 +10787,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbasilsuhail.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:57.607896+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:23.847560+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:57.676253+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:23.947485+00:00"
   },
   {
     "url": "https://bassamalaraby.me",
@@ -10709,41 +10890,6 @@
     "social_links": [],
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 6,
-    "ai_processed": true
-  },
-  {
-    "url": "https://beatrizneaime.com",
-    "name": "Beatriz",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Beatriz is a Mid-Level Full Stack Developer with experience in creating technological solutions.",
-    "tech_stack": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "React",
-      "Next.js",
-      "Node.js",
-      "MongoDB",
-      "TypeScript"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbeatrizneaime.com?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [
-      "Herbário",
-      "Pokédex",
-      "Physiotherapy Exercises App",
-      "Drawing and Painting Championship Website",
-      "Marble Shop Website"
-    ],
-    "social_links": [],
-    "seo_evaluation": "Average",
-    "portfolio_score": 8,
     "ai_processed": true
   },
   {
@@ -10947,11 +11093,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbharatdev.vercel.app?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:57.607971+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:23.847725+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:57.716918+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:23.923041+00:00"
   },
   {
     "url": "https://bhaveshgudlani.me",
@@ -11018,34 +11164,6 @@
     "social_links": [],
     "seo_evaluation": "Average",
     "portfolio_score": 7,
-    "ai_processed": true
-  },
-  {
-    "url": "https://bhavya.dev",
-    "name": "Bhavya Tomar",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Developer of Chatarooni, a random stranger chat platform",
-    "tech_stack": [
-      "Next.js",
-      "Node.js",
-      "Cloudflare D1",
-      "Tailwind",
-      "SQLite"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbhavya.dev?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [
-      "Chatarooni"
-    ],
-    "social_links": [],
-    "seo_evaluation": "Average",
-    "portfolio_score": 6,
     "ai_processed": true
   },
   {
@@ -11217,11 +11335,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbinyam.io?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:57.608034+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:23.847790+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:57.810843+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:23.996924+00:00"
   },
   {
     "url": "https://bipinmv.netlify.app",
@@ -11983,37 +12101,6 @@
     ],
     "seo_evaluation": "Good",
     "portfolio_score": 9,
-    "ai_processed": true
-  },
-  {
-    "url": "https://bsodium.fr",
-    "name": "Elliot Négrel-Jerzy",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Elliot Négrel-Jerzy is a dynamic full-stack engineer with experience in frontend and backend development.",
-    "tech_stack": [
-      "JavaScript",
-      "HTML/CSS",
-      "React",
-      "Node.js",
-      "GitHub",
-      "DALL·E",
-      "Bing Image Creator",
-      "ChatGPT"
-    ],
-    "available_for_hire": true,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbsodium.fr?w=600",
-    "is_portfolio": true,
-    "location": "Barcelona, Spain",
-    "projects": [],
-    "social_links": [
-      "https://github.com/"
-    ],
-    "seo_evaluation": "Average",
-    "portfolio_score": 7,
     "ai_processed": true
   },
   {
@@ -13077,11 +13164,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fchunhthanhde.github.io?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:57.608084+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:23.847842+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:57.668865+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:23.901994+00:00"
   },
   {
     "url": "https://ciangoon.dev",
@@ -13231,11 +13318,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fclydedsouza.net?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:57.959269+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:23.847892+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:58.061736+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:23.961057+00:00"
   },
   {
     "url": "https://coastalvinny.dev",
@@ -13249,11 +13336,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fcoastalvinny.dev?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:13.129212+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:24.034168+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:13.210953+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:24.125328+00:00"
   },
   {
     "url": "https://coder-shanks.github.io",
@@ -13390,11 +13477,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fcolinlord.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:57.959469+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:24.034340+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:58.066736+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:24.136523+00:00"
   },
   {
     "url": "https://collinskoechportfolio.web.app",
@@ -13408,11 +13495,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fcollinskoechportfolio.web.app?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:57.959539+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:24.034401+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:57.985008+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:24.105769+00:00"
   },
   {
     "url": "https://concrete.codes",
@@ -14136,11 +14223,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdanrodd.dev?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:57.959671+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:24.034462+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:58.036114+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:24.165600+00:00"
   },
   {
     "url": "https://dantsdev.vercel.app",
@@ -14578,11 +14665,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdeepsaha.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:19.455271+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:24.034510+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:19.680488+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:24.615512+00:00"
   },
   {
     "url": "https://delba.dev",
@@ -14978,11 +15065,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdevlato.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:58.103112+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:24.652667+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:58.224552+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:24.705167+00:00"
   },
   {
     "url": "https://devlucas.website",
@@ -15200,11 +15287,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdg.aluc.me?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:56.983890+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:24.652842+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:57.205909+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:24.820626+00:00"
   },
   {
     "url": "https://dga-dev.fr",
@@ -15285,11 +15372,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdheerajgupta.netlify.app%2F%23?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:58.103259+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:24.652908+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:58.543722+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:25.206186+00:00"
   },
   {
     "url": "https://dherault.com",
@@ -15350,11 +15437,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhirajbhawsar-portfolio.vercel.app?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:58.103320+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:24.652961+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:58.202565+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:24.705374+00:00"
   },
   {
     "url": "https://dhirajbhawsar.in",
@@ -17540,10 +17627,10 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ffaisalsaifi.tech?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:58.578944+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:24.653015+00:00",
     "ai_last_error": "url-temporarily-unavailable",
-    "ai_next_retry_at": "2026-07-29T03:59:58.636535+00:00"
+    "ai_next_retry_at": "2026-07-30T05:51:24.707346+00:00"
   },
   {
     "url": "https://faishal24.my.id",
@@ -17973,31 +18060,6 @@
     "social_links": [],
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 1,
-    "ai_processed": true
-  },
-  {
-    "url": "https://forbrig.github.io",
-    "name": "Vitor Forbrig",
-    "role": "Frontend Developer",
-    "specialization": "",
-    "summary": "Vitor Forbrig is a Senior Frontend Engineer with 6+ years of experience.",
-    "tech_stack": [
-      "JavaScript",
-      "TypeScript",
-      "ReactJS",
-      "Next.js"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fforbrig.github.io?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [],
-    "social_links": [],
-    "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 6,
     "ai_processed": true
   },
   {
@@ -18494,41 +18556,6 @@
     ],
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 6,
-    "ai_processed": true
-  },
-  {
-    "url": "https://ganesh717.netlify.app",
-    "name": "Ganesh M",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Ganesh M is a Full-Stack Developer and Computer Science undergrad",
-    "tech_stack": [
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "Flask",
-      "Python",
-      "OpenCV",
-      "Arduino"
-    ],
-    "available_for_hire": true,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fganesh717.netlify.app?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [
-      "Social media platform for VIT-AP students",
-      "Full-stack SaaS platform for website hosting",
-      "AI-powered GitHub profile summarizer",
-      "Lightweight micro-framework for embedding Python in HTML",
-      "Automation Workflow Engine Experiment"
-    ],
-    "social_links": [],
-    "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 8,
     "ai_processed": true
   },
   {
@@ -19997,32 +20024,6 @@
     "ai_processed": true
   },
   {
-    "url": "https://hamishw.com",
-    "name": "Hamish Williams",
-    "role": "UI/UX Designer",
-    "specialization": "",
-    "summary": "Hamish Williams is a designer and developer creating innovative solutions",
-    "tech_stack": [
-      "React Native",
-      "JavaScript"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fhamishw.com?w=600",
-    "is_portfolio": true,
-    "location": "Sydney",
-    "projects": [
-      "Video game tracking app",
-      "Biomedical image collaboration"
-    ],
-    "social_links": [],
-    "seo_evaluation": "Average",
-    "portfolio_score": 7,
-    "ai_processed": true
-  },
-  {
     "url": "https://hamzanaseem.vercel.app",
     "name": "Hamza Naseem",
     "role": "Frontend Developer",
@@ -21021,11 +21022,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fhiendao.dev?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:58.579158+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:25.243221+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:58.760852+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:25.574857+00:00"
   },
   {
     "url": "https://highflyer910.github.io",
@@ -21134,11 +21135,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fhomescriptone.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:58.103489+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:25.243390+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:58.163185+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:25.352930+00:00"
   },
   {
     "url": "https://houssambouzid.dev",
@@ -21406,11 +21407,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fhyperautomation.substack.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:58.578767+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:25.243466+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:58.601891+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:25.273554+00:00"
   },
   {
     "url": "https://iamasadshah-ibnerafi.vercel.app",
@@ -22123,11 +22124,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Filkeozs.info?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:58.797273+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:25.243521+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:58.982720+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:25.276703+00:00"
   },
   {
     "url": "https://ilyaglebov.dev",
@@ -22716,10 +22717,10 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fitsmeabdur.in?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:56.982429+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:25.243570+00:00",
     "ai_last_error": "url-temporarily-unavailable",
-    "ai_next_retry_at": "2026-07-29T03:59:57.039894+00:00"
+    "ai_next_retry_at": "2026-07-30T05:51:25.303125+00:00"
   },
   {
     "url": "https://itsmebravo.dev",
@@ -23214,11 +23215,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fjanayrawal.in?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:19.455323+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:25.611456+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:20.244843+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:26.320943+00:00"
   },
   {
     "url": "https://jannchie.com/en",
@@ -24544,11 +24545,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fjrdan.dev?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:58.579091+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:25.611614+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:58.653431+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:25.736907+00:00"
   },
   {
     "url": "https://jsantanders.dev",
@@ -24647,11 +24648,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fjuanpablojimenez.dev?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:58.797473+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:25.611674+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:58.920783+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:25.719315+00:00"
   },
   {
     "url": "https://judicael-ahyi.com",
@@ -24932,11 +24933,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkalpsenghani.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:58.797558+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:25.611726+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:59.406241+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:25.957226+00:00"
   },
   {
     "url": "https://kambergjohnson.com",
@@ -25108,11 +25109,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkarrarnazim.space?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:58.797626+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:25.611778+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:58.868597+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:25.767513+00:00"
   },
   {
     "url": "https://karunika.work",
@@ -25375,11 +25376,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkaveenk.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:58.797687+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:26.357504+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:58.898311+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:26.464883+00:00"
   },
   {
     "url": "https://kavicastelo-dev.netlify.app",
@@ -25939,11 +25940,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkishormarasini.com.au?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:13.633504+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:26.357669+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:13.886582+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:26.615620+00:00"
   },
   {
     "url": "https://kishorrj.vercel.app",
@@ -26101,11 +26102,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkrishnananda.netlify.app?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:59.441166+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:26.357733+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:59.948469+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:26.944554+00:00"
   },
   {
     "url": "https://kritan560.github.io/portfolio",
@@ -26288,11 +26289,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkuchizu.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:59.441343+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:26.357786+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:59.908489+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:26.780486+00:00"
   },
   {
     "url": "https://kunalpassan.vercel.app",
@@ -26406,10 +26407,10 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkwamehdhegbo.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:59.441572+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:26.357835+00:00",
     "ai_last_error": "url-temporarily-unavailable",
-    "ai_next_retry_at": "2026-07-29T03:59:59.453098+00:00"
+    "ai_next_retry_at": "2026-07-30T05:51:26.377195+00:00"
   },
   {
     "url": "https://kyh.io",
@@ -26908,11 +26909,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Flindseyk.dev?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:09.964731+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:26.982022+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:10.094305+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:27.101736+00:00"
   },
   {
     "url": "https://linktr.ee/abdullahahsan",
@@ -27695,11 +27696,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmacos-kuldeeprajput.vercel.app?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:13.633382+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:26.982223+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:13.842748+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:27.059604+00:00"
   },
   {
     "url": "https://macromanager.dev",
@@ -27872,11 +27873,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmahatosunil.com.np?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:12.650237+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:26.982300+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:12.695475+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:27.033546+00:00"
   },
   {
     "url": "https://mahdihasan.space",
@@ -29422,6 +29423,41 @@
     "seo_evaluation": "Average",
     "portfolio_score": 7,
     "ai_processed": true
+  },
+  {
+    "url": "https://mbitu-portfolio.vercel.app",
+    "name": "Mbitu James",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "An enthusiastic full‑stack developer from Kenya, skilled in HTML5, PHP, JavaScript, Python, and modern frameworks like React and Next.js. He creates responsive web applications and cross‑platform mobile apps, emphasizing clean code, user experience, and innovative AI solutions.",
+    "tech_stack": [
+      "HTML5",
+      "PHP",
+      "JavaScript",
+      "Python",
+      "React",
+      "Next.js",
+      "Flutter",
+      "Supabase"
+    ],
+    "projects": [
+      "Power Learn Project Africa",
+      "Responsive Art Gallery Website",
+      "Responsive Real Estate System",
+      "Capstone Responsive Web Application",
+      "Cross-Platform App with Flutter"
+    ],
+    "social_links": [],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmbitu-portfolio.vercel.app?w=600",
+    "location": "Kenya",
+    "seo_evaluation": "Average",
+    "portfolio_score": 7
   },
   {
     "url": "https://mcloughlan.com",
@@ -31827,11 +31863,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmy-portfolio-shashank-crypto.vercel.app?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:12.650081+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:26.982391+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:12.802833+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:27.085661+00:00"
   },
   {
     "url": "https://my-portfolio1-nine-sage.vercel.app",
@@ -33339,11 +33375,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fniteshnagpal.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:09.964902+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:26.982456+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:10.198069+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:27.156654+00:00"
   },
   {
     "url": "https://niteshseram.in",
@@ -33396,11 +33432,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fnitishkr.fun?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:10.235148+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:27.194990+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:10.309830+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:27.269991+00:00"
   },
   {
     "url": "https://noamanahmed.com",
@@ -33473,6 +33509,39 @@
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 8,
     "ai_processed": true
+  },
+  {
+    "url": "https://notesc.netlify.app",
+    "name": "Rishhi Duetheesh",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "An emerging full‑stack developer with hands‑on experience in JavaScript and the MERN stack, having completed internships at IPCS Global and Skiez Digital. Recently built a modern portfolio website featuring dark/light mode, responsive design, animations, and smooth scrolling.",
+    "tech_stack": [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "HTML5",
+      "CSS3",
+      "Git"
+    ],
+    "projects": [
+      "Modern portfolio website with dark/light mode and responsive design",
+      "Internship 101 at IPCS Global (JavaScript, 15 days)",
+      "Internship 102 at Skiez Digital (MERN Stack, 1 month)"
+    ],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fnotesc.netlify.app?w=600",
+    "location": "Chennai, Tamil Nadu",
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 4
   },
   {
     "url": "https://nskr.dev",
@@ -34756,11 +34825,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fparthmittal.netlify.app?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:10.235397+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:27.195182+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:11.016606+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:27.689957+00:00"
   },
   {
     "url": "https://pasi-d.me",
@@ -35386,11 +35455,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fpierre.io?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:10.235564+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:27.195266+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:10.629910+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:27.539153+00:00"
   },
   {
     "url": "https://pixeldania.netlify.app",
@@ -35879,11 +35948,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolio-anuragzete.web.app?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:57.317541+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:27.195344+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:57.570982+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:27.240523+00:00"
   },
   {
     "url": "https://portfolio-by-ashik.netlify.app",
@@ -38763,11 +38832,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fratu.dev?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:12.227449+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:27.195399+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:12.356129+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:27.272753+00:00"
   },
   {
     "url": "https://ravibhushan-portfolio.vercel.app",
@@ -38914,11 +38983,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Frebrand.ly%2Fwilsonmun?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:13.129346+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:27.728063+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:13.232887+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:27.864505+00:00"
   },
   {
     "url": "https://reddev.in",
@@ -38992,11 +39061,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fremcostoeten.nl?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:12.227634+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:27.728249+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:12.265940+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:27.760394+00:00"
   },
   {
     "url": "https://remyjouni.dev",
@@ -39889,11 +39958,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Froshanparajuli.com.np?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:12.227725+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:27.728316+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:12.281916+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:27.839328+00:00"
   },
   {
     "url": "https://ross.aleksei.digital/98",
@@ -40614,11 +40683,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsaidk.io?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:12.394170+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:27.728369+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:12.602142+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:27.877420+00:00"
   },
   {
     "url": "https://saifwebdev.netlify.app",
@@ -40957,11 +41026,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsamadtalukder.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:13.633446+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:27.728417+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:13.690497+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:27.835203+00:00"
   },
   {
     "url": "https://samarthkadam.vercel.app",
@@ -41527,10 +41596,10 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsaswatamondal.me?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:12.394435+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:27.914424+00:00",
     "ai_last_error": "scrape-temporarily-unavailable",
-    "ai_next_retry_at": "2026-07-29T04:00:12.611963+00:00"
+    "ai_next_retry_at": "2026-07-30T05:51:28.033212+00:00"
   },
   {
     "url": "https://satishjhanwer.dev",
@@ -42270,11 +42339,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fscottspence.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:12.394563+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:27.914603+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:12.499236+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:27.939411+00:00"
   },
   {
     "url": "https://sdsanchezm.github.io",
@@ -42909,11 +42978,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fshan-verse.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:09.964550+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:27.914672+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:10.069617+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:28.017864+00:00"
   },
   {
     "url": "https://shantojoseph.com",
@@ -44934,11 +45003,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsrianjaneyam.me?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:12.650175+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:27.914725+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:12.841473+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:27.943612+00:00"
   },
   {
     "url": "https://sridattasai18.github.io/Neo-folio",
@@ -45058,11 +45127,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsrng.dev?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:12.394326+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:27.914774+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:12.518408+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:28.039588+00:00"
   },
   {
     "url": "https://srummanf.vercel.app",
@@ -45321,11 +45390,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fstrangelytrue.vercel.app?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:12.227786+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:28.076813+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:12.351535+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:28.216848+00:00"
   },
   {
     "url": "https://studio44.is-a.dev",
@@ -46647,10 +46716,10 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fthibault.sh?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:12.650289+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:28.076982+00:00",
     "ai_last_error": "url-temporarily-unavailable",
-    "ai_next_retry_at": "2026-07-29T04:00:12.661764+00:00"
+    "ai_next_retry_at": "2026-07-30T05:51:28.200736+00:00"
   },
   {
     "url": "https://thinh.io.vn",
@@ -48497,11 +48566,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fvinaysomawat.github.io?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:13.129122+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:28.077051+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:13.193911+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:28.327281+00:00"
   },
   {
     "url": "https://vinitshahdeo.com",
@@ -49455,11 +49524,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwinehoused.github.io%2Fmy-portfolio?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:58.103418+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:28.077137+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:58.379990+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:28.167375+00:00"
   },
   {
     "url": "https://wisit-blog.vercel.app/about",
@@ -50802,11 +50871,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.daljeetsingh.me?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:57.959611+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:28.077194+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T03:59:57.984846+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:28.230150+00:00"
   },
   {
     "url": "https://www.daniel-michael.com",
@@ -52002,10 +52071,10 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.kumar-nishant.me?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T01:59:59.441523+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:28.364713+00:00",
     "ai_last_error": "scrape-temporarily-unavailable",
-    "ai_next_retry_at": "2026-07-29T03:59:59.544600+00:00"
+    "ai_next_retry_at": "2026-07-30T05:51:28.625759+00:00"
   },
   {
     "url": "https://www.levikingma.com",
@@ -52538,10 +52607,10 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.mohsinraz.me?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:09.964799+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:28.364861+00:00",
     "ai_last_error": "url-temporarily-unavailable",
-    "ai_next_retry_at": "2026-07-29T04:00:10.138025+00:00"
+    "ai_next_retry_at": "2026-07-30T05:51:28.494877+00:00"
   },
   {
     "url": "https://www.muhammadaamirmalik.com",
@@ -52927,11 +52996,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.patrickhyatt.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:10.235484+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:28.364923+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:10.468558+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:28.544663+00:00"
   },
   {
     "url": "https://www.patrickobermeier.at",
@@ -53650,11 +53719,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.sagarb.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:12.227846+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:28.364979+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:12.330160+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:28.417460+00:00"
   },
   {
     "url": "https://www.saikiransomanagoudar.com",
@@ -53730,10 +53799,10 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.sathwiky.dev?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:12.394508+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:28.365037+00:00",
     "ai_last_error": "scrape-temporarily-unavailable",
-    "ai_next_retry_at": "2026-07-29T04:00:12.606033+00:00"
+    "ai_next_retry_at": "2026-07-30T05:51:28.605363+00:00"
   },
   {
     "url": "https://www.saurabhdaware.in",
@@ -55029,11 +55098,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fyash1200.github.io?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:13.633105+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:28.663748+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:13.739521+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:28.758293+00:00"
   },
   {
     "url": "https://yashashm.dev",
@@ -55558,11 +55627,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fyogiveloper.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:13.633281+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:28.663910+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:13.685582+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:28.773439+00:00"
   },
   {
     "url": "https://younes-megaache.com",
@@ -55613,11 +55682,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fyourtarikur.vercel.app?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:29.591687+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:28.663982+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:29.700551+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:28.846775+00:00"
   },
   {
     "url": "https://yskkyle.com",
@@ -55805,11 +55874,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fzahin.dev?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-07-29T02:00:19.455027+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-07-30T01:51:28.664044+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-07-29T04:00:19.610091+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-07-30T05:51:28.740524+00:00"
   },
   {
     "url": "https://zaid.impiclabs.com",
