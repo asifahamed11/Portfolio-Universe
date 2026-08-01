@@ -20,6 +20,7 @@ import {
   createPreviewAttemptGate,
   installPreviewRecovery,
 } from '../lib/previewRecovery.js';
+import { enhanceDiscoveryMenus } from '../lib/discoveryMenus.js';
 
 const FALLBACK_SCREENSHOT = `${import.meta.env.BASE_URL}portfolio-placeholder.svg`;
 const PORTFOLIO_DATA_TIMEOUT_MS = 30_000;
@@ -131,6 +132,7 @@ const initializeApp = () => {
   const emptyState = document.getElementById('emptyState');
   const resultStatus = document.getElementById('resultStatus');
   const resultCount = document.getElementById('resultCount');
+  const discoveryDock = document.getElementById('discoveryDock');
   const searchInput = document.getElementById('searchInput');
   const searchShells = Array.from(document.querySelectorAll('[data-search-shell]'));
   const searchClearButtons = Array.from(document.querySelectorAll('[data-search-clear]'));
@@ -147,6 +149,7 @@ const initializeApp = () => {
   const userName = document.getElementById('userName');
   const logoutButton = document.getElementById('logoutBtn');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const discoveryMenuController = enhanceDiscoveryMenus();
 
   const ITEMS_PER_PAGE = 20;
   const INITIAL_VISIBLE_COUNT = 40;
@@ -539,7 +542,13 @@ const initializeApp = () => {
       resultStatus.textContent =
         `${filteredItems.length} portfolio${filteredItems.length === 1 ? '' : 's'}${qualifier}.`;
     }
-    if (resultCount) resultCount.textContent = filteredItems.length.toLocaleString('en-US');
+    if (resultCount) {
+      resultCount.textContent = filteredItems.length.toLocaleString('en-US');
+      resultCount.closest('.discovery-dock__result')?.setAttribute(
+        'aria-label',
+        `${filteredItems.length.toLocaleString('en-US')} portfolios available`,
+      );
+    }
     for (const button of clearFilterButtons) {
       if (button instanceof HTMLButtonElement) button.hidden = !hasActiveFilters;
     }
@@ -947,6 +956,7 @@ const initializeApp = () => {
     sortMode = 'curated';
     if (roleFilterSelect instanceof HTMLSelectElement) roleFilterSelect.value = roleFilter;
     if (sortSelect instanceof HTMLSelectElement) sortSelect.value = sortMode;
+    discoveryMenuController.syncAll();
     hireFilterButton?.setAttribute('aria-pressed', 'false');
     savedFilterButton?.setAttribute('aria-pressed', 'false');
     applyFilters({ resetPage: true });
@@ -1231,7 +1241,11 @@ const initializeApp = () => {
     const tooltipHeight = tooltip.offsetHeight;
     const tooltipWidth = tooltip.offsetWidth;
     const navBottom = topNavBar?.getBoundingClientRect().bottom || 0;
-    const spaceAbove = cardRect.top - Math.max(navBottom, 0);
+    const dockRect = discoveryDock?.getBoundingClientRect();
+    const dockBottom = dockRect && dockRect.bottom > 0 && dockRect.top < window.innerHeight
+      ? dockRect.bottom
+      : 0;
+    const spaceAbove = cardRect.top - Math.max(navBottom, dockBottom, 0);
     const spaceBelow = window.innerHeight - cardRect.bottom;
     if (spaceAbove < tooltipHeight + 18 && spaceBelow > tooltipHeight + 18) {
       tooltip.dataset.placement = 'bottom';

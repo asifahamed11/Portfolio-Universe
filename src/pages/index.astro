@@ -221,7 +221,7 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
       </div>
     </nav>
 
-    <header class="pt-10 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center relative z-10 flex flex-col items-center justify-center">
+    <header class="pt-10 pb-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center relative z-30 flex flex-col items-center justify-center">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-transparent text-[11px] font-semibold text-white/70 uppercase tracking-widest mb-6 animate-hero-text" style="animation-delay: 0.1s; box-shadow: 0 0 20px rgba(255,255,255,0.02);">
         <span class="w-1.5 h-1.5 rounded-full bg-sky-400 shadow-[0_0_10px_rgba(56,189,248,0.8)] animate-pulse"></span>
         Regularly Updated Showcase
@@ -239,7 +239,25 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
         />
       </div>
 
-      <section class="discovery-dock animate-hero-text" style="animation-delay: 0.4s;" aria-label="Discover portfolios">
+      <section id="discoveryDock" class="discovery-dock animate-hero-text" style="animation-delay: 0.4s;" aria-label="Discover portfolios">
+        <div class="discovery-dock__heading">
+          <div class="discovery-dock__identity">
+            <span class="discovery-dock__mark" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+            </span>
+            <span>
+              <small>Smart discovery</small>
+              <strong>Find your creative match</strong>
+            </span>
+          </div>
+
+          <div class="discovery-dock__result" aria-label={`${portfolios.length.toLocaleString('en-US')} portfolios available`}>
+            <span class="discovery-dock__result-signal" aria-hidden="true"></span>
+            <strong id="resultCount">{portfolios.length.toLocaleString('en-US')}</strong>
+            <span>matches</span>
+          </div>
+        </div>
+
         <div class="search-shell discovery-search relative" data-search-shell>
           <label for="searchInput" class="sr-only">Search developer portfolios</label>
           <span class="search-shell__icon" aria-hidden="true">
@@ -252,57 +270,114 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
           </button>
         </div>
 
-        <label class="discovery-select">
-          <span class="discovery-control__icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
-          </span>
-          <span class="discovery-control__copy"><small>Role</small></span>
-          <select id="roleFilterSelect" aria-label="Filter by role">
-            <option value="all">All roles</option>
-            <option value="fullstack">Full Stack</option>
-            <option value="frontend">Frontend</option>
-            <option value="backend">Backend</option>
-            <option value="ai">AI / ML</option>
-            <option value="mobile">Mobile</option>
-            <option value="devops">DevOps / Cloud</option>
-            <option value="designer">Design</option>
-            <option value="other">Other roles</option>
-          </select>
-          <svg class="discovery-select__chevron" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m7 10 5 5 5-5"/></svg>
-        </label>
+        <div class="discovery-toolbar" aria-label="Portfolio filters">
+          <span class="discovery-toolbar__label" aria-hidden="true">Refine</span>
 
-        <button type="button" id="hireFilterBtn" class="discovery-toggle" aria-pressed="false">
-          <span class="discovery-toggle__signal" aria-hidden="true"></span>
-          <span><small>Availability</small>Open to work</span>
-        </button>
+          <div class="discovery-menu" data-discovery-menu>
+            <select id="roleFilterSelect" class="discovery-menu__native" aria-label="Filter by role">
+              <option value="all" data-description="Every discipline">All roles</option>
+              <option value="fullstack" data-description="End-to-end builders">Full Stack</option>
+              <option value="frontend" data-description="Interfaces and web experiences">Frontend</option>
+              <option value="backend" data-description="Systems, services and APIs">Backend</option>
+              <option value="ai" data-description="Intelligent products and models">AI / ML</option>
+              <option value="mobile" data-description="Native and cross-platform apps">Mobile</option>
+              <option value="devops" data-description="Infrastructure and delivery">DevOps / Cloud</option>
+              <option value="designer" data-description="Product and visual craft">Design</option>
+              <option value="other" data-description="Specialists and hybrid roles">Other roles</option>
+            </select>
+            <button
+              type="button"
+              id="roleFilterTrigger"
+              class="discovery-menu__trigger"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+              aria-controls="roleFilterMenu"
+              popovertarget="roleFilterMenu"
+              popovertargetaction="toggle"
+              data-menu-trigger
+            >
+              <span class="discovery-control__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+              </span>
+              <span class="discovery-control__copy">
+                <small>Role</small>
+                <strong id="roleFilterValue" data-menu-value>All roles</strong>
+              </span>
+              <svg class="discovery-menu__chevron" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m7 10 5 5 5-5"/></svg>
+            </button>
+            <div id="roleFilterMenu" class="discovery-menu__panel" popover="auto" role="listbox" aria-labelledby="roleFilterTrigger" data-menu-panel hidden>
+              <div class="discovery-menu__header" aria-hidden="true">
+                <span>Choose a discipline</span>
+                <small>Role</small>
+              </div>
+              <div class="discovery-menu__options" data-menu-options></div>
+            </div>
+          </div>
 
-        <label class="discovery-select">
-          <span class="discovery-control__icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M6 12h12M9 18h6"/></svg>
-          </span>
-          <span class="discovery-control__copy"><small>Sort</small></span>
-          <select id="sortSelect" aria-label="Sort portfolios">
-            <option value="curated">Curated</option>
-            <option value="score">Top rated</option>
-            <option value="likes">Most liked</option>
-            <option value="views">Most viewed</option>
-          </select>
-          <svg class="discovery-select__chevron" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m7 10 5 5 5-5"/></svg>
-        </label>
+          <button type="button" id="hireFilterBtn" class="discovery-toggle" aria-pressed="false">
+            <span class="discovery-toggle__icon discovery-toggle__icon--availability" aria-hidden="true">
+              <span class="discovery-toggle__signal"></span>
+            </span>
+            <span><small>Availability</small><strong>Open to work</strong></span>
+            <span class="discovery-toggle__state" aria-hidden="true"></span>
+          </button>
 
-        <button type="button" id="savedFilterBtn" class="discovery-toggle discovery-toggle--saved" aria-pressed="false">
-          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-          <span><small>Collection</small>Saved</span>
-        </button>
+          <div class="discovery-menu discovery-menu--sort" data-discovery-menu>
+            <select id="sortSelect" class="discovery-menu__native" aria-label="Sort portfolios">
+              <option value="curated" data-description="Our balanced editorial order">Curated</option>
+              <option value="score" data-description="Highest AI review score">Top rated</option>
+              <option value="likes" data-description="Community favourites first">Most liked</option>
+              <option value="views" data-description="Most explored portfolios">Most viewed</option>
+            </select>
+            <button
+              type="button"
+              id="sortFilterTrigger"
+              class="discovery-menu__trigger"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+              aria-controls="sortFilterMenu"
+              popovertarget="sortFilterMenu"
+              popovertargetaction="toggle"
+              data-menu-trigger
+            >
+              <span class="discovery-control__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M6 12h12M9 18h6"/></svg>
+              </span>
+              <span class="discovery-control__copy">
+                <small>Sort by</small>
+                <strong id="sortFilterValue" data-menu-value>Curated</strong>
+              </span>
+              <svg class="discovery-menu__chevron" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m7 10 5 5 5-5"/></svg>
+            </button>
+            <div id="sortFilterMenu" class="discovery-menu__panel" popover="auto" role="listbox" aria-labelledby="sortFilterTrigger" data-menu-panel hidden>
+              <div class="discovery-menu__header" aria-hidden="true">
+                <span>Order the universe</span>
+                <small>Sort</small>
+              </div>
+              <div class="discovery-menu__options" data-menu-options></div>
+            </div>
+          </div>
+
+          <button type="button" id="savedFilterBtn" class="discovery-toggle discovery-toggle--saved" aria-pressed="false">
+            <span class="discovery-toggle__icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </span>
+            <span><small>Collection</small><strong>Saved</strong></span>
+            <span class="discovery-toggle__state" aria-hidden="true"></span>
+          </button>
+        </div>
       </section>
 
       <div class="discovery-meta animate-hero-text" style="animation-delay: 0.46s;">
-        <span><strong id="resultCount">{portfolios.length.toLocaleString('en-US')}</strong> portfolios ready to explore</span>
-        <button type="button" class="discovery-reset" data-clear-filters hidden>Reset filters</button>
+        <span class="discovery-meta__note"><i aria-hidden="true"></i>Filters update instantly as you explore</span>
+        <button type="button" class="discovery-reset" data-clear-filters hidden>
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+          Clear filters
+        </button>
       </div>
     </header>
 
-    <main id="portfolioMain" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-24 z-10" tabindex="-1">
+    <main id="portfolioMain" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-24 z-10" tabindex="-1">
       <p id="resultStatus" class="sr-only" role="status" aria-live="polite" aria-atomic="true">{portfolios.length} portfolios available.</p>
       <div id="portfolioGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 items-start" aria-busy="false">
         {portfolios.slice(0, 40).map((portfolio, index) => (
@@ -633,21 +708,24 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
     isolation: isolate;
     display: grid;
     width: 100%;
-    max-width: 76rem;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0.55rem;
+    max-width: 72rem;
+    gap: 0.7rem;
     margin-top: 2.25rem;
-    padding: 0.6rem;
-    border: 1px solid rgba(148, 163, 184, 0.15);
-    border-radius: 1.35rem;
+    overflow: visible;
+    padding: 0.72rem;
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    border-radius: 1.55rem;
     background:
-      linear-gradient(118deg, rgba(12, 21, 38, 0.88), rgba(7, 12, 26, 0.91));
+      radial-gradient(circle at 12% -45%, rgba(34, 211, 238, 0.12), transparent 42%),
+      radial-gradient(circle at 91% 125%, rgba(139, 92, 246, 0.1), transparent 38%),
+      linear-gradient(118deg, rgba(12, 21, 38, 0.94), rgba(6, 11, 24, 0.96));
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.07),
-      0 24px 70px rgba(0, 0, 0, 0.34),
-      0 0 0 1px rgba(34, 211, 238, 0.025);
-    -webkit-backdrop-filter: blur(22px) saturate(145%);
-    backdrop-filter: blur(22px) saturate(145%);
+      inset 0 1px 0 rgba(255, 255, 255, 0.075),
+      inset 0 -1px 0 rgba(2, 6, 23, 0.82),
+      0 28px 76px rgba(0, 0, 0, 0.32),
+      0 0 0 1px rgba(34, 211, 238, 0.018);
+    -webkit-backdrop-filter: blur(24px) saturate(142%);
+    backdrop-filter: blur(24px) saturate(142%);
   }
 
   .discovery-dock::before {
@@ -657,7 +735,7 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
     z-index: -1;
     padding: 1px;
     border-radius: inherit;
-    background: linear-gradient(105deg, transparent 3%, rgba(103, 232, 249, 0.36), transparent 45%, rgba(167, 139, 250, 0.3), transparent 92%);
+    background: linear-gradient(108deg, transparent 2%, rgba(103, 232, 249, 0.46), transparent 38%, rgba(167, 139, 250, 0.35), transparent 92%);
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
@@ -666,36 +744,170 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
       linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
     mask-composite: exclude;
-    opacity: 0.55;
+    opacity: 0.62;
     pointer-events: none;
+  }
+
+  .discovery-dock__heading {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.1rem 0.3rem 0.05rem;
+    text-align: left;
+  }
+
+  .discovery-dock__identity {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .discovery-dock__mark {
+    display: grid;
+    width: 2.15rem;
+    height: 2.15rem;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid rgba(103, 232, 249, 0.16);
+    border-radius: 0.75rem;
+    background: linear-gradient(145deg, rgba(34, 211, 238, 0.1), rgba(99, 102, 241, 0.055));
+    color: rgba(165, 243, 252, 0.9);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055);
+  }
+
+  .discovery-dock__identity small,
+  .discovery-dock__identity strong {
+    display: block;
+  }
+
+  .discovery-dock__identity small {
+    margin-bottom: 0.16rem;
+    color: rgba(103, 232, 249, 0.74);
+    font-size: 0.58rem;
+    font-weight: 760;
+    letter-spacing: 0.16em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .discovery-dock__identity strong {
+    overflow: hidden;
+    color: rgba(241, 245, 249, 0.92);
+    font-size: 0.82rem;
+    font-weight: 680;
+    letter-spacing: -0.01em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .discovery-dock__result {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 2rem;
+    padding: 0.4rem 0.65rem;
+    border: 1px solid rgba(103, 232, 249, 0.11);
+    border-radius: 999px;
+    background: rgba(34, 211, 238, 0.035);
+    color: rgba(148, 163, 184, 0.82);
+    font-size: 0.65rem;
+    font-weight: 650;
+    letter-spacing: 0.035em;
+  }
+
+  .discovery-dock__result strong {
+    color: #cffafe;
+    font-size: 0.72rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .discovery-dock__result-signal {
+    width: 0.38rem;
+    height: 0.38rem;
+    border-radius: 50%;
+    background: #22d3ee;
+    box-shadow: 0 0 9px rgba(34, 211, 238, 0.72);
   }
 
   .discovery-search {
     width: 100%;
-    height: 3.5rem;
-    border-radius: 0.9rem;
-    background: rgba(3, 8, 20, 0.62);
+    height: 3.85rem;
+    border-radius: 1.05rem;
+    background:
+      radial-gradient(circle at 8% 50%, rgba(34, 211, 238, 0.055), transparent 28%),
+      rgba(2, 7, 18, 0.68);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 10px 30px rgba(0, 0, 0, 0.16);
   }
 
   .discovery-search .search-shell__input {
-    padding-left: 2.8rem;
-    font-size: 0.9rem;
+    padding-left: 3rem;
+    font-size: 0.92rem;
   }
 
-  .discovery-select,
+  .discovery-toolbar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
+    align-items: stretch;
+    padding-top: 0.68rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.075);
+  }
+
+  .discovery-toolbar__label {
+    display: none;
+    align-items: center;
+    padding-inline: 0.4rem;
+    color: rgba(100, 116, 139, 0.82);
+    font-size: 0.59rem;
+    font-weight: 750;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .discovery-menu {
+    position: relative;
+    min-width: 0;
+  }
+
+  .discovery-menu__native,
+  .discovery-menu__trigger,
+  .discovery-toggle {
+    width: 100%;
+    min-width: 0;
+    min-height: 3.55rem;
+    border: 1px solid rgba(148, 163, 184, 0.115);
+    border-radius: 1rem;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.037), rgba(255, 255, 255, 0.016));
+    color: rgba(203, 213, 225, 0.9);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.035),
+      0 7px 22px rgba(0, 0, 0, 0.12);
+  }
+
+  .discovery-menu__native {
+    padding: 0 0.8rem;
+    color-scheme: dark;
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 650;
+  }
+
+  .discovery-menu__trigger,
   .discovery-toggle {
     position: relative;
     display: flex;
-    min-width: 0;
-    min-height: 3.5rem;
     align-items: center;
-    gap: 0.55rem;
-    border: 1px solid rgba(148, 163, 184, 0.105);
-    border-radius: 0.9rem;
-    background: rgba(255, 255, 255, 0.025);
-    color: rgba(203, 213, 225, 0.88);
+    gap: 0.62rem;
+    padding: 0 0.72rem;
     text-align: left;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+    cursor: pointer;
     transition:
       border-color 180ms ease,
       background-color 180ms ease,
@@ -704,60 +916,130 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
       box-shadow 180ms ease;
   }
 
-  .discovery-select {
-    padding: 0 0.72rem;
+  .discovery-menu__trigger {
+    display: none;
+  }
+
+  .discovery-menu[data-enhanced='true'] .discovery-menu__native {
+    display: none;
+  }
+
+  .discovery-menu[data-enhanced='true'] .discovery-menu__trigger {
+    display: flex;
   }
 
   .discovery-control__icon {
     display: grid;
+    width: 2rem;
+    height: 2rem;
     flex: 0 0 auto;
     place-items: center;
-    color: rgba(125, 211, 252, 0.68);
+    border: 1px solid rgba(103, 232, 249, 0.1);
+    border-radius: 0.68rem;
+    background: rgba(34, 211, 238, 0.045);
+    color: rgba(125, 211, 252, 0.76);
+    transition:
+      color 180ms ease,
+      background-color 180ms ease,
+      transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .discovery-control__copy {
+    min-width: 0;
+    flex: 1;
   }
 
   .discovery-control__copy small,
   .discovery-toggle small {
     display: block;
-    margin-bottom: 0.08rem;
+    margin-bottom: 0.14rem;
     color: rgba(100, 116, 139, 0.82);
-    font-size: 0.58rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+    font-size: 0.56rem;
+    font-weight: 760;
+    letter-spacing: 0.115em;
     line-height: 1;
     text-transform: uppercase;
   }
 
-  .discovery-select select {
-    min-width: 0;
-    flex: 1;
-    appearance: none;
-    border: 0;
-    outline: 0;
-    background: transparent;
+  .discovery-control__copy strong,
+  .discovery-toggle strong {
+    display: block;
+    overflow: hidden;
     color: rgba(241, 245, 249, 0.92);
-    font: inherit;
-    font-size: 0.78rem;
-    font-weight: 650;
-    cursor: pointer;
+    font-size: 0.76rem;
+    font-weight: 680;
+    line-height: 1.15;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  .discovery-select select option {
-    background: #0b1220;
-    color: #e2e8f0;
-  }
-
-  .discovery-select__chevron {
+  .discovery-menu__chevron {
     flex: 0 0 auto;
     color: rgba(148, 163, 184, 0.62);
     pointer-events: none;
+    transition:
+      color 180ms ease,
+      transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .discovery-toggle {
     justify-content: flex-start;
-    padding: 0 0.85rem;
-    font-size: 0.78rem;
-    font-weight: 650;
-    cursor: pointer;
+  }
+
+  .discovery-toggle > span:nth-child(2) {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .discovery-toggle__icon {
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    border-radius: 0.68rem;
+    background: rgba(255, 255, 255, 0.025);
+    color: rgba(251, 113, 133, 0.82);
+    transition:
+      border-color 180ms ease,
+      color 180ms ease,
+      background-color 180ms ease;
+  }
+
+  .discovery-toggle__state {
+    position: relative;
+    width: 1.7rem;
+    height: 0.95rem;
+    flex: 0 0 auto;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.8);
+    transition:
+      border-color 180ms ease,
+      background-color 180ms ease;
+  }
+
+  .discovery-toggle__state::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0.16rem;
+    width: 0.58rem;
+    height: 0.58rem;
+    border-radius: 50%;
+    background: rgba(148, 163, 184, 0.78);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.38);
+    transform: translateY(-50%);
+    transition:
+      background-color 180ms ease,
+      box-shadow 180ms ease,
+      transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .discovery-toggle__icon--availability {
+    border-color: rgba(52, 211, 153, 0.1);
+    background: rgba(16, 185, 129, 0.035);
   }
 
   .discovery-toggle__signal {
@@ -772,18 +1054,41 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
       box-shadow 180ms ease;
   }
 
-  .discovery-select:hover,
-  .discovery-select:focus-within,
+  .discovery-menu__trigger:hover,
+  .discovery-menu__trigger:focus-visible,
   .discovery-toggle:hover {
     border-color: rgba(125, 211, 252, 0.24);
     background: rgba(56, 189, 248, 0.055);
     color: #f8fafc;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.055),
+      0 10px 26px rgba(2, 132, 199, 0.055);
   }
 
-  .discovery-select:focus-within,
+  .discovery-menu__trigger:focus-visible,
   .discovery-toggle:focus-visible {
     outline: 2px solid rgba(103, 232, 249, 0.72);
     outline-offset: 2px;
+  }
+
+  .discovery-menu[data-open='true'] .discovery-menu__trigger {
+    border-color: rgba(103, 232, 249, 0.36);
+    background: rgba(34, 211, 238, 0.07);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.07),
+      0 0 0 3px rgba(34, 211, 238, 0.055),
+      0 13px 30px rgba(2, 132, 199, 0.1);
+  }
+
+  .discovery-menu[data-open='true'] .discovery-control__icon {
+    background: rgba(34, 211, 238, 0.09);
+    color: #a5f3fc;
+    transform: scale(1.04) rotate(-3deg);
+  }
+
+  .discovery-menu[data-open='true'] .discovery-menu__chevron {
+    color: #a5f3fc;
+    transform: rotate(180deg);
   }
 
   .discovery-toggle:active {
@@ -799,16 +1104,22 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
       0 8px 24px rgba(16, 185, 129, 0.07);
   }
 
+  .discovery-toggle[aria-pressed='true'] .discovery-toggle__state {
+    border-color: rgba(52, 211, 153, 0.42);
+    background: rgba(16, 185, 129, 0.2);
+  }
+
+  .discovery-toggle[aria-pressed='true'] .discovery-toggle__state::after {
+    background: #6ee7b7;
+    box-shadow: 0 0 8px rgba(52, 211, 153, 0.58);
+    transform: translate(0.7rem, -50%);
+  }
+
   .discovery-toggle[aria-pressed='true'] .discovery-toggle__signal {
     background: #34d399;
     box-shadow:
       0 0 0 3px rgba(52, 211, 153, 0.1),
       0 0 12px rgba(52, 211, 153, 0.7);
-  }
-
-  .discovery-toggle--saved > svg {
-    flex: 0 0 auto;
-    color: rgba(251, 113, 133, 0.8);
   }
 
   .discovery-toggle--saved[aria-pressed='true'] {
@@ -820,20 +1131,246 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
       0 8px 24px rgba(244, 63, 94, 0.07);
   }
 
-  .discovery-toggle--saved[aria-pressed='true'] > svg {
-    fill: currentColor;
+  .discovery-toggle--saved[aria-pressed='true'] .discovery-toggle__icon {
+    border-color: rgba(251, 113, 133, 0.2);
+    background: rgba(244, 63, 94, 0.09);
     color: #fb7185;
+  }
+
+  .discovery-toggle--saved[aria-pressed='true'] .discovery-toggle__icon svg {
+    fill: currentColor;
+  }
+
+  .discovery-toggle--saved[aria-pressed='true'] .discovery-toggle__state {
+    border-color: rgba(251, 113, 133, 0.42);
+    background: rgba(244, 63, 94, 0.2);
+  }
+
+  .discovery-toggle--saved[aria-pressed='true'] .discovery-toggle__state::after {
+    background: #fb7185;
+    box-shadow: 0 0 8px rgba(244, 63, 94, 0.58);
+  }
+
+  .discovery-menu__panel {
+    position: fixed;
+    inset: auto;
+    z-index: 180;
+    width: min(19rem, calc(100vw - 1.5rem));
+    max-height: min(22rem, calc(100dvh - 1.5rem));
+    margin: 0;
+    overflow: hidden;
+    padding: 0.48rem;
+    border: 1px solid rgba(125, 211, 252, 0.18);
+    border-radius: 1.05rem;
+    background:
+      radial-gradient(circle at 12% -10%, rgba(34, 211, 238, 0.1), transparent 34%),
+      linear-gradient(145deg, rgba(9, 17, 33, 0.99), rgba(4, 9, 21, 0.995));
+    color: #e2e8f0;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.075),
+      0 28px 70px rgba(0, 0, 0, 0.58),
+      0 0 0 1px rgba(34, 211, 238, 0.025);
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(-7px) scale(0.975);
+    transform-origin: top center;
+    transition:
+      opacity 150ms ease,
+      filter 150ms ease,
+      transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+      display 180ms allow-discrete,
+      overlay 180ms allow-discrete;
+    -webkit-backdrop-filter: blur(26px) saturate(145%);
+    backdrop-filter: blur(26px) saturate(145%);
+  }
+
+  .discovery-menu__panel:popover-open,
+  .discovery-menu__panel[data-fallback-open='true'] {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+
+  .discovery-menu__panel[data-placement='top'] {
+    transform-origin: bottom center;
+  }
+
+  .discovery-menu__panel[data-placement='top']:not(:popover-open) {
+    transform: translateY(7px) scale(0.975);
+  }
+
+  @starting-style {
+    .discovery-menu__panel:popover-open {
+      opacity: 0;
+      filter: blur(4px);
+      transform: translateY(-7px) scale(0.975);
+    }
+
+    .discovery-menu__panel[data-placement='top']:popover-open {
+      transform: translateY(7px) scale(0.975);
+    }
+  }
+
+  .discovery-menu__panel::backdrop {
+    background: transparent;
+  }
+
+  .discovery-menu__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.55rem 0.65rem 0.62rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+    color: rgba(226, 232, 240, 0.9);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+  }
+
+  .discovery-menu__header small {
+    padding: 0.22rem 0.45rem;
+    border: 1px solid rgba(103, 232, 249, 0.12);
+    border-radius: 999px;
+    background: rgba(34, 211, 238, 0.045);
+    color: rgba(165, 243, 252, 0.72);
+    font-size: 0.52rem;
+    font-weight: 760;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .discovery-menu__options {
+    display: grid;
+    gap: 0.2rem;
+    max-height: min(18.7rem, calc(100dvh - 5rem));
+    overflow-y: auto;
+    padding: 0.35rem 0.08rem 0.08rem;
+    overscroll-behavior: contain;
+    scrollbar-color: rgba(103, 232, 249, 0.3) transparent;
+    scrollbar-width: thin;
+  }
+
+  :global(.discovery-menu__option) {
+    display: grid;
+    width: 100%;
+    min-height: 3.25rem;
+    grid-template-columns: 2rem minmax(0, 1fr) 1.35rem;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.48rem 0.58rem;
+    border: 1px solid transparent;
+    border-radius: 0.78rem;
+    background: transparent;
+    color: rgba(203, 213, 225, 0.8);
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    transition:
+      border-color 140ms ease,
+      background-color 140ms ease,
+      color 140ms ease,
+      transform 160ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  :global(.discovery-menu__option:hover),
+  :global(.discovery-menu__option:focus-visible),
+  :global(.discovery-menu__option[data-active='true']) {
+    border-color: rgba(125, 211, 252, 0.11);
+    background: rgba(56, 189, 248, 0.06);
+    color: #f1f5f9;
+  }
+
+  :global(.discovery-menu__option:active) {
+    transform: scale(0.985);
+  }
+
+  :global(.discovery-menu__option[aria-selected='true']) {
+    border-color: rgba(103, 232, 249, 0.17);
+    background: linear-gradient(100deg, rgba(34, 211, 238, 0.095), rgba(99, 102, 241, 0.05));
+    color: #ecfeff;
+  }
+
+  :global(.discovery-menu__option-index) {
+    display: grid;
+    width: 1.9rem;
+    height: 1.9rem;
+    place-items: center;
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    border-radius: 0.58rem;
+    background: rgba(255, 255, 255, 0.025);
+    color: rgba(100, 116, 139, 0.9);
+    font-size: 0.54rem;
+    font-weight: 760;
+    letter-spacing: 0.07em;
+    transition:
+      border-color 140ms ease,
+      color 140ms ease,
+      background-color 140ms ease;
+  }
+
+  :global(.discovery-menu__option[aria-selected='true'] .discovery-menu__option-index) {
+    border-color: rgba(103, 232, 249, 0.2);
+    background: rgba(34, 211, 238, 0.08);
+    color: #a5f3fc;
+  }
+
+  :global(.discovery-menu__option-copy) {
+    min-width: 0;
+  }
+
+  :global(.discovery-menu__option-label),
+  :global(.discovery-menu__option-description) {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  :global(.discovery-menu__option-label) {
+    color: inherit;
+    font-size: 0.76rem;
+    font-weight: 680;
+  }
+
+  :global(.discovery-menu__option-description) {
+    margin-top: 0.16rem;
+    color: rgba(100, 116, 139, 0.88);
+    font-size: 0.61rem;
+    font-weight: 520;
+  }
+
+  :global(.discovery-menu__option-check) {
+    display: grid;
+    width: 1.25rem;
+    height: 1.25rem;
+    place-items: center;
+    border-radius: 50%;
+    color: transparent;
+    font-size: 0.72rem;
+    font-weight: 800;
+    transform: scale(0.7);
+    transition:
+      color 140ms ease,
+      background-color 140ms ease,
+      transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  :global(.discovery-menu__option[aria-selected='true'] .discovery-menu__option-check) {
+    background: rgba(34, 211, 238, 0.12);
+    color: #67e8f9;
+    transform: scale(1);
   }
 
   .discovery-meta {
     display: flex;
     width: 100%;
-    max-width: 76rem;
+    max-width: 72rem;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    margin-top: 0.8rem;
-    padding: 0 0.35rem;
+    margin-top: 0.85rem;
+    padding: 0 0.45rem;
     color: rgba(100, 116, 139, 0.92);
     font-size: 0.74rem;
     font-weight: 600;
@@ -841,20 +1378,44 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
     text-align: left;
   }
 
-  .discovery-meta strong {
-    color: rgba(165, 243, 252, 0.9);
+  .discovery-meta__note {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .discovery-meta__note i {
+    width: 0.32rem;
+    height: 0.32rem;
+    border-radius: 50%;
+    background: rgba(129, 140, 248, 0.78);
+    box-shadow: 0 0 8px rgba(99, 102, 241, 0.52);
   }
 
   .discovery-reset {
+    display: inline-flex;
     flex: 0 0 auto;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.55rem;
+    border: 1px solid rgba(165, 180, 252, 0.1);
     border-radius: 999px;
+    background: rgba(99, 102, 241, 0.035);
     color: rgba(165, 180, 252, 0.88);
     font-weight: 700;
     cursor: pointer;
+    transition:
+      border-color 160ms ease,
+      background-color 160ms ease,
+      color 160ms ease,
+      transform 160ms ease;
   }
 
   .discovery-reset:hover {
+    border-color: rgba(165, 180, 252, 0.22);
+    background: rgba(99, 102, 241, 0.08);
     color: #e0e7ff;
+    transform: translateY(-1px);
   }
 
   .discovery-reset:focus-visible {
@@ -862,59 +1423,95 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
     outline-offset: 3px;
   }
 
-  @media (min-width: 40rem) {
-    .discovery-dock {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+  :global(body.discovery-filter-open .card-tooltip) {
+    visibility: hidden !important;
+  }
 
-    .discovery-search {
+  @media (min-width: 40rem) {
+    .discovery-toolbar__label {
+      display: flex;
       grid-column: 1 / -1;
     }
   }
 
-  @media (min-width: 64rem) {
-    .discovery-dock {
+  @media (min-width: 72rem) {
+    .discovery-toolbar {
       grid-template-columns:
-        minmax(18rem, 1.7fr)
-        minmax(10.5rem, 0.84fr)
-        minmax(9.5rem, 0.72fr)
-        minmax(9.5rem, 0.74fr)
-        minmax(7.5rem, 0.56fr);
+        auto
+        minmax(11rem, 1.05fr)
+        minmax(10.25rem, 0.95fr)
+        minmax(10.75rem, 0.95fr)
+        minmax(9.25rem, 0.78fr);
     }
 
-    .discovery-search {
+    .discovery-toolbar__label {
       grid-column: auto;
     }
   }
 
   @media (max-width: 39.999rem) {
     .discovery-dock {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
       margin-top: 1.65rem;
-      padding: 0.5rem;
-      border-radius: 1.15rem;
+      padding: 0.58rem;
+      border-radius: 1.3rem;
     }
 
-    .discovery-search {
-      grid-column: 1 / -1;
+    .discovery-dock__identity strong {
+      max-width: 11rem;
     }
 
-    .discovery-select,
-    .discovery-toggle {
-      min-height: 3.25rem;
-    }
-
-    .discovery-control__copy {
+    .discovery-dock__result span:last-child {
       display: none;
     }
 
-    .discovery-select select,
-    .discovery-toggle {
-      font-size: 0.73rem;
+    .discovery-toolbar {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .discovery-menu__trigger,
     .discovery-toggle {
-      padding-inline: 0.7rem;
+      min-height: 3.45rem;
+      padding-inline: 0.62rem;
+    }
+
+    .discovery-control__icon,
+    .discovery-toggle__icon {
+      width: 1.85rem;
+      height: 1.85rem;
+    }
+
+    .discovery-toggle__state {
+      display: none;
+    }
+
+    .discovery-menu__panel[data-mobile='true'] {
+      inset: auto 0.75rem max(0.75rem, env(safe-area-inset-bottom)) 0.75rem !important;
+      width: auto !important;
+      max-height: min(75dvh, 32rem) !important;
+      border-radius: 1.25rem;
+      transform: translateY(1rem) scale(0.985);
+      transform-origin: bottom center;
+    }
+
+    .discovery-menu__panel[data-mobile='true']:popover-open,
+    .discovery-menu__panel[data-mobile='true'][data-fallback-open='true'] {
+      transform: translateY(0) scale(1);
+    }
+
+    .discovery-menu__panel[data-mobile='true']::backdrop {
+      background: rgba(2, 6, 18, 0.58);
+      -webkit-backdrop-filter: blur(5px);
+      backdrop-filter: blur(5px);
+    }
+
+    .discovery-menu__header {
+      padding: 0.65rem 0.72rem 0.72rem;
+      font-size: 0.78rem;
+    }
+
+    :global(.discovery-menu__option) {
+      min-height: 3.55rem;
+      padding-block: 0.55rem;
     }
 
     .discovery-meta {
@@ -922,8 +1519,37 @@ const canonicalUrl = new URL(import.meta.env.BASE_URL, Astro.site);
     }
   }
 
+  @media (max-width: 22.5rem) {
+    .discovery-dock__heading {
+      align-items: flex-start;
+    }
+
+    .discovery-dock__identity strong {
+      max-width: 10.5rem;
+      font-size: 0.74rem;
+    }
+
+    .discovery-dock__result span:last-child {
+      display: none;
+    }
+
+    .discovery-toolbar {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .discovery-meta__note {
+      max-width: 12rem;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .site-nav {
+    .site-nav,
+    .discovery-menu__trigger,
+    .discovery-menu__chevron,
+    .discovery-menu__panel,
+    .discovery-toggle,
+    .discovery-toggle__state::after,
+    :global(.discovery-menu__option) {
       transition-duration: 1ms;
     }
   }

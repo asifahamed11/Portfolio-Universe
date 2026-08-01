@@ -143,7 +143,7 @@ const summaryId = `portfolio-summary-${(summaryHash >>> 0).toString(36)}`;
     </div>
   </div>
 
-  <div class="card-tooltip absolute left-1/2 bottom-full z-[60] mb-3 hidden w-[min(21rem,calc(100vw-1.5rem))] flex-col items-start lg:flex" data-placement="top" hidden={!summary} aria-hidden="true">
+  <div class="card-tooltip pointer-events-none absolute left-1/2 bottom-full z-[60] mb-3 hidden w-[min(21rem,calc(100vw-1.5rem))] flex-col items-start lg:flex" data-placement="top" hidden={!summary} aria-hidden="true">
     <div class="summary-brief relative w-full origin-bottom translate-y-2 scale-[0.97] overflow-hidden rounded-[18px] border border-white/[0.12] bg-[#09111f]/95 p-4 opacity-0 shadow-[0_20px_55px_rgba(0,0,0,0.58),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:scale-100 group-focus-within:opacity-100">
       <div class="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/80 to-violet-400/60" aria-hidden="true"></div>
       <div class="mb-2.5 flex items-center justify-between gap-3">

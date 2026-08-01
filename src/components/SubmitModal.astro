@@ -407,14 +407,6 @@ import SpecularButton from './SpecularButton.jsx';
     outline-offset: 2px;
   }
 
-  #submitModal .submit-modal__submit-arrow {
-    transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  #submitModal .specular-button--modal-primary:hover .submit-modal__submit-arrow {
-    transform: translateX(3px);
-  }
-
   #submitModal .submit-modal__success {
     padding: 2.3rem 1.2rem 1.8rem;
     text-align: center;
@@ -647,7 +639,8 @@ import SpecularButton from './SpecularButton.jsx';
   #submitModal .specular-button--modal-primary {
     min-height: 3.4rem;
     margin-top: 0.15rem;
-    overflow: visible;
+    isolation: isolate;
+    overflow: hidden;
     border: 0;
     border-radius: 0.95rem;
     background:
@@ -661,6 +654,7 @@ import SpecularButton from './SpecularButton.jsx';
       transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
       box-shadow 180ms ease,
       background-color 180ms ease;
+    transform: translateZ(0);
   }
 
   #submitModal .specular-button--modal-primary::before {
@@ -689,7 +683,7 @@ import SpecularButton from './SpecularButton.jsx';
   }
 
   #submitModal .specular-button--modal-primary:active {
-    transform: translateY(0) scale(0.985);
+    transform: translateY(0) translateZ(0) scale(0.985);
   }
 
   #submitModal .specular-button--modal-primary .specular-button__fx {
