@@ -387,6 +387,41 @@
     "ai_processed": true
   },
   {
+    "url": "https://www.andreaoz.com",
+    "name": "Andrea Ojeda",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Desarrolladora web con experiencia en proyectos de impacto real",
+    "tech_stack": [
+      "React",
+      "Django",
+      "JavaScript",
+      "HTML/CSS",
+      "Python",
+      "SQL",
+      "Full-Stack Development",
+      "Web Development"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 5,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.andreaoz.com?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Tutora",
+      "Plataforma de reseñas de concesionarias de autos",
+      "Sistema digital para gestionar envíos y recepciones de analizadores médicos",
+      "Sistema de prescripción médica digital",
+      "Proyectos de Certificación Profesional de Full-Stack Development de IBM"
+    ],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 6,
+    "ai_processed": true
+  },
+  {
     "url": "https://nithilesh.vercel.app",
     "name": "Nithilesh",
     "role": "Full Stack Developer",
@@ -437,41 +472,6 @@
     "social_links": [],
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 4,
-    "ai_processed": true
-  },
-  {
-    "url": "https://www.andreaoz.com",
-    "name": "Andrea Ojeda",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Desarrolladora web con experiencia en proyectos de impacto real",
-    "tech_stack": [
-      "React",
-      "Django",
-      "JavaScript",
-      "HTML/CSS",
-      "Python",
-      "SQL",
-      "Full-Stack Development",
-      "Web Development"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 4,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.andreaoz.com?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [
-      "Tutora",
-      "Plataforma de reseñas de concesionarias de autos",
-      "Sistema digital para gestionar envíos y recepciones de analizadores médicos",
-      "Sistema de prescripción médica digital",
-      "Proyectos de Certificación Profesional de Full-Stack Development de IBM"
-    ],
-    "social_links": [],
-    "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 6,
     "ai_processed": true
   },
   {
@@ -1237,6 +1237,41 @@
     "ai_next_retry_at": "2026-08-03T10:07:19.688381+00:00"
   },
   {
+    "url": "http://starikov.dev",
+    "name": "Herman Starikov",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Herman Starikov is a developer with a personal portfolio.",
+    "tech_stack": [
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "React",
+      "Node.js",
+      "Realtime Database",
+      "AI",
+      "Chatbot"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fstarikov.dev?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [
+      "Family Chat",
+      "AI Help",
+      "Realtime Rooms"
+    ],
+    "social_links": [
+      "https://starikov.dev/"
+    ],
+    "seo_evaluation": "Average",
+    "portfolio_score": 6,
+    "ai_processed": true
+  },
+  {
     "url": "http://techggdev.vercel.app",
     "name": "Gunjan Ghate",
     "role": "Other",
@@ -1257,6 +1292,24 @@
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 2,
     "ai_processed": true
+  },
+  {
+    "url": "http://vaibhavsingh97.com",
+    "name": "Vaibhav Singh",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fvaibhavsingh97.com?w=600",
+    "ai_attempts": 5,
+    "ai_last_attempt_at": "2026-08-02T02:07:29.798677+00:00",
+    "ai_last_error": "no-usable-text",
+    "ai_terminal_attempts": 5,
+    "ai_next_retry_at": "2026-08-03T10:07:30.020706+00:00"
   },
   {
     "url": "http://vivek9patel.com",
@@ -1378,6 +1431,31 @@
     "social_links": [],
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 4,
+    "ai_processed": true
+  },
+  {
+    "url": "https://abdullah-portfolio-dev.vercel.app",
+    "name": "Abdullah Iqbal",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Abdullah Iqbal is a Full Stack Developer with 3 years of experience in React and Node",
+    "tech_stack": [
+      "React",
+      "Node",
+      "UI",
+      "Databases"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdullah-portfolio-dev.vercel.app?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 6,
     "ai_processed": true
   },
   {
@@ -1755,6 +1833,35 @@
     "social_links": [],
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 2,
+    "ai_processed": true
+  },
+  {
+    "url": "https://alamin-portfolio-site.vercel.app",
+    "name": "Al Amin",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Passionate full-stack developer studying Computer Science and Engineering",
+    "tech_stack": [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "PostgreSQL",
+      "TypeScript",
+      "Prisma",
+      "Tailwind CSS"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 1,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Falamin-portfolio-site.vercel.app?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Average",
+    "portfolio_score": 6,
     "ai_processed": true
   },
   {
@@ -3332,6 +3439,41 @@
     "ai_processed": true
   },
   {
+    "url": "http://my-portfolio-jz1h.vercel.app",
+    "name": "Mouzan Raza",
+    "role": "ML/AI Engineer",
+    "specialization": "",
+    "summary": "Mouzan Raza is a BS Computer Science student and freelance GenAI developer who builds production‑ready AI applications, including RAG systems and multi‑agent LLM pipelines, with around one year of hands‑on experience.",
+    "tech_stack": [
+      "Python",
+      "FastAPI",
+      "CrewAI",
+      "LangChain",
+      "LangGraph",
+      "Groq Llama-3.1",
+      "Google Gemini",
+      "Vector Databases"
+    ],
+    "projects": [
+      "CareerCopilot AI",
+      "FounderLens AI",
+      "Fake News Detection System",
+      "Code Reviewer",
+      "AI Study Planner"
+    ],
+    "social_links": [],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fmy-portfolio-jz1h.vercel.app?w=600",
+    "location": "Burewala, Pakistan",
+    "seo_evaluation": "Average",
+    "portfolio_score": 7
+  },
+  {
     "url": "http://obem.be/opeyemi",
     "name": "Opeyemi Obembe",
     "role": "Full Stack Developer",
@@ -3588,41 +3730,6 @@
     "ai_processed": true
   },
   {
-    "url": "http://starikov.dev",
-    "name": "Herman Starikov",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Herman Starikov is a developer with a personal portfolio.",
-    "tech_stack": [
-      "JavaScript",
-      "HTML",
-      "CSS",
-      "React",
-      "Node.js",
-      "Realtime Database",
-      "AI",
-      "Chatbot"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fstarikov.dev?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [
-      "Family Chat",
-      "AI Help",
-      "Realtime Rooms"
-    ],
-    "social_links": [
-      "https://starikov.dev/"
-    ],
-    "seo_evaluation": "Average",
-    "portfolio_score": 6,
-    "ai_processed": true
-  },
-  {
     "url": "http://tekkshetri.com.np",
     "name": "Tek Bahadur Kshetri",
     "role": "Backend Developer",
@@ -3710,24 +3817,6 @@
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 6,
     "ai_processed": true
-  },
-  {
-    "url": "http://vaibhavsingh97.com",
-    "name": "Vaibhav Singh",
-    "role": "",
-    "specialization": "",
-    "summary": "",
-    "tech_stack": [],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Fvaibhavsingh97.com?w=600",
-    "ai_attempts": 5,
-    "ai_last_attempt_at": "2026-08-02T02:07:29.798677+00:00",
-    "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 5,
-    "ai_next_retry_at": "2026-08-03T10:07:30.020706+00:00"
   },
   {
     "url": "http://valentinpotie.github.io/portfolio",
@@ -4535,31 +4624,6 @@
     "social_links": [],
     "seo_evaluation": "Average",
     "portfolio_score": 8,
-    "ai_processed": true
-  },
-  {
-    "url": "https://abdullah-portfolio-dev.vercel.app",
-    "name": "Abdullah Iqbal",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Abdullah Iqbal is a Full Stack Developer with 3 years of experience in React and Node",
-    "tech_stack": [
-      "React",
-      "Node",
-      "UI",
-      "Databases"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdullah-portfolio-dev.vercel.app?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [],
-    "social_links": [],
-    "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 6,
     "ai_processed": true
   },
   {
@@ -6654,35 +6718,6 @@
     "projects": [],
     "social_links": [],
     "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 6,
-    "ai_processed": true
-  },
-  {
-    "url": "https://alamin-portfolio-site.vercel.app",
-    "name": "Al Amin",
-    "role": "Full Stack Developer",
-    "specialization": "",
-    "summary": "Passionate full-stack developer studying Computer Science and Engineering",
-    "tech_stack": [
-      "React",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "PostgreSQL",
-      "TypeScript",
-      "Prisma",
-      "Tailwind CSS"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 0,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Falamin-portfolio-site.vercel.app?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [],
-    "social_links": [],
-    "seo_evaluation": "Average",
     "portfolio_score": 6,
     "ai_processed": true
   },
@@ -8949,11 +8984,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Farnelbg.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-08-02T02:07:15.581888+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-08-03T02:09:45.647478+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-08-02T04:07:15.706793+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-08-03T06:09:45.719826+00:00"
   },
   {
     "url": "https://arshadmq.com",
@@ -32298,6 +32333,39 @@
     "ai_processed": true
   },
   {
+    "url": "https://nafiziqbal.com",
+    "name": "Nafiz Iqbal",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Nafiz Iqbal is a self‑taught full‑stack developer based in Dhaka who builds fast, conversion‑focused web apps and AI‑powered tools. He values clean code, honest communication, and delivering production‑ready products for real users.",
+    "tech_stack": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "MongoDB",
+      "PostgreSQL",
+      "Redis",
+      "Docker"
+    ],
+    "projects": [
+      "Hotel The Manha",
+      "Hasnat Abdullah",
+      "Foundry Hub"
+    ],
+    "social_links": [],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fnafiziqbal.com?w=600",
+    "location": "Dhaka",
+    "seo_evaluation": "Average",
+    "portfolio_score": 8
+  },
+  {
     "url": "https://naimur-reza.vercel.app",
     "name": "Naimur Reza",
     "role": "Full Stack Developer",
@@ -38110,11 +38178,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fqazimaazarshad.github.io?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-08-02T02:07:15.582943+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-08-03T02:09:45.647810+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 3,
-    "ai_next_retry_at": "2026-08-02T10:07:15.813551+00:00"
+    "ai_terminal_attempts": 4,
+    "ai_next_retry_at": "2026-08-03T18:09:45.998383+00:00"
   },
   {
     "url": "https://qazuor.com",
