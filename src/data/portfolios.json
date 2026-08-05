@@ -9223,11 +9223,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Farnelbg.com?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-08-04T01:55:03.050481+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-08-05T01:55:05.802199+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 3,
-    "ai_next_retry_at": "2026-08-04T09:55:03.106566+00:00"
+    "ai_terminal_attempts": 4,
+    "ai_next_retry_at": "2026-08-05T17:55:05.859985+00:00"
   },
   {
     "url": "https://arshadmq.com",
@@ -21811,6 +21811,39 @@
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 6,
     "ai_processed": true
+  },
+  {
+    "url": "https://iamsunildev.in",
+    "name": "Sunil J",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Sunil J is a senior software engineer with over four years of experience building scalable cloud‑native applications and enterprise SaaS products. He specializes in platform engineering, cost optimization, and delivering end‑to‑end features across AWS and GCP environments.",
+    "tech_stack": [
+      "React",
+      "TypeScript",
+      "AWS",
+      "GCP",
+      "Node.js",
+      "Kubernetes",
+      "Docker",
+      "SQL"
+    ],
+    "projects": [
+      "Cloud Transcoder",
+      "Audio House",
+      "Ping Point"
+    ],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fiamsunildev.in?w=600",
+    "location": "",
+    "seo_evaluation": "Good",
+    "portfolio_score": 8
   },
   {
     "url": "https://iamtayyab.com",
