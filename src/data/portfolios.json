@@ -8494,6 +8494,41 @@
     "ai_processed": true
   },
   {
+    "url": "https://ankytm.github.io",
+    "name": "Unknown",
+    "role": "Mobile Developer",
+    "specialization": "",
+    "summary": "An experienced Android developer with over 8 years building scalable mobile applications using Kotlin, Jetpack Compose, and clean architecture. Skilled in e‑commerce, fintech, and media streaming domains, delivering robust SDK integrations, analytics, and polished user experiences.",
+    "tech_stack": [
+      "Kotlin",
+      "Jetpack Compose",
+      "Android",
+      "Clean Architecture",
+      "Retrofit",
+      "Room",
+      "Media3 ExoPlayer",
+      "Firebase"
+    ],
+    "projects": [
+      "Flagship luxury e-commerce Android app",
+      "Android video feed app",
+      "Movie discovery app",
+      "Daily fantasy sports app",
+      "Digital wallet app"
+    ],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fankytm.github.io?w=600",
+    "location": "Unknown",
+    "seo_evaluation": "Average",
+    "portfolio_score": 7
+  },
+  {
     "url": "https://anshulchauhan.dev",
     "name": "Anshul Chauhan",
     "role": "Other",
@@ -9258,11 +9293,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Farnelbg.com?w=600",
-    "ai_attempts": 5,
-    "ai_last_attempt_at": "2026-08-06T01:58:14.623687+00:00",
+    "ai_attempts": 6,
+    "ai_last_attempt_at": "2026-08-08T01:07:10.715844+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 5,
-    "ai_next_retry_at": "2026-08-07T09:58:14.802945+00:00"
+    "ai_terminal_attempts": 6,
+    "ai_next_retry_at": "2026-08-10T17:07:10.850018+00:00"
   },
   {
     "url": "https://arshadmq.com",
@@ -11454,6 +11489,28 @@
     "seo_evaluation": "Average",
     "portfolio_score": 7,
     "ai_processed": true
+  },
+  {
+    "url": "https://bhumika-wadhwani-portfolio.onrender.com",
+    "name": "Bhumika Wadhwani",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": false,
+    "ai_processed": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbhumika-wadhwani-portfolio.onrender.com?w=600",
+    "ai_attempts": 1,
+    "ai_last_attempt_at": "2026-08-08T01:07:08.728576+00:00",
+    "ai_last_error": "no-usable-text",
+    "ai_terminal_attempts": 1,
+    "ai_next_retry_at": "2026-08-08T03:07:08.979414+00:00"
   },
   {
     "url": "https://bhupi2508.netlify.app",
@@ -15045,11 +15102,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdev-kritan.github.io%2Fportfolio?w=600",
-    "ai_attempts": 2,
-    "ai_last_attempt_at": "2026-08-07T02:20:57.658326+00:00",
+    "ai_attempts": 3,
+    "ai_last_attempt_at": "2026-08-08T01:07:08.729452+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 2,
-    "ai_next_retry_at": "2026-08-07T06:20:57.903986+00:00"
+    "ai_terminal_attempts": 3,
+    "ai_next_retry_at": "2026-08-08T09:07:08.978999+00:00"
   },
   {
     "url": "https://devakshay.vercel.app",
@@ -15388,11 +15445,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdevravik.github.io?w=600",
-    "ai_attempts": 2,
-    "ai_last_attempt_at": "2026-08-07T02:20:57.658615+00:00",
+    "ai_attempts": 3,
+    "ai_last_attempt_at": "2026-08-08T01:07:10.715443+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 2,
-    "ai_next_retry_at": "2026-08-07T06:20:57.881430+00:00"
+    "ai_terminal_attempts": 3,
+    "ai_next_retry_at": "2026-08-08T09:07:10.790089+00:00"
   },
   {
     "url": "https://devrenansilva.netlify.app",
@@ -32654,11 +32711,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fnandaydas.in?w=600",
-    "ai_attempts": 2,
-    "ai_last_attempt_at": "2026-08-07T02:20:57.658938+00:00",
+    "ai_attempts": 3,
+    "ai_last_attempt_at": "2026-08-08T01:07:10.715619+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 2,
-    "ai_next_retry_at": "2026-08-07T06:20:57.907137+00:00"
+    "ai_terminal_attempts": 3,
+    "ai_next_retry_at": "2026-08-08T09:07:10.766679+00:00"
   },
   {
     "url": "https://naseemkhan.dev",
@@ -36532,11 +36589,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolio-frontend-eight-blond.vercel.app?w=600",
-    "ai_attempts": 2,
-    "ai_last_attempt_at": "2026-08-07T02:21:00.018199+00:00",
+    "ai_attempts": 3,
+    "ai_last_attempt_at": "2026-08-08T01:07:10.715710+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 2,
-    "ai_next_retry_at": "2026-08-07T06:21:00.129887+00:00"
+    "ai_terminal_attempts": 3,
+    "ai_next_retry_at": "2026-08-08T09:07:10.954476+00:00"
   },
   {
     "url": "https://portfolio-harin999s-projects.vercel.app",
@@ -39296,11 +39353,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Frathodram.vercel.app?w=600",
-    "ai_attempts": 2,
-    "ai_last_attempt_at": "2026-08-07T02:21:00.018384+00:00",
+    "ai_attempts": 3,
+    "ai_last_attempt_at": "2026-08-08T01:07:10.715790+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 2,
-    "ai_next_retry_at": "2026-08-07T06:21:00.200975+00:00"
+    "ai_terminal_attempts": 3,
+    "ai_next_retry_at": "2026-08-08T09:07:10.827623+00:00"
   },
   {
     "url": "https://ratu.dev",
@@ -46849,11 +46906,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftauqeerkhattak.github.io?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-08-07T02:20:57.657917+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-08-08T01:07:08.728927+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-08-07T04:20:57.881579+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-08-08T05:07:08.974730+00:00"
   },
   {
     "url": "https://techfolios.github.io",
@@ -55830,6 +55887,28 @@
     "ai_last_error": "no-usable-text",
     "ai_terminal_attempts": 7,
     "ai_next_retry_at": "2026-08-12T10:21:12.557878+00:00"
+  },
+  {
+    "url": "https://yashahire.info",
+    "name": "Aahire Yash",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": false,
+    "ai_processed": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fyashahire.info?w=600",
+    "ai_attempts": 1,
+    "ai_last_attempt_at": "2026-08-08T01:07:08.727597+00:00",
+    "ai_last_error": "no-usable-text",
+    "ai_terminal_attempts": 1,
+    "ai_next_retry_at": "2026-08-08T03:07:09.635783+00:00"
   },
   {
     "url": "https://yashashm.dev",
