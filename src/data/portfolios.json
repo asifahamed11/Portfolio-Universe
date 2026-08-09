@@ -11506,11 +11506,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbhumika-wadhwani-portfolio.onrender.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-08-08T01:07:08.728576+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-08-09T01:11:54.609457+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-08-08T03:07:08.979414+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-08-09T05:11:54.797530+00:00"
   },
   {
     "url": "https://bhupi2508.netlify.app",
@@ -13073,6 +13073,40 @@
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 4,
     "ai_processed": true
+  },
+  {
+    "url": "https://charanreddy.qzz.io",
+    "name": "Charan Reddy",
+    "role": "Other",
+    "specialization": "",
+    "summary": "An undergraduate specializing in Cyber Security and Digital Forensics, they develop practical security tools, automate workflows, and explore secure software development. Their work spans application security, AI security, and DevSecOps, focusing on building and breaking production systems.",
+    "tech_stack": [
+      "Python",
+      "Java",
+      "C++",
+      "GraphQL",
+      "SQLite",
+      "GitHub Actions",
+      "Linux"
+    ],
+    "projects": [
+      "LeetCode solution sync pipeline with GitHub Actions and GraphQL",
+      "Raw-socket TCP port scanner",
+      "Windows API keylogging proof-of-concept",
+      "Consistency dashboard with automated pipeline",
+      "Beginner-friendly guide to DHCP, NAT, and networking fundamentals"
+    ],
+    "social_links": [],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fcharanreddy.qzz.io?w=600",
+    "location": "",
+    "seo_evaluation": "Average",
+    "portfolio_score": 6
   },
   {
     "url": "https://chat-portfolio-dhanushnehru.netlify.app",
@@ -15102,11 +15136,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdev-kritan.github.io%2Fportfolio?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-08-08T01:07:08.729452+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-08-09T01:11:58.678626+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 3,
-    "ai_next_retry_at": "2026-08-08T09:07:08.978999+00:00"
+    "ai_terminal_attempts": 4,
+    "ai_next_retry_at": "2026-08-09T17:11:58.928442+00:00"
   },
   {
     "url": "https://devakshay.vercel.app",
@@ -15268,6 +15302,40 @@
     "seo_evaluation": "Average",
     "portfolio_score": 8,
     "ai_processed": true
+  },
+  {
+    "url": "https://devhasibulislam.vercel.app",
+    "name": "Hasibul Islam",
+    "role": "Backend Developer",
+    "specialization": "",
+    "summary": "An experienced senior backend architect with seven years of shipping production Node.js services across six countries. Specializes in designing fast, scalable APIs using NestJS, PostgreSQL, and cloud-native tools, and is open to remote, on‑site, and contract work.",
+    "tech_stack": [
+      "Node.js",
+      "NestJS",
+      "PostgreSQL",
+      "Redis",
+      "Apache Kafka",
+      "Docker",
+      "AWS",
+      "OpenAI"
+    ],
+    "projects": [
+      "Shot‑path list API rewrite",
+      "ERP system for PropTech",
+      "CRM platform",
+      "Trading platform"
+    ],
+    "social_links": [],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdevhasibulislam.vercel.app?w=600",
+    "location": "",
+    "seo_evaluation": "Average",
+    "portfolio_score": 7
   },
   {
     "url": "https://devi-r.com",
@@ -15445,11 +15513,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdevravik.github.io?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-08-08T01:07:10.715443+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-08-09T01:11:58.678807+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 3,
-    "ai_next_retry_at": "2026-08-08T09:07:10.790089+00:00"
+    "ai_terminal_attempts": 4,
+    "ai_next_retry_at": "2026-08-09T17:11:58.803218+00:00"
   },
   {
     "url": "https://devrenansilva.netlify.app",
@@ -16236,6 +16304,42 @@
     "seo_evaluation": "Average",
     "portfolio_score": 6,
     "ai_processed": true
+  },
+  {
+    "url": "https://dinq.me/sam",
+    "name": "Sam Gao",
+    "role": "Other",
+    "specialization": "",
+    "summary": "Sam Gao is the CEO and co‑founder of DINQ, based in Beijing. He is an AI expert with contributions to DeepFaceLab and OutfitAnyone, and has experience at Alibaba DAMO Academy, Tongyi Lab, and OpenAI.",
+    "tech_stack": [
+      "DeepLearning",
+      "Computer Vision",
+      "AI",
+      "DeepFaceLab",
+      "OutfitAnyone"
+    ],
+    "projects": [
+      "DART",
+      "DeepFaceLab",
+      "OutfitAnyone",
+      "DINQ",
+      "LumaLabsAI"
+    ],
+    "social_links": [
+      "https://dart2022.github.io/",
+      "https://github.com/DART2022/DART",
+      "https://t.co/YQ8HByIPng"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdinq.me%2Fsam?w=600",
+    "location": "Beijing",
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 3
   },
   {
     "url": "https://dipakdev.in",
@@ -25791,6 +25895,26 @@
     "ai_processed": true
   },
   {
+    "url": "https://kcmacapayad-portfolio.vercel.app",
+    "name": "Kim Carl Macapayad",
+    "role": "Other",
+    "specialization": "",
+    "summary": "A passionate Computer Engineer with a strong foundation in software development and problem‑solving, who enjoys creating innovative solutions, continuously learning new technologies, and collaborating through hands‑on experience to achieve common goals.",
+    "tech_stack": [],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkcmacapayad-portfolio.vercel.app?w=600",
+    "location": "",
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 3
+  },
+  {
     "url": "https://keithlau2015.github.io/portfolio",
     "name": "Keith Null",
     "role": "Game Developer",
@@ -32711,11 +32835,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fnandaydas.in?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-08-08T01:07:10.715619+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-08-09T01:11:58.678887+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 3,
-    "ai_next_retry_at": "2026-08-08T09:07:10.766679+00:00"
+    "ai_terminal_attempts": 4,
+    "ai_next_retry_at": "2026-08-09T17:11:58.722223+00:00"
   },
   {
     "url": "https://naseemkhan.dev",
@@ -36589,11 +36713,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolio-frontend-eight-blond.vercel.app?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-08-08T01:07:10.715710+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-08-09T01:11:58.678945+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 3,
-    "ai_next_retry_at": "2026-08-08T09:07:10.954476+00:00"
+    "ai_terminal_attempts": 4,
+    "ai_next_retry_at": "2026-08-09T17:11:58.828153+00:00"
   },
   {
     "url": "https://portfolio-harin999s-projects.vercel.app",
@@ -38495,11 +38619,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fqazimaazarshad.github.io?w=600",
-    "ai_attempts": 6,
-    "ai_last_attempt_at": "2026-08-06T01:58:14.623747+00:00",
+    "ai_attempts": 7,
+    "ai_last_attempt_at": "2026-08-09T01:11:58.969247+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 6,
-    "ai_next_retry_at": "2026-08-08T17:58:14.750369+00:00"
+    "ai_terminal_attempts": 7,
+    "ai_next_retry_at": "2026-08-14T09:11:59.096165+00:00"
   },
   {
     "url": "https://qazuor.com",
@@ -39179,6 +39303,28 @@
     "ai_processed": true
   },
   {
+    "url": "https://rakshasinha.dev",
+    "name": "Raksha Sinha",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": false,
+    "ai_processed": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Frakshasinha.dev?w=600",
+    "ai_attempts": 1,
+    "ai_last_attempt_at": "2026-08-09T01:11:46.711266+00:00",
+    "ai_last_error": "no-usable-text",
+    "ai_terminal_attempts": 1,
+    "ai_next_retry_at": "2026-08-09T03:11:47.417125+00:00"
+  },
+  {
     "url": "https://rameskum.com",
     "name": "Ramesh Kumar",
     "role": "Backend Developer",
@@ -39353,11 +39499,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Frathodram.vercel.app?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-08-08T01:07:10.715790+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-08-09T01:11:58.679021+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 3,
-    "ai_next_retry_at": "2026-08-08T09:07:10.827623+00:00"
+    "ai_terminal_attempts": 4,
+    "ai_next_retry_at": "2026-08-09T17:11:58.769431+00:00"
   },
   {
     "url": "https://ratu.dev",
@@ -41492,6 +41638,41 @@
     "seo_evaluation": "Average",
     "portfolio_score": 8,
     "ai_processed": true
+  },
+  {
+    "url": "https://sakshi-portfolio-eta-swart.vercel.app",
+    "name": "Sakshi Hanwat",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Sakshi Hanwat is a full‑stack developer who builds scalable web applications using React, Spring Boot, and cloud‑native DevOps practices, delivering responsive UIs, secure APIs, and AI‑enhanced features across multiple projects.",
+    "tech_stack": [
+      "React",
+      "Spring Boot",
+      "Node.js",
+      "Next.js",
+      "TypeScript",
+      "Docker",
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "projects": [
+      "AnnaSetu",
+      "Abhaya",
+      "ImagineX",
+      "NIYUKTAi",
+      "Needyfy"
+    ],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsakshi-portfolio-eta-swart.vercel.app?w=600",
+    "location": "Indore, MP, India",
+    "seo_evaluation": "Average",
+    "portfolio_score": 8
   },
   {
     "url": "https://sakshi.is-cool.dev",
@@ -46906,11 +47087,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftauqeerkhattak.github.io?w=600",
-    "ai_attempts": 2,
-    "ai_last_attempt_at": "2026-08-08T01:07:08.728927+00:00",
+    "ai_attempts": 3,
+    "ai_last_attempt_at": "2026-08-09T01:11:54.609794+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 2,
-    "ai_next_retry_at": "2026-08-08T05:07:08.974730+00:00"
+    "ai_terminal_attempts": 3,
+    "ai_next_retry_at": "2026-08-09T09:11:54.744120+00:00"
   },
   {
     "url": "https://techfolios.github.io",
@@ -51887,6 +52068,26 @@
     "ai_processed": true
   },
   {
+    "url": "https://www.favianizza.space",
+    "name": "Favian Izza",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "A fourth-year Information Systems and Technology student at Bandung Institute of Technology, maintaining a 3.62 GPA. Coursework includes algorithms, databases, software engineering, security, analytics, and AI, demonstrating a solid foundation in computer science and data-driven development.",
+    "tech_stack": [],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": false,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.favianizza.space?w=600",
+    "location": "Bandung, Indonesia",
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 2
+  },
+  {
     "url": "https://www.franckwebpro.com",
     "name": "Franck Galliod",
     "role": "Full Stack Developer",
@@ -55904,11 +56105,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fyashahire.info?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-08-08T01:07:08.727597+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-08-09T01:11:54.609727+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-08-08T03:07:09.635783+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-08-09T05:11:55.133913+00:00"
   },
   {
     "url": "https://yashashm.dev",
