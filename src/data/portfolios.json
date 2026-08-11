@@ -9293,11 +9293,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Farnelbg.com?w=600",
-    "ai_attempts": 6,
-    "ai_last_attempt_at": "2026-08-08T01:07:10.715844+00:00",
+    "ai_attempts": 7,
+    "ai_last_attempt_at": "2026-08-11T01:12:21.774549+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 6,
-    "ai_next_retry_at": "2026-08-10T17:07:10.850018+00:00"
+    "ai_terminal_attempts": 7,
+    "ai_next_retry_at": "2026-08-16T09:12:21.869458+00:00"
   },
   {
     "url": "https://arshadmq.com",
@@ -11506,11 +11506,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbhumika-wadhwani-portfolio.onrender.com?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-08-10T01:13:41.496771+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-08-11T01:12:21.774307+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 3,
-    "ai_next_retry_at": "2026-08-10T09:13:41.837393+00:00"
+    "ai_terminal_attempts": 4,
+    "ai_next_retry_at": "2026-08-11T17:12:21.968333+00:00"
   },
   {
     "url": "https://bhupi2508.netlify.app",
@@ -26373,6 +26373,28 @@
     "ai_processed": true
   },
   {
+    "url": "https://khushm.netlify.app",
+    "name": "Khushboo Mundada",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": false,
+    "ai_processed": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkhushm.netlify.app?w=600",
+    "ai_attempts": 1,
+    "ai_last_attempt_at": "2026-08-11T01:12:16.069955+00:00",
+    "ai_last_error": "no-usable-text",
+    "ai_terminal_attempts": 1,
+    "ai_next_retry_at": "2026-08-11T03:12:16.701885+00:00"
+  },
+  {
     "url": "https://khvorostovskyi.com",
     "name": "Bohdan",
     "role": "Full Stack Developer",
@@ -34438,6 +34460,31 @@
     "ai_processed": true
   },
   {
+    "url": "https://omargpax.vercel.app",
+    "name": "Azel",
+    "role": "Backend Developer",
+    "specialization": "",
+    "summary": "A backend developer specializing in building RESTful APIs and data pipelines with Java, Spring Boot, Python, and SQL, focusing on reliability and data insight to deliver robust server‑side solutions for enterprise applications.",
+    "tech_stack": [
+      "Java",
+      "Spring Boot",
+      "Python",
+      "SQL"
+    ],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fomargpax.vercel.app?w=600",
+    "location": "",
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 3
+  },
+  {
     "url": "https://omarileon.me",
     "name": "Omari Thompson-Edwards",
     "role": "Other",
@@ -39347,11 +39394,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Frakshasinha.dev?w=600",
-    "ai_attempts": 2,
-    "ai_last_attempt_at": "2026-08-10T01:13:41.496423+00:00",
+    "ai_attempts": 3,
+    "ai_last_attempt_at": "2026-08-11T01:12:16.070880+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 2,
-    "ai_next_retry_at": "2026-08-10T05:13:41.921961+00:00"
+    "ai_terminal_attempts": 3,
+    "ai_next_retry_at": "2026-08-11T09:12:16.715730+00:00"
   },
   {
     "url": "https://rameskum.com",
@@ -44872,11 +44919,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fshushaykebedew-portfolio.vercel.app?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-08-10T01:13:41.496079+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-08-11T01:12:16.070693+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-08-10T03:13:41.836906+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-08-11T05:12:16.436241+00:00"
   },
   {
     "url": "https://siddharthchattoraj.com",
@@ -47003,6 +47050,32 @@
     "ai_processed": true
   },
   {
+    "url": "https://talhasiddique-portfolio.vercel.app",
+    "name": "N/A",
+    "role": "ML/AI Engineer",
+    "specialization": "",
+    "summary": "They develop and deploy production-ready AI systems at LimeoX, focusing on applied machine learning, agentic workflows, model integration, and scalable backend pipelines, while building cloud-ready solutions with Python, FastAPI, Django, LangChain, and LangGraph.",
+    "tech_stack": [
+      "Python",
+      "FastAPI",
+      "Django",
+      "LangChain",
+      "LangGraph"
+    ],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftalhasiddique-portfolio.vercel.app?w=600",
+    "location": "Sargodha, Punjab, Pakistan",
+    "seo_evaluation": "Average",
+    "portfolio_score": 6
+  },
+  {
     "url": "https://tanishagupta1.github.io/Tanisha-Gupta-portfolio",
     "name": "Tanisha Gupta",
     "role": "Frontend Developer",
@@ -47138,11 +47211,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftauqeerkhattak.github.io?w=600",
-    "ai_attempts": 4,
-    "ai_last_attempt_at": "2026-08-10T01:13:43.566620+00:00",
+    "ai_attempts": 5,
+    "ai_last_attempt_at": "2026-08-11T01:12:21.774514+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 4,
-    "ai_next_retry_at": "2026-08-10T17:13:43.696806+00:00"
+    "ai_terminal_attempts": 5,
+    "ai_next_retry_at": "2026-08-12T09:12:21.912569+00:00"
   },
   {
     "url": "https://techfolios.github.io",
@@ -56156,11 +56229,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fyashahire.info?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-08-10T01:13:41.497066+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-08-11T01:12:21.774465+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 3,
-    "ai_next_retry_at": "2026-08-10T09:13:41.837464+00:00"
+    "ai_terminal_attempts": 4,
+    "ai_next_retry_at": "2026-08-11T17:12:22.209480+00:00"
   },
   {
     "url": "https://yashashm.dev",
