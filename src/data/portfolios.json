@@ -5179,6 +5179,26 @@
     "ai_terminal_failure": true
   },
   {
+    "url": "https://abdulmateenzwl.com",
+    "name": "Abdul Mateen",
+    "role": "DevOps/Cloud Engineer",
+    "specialization": "",
+    "summary": "A Site Reliability Engineer at Glascode, responsible for ensuring reliability, scalability, and performance of software systems through monitoring, automation, incident response, and collaboration with development teams to improve architecture and operational excellence.",
+    "tech_stack": [],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": false,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabdulmateenzwl.com?w=600",
+    "location": "",
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 2
+  },
+  {
     "url": "https://abdulmomin.dev",
     "name": "Abdul Momin",
     "role": "Full Stack Developer",
@@ -5706,6 +5726,41 @@
     "seo_evaluation": "Average",
     "portfolio_score": 7,
     "ai_processed": true
+  },
+  {
+    "url": "https://ad1tya.me",
+    "name": "Aditya",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Aditya is a cloud‑savvy software developer and Computer Science student who crafts elegant, high‑performance digital experiences. He specializes in full‑stack development, cloud infrastructure, and automation, delivering clean UIs, scalable systems, and innovative solutions.",
+    "tech_stack": [
+      "AWS",
+      "Kubernetes",
+      "Docker",
+      "Python",
+      "FastAPI",
+      "Next.js",
+      "TypeScript",
+      "GitHub Actions"
+    ],
+    "projects": [
+      "Two‑tier web application with FastAPI and Next.js",
+      "Interactive knowledge exploration engine",
+      "AI‑powered Mermaid diagram generator",
+      "Natural language to SQL full‑stack app",
+      "Arduino gas monitoring system"
+    ],
+    "social_links": [],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fad1tya.me?w=600",
+    "location": "",
+    "seo_evaluation": "Good",
+    "portfolio_score": 8
   },
   {
     "url": "https://adhivishnuportfolio.web.app",
@@ -11566,11 +11621,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbhumika-wadhwani-portfolio.onrender.com?w=600",
-    "ai_attempts": 5,
-    "ai_last_attempt_at": "2026-08-12T01:19:44.989409+00:00",
+    "ai_attempts": 6,
+    "ai_last_attempt_at": "2026-08-14T01:21:12.420230+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 5,
-    "ai_next_retry_at": "2026-08-13T09:19:45.243812+00:00"
+    "ai_terminal_attempts": 6,
+    "ai_next_retry_at": "2026-08-16T17:21:12.605552+00:00"
   },
   {
     "url": "https://bhupi2508.netlify.app",
@@ -26486,11 +26541,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkhushm.netlify.app?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-08-13T01:21:33.420273+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-08-14T01:20:52.509268+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 3,
-    "ai_next_retry_at": "2026-08-13T09:21:33.980707+00:00"
+    "ai_terminal_attempts": 4,
+    "ai_next_retry_at": "2026-08-14T17:20:53.137816+00:00"
   },
   {
     "url": "https://khvorostovskyi.com",
@@ -35153,6 +35208,35 @@
     "seo_evaluation": "Average",
     "portfolio_score": 8,
     "ai_processed": true
+  },
+  {
+    "url": "https://p-sushanth.github.io/Portfolio",
+    "name": "Sushanth Popuri",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Sushanth Popuri is a Computer Science student at GITAM University with a 9.22 CGPA, skilled in Python, JavaScript, React, Node, and AI/ML. He focuses on bridging complex algorithms and practical applications, seeking impactful collaborations.",
+    "tech_stack": [
+      "Python",
+      "JavaScript",
+      "React.js",
+      "Next.js",
+      "Node.js",
+      "MongoDB",
+      "TensorFlow",
+      "Flutter"
+    ],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fp-sushanth.github.io%2FPortfolio?w=600",
+    "location": "Visakhapatnam, India",
+    "seo_evaluation": "Average",
+    "portfolio_score": 6
   },
   {
     "url": "https://p32929.github.io",
@@ -45157,11 +45241,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fshushaykebedew-portfolio.vercel.app?w=600",
-    "ai_attempts": 4,
-    "ai_last_attempt_at": "2026-08-13T01:21:33.420353+00:00",
+    "ai_attempts": 5,
+    "ai_last_attempt_at": "2026-08-14T01:21:12.420064+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 4,
-    "ai_next_retry_at": "2026-08-13T17:21:33.511232+00:00"
+    "ai_terminal_attempts": 5,
+    "ai_next_retry_at": "2026-08-15T09:21:12.642454+00:00"
   },
   {
     "url": "https://siddharthchattoraj.com",
@@ -52248,11 +52332,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.donnaszeto.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-08-13T01:21:25.598034+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-08-14T01:20:52.509013+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-08-13T03:21:26.085763+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-08-14T05:20:52.914641+00:00"
   },
   {
     "url": "https://www.elite-lord.com",
@@ -56559,11 +56643,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fyashahire.info?w=600",
-    "ai_attempts": 5,
-    "ai_last_attempt_at": "2026-08-12T01:19:44.989816+00:00",
+    "ai_attempts": 6,
+    "ai_last_attempt_at": "2026-08-14T01:21:12.420289+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 5,
-    "ai_next_retry_at": "2026-08-13T09:19:45.273599+00:00"
+    "ai_terminal_attempts": 6,
+    "ai_next_retry_at": "2026-08-16T17:21:12.807177+00:00"
   },
   {
     "url": "https://yashashm.dev",
