@@ -15292,11 +15292,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdev-kritan.github.io%2Fportfolio?w=600",
-    "ai_attempts": 6,
-    "ai_last_attempt_at": "2026-08-12T01:19:45.580170+00:00",
+    "ai_attempts": 7,
+    "ai_last_attempt_at": "2026-08-15T00:53:04.516385+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 6,
-    "ai_next_retry_at": "2026-08-14T17:19:45.756801+00:00"
+    "ai_terminal_attempts": 7,
+    "ai_next_retry_at": "2026-08-20T08:53:04.707540+00:00"
   },
   {
     "url": "https://devakshay.vercel.app",
@@ -15671,11 +15671,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdevravik.github.io?w=600",
-    "ai_attempts": 6,
-    "ai_last_attempt_at": "2026-08-12T01:19:45.580358+00:00",
+    "ai_attempts": 7,
+    "ai_last_attempt_at": "2026-08-15T00:53:04.516425+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 6,
-    "ai_next_retry_at": "2026-08-14T17:19:45.727040+00:00"
+    "ai_terminal_attempts": 7,
+    "ai_next_retry_at": "2026-08-20T08:53:04.649652+00:00"
   },
   {
     "url": "https://devrenansilva.netlify.app",
@@ -20588,6 +20588,28 @@
     "ai_processed": true
   },
   {
+    "url": "https://hamzafareed.vercel.app",
+    "name": "Hamza Fareed",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": false,
+    "ai_processed": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fhamzafareed.vercel.app?w=600",
+    "ai_attempts": 1,
+    "ai_last_attempt_at": "2026-08-15T00:53:00.125424+00:00",
+    "ai_last_error": "no-usable-text",
+    "ai_terminal_attempts": 1,
+    "ai_next_retry_at": "2026-08-15T02:53:00.562010+00:00"
+  },
+  {
     "url": "https://hamzanaseem.vercel.app",
     "name": "Hamza Naseem",
     "role": "Frontend Developer",
@@ -24435,6 +24457,36 @@
     "ai_processed": true
   },
   {
+    "url": "https://jibanbudhathoki.com.np",
+    "name": "JibanBudhathoki",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Jiban Budhathoki is a results‑driven full‑stack engineer with over five years of experience, skilled in backend architecture, advanced frontend and mobile development, and competent in DevOps and Linux server administration, delivering scalable web and mobile products.",
+    "tech_stack": [
+      "React Native",
+      "JavaScript",
+      "Node.js",
+      "React",
+      "Docker",
+      "Linux",
+      "AWS"
+    ],
+    "projects": [
+      "IMS Full-Stack System"
+    ],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fjibanbudhathoki.com.np?w=600",
+    "location": "",
+    "seo_evaluation": "Average",
+    "portfolio_score": 5
+  },
+  {
     "url": "https://jinrup.vercel.app",
     "name": "Tom Jin",
     "role": "Frontend Developer",
@@ -26541,11 +26593,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkhushm.netlify.app?w=600",
-    "ai_attempts": 4,
-    "ai_last_attempt_at": "2026-08-14T01:20:52.509268+00:00",
+    "ai_attempts": 5,
+    "ai_last_attempt_at": "2026-08-15T00:53:00.126821+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 4,
-    "ai_next_retry_at": "2026-08-14T17:20:53.137816+00:00"
+    "ai_terminal_attempts": 5,
+    "ai_next_retry_at": "2026-08-16T08:53:00.739568+00:00"
   },
   {
     "url": "https://khvorostovskyi.com",
@@ -33088,11 +33140,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fnandaydas.in?w=600",
-    "ai_attempts": 6,
-    "ai_last_attempt_at": "2026-08-12T01:19:45.580421+00:00",
+    "ai_attempts": 7,
+    "ai_last_attempt_at": "2026-08-15T00:53:04.516454+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 6,
-    "ai_next_retry_at": "2026-08-14T17:19:45.667256+00:00"
+    "ai_terminal_attempts": 7,
+    "ai_next_retry_at": "2026-08-20T08:53:04.609432+00:00"
   },
   {
     "url": "https://narender24681.github.io",
@@ -37095,11 +37147,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolio-frontend-eight-blond.vercel.app?w=600",
-    "ai_attempts": 6,
-    "ai_last_attempt_at": "2026-08-12T01:19:45.580525+00:00",
+    "ai_attempts": 7,
+    "ai_last_attempt_at": "2026-08-15T00:53:04.516491+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 6,
-    "ai_next_retry_at": "2026-08-14T17:19:45.706211+00:00"
+    "ai_terminal_attempts": 7,
+    "ai_next_retry_at": "2026-08-20T08:53:04.820304+00:00"
   },
   {
     "url": "https://portfolio-harin999s-projects.vercel.app",
@@ -37522,6 +37574,40 @@
     "seo_evaluation": "Average",
     "portfolio_score": 8,
     "ai_processed": true
+  },
+  {
+    "url": "https://portfolio-six-livid-ti0bj1fdj4.vercel.app/projects",
+    "name": "SyncCode",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "SyncCode showcases a suite of premium development tools, including a collaborative cloud code editor, algorithm visualizer, AI study assistant, and geospatial analytics platform. The portfolio highlights expertise in full‑stack development, real‑time systems, and AI integration.",
+    "tech_stack": [
+      "JavaScript",
+      "Node.js",
+      "React",
+      "WebSocket",
+      "Docker",
+      "Python",
+      "TypeScript",
+      "AWS"
+    ],
+    "projects": [
+      "Collaborative Cloud Code Editor & Live Workspace",
+      "Interactive Algorithm & Data Structure Visualizer",
+      "Personalized AI Study Assistant & Chatbot",
+      "Geospatial AI & Satellite Remote Sensing Platform"
+    ],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolio-six-livid-ti0bj1fdj4.vercel.app%2Fprojects?w=600",
+    "location": "",
+    "seo_evaluation": "Average",
+    "portfolio_score": 7
   },
   {
     "url": "https://portfolio-sreenitya.vercel.app",
@@ -38999,13 +39085,13 @@
     "views": 0,
     "has_blog": false,
     "is_portfolio": false,
-    "ai_processed": false,
+    "ai_processed": true,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fqazimaazarshad.github.io?w=600",
-    "ai_attempts": 7,
-    "ai_last_attempt_at": "2026-08-09T01:11:58.969247+00:00",
+    "ai_attempts": 8,
+    "ai_last_attempt_at": "2026-08-15T00:53:05.344456+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 7,
-    "ai_next_retry_at": "2026-08-14T09:11:59.096165+00:00"
+    "ai_terminal_attempts": 8,
+    "ai_terminal_failure": true
   },
   {
     "url": "https://qazuor.com",
@@ -39700,11 +39786,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Frakshasinha.dev?w=600",
-    "ai_attempts": 5,
-    "ai_last_attempt_at": "2026-08-13T01:21:33.420406+00:00",
+    "ai_attempts": 6,
+    "ai_last_attempt_at": "2026-08-15T00:53:04.516213+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 5,
-    "ai_next_retry_at": "2026-08-14T09:21:33.848297+00:00"
+    "ai_terminal_attempts": 6,
+    "ai_next_retry_at": "2026-08-17T16:53:05.318956+00:00"
   },
   {
     "url": "https://rameskum.com",
@@ -39881,11 +39967,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Frathodram.vercel.app?w=600",
-    "ai_attempts": 6,
-    "ai_last_attempt_at": "2026-08-12T01:19:45.580587+00:00",
+    "ai_attempts": 7,
+    "ai_last_attempt_at": "2026-08-15T00:53:05.344294+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 6,
-    "ai_next_retry_at": "2026-08-14T17:19:45.785385+00:00"
+    "ai_terminal_attempts": 7,
+    "ai_next_retry_at": "2026-08-20T08:53:05.628740+00:00"
   },
   {
     "url": "https://ratu.dev",
@@ -52332,11 +52418,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.donnaszeto.com?w=600",
-    "ai_attempts": 2,
-    "ai_last_attempt_at": "2026-08-14T01:20:52.509013+00:00",
+    "ai_attempts": 3,
+    "ai_last_attempt_at": "2026-08-15T00:53:00.126640+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 2,
-    "ai_next_retry_at": "2026-08-14T05:20:52.914641+00:00"
+    "ai_terminal_attempts": 3,
+    "ai_next_retry_at": "2026-08-15T08:53:00.545613+00:00"
   },
   {
     "url": "https://www.elite-lord.com",
