@@ -12993,6 +12993,41 @@
     "ai_processed": true
   },
   {
+    "url": "https://cesargomez.dev",
+    "name": "César Gomez",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "César Gomez is a senior full‑stack engineer with over 13 years of experience building high‑performance Vue/Nuxt frontends, scalable Node.js backends, and AI‑augmented workflows. He specializes in frontend architecture, design systems, and end‑to‑end product delivery.",
+    "tech_stack": [
+      "Vue 3",
+      "Nuxt 4",
+      "Node.js",
+      "TypeScript",
+      "Angular",
+      "GraphQL",
+      "Pinia",
+      "CI/CD"
+    ],
+    "projects": [
+      "LingoQuesto",
+      "Colegium",
+      "TISSINI",
+      "4to Pixel",
+      "¿Qué Hay Pa' Hacer?"
+    ],
+    "social_links": [],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fcesargomez.dev?w=600",
+    "location": "Unknown",
+    "seo_evaluation": "Good",
+    "portfolio_score": 9
+  },
+  {
     "url": "https://chaitanya-sai-meka.vercel.app",
     "name": "Chaitanya Sai Meka",
     "role": "Other",
@@ -20603,11 +20638,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fhamzafareed.vercel.app?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-08-15T00:53:00.125424+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-08-16T00:55:25.888020+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-08-15T02:53:00.562010+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-08-16T04:55:26.177041+00:00"
   },
   {
     "url": "https://hamzanaseem.vercel.app",
@@ -25209,6 +25244,41 @@
     "ai_processed": true,
     "is_portfolio": false,
     "ai_terminal_failure": true
+  },
+  {
+    "url": "https://jrs-studios.web.cern.ch",
+    "name": "Systems & Infrastructure Engineer",
+    "role": "DevOps/Cloud Engineer",
+    "specialization": "",
+    "summary": "A Systems & Infrastructure Engineer at CERN with extensive DevOps, cloud, and systems software experience. Founder of the open‑source education org Dijkstra, former Hyperface developer, and mentor to dozens of students, focusing on low‑level and distributed systems.",
+    "tech_stack": [
+      "Python",
+      "Java",
+      "Spring Boot",
+      "AWS",
+      "Azure",
+      "Kubernetes",
+      "Docker",
+      "Go"
+    ],
+    "projects": [
+      "Dijkstra Open‑Source Education Platform",
+      "Hyperface EMS Application",
+      "AU Bank Virtual Card Handling",
+      "iClinic Patient Management System",
+      "CERN Windows Fleet Migration Poster"
+    ],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fjrs-studios.web.cern.ch?w=600",
+    "location": "Geneva, Switzerland",
+    "seo_evaluation": "Average",
+    "portfolio_score": 7
   },
   {
     "url": "https://jsantanders.dev",
@@ -45327,11 +45397,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fshushaykebedew-portfolio.vercel.app?w=600",
-    "ai_attempts": 5,
-    "ai_last_attempt_at": "2026-08-14T01:21:12.420064+00:00",
+    "ai_attempts": 6,
+    "ai_last_attempt_at": "2026-08-16T00:55:25.888684+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 5,
-    "ai_next_retry_at": "2026-08-15T09:21:12.642454+00:00"
+    "ai_terminal_attempts": 6,
+    "ai_next_retry_at": "2026-08-18T16:55:26.177151+00:00"
   },
   {
     "url": "https://siddharthchattoraj.com",
@@ -47625,11 +47695,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftauqeerkhattak.github.io?w=600",
-    "ai_attempts": 6,
-    "ai_last_attempt_at": "2026-08-13T01:21:33.420450+00:00",
+    "ai_attempts": 7,
+    "ai_last_attempt_at": "2026-08-16T00:55:29.981119+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 6,
-    "ai_next_retry_at": "2026-08-15T17:21:33.571020+00:00"
+    "ai_terminal_attempts": 7,
+    "ai_next_retry_at": "2026-08-21T08:55:30.054366+00:00"
   },
   {
     "url": "https://techfolios.github.io",
@@ -52418,11 +52488,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.donnaszeto.com?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-08-15T00:53:00.126640+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-08-16T00:55:25.888393+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 3,
-    "ai_next_retry_at": "2026-08-15T08:53:00.545613+00:00"
+    "ai_terminal_attempts": 4,
+    "ai_next_retry_at": "2026-08-16T16:55:26.222844+00:00"
   },
   {
     "url": "https://www.elite-lord.com",
