@@ -4733,11 +4733,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faanujkhurana.github.io?w=600",
-    "ai_attempts": 2,
-    "ai_last_attempt_at": "2026-08-18T00:51:47.079110+00:00",
+    "ai_attempts": 3,
+    "ai_last_attempt_at": "2026-08-19T00:52:42.105037+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 2,
-    "ai_next_retry_at": "2026-08-18T04:51:47.243529+00:00"
+    "ai_terminal_attempts": 3,
+    "ai_next_retry_at": "2026-08-19T08:52:42.398703+00:00"
   },
   {
     "url": "https://aarab.vercel.app",
@@ -13336,6 +13336,28 @@
     "ai_processed": true
   },
   {
+    "url": "https://chetanmahajan.vercel.app",
+    "name": "Chetan Mahajan",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": false,
+    "ai_processed": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fchetanmahajan.vercel.app?w=600",
+    "ai_attempts": 1,
+    "ai_last_attempt_at": "2026-08-19T00:52:36.276289+00:00",
+    "ai_last_error": "no-usable-text",
+    "ai_terminal_attempts": 1,
+    "ai_next_retry_at": "2026-08-19T02:52:36.610359+00:00"
+  },
+  {
     "url": "https://chetbox.com",
     "name": "Chetan Padia",
     "role": "DevOps/Cloud Engineer",
@@ -14429,6 +14451,41 @@
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 6,
     "ai_processed": true
+  },
+  {
+    "url": "https://dadashi44.vercel.app",
+    "name": "N/A",
+    "role": "Frontend Developer",
+    "specialization": "",
+    "summary": "A frontend developer from Almaty specializing in Vue, Nuxt 3, and TypeScript, who creates fast, accessible interfaces with thoughtful design, animation, and SEO optimization, and is open to freelance and product team collaborations.",
+    "tech_stack": [
+      "Vue",
+      "Nuxt 3",
+      "TypeScript",
+      "React",
+      "Pinia",
+      "GSAP",
+      "REST",
+      "Figma"
+    ],
+    "projects": [
+      "Bigplay.gg",
+      "ТРЦ MEGA",
+      "Tanda.kg",
+      "Integro",
+      "Norma Paint"
+    ],
+    "social_links": [],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdadashi44.vercel.app?w=600",
+    "location": "Almaty, Kazakhstan",
+    "seo_evaluation": "Good",
+    "portfolio_score": 8
   },
   {
     "url": "https://dalefrench.dev",
@@ -20695,11 +20752,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fhamzafareed.vercel.app?w=600",
-    "ai_attempts": 4,
-    "ai_last_attempt_at": "2026-08-18T00:51:53.686912+00:00",
+    "ai_attempts": 5,
+    "ai_last_attempt_at": "2026-08-19T00:52:42.105279+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 4,
-    "ai_next_retry_at": "2026-08-18T16:51:53.768398+00:00"
+    "ai_terminal_attempts": 5,
+    "ai_next_retry_at": "2026-08-20T08:52:42.350045+00:00"
   },
   {
     "url": "https://hamzanaseem.vercel.app",
@@ -27367,11 +27424,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Flaguerre-jb.vercel.app?w=600",
-    "ai_attempts": 2,
-    "ai_last_attempt_at": "2026-08-18T00:51:47.079450+00:00",
+    "ai_attempts": 3,
+    "ai_last_attempt_at": "2026-08-19T00:52:42.105212+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 2,
-    "ai_next_retry_at": "2026-08-18T04:51:47.263349+00:00"
+    "ai_terminal_attempts": 3,
+    "ai_next_retry_at": "2026-08-19T08:52:42.358973+00:00"
   },
   {
     "url": "https://lalith-d-portfolio.netlify.app",
@@ -42831,6 +42888,28 @@
     "ai_processed": true
   },
   {
+    "url": "https://sanjanavenkatesh.vercel.app",
+    "name": "Sanjana Venkatesh",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": false,
+    "ai_processed": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsanjanavenkatesh.vercel.app?w=600",
+    "ai_attempts": 1,
+    "ai_last_attempt_at": "2026-08-19T00:52:36.277227+00:00",
+    "ai_last_error": "no-usable-text",
+    "ai_terminal_attempts": 1,
+    "ai_next_retry_at": "2026-08-19T02:52:36.610442+00:00"
+  },
+  {
     "url": "https://sankalptharu.com.np",
     "name": "Sankalp Tharu",
     "role": "Backend Developer",
@@ -44050,6 +44129,41 @@
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 2,
     "ai_processed": true
+  },
+  {
+    "url": "https://sergiojimenez.vercel.app",
+    "name": "BaselineLab",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Desarrollador Frontend/Full Stack con más de 5 años de experiencia, especializado en crear aplicaciones web, herramientas internas y plataformas educativas. Enfocado en usabilidad, accesibilidad y productividad, integra IA y automatización en su flujo de desarrollo.",
+    "tech_stack": [
+      "Astro",
+      "TypeScript",
+      "Web Components",
+      "CSS",
+      "HTML",
+      "Tailwind",
+      "JavaScript",
+      "React"
+    ],
+    "projects": [
+      "Plataforma de playgrounds y generadores de CSS/HTML (BaselineLab)",
+      "Aplicación para alumnos del bootcamp de SocraTech",
+      "Juego infantil de búsqueda de parejas de cartas",
+      "TemariOS – plataforma interna de contenidos y ejercicios",
+      "Web de ecommerce – diseño y desarrollo completo"
+    ],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsergiojimenez.vercel.app?w=600",
+    "location": "Albacete",
+    "seo_evaluation": "Average",
+    "portfolio_score": 7
   },
   {
     "url": "https://sethhallcreative.com",
@@ -45545,11 +45659,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fshushaykebedew-portfolio.vercel.app?w=600",
-    "ai_attempts": 6,
-    "ai_last_attempt_at": "2026-08-16T00:55:25.888684+00:00",
+    "ai_attempts": 7,
+    "ai_last_attempt_at": "2026-08-19T00:52:42.105597+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 6,
-    "ai_next_retry_at": "2026-08-18T16:55:26.177151+00:00"
+    "ai_terminal_attempts": 7,
+    "ai_next_retry_at": "2026-08-24T08:52:42.333797+00:00"
   },
   {
     "url": "https://siddharthchattoraj.com",
@@ -50821,6 +50935,35 @@
     "ai_processed": true
   },
   {
+    "url": "https://waleedahmed.site",
+    "name": "Waleed Ahmed",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Waleed Ahmed is a software engineer who crafts effortless digital experiences, focusing on responsive interfaces and intuitive design. He works across the stack, collaborating with founders and teams to ship real products that prioritize user perception and detail.",
+    "tech_stack": [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "CSS",
+      "HTML",
+      "Git",
+      "Docker",
+      "AWS"
+    ],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwaleedahmed.site?w=600",
+    "location": "",
+    "seo_evaluation": "Average",
+    "portfolio_score": 6
+  },
+  {
     "url": "https://walkersmith.me",
     "name": "Walker",
     "role": "Full Stack Developer",
@@ -52716,11 +52859,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.donnaszeto.com?w=600",
-    "ai_attempts": 5,
-    "ai_last_attempt_at": "2026-08-17T00:53:22.165984+00:00",
+    "ai_attempts": 6,
+    "ai_last_attempt_at": "2026-08-19T00:52:42.105335+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 5,
-    "ai_next_retry_at": "2026-08-18T08:53:22.400925+00:00"
+    "ai_terminal_attempts": 6,
+    "ai_next_retry_at": "2026-08-21T16:52:42.350117+00:00"
   },
   {
     "url": "https://www.elite-lord.com",
