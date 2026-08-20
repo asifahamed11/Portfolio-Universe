@@ -167,7 +167,11 @@ const summaryId = `portfolio-summary-${(summaryHash >>> 0).toString(36)}`;
 <style>
   .card-tooltip {
     --tooltip-shift: 0px;
-    transform: translateX(calc(-50% + var(--tooltip-shift)));
+    --tooltip-y-shift: 0px;
+    transform: translate(
+      calc(-50% + var(--tooltip-shift)),
+      var(--tooltip-y-shift)
+    );
   }
 
   .summary-brief__caret {

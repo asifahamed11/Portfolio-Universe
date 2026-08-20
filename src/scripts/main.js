@@ -1237,6 +1237,7 @@ const initializeApp = () => {
 
     tooltip.dataset.placement = 'top';
     tooltip.style.setProperty('--tooltip-shift', '0px');
+    tooltip.style.setProperty('--tooltip-y-shift', '0px');
     const cardRect = wrapper.getBoundingClientRect();
     const tooltipHeight = tooltip.offsetHeight;
     const tooltipWidth = tooltip.offsetWidth;
@@ -1249,6 +1250,14 @@ const initializeApp = () => {
     const spaceBelow = window.innerHeight - cardRect.bottom;
     if (spaceAbove < tooltipHeight + 18 && spaceBelow > tooltipHeight + 18) {
       tooltip.dataset.placement = 'bottom';
+    }
+
+    if (tooltip.dataset.placement === 'top') {
+      const obstructionBottom = Math.max(navBottom, dockBottom, 0);
+      const idealTooltipTop = cardRect.top - tooltipHeight - 12;
+      const minimumTooltipTop = obstructionBottom + 12;
+      const downwardShift = Math.max(0, minimumTooltipTop - idealTooltipTop);
+      tooltip.style.setProperty('--tooltip-y-shift', `${downwardShift}px`);
     }
 
     const idealLeft = cardRect.left + (cardRect.width - tooltipWidth) / 2;
