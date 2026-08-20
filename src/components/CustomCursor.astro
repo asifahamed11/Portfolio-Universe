@@ -2,7 +2,7 @@
 // CustomCursor.astro
 ---
 
-<div id="custom-cursor" class="pointer-events-none fixed inset-0 z-[10000] hidden">
+<div id="custom-cursor" popover="manual" class="pointer-events-none fixed inset-0 z-[10000] hidden">
 
   <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <filter id="cursor-glass-filter" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
@@ -52,6 +52,18 @@
 </div>
 
 <style is:global>
+  #custom-cursor {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    overflow: visible;
+  }
+
   @media (pointer: fine) {
     html.custom-cursor-active,
     html.custom-cursor-active * {
@@ -81,7 +93,7 @@
 
     let cursorEnabled = finePointer.matches && !reducedMotion.matches;
     document.documentElement.classList.toggle('custom-cursor-active', cursorEnabled);
-    cursorContainer.classList.toggle('hidden', !cursorEnabled);
+    cursorContainer.classList.add('hidden');
 
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
@@ -92,6 +104,23 @@
     let frameId = 0;
     let visible = false;
     let currentMode = 'default';
+
+    const syncTopLayer = (promote = false) => {
+      const supportsPopover = typeof cursorContainer.showPopover === 'function';
+      if (!supportsPopover) return;
+
+      try {
+        const isOpen = cursorContainer.matches(':popover-open');
+        if (!cursorEnabled) {
+          if (isOpen) cursorContainer.hidePopover();
+          return;
+        }
+        if (promote && isOpen) cursorContainer.hidePopover();
+        if (!cursorContainer.matches(':popover-open')) cursorContainer.showPopover();
+      } catch {
+        // Older browsers keep the cursor in its fixed z-index layer.
+      }
+    };
 
     const scheduleRender = () => {
       if (cursorEnabled && !frameId && visible && !document.hidden) {
@@ -121,6 +150,7 @@
     const setVisible = (nextVisible: boolean) => {
       visible = cursorEnabled && nextVisible;
       cursorContainer.classList.toggle('hidden', !visible);
+      if (visible) syncTopLayer();
       if (visible) scheduleRender();
       else if (frameId) {
         cancelAnimationFrame(frameId);
@@ -132,12 +162,18 @@
       const wasEnabled = cursorEnabled;
       cursorEnabled = finePointer.matches && !reducedMotion.matches;
       document.documentElement.classList.toggle('custom-cursor-active', cursorEnabled);
-      if (!cursorEnabled) setVisible(false);
+      if (!cursorEnabled) {
+        setVisible(false);
+        syncTopLayer();
+      }
       else if (!wasEnabled) setVisible(true);
     };
 
     finePointer.addEventListener('change', syncCursorPreference);
     reducedMotion.addEventListener('change', syncCursorPreference);
+    document.addEventListener('customcursor:promote', () => {
+      if (cursorEnabled) syncTopLayer(true);
+    });
 
     const setMode = (mode: 'default' | 'card' | 'control' | 'like') => {
       if (mode === currentMode) return;

@@ -137,6 +137,9 @@ export const enhanceDiscoveryMenus = (root = document) => {
     control.trigger.setAttribute('aria-expanded', String(open));
     if (open) {
       schedulePlacement();
+      window.requestAnimationFrame(() => {
+        document.dispatchEvent(new Event('customcursor:promote'));
+      });
     } else {
       control.options.forEach(option => delete option.dataset.active);
     }
