@@ -634,6 +634,28 @@
     "ai_processed": true
   },
   {
+    "url": "http://ilhamriski.com",
+    "name": "Ilham Riski Wibowo",
+    "role": "Backend Developer",
+    "specialization": "",
+    "summary": "A passionate backend developer with 4 years of experience",
+    "tech_stack": [
+      "Backend Development"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 2,
+    "has_blog": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Filhamriski.com?w=600",
+    "is_portfolio": true,
+    "location": "",
+    "projects": [],
+    "social_links": [],
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 4,
+    "ai_processed": true
+  },
+  {
     "url": "http://juliacodes.com",
     "name": "Julia",
     "role": "UI/UX Designer",
@@ -1123,28 +1145,6 @@
     "social_links": [],
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 2,
-    "ai_processed": true
-  },
-  {
-    "url": "http://ilhamriski.com",
-    "name": "Ilham Riski Wibowo",
-    "role": "Backend Developer",
-    "specialization": "",
-    "summary": "A passionate backend developer with 4 years of experience",
-    "tech_stack": [
-      "Backend Development"
-    ],
-    "available_for_hire": false,
-    "primary_language": "",
-    "views": 1,
-    "has_blog": false,
-    "screenshot": "https://s0.wp.com/mshots/v1/http%3A%2F%2Filhamriski.com?w=600",
-    "is_portfolio": true,
-    "location": "",
-    "projects": [],
-    "social_links": [],
-    "seo_evaluation": "Needs Improvement",
-    "portfolio_score": 4,
     "ai_processed": true
   },
   {
@@ -4733,11 +4733,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faanujkhurana.github.io?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-08-19T00:52:42.105037+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-08-20T00:52:26.117667+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 3,
-    "ai_next_retry_at": "2026-08-19T08:52:42.398703+00:00"
+    "ai_terminal_attempts": 4,
+    "ai_next_retry_at": "2026-08-20T16:52:26.270239+00:00"
   },
   {
     "url": "https://aarab.vercel.app",
@@ -12572,6 +12572,43 @@
     "ai_processed": true
   },
   {
+    "url": "https://burhanaddinzm.github.io",
+    "name": "Burhanaddin Mirsadizada",
+    "role": "DevOps/Cloud Engineer",
+    "specialization": "",
+    "summary": "Burhanaddin Mirsadizada is a Software & Infrastructure Engineer specializing in backend APIs, containerized services, and self‑hosted Linux infrastructure. He has experience with Node.js, .NET, Python, Docker, Nginx, and DevOps automation, and contributes to government web services and independent projects.",
+    "tech_stack": [
+      "Node.js",
+      ".NET",
+      "Python",
+      "Docker",
+      "Nginx",
+      "Linux",
+      "SQL",
+      "Git"
+    ],
+    "projects": [
+      "License-to-PDF Converter Service",
+      "Delayed Responses Reporting System",
+      "Short Phone Numbers Registry System",
+      "Open WebUI & Local AI Gateway",
+      "Jellyfin & Distributed Media Encoding Pipeline"
+    ],
+    "social_links": [
+      "https://github.com/Burhanaddinzm"
+    ],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fburhanaddinzm.github.io?w=600",
+    "location": "Azerbaijan",
+    "seo_evaluation": "Average",
+    "portfolio_score": 7
+  },
+  {
     "url": "https://c1ph3rj.in",
     "name": "Jeevaprakash G",
     "role": "Full Stack Developer",
@@ -13351,11 +13388,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fchetanmahajan.vercel.app?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-08-19T00:52:36.276289+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-08-20T00:52:19.857606+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-08-19T02:52:36.610359+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-08-20T04:52:20.285369+00:00"
   },
   {
     "url": "https://chetbox.com",
@@ -22656,6 +22693,41 @@
     "ai_processed": true
   },
   {
+    "url": "https://iglesiaskevinralphbusiness.github.io",
+    "name": "Ralph Kevin",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Ralph Kevin is a Web Designer and Developer based in the Philippines who creates modern, responsive websites and web applications. He leverages front‑end and back‑end technologies to deliver commercial solutions and assists clients in building meaningful digital products.",
+    "tech_stack": [
+      "React.js",
+      "React Native",
+      "Angular",
+      "Vue.js",
+      "JavaScript",
+      "jQuery",
+      "HTML/CSS",
+      "Node.js"
+    ],
+    "projects": [
+      "Esports Game Client Mobile App",
+      "Invesco GRC App",
+      "Esports Live Score",
+      "GTech Parking Ticketing Mobile App",
+      "CSCReviewer.com"
+    ],
+    "social_links": [],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Figlesiaskevinralphbusiness.github.io?w=600",
+    "location": "Philippines",
+    "seo_evaluation": "Average",
+    "portfolio_score": 6
+  },
+  {
     "url": "https://igneczitibor.hu",
     "name": "Tibor Ignéczi",
     "role": "Full Stack Developer",
@@ -26777,11 +26849,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkhushm.netlify.app?w=600",
-    "ai_attempts": 6,
-    "ai_last_attempt_at": "2026-08-17T00:53:22.166044+00:00",
+    "ai_attempts": 7,
+    "ai_last_attempt_at": "2026-08-20T00:52:26.117883+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 6,
-    "ai_next_retry_at": "2026-08-19T16:53:22.651217+00:00"
+    "ai_terminal_attempts": 7,
+    "ai_next_retry_at": "2026-08-25T08:52:26.729780+00:00"
   },
   {
     "url": "https://khvorostovskyi.com",
@@ -27424,11 +27496,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Flaguerre-jb.vercel.app?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-08-19T00:52:42.105212+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-08-20T00:52:26.117823+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 3,
-    "ai_next_retry_at": "2026-08-19T08:52:42.358973+00:00"
+    "ai_terminal_attempts": 4,
+    "ai_next_retry_at": "2026-08-20T16:52:26.438538+00:00"
   },
   {
     "url": "https://lalith-d-portfolio.netlify.app",
@@ -38869,6 +38941,34 @@
     "ai_processed": true
   },
   {
+    "url": "https://premthatikonda.xyz",
+    "name": "Prem Thatikonda",
+    "role": "Backend Developer",
+    "specialization": "",
+    "summary": "They created a Python CLI tool that generates personalized PDF certificates with frosted‑glass text overlays, supports bulk email distribution via Gmail SMTP, includes auto‑shrinking fonts, a dry‑run mode, and a GUI helper for template calibration.",
+    "tech_stack": [
+      "Python",
+      "ReportLab",
+      "Gmail SMTP",
+      "Tkinter",
+      "PyPDF2"
+    ],
+    "projects": [
+      "Certificates Sender"
+    ],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fpremthatikonda.xyz?w=600",
+    "location": "",
+    "seo_evaluation": "Average",
+    "portfolio_score": 5
+  },
+  {
     "url": "https://pridebnath.github.io/portfolio-v2",
     "name": "Pritam",
     "role": "Frontend Developer",
@@ -42903,11 +43003,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsanjanavenkatesh.vercel.app?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-08-19T00:52:36.277227+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-08-20T00:52:19.857834+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-08-19T02:52:36.610442+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-08-20T04:52:20.285254+00:00"
   },
   {
     "url": "https://sankalptharu.com.np",
