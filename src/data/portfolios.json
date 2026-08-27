@@ -7670,11 +7670,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Falmarzancom.vercel.app?w=600",
-    "ai_attempts": 2,
-    "ai_last_attempt_at": "2026-08-26T00:55:11.371503+00:00",
+    "ai_attempts": 3,
+    "ai_last_attempt_at": "2026-08-27T06:37:40.754374+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 2,
-    "ai_next_retry_at": "2026-08-26T04:55:11.566417+00:00"
+    "ai_terminal_attempts": 3,
+    "ai_next_retry_at": "2026-08-27T14:37:40.974043+00:00"
   },
   {
     "url": "https://almazb.vercel.app",
@@ -13386,11 +13386,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fcharlesdegraeuwe.com?w=600",
-    "ai_attempts": 5,
-    "ai_last_attempt_at": "2026-08-25T00:54:34.358579+00:00",
+    "ai_attempts": 6,
+    "ai_last_attempt_at": "2026-08-27T06:37:41.320710+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 5,
-    "ai_next_retry_at": "2026-08-26T08:54:35.040652+00:00"
+    "ai_terminal_attempts": 6,
+    "ai_next_retry_at": "2026-08-29T22:37:41.985827+00:00"
   },
   {
     "url": "https://chat-portfolio-dhanushnehru.netlify.app",
@@ -43447,11 +43447,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsarthak-mac.vercel.app?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-08-26T00:55:11.371210+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-08-27T06:37:40.753658+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-08-26T02:55:11.566315+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-08-27T10:37:40.973956+00:00"
   },
   {
     "url": "https://saswatamondal.me",
@@ -46891,25 +46891,34 @@
   },
   {
     "url": "https://spaceishere.netlify.app",
-    "name": "Antariksh Mankar",
-    "role": "",
+    "name": "PayPilot AI",
+    "role": "Full Stack Developer",
     "specialization": "",
-    "summary": "",
-    "tech_stack": [],
-    "projects": [],
+    "summary": "PayPilot AI is an autonomous commerce agent that leverages a large language model to browse products, manage carts, and orchestrate checkout, while ensuring each purchase is halted at a persisted human-consent gate that the model cannot bypass.",
+    "tech_stack": [
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "Docker",
+      "React",
+      "OpenAI API",
+      "SQLAlchemy",
+      "GitHub Actions"
+    ],
+    "projects": [
+      "PayPilot AI"
+    ],
     "social_links": [],
     "available_for_hire": false,
     "primary_language": "",
     "views": 0,
     "has_blog": false,
     "is_portfolio": false,
-    "ai_processed": false,
+    "ai_processed": true,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fspaceishere.netlify.app?w=600",
-    "ai_attempts": 4,
-    "ai_last_attempt_at": "2026-08-26T00:55:11.372079+00:00",
-    "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 4,
-    "ai_next_retry_at": "2026-08-26T16:55:12.974132+00:00"
+    "location": "",
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 3
   },
   {
     "url": "https://spee.dev",
@@ -48233,11 +48242,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftahahassan.vercel.app?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-08-26T00:55:11.371815+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-08-27T06:37:40.754638+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 3,
-    "ai_next_retry_at": "2026-08-26T08:55:11.598996+00:00"
+    "ai_terminal_attempts": 4,
+    "ai_next_retry_at": "2026-08-27T22:37:41.070677+00:00"
   },
   {
     "url": "https://taiwobuilds.github.io/my-portfolio",
@@ -51786,6 +51795,28 @@
     "ai_processed": true
   },
   {
+    "url": "https://www.7sadakonr.xyz",
+    "name": "Jetsadakorn Muangwichit",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": false,
+    "ai_processed": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.7sadakonr.xyz?w=600",
+    "ai_attempts": 1,
+    "ai_last_attempt_at": "2026-08-27T06:37:40.753056+00:00",
+    "ai_last_error": "no-usable-text",
+    "ai_terminal_attempts": 1,
+    "ai_next_retry_at": "2026-08-27T08:37:40.974077+00:00"
+  },
+  {
     "url": "https://www.aalexis.fr",
     "name": "Alexis De Jesus",
     "role": "Full Stack Developer",
@@ -51917,11 +51948,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.abhisheksharma.codes?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-08-26T00:55:11.370654+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-08-27T06:37:40.753996+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-08-26T02:55:13.739121+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-08-27T10:37:41.291239+00:00"
   },
   {
     "url": "https://www.abhishekworks.com",
