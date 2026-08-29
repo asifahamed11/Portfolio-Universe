@@ -5092,6 +5092,41 @@
     "ai_processed": true
   },
   {
+    "url": "https://abd-cloud-resume-v1.pages.dev",
+    "name": "Muhammad Abdullah",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "A software engineering student and aspiring cloud engineer, certified in AWS and Cisco, builds full‑stack, serverless applications using React, TypeScript, and cloud infrastructure. Focused on developer experience, performance, and open‑source contributions.",
+    "tech_stack": [
+      "React",
+      "TypeScript",
+      "AWS",
+      "Cloudflare",
+      "Electron",
+      "CI/CD",
+      "REST API",
+      "DeepSeek LLM"
+    ],
+    "projects": [
+      "Cloud Resume Challenge",
+      "DeepSeek Chatbot Web App",
+      "Movies Info Web App",
+      "Currency Converter Web App",
+      "Desktop Widget for Windows"
+    ],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fabd-cloud-resume-v1.pages.dev?w=600",
+    "location": "",
+    "seo_evaluation": "Average",
+    "portfolio_score": 7
+  },
+  {
     "url": "https://abdallaahmed.icu",
     "name": "Abdullah Ahmed",
     "role": "Full Stack Developer",
@@ -7670,11 +7705,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Falmarzancom.vercel.app?w=600",
-    "ai_attempts": 4,
-    "ai_last_attempt_at": "2026-08-28T08:27:48.295815+00:00",
+    "ai_attempts": 5,
+    "ai_last_attempt_at": "2026-08-29T05:08:37.636739+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 4,
-    "ai_next_retry_at": "2026-08-29T00:27:48.411366+00:00"
+    "ai_terminal_attempts": 5,
+    "ai_next_retry_at": "2026-08-30T13:08:37.752790+00:00"
   },
   {
     "url": "https://almazb.vercel.app",
@@ -26269,6 +26304,28 @@
     "ai_processed": true
   },
   {
+    "url": "https://kaushal.dev",
+    "name": "Kaushal Satam",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": false,
+    "ai_processed": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkaushal.dev?w=600",
+    "ai_attempts": 1,
+    "ai_last_attempt_at": "2026-08-29T05:08:04.365066+00:00",
+    "ai_last_error": "no-usable-text",
+    "ai_terminal_attempts": 1,
+    "ai_next_retry_at": "2026-08-29T07:08:05.212358+00:00"
+  },
+  {
     "url": "https://kaushalrajgupta.is-a.dev",
     "name": "Kaushal Raj Gupta",
     "role": "Full Stack Developer",
@@ -26494,11 +26551,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkavy-sachaniya.vercel.app?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-08-28T08:27:45.306378+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-08-29T05:08:37.171007+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-08-28T10:27:45.572293+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-08-29T09:08:37.301410+00:00"
   },
   {
     "url": "https://kcmacapayad-portfolio.vercel.app",
@@ -31165,6 +31222,41 @@
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 2,
     "ai_processed": true
+  },
+  {
+    "url": "https://mfurqanyasin.com",
+    "name": "Muhammad Furqan",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Muhammad Furqan is a Lahore-based Full Stack Developer with over five years of experience delivering 250+ high-performance WordPress and custom web applications for clients in the USA, UAE, UK and Pakistan, now expanding into AI engineering and agentic systems.",
+    "tech_stack": [
+      "WordPress",
+      "WooCommerce",
+      "Python",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Laravel",
+      "OpenAI API"
+    ],
+    "projects": [
+      "Digilatics",
+      "edirect",
+      "PakMachineHub",
+      "FunnelKit",
+      "GreenWorks"
+    ],
+    "social_links": [],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmfurqanyasin.com?w=600",
+    "location": "Lahore, Pakistan",
+    "seo_evaluation": "Good",
+    "portfolio_score": 9
   },
   {
     "url": "https://mhjanny.com",
@@ -39340,6 +39432,26 @@
     "ai_processed": true
   },
   {
+    "url": "https://priyanshu-ghosh-seven.vercel.app",
+    "name": "Priyanshu Ghosh",
+    "role": "ML/AI Engineer",
+    "specialization": "",
+    "summary": "Priyanshu Ghosh is a Computer Science undergraduate specializing in artificial intelligence, expected to graduate in 2028. He showcases a developer portfolio featuring his academic projects and technical interests, emphasizing a strong foundation in AI concepts and programming.",
+    "tech_stack": [],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fpriyanshu-ghosh-seven.vercel.app?w=600",
+    "location": "",
+    "seo_evaluation": "Needs Improvement",
+    "portfolio_score": 3
+  },
+  {
     "url": "https://priyanshuportfolioo.netlify.app",
     "name": "Priyanshu Chauhan",
     "role": "Full Stack Developer",
@@ -43470,11 +43582,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsarthak-mac.vercel.app?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-08-28T08:27:45.307500+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-08-29T05:08:37.171100+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 3,
-    "ai_next_retry_at": "2026-08-28T16:27:45.571920+00:00"
+    "ai_terminal_attempts": 4,
+    "ai_next_retry_at": "2026-08-29T21:08:37.323006+00:00"
   },
   {
     "url": "https://saswatamondal.me",
@@ -47983,6 +48095,28 @@
     "ai_processed": true
   },
   {
+    "url": "https://suryaa-portfolio-eight.vercel.app",
+    "name": "Surya Snata Panigrahi",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": false,
+    "ai_processed": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsuryaa-portfolio-eight.vercel.app?w=600",
+    "ai_attempts": 1,
+    "ai_last_attempt_at": "2026-08-29T05:08:37.170848+00:00",
+    "ai_last_error": "no-usable-text",
+    "ai_terminal_attempts": 1,
+    "ai_next_retry_at": "2026-08-29T07:08:37.294284+00:00"
+  },
+  {
     "url": "https://svnty.is-a.dev",
     "name": "Jake Spencer Walklate",
     "role": "Full Stack Developer",
@@ -51868,11 +52002,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.7sadakonr.xyz?w=600",
-    "ai_attempts": 2,
-    "ai_last_attempt_at": "2026-08-28T08:27:45.307164+00:00",
+    "ai_attempts": 3,
+    "ai_last_attempt_at": "2026-08-29T05:08:37.171060+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 2,
-    "ai_next_retry_at": "2026-08-28T12:27:45.599383+00:00"
+    "ai_terminal_attempts": 3,
+    "ai_next_retry_at": "2026-08-29T13:08:37.402438+00:00"
   },
   {
     "url": "https://www.aalexis.fr",
@@ -52006,11 +52140,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.abhisheksharma.codes?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-08-28T08:27:45.307840+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-08-29T05:08:37.171137+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 3,
-    "ai_next_retry_at": "2026-08-28T16:27:45.721587+00:00"
+    "ai_terminal_attempts": 4,
+    "ai_next_retry_at": "2026-08-29T21:08:37.608254+00:00"
   },
   {
     "url": "https://www.abhishekworks.com",
@@ -53926,6 +54060,41 @@
     "seo_evaluation": "Average",
     "portfolio_score": 8,
     "ai_processed": true
+  },
+  {
+    "url": "https://www.hafsasalman.com",
+    "name": "Not provided",
+    "role": "ML/AI Engineer",
+    "specialization": "",
+    "summary": "A final-year FAST NUCES student specializing in AI/ML and full-stack engineering, building production-ready systems such as a sign‑language translator, serverless healthcare platforms, and music streaming apps, with a focus on reliability and compliance.",
+    "tech_stack": [
+      "Python",
+      "AWS",
+      "MySQL",
+      "MediaPipe",
+      "Firebase",
+      "WebSocket",
+      "XGBoost",
+      "Spotify API"
+    ],
+    "projects": [
+      "Pakistan Sign Language Translator",
+      "Serverless organ donor-receiver platform",
+      "Role‑stratified Hospital Management System",
+      "Production‑grade leave management microservice",
+      "Full‑stack music streaming web app"
+    ],
+    "social_links": [],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.hafsasalman.com?w=600",
+    "location": "Karachi, Pakistan",
+    "seo_evaluation": "Good",
+    "portfolio_score": 8
   },
   {
     "url": "https://www.hamzaehsan.com",
