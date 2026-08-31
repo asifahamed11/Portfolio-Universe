@@ -7645,11 +7645,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faliyounes.dev?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-08-30T02:58:31.765936+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-08-31T02:52:37.561030+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-08-30T04:58:31.952996+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-08-31T06:52:37.929359+00:00"
   },
   {
     "url": "https://allanim.com",
@@ -7762,11 +7762,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Falmarzancom.vercel.app?w=600",
-    "ai_attempts": 5,
-    "ai_last_attempt_at": "2026-08-29T05:08:37.636739+00:00",
+    "ai_attempts": 6,
+    "ai_last_attempt_at": "2026-08-31T02:52:44.338741+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 5,
-    "ai_next_retry_at": "2026-08-30T13:08:37.752790+00:00"
+    "ai_terminal_attempts": 6,
+    "ai_next_retry_at": "2026-09-02T18:52:44.540517+00:00"
   },
   {
     "url": "https://almazb.vercel.app",
@@ -17604,6 +17604,28 @@
     "ai_processed": true
   },
   {
+    "url": "https://edmund.novyrix.com",
+    "name": "Edmund Spira",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": false,
+    "ai_processed": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fedmund.novyrix.com?w=600",
+    "ai_attempts": 1,
+    "ai_last_attempt_at": "2026-08-31T02:52:37.559876+00:00",
+    "ai_last_error": "no-usable-text",
+    "ai_terminal_attempts": 1,
+    "ai_next_retry_at": "2026-08-31T04:52:37.937679+00:00"
+  },
+  {
     "url": "https://eduardconstantin.github.io",
     "name": "Eduard-Constantin Ibinceanu",
     "role": "Other",
@@ -21957,11 +21979,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fheyshaun.fr?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-08-30T02:58:37.044637+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-08-31T02:52:37.561346+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-08-30T04:58:37.238474+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-08-31T06:52:37.929463+00:00"
   },
   {
     "url": "https://hezy.netlify.app",
@@ -26398,11 +26420,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkaushal.dev?w=600",
-    "ai_attempts": 2,
-    "ai_last_attempt_at": "2026-08-30T02:58:37.044896+00:00",
+    "ai_attempts": 3,
+    "ai_last_attempt_at": "2026-08-31T02:52:43.415075+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 2,
-    "ai_next_retry_at": "2026-08-30T06:58:37.737587+00:00"
+    "ai_terminal_attempts": 3,
+    "ai_next_retry_at": "2026-08-31T10:52:44.299910+00:00"
   },
   {
     "url": "https://kaushalrajgupta.is-a.dev",
@@ -26630,11 +26652,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkavy-sachaniya.vercel.app?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-08-30T02:58:37.045213+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-08-31T02:52:44.338474+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 3,
-    "ai_next_retry_at": "2026-08-30T10:58:37.130369+00:00"
+    "ai_terminal_attempts": 4,
+    "ai_next_retry_at": "2026-08-31T18:52:44.478466+00:00"
   },
   {
     "url": "https://kcmacapayad-portfolio.vercel.app",
@@ -32668,11 +32690,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmuhammadahmad.dev?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-08-30T02:58:31.766248+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-08-31T02:52:43.414748+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-08-30T04:58:32.516123+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-08-31T06:52:43.797080+00:00"
   },
   {
     "url": "https://mukulchugh.com",
@@ -38707,11 +38729,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportfolionaqqash.vercel.app?w=600",
-    "ai_attempts": 6,
-    "ai_last_attempt_at": "2026-08-28T08:27:48.296068+00:00",
+    "ai_attempts": 7,
+    "ai_last_attempt_at": "2026-08-31T02:52:44.338802+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 6,
-    "ai_next_retry_at": "2026-08-31T00:27:48.689493+00:00"
+    "ai_terminal_attempts": 7,
+    "ai_next_retry_at": "2026-09-05T10:52:44.584799+00:00"
   },
   {
     "url": "https://portfoliov3-puce.vercel.app",
@@ -46188,6 +46210,35 @@
     "ai_processed": true
   },
   {
+    "url": "https://shubhamsharma.in",
+    "name": "Shubham Kumar Sharma",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "Shubham Kumar Sharma is a Full Stack Java Developer based in Lucknow, UP, India. He specializes in Java, Spring Boot, and modern JavaScript frameworks, delivering scalable, visually appealing web applications and collaborating with teams to build robust solutions.",
+    "tech_stack": [
+      "Java",
+      "Spring Boot",
+      "React.js",
+      "Redux",
+      "AWS",
+      "Docker",
+      "MySQL",
+      "PostgreSQL"
+    ],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fshubhamsharma.in?w=600",
+    "location": "Lucknow, UP, India",
+    "seo_evaluation": "Average",
+    "portfolio_score": 7
+  },
+  {
     "url": "https://shubhamvandara.netlify.app",
     "name": "Shubham Vandara",
     "role": "Full Stack Developer",
@@ -48211,11 +48262,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsuryaa-portfolio-eight.vercel.app?w=600",
-    "ai_attempts": 2,
-    "ai_last_attempt_at": "2026-08-30T02:58:37.045154+00:00",
+    "ai_attempts": 3,
+    "ai_last_attempt_at": "2026-08-31T02:52:43.415137+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 2,
-    "ai_next_retry_at": "2026-08-30T06:58:37.291730+00:00"
+    "ai_terminal_attempts": 3,
+    "ai_next_retry_at": "2026-08-31T10:52:43.546935+00:00"
   },
   {
     "url": "https://svnty.is-a.dev",
@@ -50033,6 +50084,41 @@
     "seo_evaluation": "Needs Improvement",
     "portfolio_score": 7,
     "ai_processed": true
+  },
+  {
+    "url": "https://ummaymaimonachaman.github.io/Myself_CHAMAN",
+    "name": "Ummay Maimona Chaman",
+    "role": "Full Stack Developer",
+    "specialization": "",
+    "summary": "An ambitious undergraduate Computer Science engineer with experience in web development, machine learning, and robotics. Demonstrates strong research background, contributions to AI projects, and a commitment to continuous learning and collaborative innovation.",
+    "tech_stack": [
+      "Python",
+      "JavaScript",
+      "React",
+      "Node.js",
+      "TensorFlow",
+      "PyTorch",
+      "ROS",
+      "OpenCV"
+    ],
+    "projects": [
+      "Autonomous irrigation robot with plant detection and rain sensing",
+      "Multimodal deep learning framework for adolescent anxiety detection (QTAB dataset)",
+      "CNN classification with PatchCore anomaly detection for pneumonia screening",
+      "Large-scale multi-view indoor video dataset for fall detection and activity recognition",
+      "Sustainable plastic management research article"
+    ],
+    "social_links": [],
+    "available_for_hire": true,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": true,
+    "ai_processed": true,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fummaymaimonachaman.github.io%2FMyself_CHAMAN?w=600",
+    "location": "",
+    "seo_evaluation": "Average",
+    "portfolio_score": 6
   },
   {
     "url": "https://usman.codcrafters.org",
@@ -52103,11 +52189,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.7sadakonr.xyz?w=600",
-    "ai_attempts": 4,
-    "ai_last_attempt_at": "2026-08-30T02:58:37.774735+00:00",
+    "ai_attempts": 5,
+    "ai_last_attempt_at": "2026-08-31T02:52:44.338645+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 4,
-    "ai_next_retry_at": "2026-08-30T18:58:38.015364+00:00"
+    "ai_terminal_attempts": 5,
+    "ai_next_retry_at": "2026-09-01T10:52:44.489990+00:00"
   },
   {
     "url": "https://www.aalexis.fr",
@@ -55345,11 +55431,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.mujtabasaqib.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-08-30T02:58:31.766552+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-08-31T02:52:43.414912+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-08-30T04:58:32.051970+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-08-31T06:52:43.763626+00:00"
   },
   {
     "url": "https://www.nabinkhair.com.np",
@@ -55683,11 +55769,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.oluseye.cv?w=600",
-    "ai_attempts": 6,
-    "ai_last_attempt_at": "2026-08-28T08:27:48.296318+00:00",
+    "ai_attempts": 7,
+    "ai_last_attempt_at": "2026-08-31T02:52:44.338880+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 6,
-    "ai_next_retry_at": "2026-08-31T00:27:48.620740+00:00"
+    "ai_terminal_attempts": 7,
+    "ai_next_retry_at": "2026-09-05T10:52:44.905117+00:00"
   },
   {
     "url": "https://www.osallak.tech",
@@ -57544,11 +57630,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.tirthdhedhi.dev?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-08-30T02:58:37.044835+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-08-31T02:52:43.414997+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 1,
-    "ai_next_retry_at": "2026-08-30T04:58:37.208682+00:00"
+    "ai_terminal_attempts": 2,
+    "ai_next_retry_at": "2026-08-31T06:52:43.642266+00:00"
   },
   {
     "url": "https://www.trixum.net",
