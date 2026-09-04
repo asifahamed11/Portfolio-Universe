@@ -6419,11 +6419,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fadnan-portfolio-web.onrender.com?w=600",
-    "ai_attempts": 2,
-    "ai_last_attempt_at": "2026-09-03T02:28:52.918419+00:00",
+    "ai_attempts": 3,
+    "ai_last_attempt_at": "2026-09-04T02:29:06.772180+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 2,
-    "ai_next_retry_at": "2026-09-03T06:28:53.305498+00:00"
+    "ai_terminal_attempts": 3,
+    "ai_next_retry_at": "2026-09-04T10:29:07.146677+00:00"
   },
   {
     "url": "https://adrian-hansen-dev.github.io/portfolio",
@@ -16490,10 +16490,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdhruvjs.com?w=600",
-    "ai_attempts": 2,
-    "ai_last_attempt_at": "2026-09-03T02:28:52.918655+00:00",
+    "ai_attempts": 3,
+    "ai_last_attempt_at": "2026-09-04T02:29:39.033766+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-09-03T06:29:21.415507+00:00"
+    "ai_next_retry_at": "2026-09-04T10:30:07.284470+00:00"
   },
   {
     "url": "https://dhruvmali.netlify.app",
@@ -17662,11 +17662,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fedmund.novyrix.com?w=600",
-    "ai_attempts": 4,
-    "ai_last_attempt_at": "2026-09-03T02:29:25.413328+00:00",
+    "ai_attempts": 5,
+    "ai_last_attempt_at": "2026-09-04T02:29:39.034405+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 4,
-    "ai_next_retry_at": "2026-09-03T18:29:25.841916+00:00"
+    "ai_terminal_attempts": 5,
+    "ai_next_retry_at": "2026-09-05T10:29:39.230624+00:00"
   },
   {
     "url": "https://eduardconstantin.github.io",
@@ -26463,11 +26463,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkaushal.dev?w=600",
-    "ai_attempts": 5,
-    "ai_last_attempt_at": "2026-09-02T02:22:00.620417+00:00",
+    "ai_attempts": 6,
+    "ai_last_attempt_at": "2026-09-04T02:30:07.321214+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 5,
-    "ai_next_retry_at": "2026-09-03T10:22:01.461137+00:00"
+    "ai_terminal_attempts": 6,
+    "ai_next_retry_at": "2026-09-06T18:30:08.147440+00:00"
   },
   {
     "url": "https://kaushalrajgupta.is-a.dev",
@@ -30040,6 +30040,27 @@
     "ai_processed": true
   },
   {
+    "url": "https://marbelona.com",
+    "name": "Benedict Lutab",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": false,
+    "ai_processed": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmarbelona.com?w=600",
+    "ai_attempts": 1,
+    "ai_last_attempt_at": "2026-09-04T02:29:06.770075+00:00",
+    "ai_last_error": "provider-output-failed",
+    "ai_next_retry_at": "2026-09-04T04:29:35.002367+00:00"
+  },
+  {
     "url": "https://marcmav.dev",
     "name": "Marciano Mavungo",
     "role": "Frontend Developer",
@@ -30633,11 +30654,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmattiaverdecchi.dev?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-09-03T02:28:52.918823+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-09-04T02:29:39.033917+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 3,
-    "ai_next_retry_at": "2026-09-03T10:28:53.679973+00:00"
+    "ai_terminal_attempts": 4,
+    "ai_next_retry_at": "2026-09-04T18:29:39.402022+00:00"
   },
   {
     "url": "https://matvey.codes",
@@ -34191,10 +34212,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fnegiadventures.github.io?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-09-03T02:28:52.917561+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-09-04T02:29:06.771344+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-09-03T04:29:17.437217+00:00"
+    "ai_next_retry_at": "2026-09-04T06:29:30.988586+00:00"
   },
   {
     "url": "https://nemanja.works",
@@ -39096,10 +39117,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fpranavajk.com?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-09-03T02:29:25.413096+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-09-04T02:29:39.034009+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-09-03T10:29:49.694722+00:00"
+    "ai_next_retry_at": "2026-09-04T18:30:03.279123+00:00"
   },
   {
     "url": "https://pranavarya.in",
@@ -43812,11 +43833,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsarthak-mac.vercel.app?w=600",
-    "ai_attempts": 6,
-    "ai_last_attempt_at": "2026-09-01T03:01:46.056436+00:00",
+    "ai_attempts": 7,
+    "ai_last_attempt_at": "2026-09-04T02:30:07.321447+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 6,
-    "ai_next_retry_at": "2026-09-03T19:01:46.217622+00:00"
+    "ai_terminal_attempts": 7,
+    "ai_next_retry_at": "2026-09-09T10:30:07.362114+00:00"
   },
   {
     "url": "https://saswatamondal.me",
@@ -46987,10 +47008,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsohammondal.com?w=600",
-    "ai_attempts": 1,
-    "ai_last_attempt_at": "2026-09-03T02:28:52.918140+00:00",
+    "ai_attempts": 2,
+    "ai_last_attempt_at": "2026-09-04T02:29:06.771579+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-09-03T04:29:25.362511+00:00"
+    "ai_next_retry_at": "2026-09-04T06:29:38.995633+00:00"
   },
   {
     "url": "https://sohamsarkar.com",
@@ -48390,11 +48411,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsuryaa-portfolio-eight.vercel.app?w=600",
-    "ai_attempts": 5,
-    "ai_last_attempt_at": "2026-09-02T02:22:00.620465+00:00",
+    "ai_attempts": 6,
+    "ai_last_attempt_at": "2026-09-04T02:30:07.321359+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 5,
-    "ai_next_retry_at": "2026-09-03T10:22:00.685111+00:00"
+    "ai_terminal_attempts": 6,
+    "ai_next_retry_at": "2026-09-06T18:30:07.596293+00:00"
   },
   {
     "url": "https://svnty.is-a.dev",
@@ -52455,11 +52476,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.abhisheksharma.codes?w=600",
-    "ai_attempts": 6,
-    "ai_last_attempt_at": "2026-09-01T03:01:46.056484+00:00",
+    "ai_attempts": 7,
+    "ai_last_attempt_at": "2026-09-04T02:30:07.321519+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 6,
-    "ai_next_retry_at": "2026-09-03T19:01:47.225736+00:00"
+    "ai_terminal_attempts": 7,
+    "ai_next_retry_at": "2026-09-09T10:30:07.612938+00:00"
   },
   {
     "url": "https://www.abhishekworks.com",
@@ -54741,6 +54762,28 @@
     "ai_processed": true
   },
   {
+    "url": "https://www.joaoprestes.dev",
+    "name": "João Claudio Prestes",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": false,
+    "ai_processed": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.joaoprestes.dev?w=600",
+    "ai_attempts": 1,
+    "ai_last_attempt_at": "2026-09-04T02:29:06.770575+00:00",
+    "ai_last_error": "no-usable-text",
+    "ai_terminal_attempts": 1,
+    "ai_next_retry_at": "2026-09-04T04:29:06.920338+00:00"
+  },
+  {
     "url": "https://www.joelcjohnson.me",
     "name": "Joel Johnson",
     "role": "Full Stack Developer",
@@ -56815,11 +56858,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.sachingoyal.me?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-09-03T02:29:25.413283+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-09-04T02:29:39.034063+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 3,
-    "ai_next_retry_at": "2026-09-03T10:29:25.967548+00:00"
+    "ai_terminal_attempts": 4,
+    "ai_next_retry_at": "2026-09-04T18:29:39.213199+00:00"
   },
   {
     "url": "https://www.sagarb.com",
