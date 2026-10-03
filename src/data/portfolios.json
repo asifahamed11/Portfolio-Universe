@@ -506,11 +506,11 @@
     "views": 3,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkuldeepjadeja.dev?w=600",
-    "ai_attempts": 14,
-    "ai_last_attempt_at": "2026-09-26T03:00:12.884772+00:00",
+    "ai_attempts": 15,
+    "ai_last_attempt_at": "2026-10-03T03:22:02.419320+00:00",
     "ai_last_error": "url-temporarily-unavailable",
     "ai_terminal_attempts": 7,
-    "ai_next_retry_at": "2026-10-03T03:00:12.934793+00:00"
+    "ai_next_retry_at": "2026-10-10T03:22:02.477409+00:00"
   },
   {
     "url": "https://tomasmartinez.xyz",
@@ -2455,10 +2455,10 @@
     "views": 1,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbalkrishnabk.com.np?w=600",
-    "ai_attempts": 14,
-    "ai_last_attempt_at": "2026-09-26T03:00:41.218260+00:00",
+    "ai_attempts": 15,
+    "ai_last_attempt_at": "2026-10-03T03:22:02.419489+00:00",
     "ai_last_error": "scrape-temporarily-unavailable",
-    "ai_next_retry_at": "2026-10-03T03:00:41.670438+00:00"
+    "ai_next_retry_at": "2026-10-10T03:22:02.864726+00:00"
   },
   {
     "url": "https://baptistemiramont.fr",
@@ -4728,10 +4728,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faahil-khan.xyz?w=600",
-    "ai_attempts": 4,
-    "ai_last_attempt_at": "2026-10-02T03:33:52.277958+00:00",
+    "ai_attempts": 5,
+    "ai_last_attempt_at": "2026-10-03T03:18:38.277033+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-10-02T19:34:44.731098+00:00"
+    "ai_next_retry_at": "2026-10-04T11:19:22.270942+00:00"
   },
   {
     "url": "https://aakarsh-devhq.vercel.app",
@@ -6716,10 +6716,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faffan-portfolio-kappa.vercel.app?w=600",
-    "ai_attempts": 7,
-    "ai_last_attempt_at": "2026-09-27T03:04:46.995377+00:00",
+    "ai_attempts": 8,
+    "ai_last_attempt_at": "2026-10-03T03:21:14.454554+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-10-02T11:05:31.045858+00:00"
+    "ai_next_retry_at": "2026-10-10T03:21:50.377459+00:00"
   },
   {
     "url": "https://afgprogrammer.com",
@@ -7297,10 +7297,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fajseven.me?w=600",
-    "ai_attempts": 6,
-    "ai_last_attempt_at": "2026-09-30T03:30:16.636168+00:00",
+    "ai_attempts": 7,
+    "ai_last_attempt_at": "2026-10-03T03:20:26.354734+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-10-02T19:31:00.627756+00:00"
+    "ai_next_retry_at": "2026-10-08T11:21:14.423817+00:00"
   },
   {
     "url": "https://ajvadlaseen.com",
@@ -8131,11 +8131,11 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Famiralirashidi.github.io?w=600",
-    "ai_attempts": 14,
-    "ai_last_attempt_at": "2026-09-26T03:00:41.218370+00:00",
+    "ai_attempts": 15,
+    "ai_last_attempt_at": "2026-10-03T03:22:02.419545+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 5,
-    "ai_next_retry_at": "2026-10-03T03:00:41.522064+00:00"
+    "ai_terminal_attempts": 6,
+    "ai_next_retry_at": "2026-10-10T03:22:02.723893+00:00"
   },
   {
     "url": "https://amirdev.nl",
@@ -8498,10 +8498,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fandrewleesimpson.com?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-10-02T03:33:52.276923+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-10-03T03:17:53.791157+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-10-02T11:34:48.678079+00:00"
+    "ai_next_retry_at": "2026-10-03T19:18:38.245113+00:00"
   },
   {
     "url": "https://andrewwoods.net",
@@ -8793,10 +8793,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Faniketpatidar.com?w=600",
-    "ai_attempts": 4,
-    "ai_last_attempt_at": "2026-10-02T03:33:52.278355+00:00",
+    "ai_attempts": 5,
+    "ai_last_attempt_at": "2026-10-03T03:18:38.277189+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-10-02T19:34:32.744826+00:00"
+    "ai_next_retry_at": "2026-10-04T11:19:14.264672+00:00"
   },
   {
     "url": "https://anilpeter.vercel.app",
@@ -9103,10 +9103,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fanoopsonkriya.dev?w=600",
-    "ai_attempts": 4,
-    "ai_last_attempt_at": "2026-10-02T03:33:52.278723+00:00",
+    "ai_attempts": 5,
+    "ai_last_attempt_at": "2026-10-03T03:18:38.277258+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-10-02T19:34:36.760167+00:00"
+    "ai_next_retry_at": "2026-10-04T11:19:18.372402+00:00"
   },
   {
     "url": "https://anshulchauhan.dev",
@@ -12115,10 +12115,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fbhavyajustchill.vercel.app?w=600",
-    "ai_attempts": 7,
-    "ai_last_attempt_at": "2026-09-27T03:04:46.995415+00:00",
+    "ai_attempts": 8,
+    "ai_last_attempt_at": "2026-10-03T03:21:14.454712+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-10-02T11:05:23.085740+00:00"
+    "ai_next_retry_at": "2026-10-10T03:21:58.510745+00:00"
   },
   {
     "url": "https://bhumika-wadhwani-portfolio.onrender.com",
@@ -13585,10 +13585,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fchahalarsh.in?w=600",
-    "ai_attempts": 4,
-    "ai_last_attempt_at": "2026-10-02T03:34:48.721156+00:00",
+    "ai_attempts": 5,
+    "ai_last_attempt_at": "2026-10-03T03:18:38.277293+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-10-02T19:35:16.930086+00:00"
+    "ai_next_retry_at": "2026-10-04T11:19:26.286918+00:00"
   },
   {
     "url": "https://chaitanya-sai-meka.vercel.app",
@@ -13914,10 +13914,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fchengmarc.com?w=600",
-    "ai_attempts": 6,
-    "ai_last_attempt_at": "2026-09-30T03:30:16.636341+00:00",
+    "ai_attempts": 7,
+    "ai_last_attempt_at": "2026-10-03T03:20:26.354774+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-10-02T19:30:52.620309+00:00"
+    "ai_next_retry_at": "2026-10-08T11:21:02.416337+00:00"
   },
   {
     "url": "https://chetanmahajan.vercel.app",
@@ -16094,10 +16094,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fdevdeepsaha.in?w=600",
-    "ai_attempts": 5,
-    "ai_last_attempt_at": "2026-10-01T03:34:46.189168+00:00",
+    "ai_attempts": 6,
+    "ai_last_attempt_at": "2026-10-03T03:19:26.318268+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-10-02T11:35:34.231768+00:00"
+    "ai_next_retry_at": "2026-10-05T19:20:14.305505+00:00"
   },
   {
     "url": "https://devekavin.github.io/Portfolio",
@@ -19116,10 +19116,10 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ffaisalsaifi.tech?w=600",
-    "ai_attempts": 14,
-    "ai_last_attempt_at": "2026-09-26T03:00:41.218421+00:00",
+    "ai_attempts": 15,
+    "ai_last_attempt_at": "2026-10-03T03:22:02.419580+00:00",
     "ai_last_error": "url-temporarily-unavailable",
-    "ai_next_retry_at": "2026-10-03T03:00:41.245370+00:00"
+    "ai_next_retry_at": "2026-10-10T03:22:02.454559+00:00"
   },
   {
     "url": "https://faishal24.my.id",
@@ -20280,10 +20280,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fgauravgrv.vercel.app?w=600",
-    "ai_attempts": 5,
-    "ai_last_attempt_at": "2026-10-01T03:34:46.189215+00:00",
+    "ai_attempts": 6,
+    "ai_last_attempt_at": "2026-10-03T03:19:26.318329+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-10-02T11:35:22.260918+00:00"
+    "ai_next_retry_at": "2026-10-05T19:20:22.309964+00:00"
   },
   {
     "url": "https://gauravrathva.me",
@@ -24433,10 +24433,10 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fitsmeabdur.in?w=600",
-    "ai_attempts": 14,
-    "ai_last_attempt_at": "2026-09-26T03:00:41.218455+00:00",
+    "ai_attempts": 15,
+    "ai_last_attempt_at": "2026-10-03T03:22:02.419613+00:00",
     "ai_last_error": "url-temporarily-unavailable",
-    "ai_next_retry_at": "2026-10-03T03:00:41.448118+00:00"
+    "ai_next_retry_at": "2026-10-10T03:22:02.453088+00:00"
   },
   {
     "url": "https://itsmebravo.dev",
@@ -25309,10 +25309,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fjaysinghchauhan.com?w=600",
-    "ai_attempts": 7,
-    "ai_last_attempt_at": "2026-09-27T03:04:46.995770+00:00",
+    "ai_attempts": 8,
+    "ai_last_attempt_at": "2026-10-03T03:21:14.454768+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-10-02T11:05:34.987423+00:00"
+    "ai_next_retry_at": "2026-10-10T03:22:02.387160+00:00"
   },
   {
     "url": "https://jayveepvalenzuela.github.io",
@@ -25809,10 +25809,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fjohnborn.co.uk?w=600",
-    "ai_attempts": 3,
-    "ai_last_attempt_at": "2026-10-02T03:33:52.277619+00:00",
+    "ai_attempts": 4,
+    "ai_last_attempt_at": "2026-10-03T03:17:53.791471+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-10-02T11:34:40.717542+00:00"
+    "ai_next_retry_at": "2026-10-03T19:18:26.235392+00:00"
   },
   {
     "url": "https://johngech.netlify.app",
@@ -26965,6 +26965,27 @@
     "ai_processed": true,
     "is_portfolio": false,
     "ai_terminal_failure": true
+  },
+  {
+    "url": "https://kartikgautam.com",
+    "name": "Kartik Gautam",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": false,
+    "ai_processed": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkartikgautam.com?w=600",
+    "ai_attempts": 1,
+    "ai_last_attempt_at": "2026-10-03T03:17:53.790484+00:00",
+    "ai_last_error": "provider-output-failed",
+    "ai_next_retry_at": "2026-10-03T05:18:34.352161+00:00"
   },
   {
     "url": "https://karunika.work",
@@ -28373,10 +28394,10 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fkwamehdhegbo.com?w=600",
-    "ai_attempts": 14,
-    "ai_last_attempt_at": "2026-09-26T03:00:41.218485+00:00",
+    "ai_attempts": 15,
+    "ai_last_attempt_at": "2026-10-03T03:22:02.895511+00:00",
     "ai_last_error": "url-temporarily-unavailable",
-    "ai_next_retry_at": "2026-10-03T03:00:41.280907+00:00"
+    "ai_next_retry_at": "2026-10-10T03:22:03.015993+00:00"
   },
   {
     "url": "https://kyh.io",
@@ -30518,11 +30539,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmanish-portfolio-gamma-henna.vercel.app?w=600",
-    "ai_attempts": 4,
-    "ai_last_attempt_at": "2026-10-02T03:34:48.721317+00:00",
+    "ai_attempts": 5,
+    "ai_last_attempt_at": "2026-10-03T03:18:38.277326+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 4,
-    "ai_next_retry_at": "2026-10-02T19:34:48.963158+00:00"
+    "ai_terminal_attempts": 5,
+    "ai_next_retry_at": "2026-10-04T11:18:38.417581+00:00"
   },
   {
     "url": "https://manixh.vercel.app",
@@ -30778,10 +30799,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fmarbelona.com?w=600",
-    "ai_attempts": 9,
-    "ai_last_attempt_at": "2026-09-26T03:00:12.884743+00:00",
+    "ai_attempts": 10,
+    "ai_last_attempt_at": "2026-10-03T03:21:14.454834+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-10-03T03:00:37.125313+00:00"
+    "ai_next_retry_at": "2026-10-10T03:21:54.377763+00:00"
   },
   {
     "url": "https://marcmav.dev",
@@ -34678,10 +34699,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fnareshkhatri.dev?w=600",
-    "ai_attempts": 5,
-    "ai_last_attempt_at": "2026-10-01T03:35:34.271206+00:00",
+    "ai_attempts": 6,
+    "ai_last_attempt_at": "2026-10-03T03:19:26.318702+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-10-02T11:36:14.303247+00:00"
+    "ai_next_retry_at": "2026-10-05T19:20:26.314920+00:00"
   },
   {
     "url": "https://naseemkhan.dev",
@@ -35984,10 +36005,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fnja-systems.vercel.app?w=600",
-    "ai_attempts": 6,
-    "ai_last_attempt_at": "2026-09-30T03:30:16.636422+00:00",
+    "ai_attempts": 7,
+    "ai_last_attempt_at": "2026-10-03T03:20:26.354808+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-10-02T19:31:04.631899+00:00"
+    "ai_next_retry_at": "2026-10-08T11:21:06.432897+00:00"
   },
   {
     "url": "https://noamanahmed.com",
@@ -41822,6 +41843,27 @@
     "ai_next_retry_at": "2026-10-05T03:03:11.577400+00:00"
   },
   {
+    "url": "https://rathodram.pages.dev",
+    "name": "Rathod Ramraj",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": false,
+    "ai_processed": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Frathodram.pages.dev?w=600",
+    "ai_attempts": 1,
+    "ai_last_attempt_at": "2026-10-03T03:17:53.790772+00:00",
+    "ai_last_error": "provider-output-failed",
+    "ai_next_retry_at": "2026-10-03T05:18:30.321638+00:00"
+  },
+  {
     "url": "https://rathodram.vercel.app",
     "name": "Rathod Ramraj",
     "role": "",
@@ -42037,6 +42079,28 @@
     "ai_processed": true,
     "is_portfolio": false,
     "ai_terminal_failure": true
+  },
+  {
+    "url": "https://red1-for-hek-demo.vercel.app",
+    "name": "Aaabad Aziz",
+    "role": "",
+    "specialization": "",
+    "summary": "",
+    "tech_stack": [],
+    "projects": [],
+    "social_links": [],
+    "available_for_hire": false,
+    "primary_language": "",
+    "views": 0,
+    "has_blog": false,
+    "is_portfolio": false,
+    "ai_processed": false,
+    "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fred1-for-hek-demo.vercel.app?w=600",
+    "ai_attempts": 1,
+    "ai_last_attempt_at": "2026-10-03T03:17:53.789952+00:00",
+    "ai_last_error": "no-usable-text",
+    "ai_terminal_attempts": 1,
+    "ai_next_retry_at": "2026-10-03T05:17:54.455578+00:00"
   },
   {
     "url": "https://reddev.in",
@@ -44665,10 +44729,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsanjivthapa.com.np?w=600",
-    "ai_attempts": 5,
-    "ai_last_attempt_at": "2026-10-01T03:35:34.271355+00:00",
+    "ai_attempts": 6,
+    "ai_last_attempt_at": "2026-10-03T03:19:26.318748+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-10-02T11:36:18.268741+00:00"
+    "ai_next_retry_at": "2026-10-05T19:20:10.365666+00:00"
   },
   {
     "url": "https://sankalptharu.com.np",
@@ -44876,10 +44940,10 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsaswatamondal.me?w=600",
-    "ai_attempts": 14,
-    "ai_last_attempt_at": "2026-09-26T03:00:41.697286+00:00",
+    "ai_attempts": 15,
+    "ai_last_attempt_at": "2026-10-03T03:22:02.895663+00:00",
     "ai_last_error": "url-temporarily-unavailable",
-    "ai_next_retry_at": "2026-10-03T03:00:41.746795+00:00"
+    "ai_next_retry_at": "2026-10-10T03:22:02.929146+00:00"
   },
   {
     "url": "https://satishjhanwer.dev",
@@ -49309,13 +49373,13 @@
     "views": 0,
     "has_blog": false,
     "is_portfolio": false,
-    "ai_processed": false,
+    "ai_processed": true,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsuhail-shabir-portfolio.web.app?w=600",
-    "ai_attempts": 7,
-    "ai_last_attempt_at": "2026-09-27T03:05:35.019409+00:00",
+    "ai_attempts": 8,
+    "ai_last_attempt_at": "2026-10-03T03:21:14.454802+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 7,
-    "ai_next_retry_at": "2026-10-02T11:05:35.496074+00:00"
+    "ai_terminal_attempts": 8,
+    "ai_terminal_failure": true
   },
   {
     "url": "https://suhailroushan.com",
@@ -50489,10 +50553,10 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fthibault.sh?w=600",
-    "ai_attempts": 14,
-    "ai_last_attempt_at": "2026-09-26T03:00:41.697395+00:00",
+    "ai_attempts": 15,
+    "ai_last_attempt_at": "2026-10-03T03:22:02.895711+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-10-03T03:01:05.358134+00:00"
+    "ai_next_retry_at": "2026-10-10T03:22:26.610948+00:00"
   },
   {
     "url": "https://thinh.io.vn",
@@ -50774,10 +50838,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftonagnis.vercel.app?w=600",
-    "ai_attempts": 5,
-    "ai_last_attempt_at": "2026-10-01T03:35:34.271440+00:00",
+    "ai_attempts": 6,
+    "ai_last_attempt_at": "2026-10-03T03:20:26.354544+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-10-02T11:36:10.277104+00:00"
+    "ai_next_retry_at": "2026-10-05T19:21:10.437232+00:00"
   },
   {
     "url": "https://toukoum.fr",
@@ -55137,11 +55201,11 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.dryd3n.ca?w=600",
-    "ai_attempts": 5,
-    "ai_last_attempt_at": "2026-10-01T03:35:34.271493+00:00",
+    "ai_attempts": 6,
+    "ai_last_attempt_at": "2026-10-03T03:20:26.354682+00:00",
     "ai_last_error": "no-usable-text",
-    "ai_terminal_attempts": 5,
-    "ai_next_retry_at": "2026-10-02T11:35:34.538426+00:00"
+    "ai_terminal_attempts": 6,
+    "ai_next_retry_at": "2026-10-05T19:20:26.755932+00:00"
   },
   {
     "url": "https://www.elite-lord.com",
@@ -56301,10 +56365,10 @@
     "is_portfolio": false,
     "ai_processed": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.khushikhurana.tech?w=600",
-    "ai_attempts": 4,
-    "ai_last_attempt_at": "2026-10-02T03:34:48.721400+00:00",
+    "ai_attempts": 5,
+    "ai_last_attempt_at": "2026-10-03T03:19:26.318131+00:00",
     "ai_last_error": "provider-output-failed",
-    "ai_next_retry_at": "2026-10-02T19:35:12.945312+00:00"
+    "ai_next_retry_at": "2026-10-04T11:20:18.306460+00:00"
   },
   {
     "url": "https://www.kumar-nishant.me",
@@ -56318,10 +56382,10 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.kumar-nishant.me?w=600",
-    "ai_attempts": 14,
-    "ai_last_attempt_at": "2026-09-26T03:00:41.697444+00:00",
+    "ai_attempts": 15,
+    "ai_last_attempt_at": "2026-10-03T03:22:02.895748+00:00",
     "ai_last_error": "url-temporarily-unavailable",
-    "ai_next_retry_at": "2026-10-03T03:00:41.740357+00:00"
+    "ai_next_retry_at": "2026-10-10T03:22:03.049108+00:00"
   },
   {
     "url": "https://www.levikingma.com",
@@ -56854,10 +56918,10 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.mohsinraz.me?w=600",
-    "ai_attempts": 14,
-    "ai_last_attempt_at": "2026-09-26T03:00:41.697476+00:00",
+    "ai_attempts": 15,
+    "ai_last_attempt_at": "2026-10-03T03:22:02.895783+00:00",
     "ai_last_error": "url-temporarily-unavailable",
-    "ai_next_retry_at": "2026-10-03T03:00:41.746628+00:00"
+    "ai_next_retry_at": "2026-10-10T03:22:02.936853+00:00"
   },
   {
     "url": "https://www.muhammadaamirmalik.com",
@@ -58368,10 +58432,10 @@
     "views": 0,
     "has_blog": false,
     "screenshot": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.sathwiky.dev?w=600",
-    "ai_attempts": 14,
-    "ai_last_attempt_at": "2026-09-26T03:00:41.697502+00:00",
+    "ai_attempts": 15,
+    "ai_last_attempt_at": "2026-10-03T03:22:26.641917+00:00",
     "ai_last_error": "url-temporarily-unavailable",
-    "ai_next_retry_at": "2026-10-03T03:00:41.752550+00:00"
+    "ai_next_retry_at": "2026-10-10T03:22:26.708790+00:00"
   },
   {
     "url": "https://www.saurabhdaware.in",
